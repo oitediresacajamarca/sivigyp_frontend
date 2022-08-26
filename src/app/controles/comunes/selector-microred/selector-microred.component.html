@@ -1,0 +1,10 @@
+<select class="select2 form-control custom-select select2-hidden-accessible" style="width: 100%; height:36px;"
+  data-select2-id="1" tabindex="-1" aria-hidden="true" (change)="cambio_microredf($any($event.target).value)">
+  <option data-select2-id="3">Select</option>
+
+
+
+  <option *ngFor="let microred of miroredes" [value]="microred.id_microred" data-select2-id="394" >{{microred.nombre}}</option>
+
+
+</select>

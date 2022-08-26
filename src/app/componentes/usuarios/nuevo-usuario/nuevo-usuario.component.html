@@ -1,0 +1,125 @@
+
+<div id="signup-modal" class="modal fade show " tabindex="-1" role="dialog" aria-modal="true"
+  style="padding-right: 17px; display: block;">
+  <div class="modal-dialog user-modal ">
+    <div class="modal-content nuevo-usuario-modal">
+
+      <div class="text-center bg-primary titulo-nuevo p-3">
+        REGISTRO DE USUARIO NUEVO
+      </div>
+      <div class="modal-body cuerpo">
+
+        <ul class="nav nav-tabs mb-3">
+          <li class="nav-item">
+              <a href="#datosg" data-toggle="tab" aria-expanded="false" class="nav-link active">
+                  <i class="mdi mdi-home-variant d-lg-none d-block mr-1"></i>
+                  <span class="d-none d-lg-block">DATOS GENERALES</span>
+              </a>
+          </li>
+          <li class="nav-item">
+              <a href="#ambito" data-toggle="tab" aria-expanded="true" class="nav-link">
+                  <i class="mdi mdi-account-circle d-lg-none d-block mr-1"></i>
+                  <span class="d-none d-lg-block">AMBITO</span>
+              </a>
+          </li>
+          <li class="nav-item">
+              <a href="#settings" data-toggle="tab" aria-expanded="false" class="nav-link">
+                  <i class="mdi mdi-settings-outline d-lg-none d-block mr-1"></i>
+                  <span class="d-none d-lg-block">ROLES</span>
+              </a>
+          </li>
+      </ul>
+
+      <div class="tab-content cuerpo">
+        <div class="tab-pane active" id="datosg">
+          <form class="pl-3 pr-3" [formGroup]="nuevo_usuario">
+
+            <div class="form-group numdoc-group">
+              <label for="username">NUMERO DE DOCUMENTO DE IDENTIDAD</label>
+
+              <input type="text" class="form-control num_doc" aria-label="Text input with checkbox"
+                formControlName="nro_documento">
+              <div class="input-group-append ">
+                <button (click)="cargar_datos_persona_por_dni()" class="btn btn-info" type="button">BUSCAR</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="appaterno">APELLIDO PATERNO</label>
+              <input type="text" class="form-control" id="nametext" aria-describedby="name" placeholder="Name"
+                formControlName="apellido_pat">
+
+            </div>
+            <div class="form-group">
+              <label for="appaterno">APELLIDO MATERNO</label>
+              <input type="text" class="form-control" id="nametext" aria-describedby="name" placeholder="Name"
+                formControlName="apellido_mat">
+
+            </div>
+            <div class="form-group">
+              <label for="appaterno">NOMBRES</label>
+              <input type="text" class="form-control" id="nametext" aria-describedby="name" placeholder="Name"
+                formControlName="nombres">
+
+            </div>
+
+            <div class="form-group">
+              <label for="telefono">TELEFONO</label>
+              <input class="form-control" type="text" id="telefono" required="" placeholder="">
+            </div>
+
+            <div class="form-group">
+              <label for="emailaddress">CORREO ELECTRONICO</label>
+              <input class="form-control" type="email" id="emailaddress" required="" placeholder="john@deo.com">
+            </div>
+
+
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input class="form-control" type="password" required="" id="password" placeholder="Enter your password">
+            </div>
+
+            <div class="form-group">
+              <input type="checkbox" id="md_checkbox_5" class="chk-col-indigo material-inputs">
+              <label for="md_checkbox_5">I accept <a href="#">Terms and Conditions</a></label>
+            </div>
+
+
+
+          </form>
+
+        </div>
+        <div class="tab-pane show" id="ambito">
+          <form class="pl-3 pr-3" [formGroup]="nuevo_usuario_ambito" >
+          <div class="form-group">
+            <label for="appaterno">RED</label>
+            <app-selector-red formControlName="red" (cambio_red)="cambio_red($event)"></app-selector-red>
+
+          </div>
+          <div class="form-group">
+            <label for="appaterno">MICRORED</label>
+            <app-selector-microred #selector_microred (cambio_microred)="cambio_microred($event)"></app-selector-microred>
+
+          </div>
+          <div class="form-group">
+            <label for="appaterno">ESTABLECIMIENTO</label>
+            <app-selector-ipress #selector_ipress></app-selector-ipress>
+
+          </div>
+        </form>
+
+        </div>
+        <div class="tab-pane" id="settings">
+
+        </div>
+        <div class="form-group text-center">
+          <button class="btn btn-primary" type="submit" (click)="Guardar()">Guardar
+            </button>
+        </div>
+    </div>
+
+
+
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>

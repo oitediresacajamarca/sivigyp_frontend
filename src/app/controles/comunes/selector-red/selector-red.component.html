@@ -1,0 +1,10 @@
+<select class="select2 form-control custom-select select2-hidden-accessible" style="width: 100%; height:36px;"
+  data-select2-id="1" tabindex="-1" aria-hidden="true" (change)="selecciono_red($any($event.target).value)">
+  <option data-select2-id="3">Select</option>
+
+
+
+  <option *ngFor="let red of redes_dat" [value]="red.ID_RED" data-select2-id="394" >{{red.NOMBRE}}</option>
+
+
+</select>

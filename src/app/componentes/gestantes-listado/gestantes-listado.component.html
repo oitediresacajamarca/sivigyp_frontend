@@ -1,0 +1,88 @@
+<div class="row">
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-md-flex no-block">
+                    <h4 class="card-title">Lista de Gestantes</h4>
+                    <div class="ml-auto">
+                        <form class="mt-4">
+                            <div class="input-group mb-3">
+                            
+                                <input type="text" class="form-control" [(ngModel)]="filtro"
+                                 placeholder="" aria-label="" aria-describedby="basic-addon1"
+                                 name="filtro">
+                                <div class="input-group-append">
+                                    <button class="btn btn-info" type="button" (click)="Buscar($event)">Buscar</button>
+                                </div>
+                        
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="month-table">
+                    <div class="table-responsive mt-3">
+                        <table class="table stylish-table v-middle mb-0 no-wrap">
+                            <thead>
+                                <tr>
+                                    <th class="border-0 text-muted font-weight-normal" colspan="2">Apellidos</th>
+                                    <th class="border-0 text-muted font-weight-normal">Nombres</th>
+                                    <th class="border-0 text-muted font-weight-normal">Numero de Documento</th>
+                                    <th class="border-0 text-muted font-weight-normal">Historia Clinica</th>
+                                    <th class="border-0 text-muted font-weight-normal">Provincia</th>
+                                    <th class="border-0 text-muted font-weight-normal">Distrito</th>
+                                    <th class="border-0 text-muted font-weight-normal">Prioridad</th>
+                                    <th class="border-0 text-muted font-weight-normal">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let data of data_encontrada;let i=index"    (click)="visualizar_detalle(data,i)"
+                                [ngClass]="{ 'bg-secondary': selected_row === i ,'seleccionado': selected_row === i}">
+                                    <td style="width:50px;"><span class="round text-white d-inline-block text-center rounded-circle bg-info">S</span>
+                                    </td>
+                                    <td>
+                                        <h6 class="font-weight-medium mb-0">{{data.APELLIDO_PAT+' '+data.APELLIDO_MAT}}</h6><small class="text-muted">
+                                            Designer</small>
+                                    </td>
+                                    <td>{{data.NOMBRES}}</td>
+                                    <td>{{data.NRO_DOCUMENTO}}</td>
+                                    <td>{{data.NRO_DOCUMENTO}}</td>
+                                    <td>{{'CAJAMARCA'}}</td>
+                                    <td>{{'CAJAMARCA'}}</td>
+                                    <td><span class="badge badge-success px-2 py-1">Low</span></td>
+                                    <td>$3.9K</td>
+                                </tr>
+                              
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <!-- Column -->
+        <div class="card">
+            <img class="card-img-top w-100 profile-bg-height" src="../assets/images/background/profile-bg.jpg" alt="Card image cap">
+            <div class="card-body little-profile text-center">
+                <div class="pro-img"><img src="../assets/images/users/2.jpg" alt="user" class="rounded-circle shadow-sm" width="128"></div>
+                <h3 class="mb-0">{{gestante_detalle.NOMBRES_COMP}}</h3>
+                <p>{{gestante_detalle.ID_TIPOD}} &amp; {{gestante_detalle.NRO_DOCUMENTO}}</p>
+                <p><small>Lorem ipsum dolor sit amet, this is a consectetur adipisicing elit orem ipsum dolor sit amet, this is a consectetur adipisicing elit orem ipsum dolor sit amet, this is a consectetur adipisicing elit</small></p>
+                <a [routerLink]="['/atencion-gestante']" class="mt-1 waves-effect waves-dark btn btn-primary btn-md btn-rounded">ATENDER GESTANTE</a>
+                <div class="row text-center mt-3 justify-content-center">
+                    <div class="col-6 col-md-4 mt-3">
+                        <h3 class="mb-0 font-weight-light">2</h3><small>Numero de Controles</small>
+                    </div>
+                    <div class="col-6 col-md-4 mt-3">
+                        <h3 class="mb-0 font-weight-light">10</h3><small>Edad gestacional</small>
+                    </div>
+                    <div class="col-6 col-md-4 mt-3">
+                        <h3 class="mb-0 font-weight-light">6035</h3><small>Following</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Column -->
+    </div>
+</div>
