@@ -4,12 +4,22 @@ import { AtencionGestanteComponent } from './componentes/atencion/atencion-gesta
 import { AtencionPuerperioComponent } from './componentes/atencion/atencion-puerperio/atencion-puerperio.component';
 import { GestantesListadoComponent } from './componentes/gestantes-listado/gestantes-listado.component';
 import { PrincipalNotificacionesComponent } from './componentes/Notificaciones/principal-notificaciones/principal-notificaciones.component';
+import { ListaUsuariosComponent } from './componentes/usuarios/lista-usuarios/lista-usuarios.component';
 import { NuevoUsuarioComponent } from './componentes/usuarios/nuevo-usuario/nuevo-usuario.component';
 import { SelectorRedComponent } from './controles/comunes/selector-red/selector-red.component';
+import { ContenedorComponent } from './layouts/contenedor/contenedor.component';
+import { PrincipalComponent } from './layouts/principal/principal.component';
 import { InicioComponent } from './paginas/inicio/inicio.component';
+import { LoginComponent } from './paginas/login/login.component';
 
 const routes: Routes = [
-  {path: 'atencion-gestante',component:AtencionGestanteComponent},
+  {path:'sivigyp',component:ContenedorComponent,children:[{path:'login',component:LoginComponent},{path:'principal',component:PrincipalComponent
+  ,children:[{path: 'inicio',component:AtencionGestanteComponent}, {path: 'registro-gestante',component:GestantesListadoComponent},{path: 'atencion-gestante',component:AtencionGestanteComponent},
+  {path: 'pruebas',component:ListaUsuariosComponent},]
+
+
+}]},
+
   {path: 'inicio',component:InicioComponent},
   {path: 'registro-gestante',component:GestantesListadoComponent},
   {path: 'atencion-puerperio',component:AtencionPuerperioComponent},
@@ -17,6 +27,7 @@ const routes: Routes = [
   {path: 'usuarios/nuevo',component:NuevoUsuarioComponent},
 
   {path: 'controles/red-selector',component:SelectorRedComponent},
+  {path: 'lista-usuarios',component:ListaUsuariosComponent},
   {path:'',component:GestantesListadoComponent}
 ];
 

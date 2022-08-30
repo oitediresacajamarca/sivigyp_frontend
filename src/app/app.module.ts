@@ -19,6 +19,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SelectorRedComponent } from './controles/comunes/selector-red/selector-red.component';
 import { SelectorMicroredComponent } from './controles/comunes/selector-microred/selector-microred.component';
 import { SelectorIpressComponent } from './controles/comunes/selector-ipress/selector-ipress.component';
+import { ContenedorComponent } from './layouts/contenedor/contenedor.component';
+import { LoginComponent } from './paginas/login/login.component';
+import { ListaUsuariosComponent } from './componentes/usuarios/lista-usuarios/lista-usuarios.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,10 @@ import { SelectorIpressComponent } from './controles/comunes/selector-ipress/sel
     NuevoUsuarioComponent,
     SelectorRedComponent,
     SelectorMicroredComponent,
-    SelectorIpressComponent
+    SelectorIpressComponent,
+    ContenedorComponent,
+    LoginComponent,
+    ListaUsuariosComponent
   ],
   imports: [
     BrowserModule,
