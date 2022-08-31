@@ -22,6 +22,7 @@ import { SelectorIpressComponent } from './controles/comunes/selector-ipress/sel
 import { ContenedorComponent } from './layouts/contenedor/contenedor.component';
 import { LoginComponent } from './paginas/login/login.component';
 import { ListaUsuariosComponent } from './componentes/usuarios/lista-usuarios/lista-usuarios.component';
+import { BuscarPersonaHcComponent } from './controles/busquedas/buscar-persona-hc/buscar-persona-hc.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ListaUsuariosComponent } from './componentes/usuarios/lista-usuarios/li
     SelectorIpressComponent,
     ContenedorComponent,
     LoginComponent,
-    ListaUsuariosComponent
+    ListaUsuariosComponent,
+    BuscarPersonaHcComponent
   ],
   imports: [
     BrowserModule,
