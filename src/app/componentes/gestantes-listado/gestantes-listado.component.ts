@@ -1,5 +1,8 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { DataGestanteInterface } from 'src/app/interface/data-gestante-interface';
+import { EstadoServiceService } from 'src/app/servicios/estado-service.service';
+import { PersonaService } from 'src/app/servicios/persona.service';
+import { relativeTimeThreshold } from 'src/assets/libs/moment/moment';
 
 @Component({
   selector: 'app-gestantes-listado',
@@ -9,22 +12,75 @@ import { DataGestanteInterface } from 'src/app/interface/data-gestante-interface
 export class GestantesListadoComponent implements OnInit {
   selected_row: number = -1;
 
-  filtro: any
-  gestante_detalle: DataGestanteInterface = { "ID_PERSONA": 1, "NOMBRES": "ADELINA ", "APELLIDO_PAT": "LUCANO ", "APELLIDO_MAT": "EUGENIO", "ID_TIPOD": 1, "NRO_DOCUMENTO": "47198873", "FECHA_NAC": "1991-09-03T00:00:00", "ID_DISTRITO": "060701", "ID_PROVINCIA": "0607", "ID_DEPARTAMENTO": "06", "DIRECCION": "LLAUCAN", "TELEFONO": "PENDIENTE", "CORREO": "PENDIENTE", "ID_GENERO": 2, "NOMBRES_COMP": "ADELINA  LUCANO  EUGENIO" }
-  constructor() { }
 
+  filtro: any
+  gestante_detalle: DataGestanteInterface =
+
+    {
+      "ID_PERSONA": 2,
+      "ID_TIPOD": 1,
+      "NRO_DOCUMENTO": "42359805",
+      "ID_GENERO": 2,
+      "NOMBRES": "CONSUELO ",
+      "APELLIDO_PAT": "OLIVARES",
+      "APELLIDO_MAT": "CAMPOS",
+      "ID_DISTRITO": "060701",
+      "DIRECCION": "MARAYPAMPA",
+      "FECHA_NAC": "1984-02-03T05:00:00.000Z",
+      "TELEFONO": null,
+      "CORREO": "PENDIENTE",
+      "ID_HC": 11,
+      "NRO_HCL": "42359805",
+      "COD_IPRESS": "000004791",
+      "ID_CENTRO_POBLADO": "0601010001",
+      "TIPO_SEGURO": 1,
+      "ID_GRADO_INSTRUCCION": 5,
+      "BENEFICIARIA_JUNTOS": 0,
+      "ESTADO_CIVIL": 5,
+      "IDIOMA": "CASTELLANO",
+      "RELIGION": null,
+      "GRUPO_SANGUINEO": "O",
+      "FACTOR_SANGUINEO": "POSITIVO",
+      "FEC_REGISTRO": null,
+      "ESTADO_HC": null,
+      "establecimientos_cantidad": 1,
+      "ipress": {
+        "COD_IPRESS": "000004791",
+        "ID_UE": 1662,
+        "ID_DISTRITO": "060701",
+        "NOMBRE": "LLAUCAN",
+        "DIRECCION": "OTROS CENTRO POBLADO LLAUCAN CENTRO POBLADO LLAUCAN BAMBAMAR",
+        "ID_MICRORED": 58,
+        "CATEGORIA": "I-3",
+        "TELEFONO": "997747817",
+        "CORREO": "essrllaucan@hotmail.com"
+      },
+      "distrito": {
+        "ID_DISTRITO": "060701",
+        "ID_PROVINCIA": "0607",
+        "NOMBRE": "BAMBAMARCA"
+      },
+      "provincia": {
+        "ID_PROVINCIA": "0601",
+        "NOMBRE": "CAJAMARCA"
+      }
+    }
+
+
+  constructor( private estados_s:EstadoServiceService,private persona_s:PersonaService) { }
+  data_encontrada:DataGestanteInterface[]=[];
   fila_ant!: ElementRef
 
-  data_gestante: DataGestanteInterface[] = [
-    { "ID_PERSONA": 1, "NOMBRES": "ADELINA ", "APELLIDO_PAT": "LUCANO ", "APELLIDO_MAT": "EUGENIO", "ID_TIPOD": 1, "NRO_DOCUMENTO": "47198873", "FECHA_NAC": "1991-09-03T00:00:00", "ID_DISTRITO": "060701", "ID_PROVINCIA": "0607", "ID_DEPARTAMENTO": "06", "DIRECCION": "LLAUCAN", "TELEFONO": "PENDIENTE", "CORREO": "PENDIENTE", "ID_GENERO": 2, "NOMBRES_COMP": "ADELINA  LUCANO  EUGENIO" },
-    { "ID_PERSONA": 2, "NOMBRES": "CONSUELO ", "APELLIDO_PAT": "OLIVARES", "APELLIDO_MAT": "CAMPOS", "ID_TIPOD": 1, "NRO_DOCUMENTO": "42359805", "FECHA_NAC": "1984-02-03T00:00:00", "ID_DISTRITO": "060701", "ID_PROVINCIA": "0607", "ID_DEPARTAMENTO": "06", "DIRECCION": "MARAYPAMPA", "TELEFONO": "PENDIENTE", "CORREO": "PENDIENTE", "ID_GENERO": 2, "NOMBRES_COMP": "CONSUELO  OLIVARES CAMPOS" }, { "ID_PERSONA": 3, "NOMBRES": "SOFIA NELY", "APELLIDO_PAT": "CRUZADO", "APELLIDO_MAT": "CAMPOS", "ID_TIPOD": 1, "NRO_DOCUMENTO": "41196356", "FECHA_NAC": "1981-12-25T00:00:00", "ID_DISTRITO": "060701", "ID_PROVINCIA": "0607", "ID_DEPARTAMENTO": "06", "DIRECCION": "LUCMACUCHO", "TELEFONO": "PENDIENTE", "CORREO": "PENDIENTE", "ID_GENERO": 2, "NOMBRES_COMP": "SOFIA NELY CRUZADO CAMPOS" }, { "ID_PERSONA": 4, "NOMBRES": "FLOR AIDE", "APELLIDO_PAT": "HERRERA ", "APELLIDO_MAT": "HUAMAN", "ID_TIPOD": 1, "NRO_DOCUMENTO": "74360222", "FECHA_NAC": "2002-05-22T00:00:00", "ID_DISTRITO": "060701", "ID_PROVINCIA": "0607", "ID_DEPARTAMENTO": "06", "DIRECCION": "HUALANGA ALTA", "TELEFONO": "PENDIENTE", "CORREO": "PENDIENTE", "ID_GENERO": 2, "NOMBRES_COMP": "FLOR AIDE HERRERA  HUAMAN" }, { "ID_PERSONA": 5, "NOMBRES": "MERLY  ", "APELLIDO_PAT": "JULON ", "APELLIDO_MAT": "GARCIA", "ID_TIPOD": 1, "NRO_DOCUMENTO": "72418231", "FECHA_NAC": "2002-12-12T00:00:00", "ID_DISTRITO": "060701", "ID_PROVINCIA": "0607", "ID_DEPARTAMENTO": "06", "DIRECCION": "PASAUMACA", "TELEFONO": "PENDIENTE", "CORREO": "PENDIENTE", "ID_GENERO": 2, "NOMBRES_COMP": "MERLY   JULON  GARCIA" }, { "ID_PERSONA": 6, "NOMBRES": "JUANA ", "APELLIDO_PAT": "NORIEGA ", "APELLIDO_MAT": "DURAN", "ID_TIPOD": 1, "NRO_DOCUMENTO": "41506242", "FECHA_NAC": "1976-11-03T00:00:00", "ID_DISTRITO": "060701", "ID_PROVINCIA": "0607", "ID_DEPARTAMENTO": "06", "DIRECCION": "HUALANAGA BAJA", "TELEFONO": "PENDIENTE", "CORREO": "PENDIENTE", "ID_GENERO": 2, "NOMBRES_COMP": "JUANA  NORIEGA  DURAN" }, { "ID_PERSONA": 7, "NOMBRES": "IRMA ", "APELLIDO_PAT": "ESCOBAR ", "APELLIDO_MAT": "ACUÑA ", "ID_TIPOD": 1, "NRO_DOCUMENTO": "80105119", "FECHA_NAC": "1974-12-20T00:00:00", "ID_DISTRITO": "060701", "ID_PROVINCIA": "0607", "ID_DEPARTAMENTO": "06", "DIRECCION": "HUALANGA ALTA", "TELEFONO": "PENDIENTE", "CORREO": "PENDIENTE", "ID_GENERO": 2, "NOMBRES_COMP": "IRMA  ESCOBAR  ACUÑA " }, { "ID_PERSONA": 8, "NOMBRES": "LUZ ROSELIA", "APELLIDO_PAT": "CHAVEZ", "APELLIDO_MAT": "TERRONES", "ID_TIPOD": 1, "NRO_DOCUMENTO": "72438916", "FECHA_NAC": "1999-06-03T00:00:00", "ID_DISTRITO": "060701", "ID_PROVINCIA": "0607", "ID_DEPARTAMENTO": "06", "DIRECCION": "TAMBILLO", "TELEFONO": "PENDIENTE", "CORREO": "PENDIENTE", "ID_GENERO": 2, "NOMBRES_COMP": "LUZ ROSELIA CHAVEZ TERRONES" }, { "ID_PERSONA": 9, "NOMBRES": "CENAYDA ", "APELLIDO_PAT": "GALLARDO", "APELLIDO_MAT": "ESPINOZA", "ID_TIPOD": 1, "NRO_DOCUMENTO": "47264909", "FECHA_NAC": "1992-08-30T00:00:00", "ID_DISTRITO": "060701", "ID_PROVINCIA": "0607", "ID_DEPARTAMENTO": "06", "DIRECCION": "QUINUA ALTA", "TELEFONO": "PENDIENTE", "CORREO": "PENDIENTE", "ID_GENERO": 2, "NOMBRES_COMP": "CENAYDA  GALLARDO ESPINOZA" }, { "ID_PERSONA": 10, "NOMBRES": "KEYLER ", "APELLIDO_PAT": "ESPINOZA ", "APELLIDO_MAT": "LUCANO", "ID_TIPOD": 1, "NRO_DOCUMENTO": "72456627", "FECHA_NAC": "1996-12-27T00:00:00", "ID_DISTRITO": "060701", "ID_PROVINCIA": "0607", "ID_DEPARTAMENTO": "06", "DIRECCION": "LA HUAYLLA", "TELEFONO": "PENDIENTE", "CORREO": "PENDIENTE", "ID_GENERO": 2, "NOMBRES_COMP": "KEYLER  ESPINOZA  LUCANO" }, { "ID_PERSONA": 11, "NOMBRES": "FLOR  ALICIA", "APELLIDO_PAT": "CRUZADO", "APELLIDO_MAT": "ORTIZ", "ID_TIPOD": 1, "NRO_DOCUMENTO": "72436290          ", "FECHA_NAC": "2005-05-13T00:00:00", "ID_DISTRITO": "060701", "ID_PROVINCIA": "0607", "ID_DEPARTAMENTO": "06", "DIRECCION": "SAN ANTONIO BAJO", "TELEFONO": "PENDIENTE", "CORREO": "PENDIENTE", "ID_GENERO": 2, "NOMBRES_COMP": "FLOR  ALICIA CRUZADO ORTIZ" }, { "ID_PERSONA": 12, "NOMBRES": "LUZ ELENA", "APELLIDO_PAT": "MEJIA ", "APELLIDO_MAT": "ROJAS", "ID_TIPOD": 1, "NRO_DOCUMENTO": "46637870          ", "FECHA_NAC": "1990-11-23T00:00:00", "ID_DISTRITO": "060701", "ID_PROVINCIA": "0607", "ID_DEPARTAMENTO": "06", "DIRECCION": "SAN ANTONIO BAJO", "TELEFONO": "PENDIENTE", "CORREO": "PENDIENTE", "ID_GENERO": 2, "NOMBRES_COMP": "LUZ ELENA MEJIA  ROJAS" }, { "ID_PERSONA": 13, "NOMBRES": "LUZ  ELINA", "APELLIDO_PAT": "BUSTAMANTE", "APELLIDO_MAT": "TIRADO", "ID_TIPOD": 1, "NRO_DOCUMENTO": "47089427          ", "FECHA_NAC": "1986-03-15T00:00:00", "ID_DISTRITO": "060701", "ID_PROVINCIA": "0607", "ID_DEPARTAMENTO": "06", "DIRECCION": "BAMBAMARCA", "TELEFONO": "PENDIENTE", "CORREO": "PENDIENTE", "ID_GENERO": 2, "NOMBRES_COMP": "LUZ  ELINA BUSTAMANTE TIRADO" }, { "ID_PERSONA": 14, "NOMBRES": "IRENE ", "APELLIDO_PAT": "BUSTAMANTE", "APELLIDO_MAT": "SILVA", "ID_TIPOD": 1, "NRO_DOCUMENTO": "47031921", "FECHA_NAC": "1990-07-01T00:00:00", "ID_DISTRITO": "060701", "ID_PROVINCIA": "0607", "ID_DEPARTAMENTO": "06", "DIRECCION": "BAMBAMARCA", "TELEFONO": "PENDIENTE", "CORREO": "PENDIENTE", "ID_GENERO": 2, "NOMBRES_COMP": "IRENE  BUSTAMANTE SILVA" }, { "ID_PERSONA": 15, "NOMBRES": "SINTIA ", "APELLIDO_PAT": "PENAS", "APELLIDO_MAT": "CARUAJULCA", "ID_TIPOD": 1, "NRO_DOCUMENTO": "73439843", "FECHA_NAC": "1999-12-08T00:00:00", "ID_DISTRITO": "060701", "ID_PROVINCIA": "0607", "ID_DEPARTAMENTO": "06", "DIRECCION": "BAMBAMARCA", "TELEFONO": "PENDIENTE", "CORREO": "PENDIENTE", "ID_GENERO": 2, "NOMBRES_COMP": "SINTIA  PENAS CARUAJULCA" }]
-  data_encontrada = this.data_gestante
+  data_gestante: DataGestanteInterface[] = []
+
+
   ngOnInit(): void {
 
-    console.log(this.data_gestante.length)
+
+    this.cargar_data_por_ambito_actual()
   }
 
-  Buscar(e: any) {
+  Buscar_en_Listado(e: any) {
     if (this.filtro == '') {
       this.data_encontrada = this.data_gestante
 
@@ -35,7 +91,20 @@ export class GestantesListadoComponent implements OnInit {
   visualizar_detalle(data: DataGestanteInterface, index: number) {
     this.gestante_detalle = data;
     this.selected_row = index;
+  }
+  cargar_data_por_ambito_actual(){
+    this.estados_s.devolver_ambito_actual().cod_ambito
+    this.persona_s.buscar_lista_persona_en_ipress(   this.estados_s.devolver_ambito_actual().cod_ambito).subscribe(data=>{console.log(data)
+      this.data_encontrada=data
 
+    })
+
+  }
+
+  cargar_personas_buscadas(data:any[]){
+    this.data_encontrada=[]
+
+    this.data_encontrada=data
   }
 
 }

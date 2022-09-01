@@ -8,7 +8,60 @@ import { DataGestanteInterface } from '../interface/data-gestante-interface';
 })
 export class EstadoServiceService {
 
-  paciente: DataGestanteInterface = { "ID_PERSONA": 1, "NOMBRES": "ADELINA ", "APELLIDO_PAT": "LUCANO ", "APELLIDO_MAT": "EUGENIO", "ID_TIPOD": 1, "NRO_DOCUMENTO": "47198873", "FECHA_NAC": "1991-09-03T00:00:00", "ID_DISTRITO": "060701", "ID_PROVINCIA": "0607", "ID_DEPARTAMENTO": "06", "DIRECCION": "LLAUCAN", "TELEFONO": "PENDIENTE", "CORREO": "PENDIENTE", "ID_GENERO": 2, "NOMBRES_COMP": "ADELINA  LUCANO  EUGENIO" }
+  paciente: DataGestanteInterface = // 20220831142648
+  // http://localhost:3000/api/gestante/persona_hc/42359805
+
+
+    {
+      "ID_PERSONA": 2,
+      "ID_TIPOD": 1,
+      "NRO_DOCUMENTO": "42359805",
+      "ID_GENERO": 2,
+      "NOMBRES": "CONSUELO ",
+      "APELLIDO_PAT": "OLIVARES",
+      "APELLIDO_MAT": "CAMPOS",
+      "ID_DISTRITO": "060701",
+      "DIRECCION": "MARAYPAMPA",
+      "FECHA_NAC": "1984-02-03T05:00:00.000Z",
+      "TELEFONO": '',
+      "CORREO": "PENDIENTE",
+      "ID_HC": '',
+      "NRO_HCL": "42359805",
+      "COD_IPRESS": "000004791",
+      "ID_CENTRO_POBLADO": "0601010001",
+      "TIPO_SEGURO": 1,
+      "ID_GRADO_INSTRUCCION": 5,
+      "BENEFICIARIA_JUNTOS": 0,
+      "ESTADO_CIVIL": 5,
+      "IDIOMA": "CASTELLANO",
+      "RELIGION": '',
+      "GRUPO_SANGUINEO": "O",
+      "FACTOR_SANGUINEO": "POSITIVO",
+      "FEC_REGISTRO": '',
+      "ESTADO_HC": '',
+      "establecimientos_cantidad": 1,
+      "ipress": {
+        "COD_IPRESS": "000004791",
+        "ID_UE": 1662,
+        "ID_DISTRITO": "060701",
+        "NOMBRE": "LLAUCAN",
+        "DIRECCION": "OTROS CENTRO POBLADO LLAUCAN CENTRO POBLADO LLAUCAN BAMBAMAR",
+        "ID_MICRORED": 58,
+        "CATEGORIA": "I-3",
+        "TELEFONO": "997747817",
+        "CORREO": "essrllaucan@hotmail.com"
+      },
+      "distrito": {
+        "ID_DISTRITO": "060701",
+        "ID_PROVINCIA": "0607",
+        "NOMBRE": "BAMBAMARCA"
+      },
+      "provincia": {
+        "ID_PROVINCIA": "0601",
+        "NOMBRE": "CAJAMARCA"
+      }
+    }
+
 
   constructor(private http: HttpClient) {
 
@@ -18,8 +71,8 @@ export class EstadoServiceService {
   }
   devolver_ambito_actual() {
     return {
-      cod_ambito: '000007686',
-      nombre_ambito: ''
+      cod_ambito: '000004645',
+      nombre_ambito: 'REGIONAL CAJAMARCA'
     }
   }
 }

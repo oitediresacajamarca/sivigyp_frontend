@@ -9,3 +9,24 @@
   </div>
 
 </div>
+
+<div  class="modal active"  tabindex="1" role="dialog" aria-labelledby="primary-header-modalLabel" *ngIf="mostrar_dialogo" >
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header modal-colored-header bg-primary">
+              <h4 class="modal-title text-white" id="primary-header-modalLabel">Paciente no Encontrado
+              </h4>
+              <button type="button" class="close ml-auto" data-dismiss="modal" >×</button>
+          </div>
+          <div class="modal-body">
+
+              <h5>{{mensaje_dialogo}}</h5>
+              <h5>{{mensaje_dialogo_siguiente_paso}}</h5>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-light" data-dismiss="modal" (click)="cancelar()">Cancelar</button>
+              <button type="button" class="btn btn-primary" (click)="acepto_busqueda()" >Continuar</button>
+          </div>
+      </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
