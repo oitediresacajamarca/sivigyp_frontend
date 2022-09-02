@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AtencionGestanteComponent } from './componentes/atencion/atencion-gestante/atencion-gestante.component';
 import { AtencionPuerperioComponent } from './componentes/atencion/atencion-puerperio/atencion-puerperio.component';
+import { NuevaGestanteComponent } from './componentes/gestante/nueva-gestante/nueva-gestante.component';
 import { GestantesListadoComponent } from './componentes/gestantes-listado/gestantes-listado.component';
 import { PrincipalNotificacionesComponent } from './componentes/Notificaciones/principal-notificaciones/principal-notificaciones.component';
 import { ListaUsuariosComponent } from './componentes/usuarios/lista-usuarios/lista-usuarios.component';
@@ -18,7 +19,7 @@ const routes: Routes = [
     path: 'sivigyp', component: ContenedorComponent, children: [{ path: 'login', component: LoginComponent }, {
       path: 'principal', component: PrincipalComponent
       , children: [{ path: 'inicio', component: AtencionGestanteComponent }, { path: 'registro-gestante', component: GestantesListadoComponent }, { path: 'atencion-gestante', component: AtencionGestanteComponent },
-      { path: 'pruebas', component: BuscarPersonaHcComponent },]
+      { path: 'pruebas', component: NuevaGestanteComponent },]
 
 
     }]

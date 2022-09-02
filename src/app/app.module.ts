@@ -23,6 +23,10 @@ import { ContenedorComponent } from './layouts/contenedor/contenedor.component';
 import { LoginComponent } from './paginas/login/login.component';
 import { ListaUsuariosComponent } from './componentes/usuarios/lista-usuarios/lista-usuarios.component';
 import { BuscarPersonaHcComponent } from './controles/busquedas/buscar-persona-hc/buscar-persona-hc.component';
+import { NuevaGestanteComponent } from './componentes/gestante/nueva-gestante/nueva-gestante.component';
+import { SelectorProvinciaComponent } from './controles/comunes/selector-provincia/selector-provincia.component';
+import { SelectorDistritoComponent } from './controles/comunes/selector-distrito/selector-distrito.component';
+import { SelectorCentroPobladoComponent } from './controles/comunes/selector-centro-poblado/selector-centro-poblado.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +47,11 @@ import { BuscarPersonaHcComponent } from './controles/busquedas/buscar-persona-h
     ContenedorComponent,
     LoginComponent,
     ListaUsuariosComponent,
-    BuscarPersonaHcComponent
+    BuscarPersonaHcComponent,
+    NuevaGestanteComponent,
+    SelectorProvinciaComponent,
+    SelectorDistritoComponent,
+    SelectorCentroPobladoComponent
   ],
   imports: [
     BrowserModule,

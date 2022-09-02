@@ -1,0 +1,155 @@
+<div class="card">
+  <form>
+      <div class="card-body">
+          <h4 class="card-title">NUEVO PACIENTE</h4>
+          <div class="alert alert-info alert-dismissible fade show mt-4" role="alert" *ngIf="mensaje">
+              <span class="badge badge-info"><i class="fas fa-info"></i></span>
+              <strong>Form Action at mulitple space top,bottom and left,right.</strong>
+              <button type="button" class="close ml-auto" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+              </button>
+          </div>
+
+      </div>
+      <hr>
+      <div class="card-body">
+          <div class="row m-auto">
+              <div class="col-3">
+                  <div class="form-group">
+                      <label for="fname3" class="control-label col-form-label">Numero de Documento</label>
+                      <input type="text" class="form-control" id="fname3" >
+                  </div>
+              </div>
+              <div class="col-3">
+                  <div class="form-group">
+                      <label for="title2" class="control-label col-form-label">Nombre</label>
+                      <input type="text" class="form-control" id="title2" >
+                  </div>
+              </div>
+              <div class="col-3">
+                <div class="form-group">
+                    <label for="title2" class="control-label col-form-label">Apellido Paterno</label>
+                    <input type="text" class="form-control" id="title2" >
+                </div>
+            </div>
+            <div class="col-3">
+              <div class="form-group">
+                  <label for="title2" class="control-label col-form-label">Apellido Materno</label>
+                  <input type="text" class="form-control" id="title2" >
+              </div>
+          </div>
+
+          <div class="col-3">
+            <div class="form-group">
+                <label for="title2" class="control-label col-form-label">Departamento</label>
+                <input type="text" class="form-control" id="title2" >
+            </div>
+        </div>
+        <div class="col-3">
+          <div class="form-group">
+              <label for="title2" class="control-label col-form-label">Provincia</label>
+              <app-selector-provincia (seleciono_provincia)="selecciono_provincia($event)"></app-selector-provincia>
+          </div>
+      </div>
+      <div class="col-3">
+        <div class="form-group">
+            <label for="title2" class="control-label col-form-label">Distrito</label>
+            <app-selector-distrito #selector_distrito (selecciono_distrito)="selecciono_distrito($event)"></app-selector-distrito>
+        </div>
+    </div>
+    <div class="col-3">
+      <div class="form-group">
+          <label for="title2" class="control-label col-form-label">Centro Poblado</label>
+          <app-selector-centro-poblado #selector_centro_poblado></app-selector-centro-poblado>
+      </div>
+  </div>
+              <div class="col-4">
+                  <div class="form-group">
+                      <label for="comname1" class="control-label col-form-label">Direccion</label>
+                      <input type="text" class="form-control" id="comname1" >
+                  </div>
+              </div>
+              <div class="col-4">
+                  <div class="form-group">
+                      <div class="form-group">
+                          <label for="email4" class="control-label col-form-label">Email</label>
+                          <input type="email" class="form-control" id="email4" placeholder="Email Here">
+                      </div>
+                  </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group">
+                    <label for="title2" class="control-label col-form-label">Numero de telefono</label>
+                    <input type="text" class="form-control" id="title2" >
+                </div>
+            </div>
+              <div class="col-12">
+                  <div class="form-group">
+                      <div class="form-group">
+                          <label for="conno2" class="control-label col-form-label">Contact No</label>
+                          <input type="text" class="form-control" id="conno2" placeholder="Contact no Here">
+                      </div>
+                  </div>
+              </div>
+              <div class="col-12">
+                  <div class="form-group">
+                      <label class="control-label col-form-label">Beneficaria Juntso</label>
+                      <input name="radio-stacked" type="radio" id="customControlValidation2" class="radio-col-indigo material-inputs">
+                      <label for="customControlValidation2">Yes</label>
+                      <input name="radio-stacked" type="radio" id="customControlValidation3" class="radio-col-indigo material-inputs">
+                      <label for="customControlValidation3">No</label>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <hr>
+      <div class="card-body">
+          <div class="d-md-flex no-block align-items-center">
+              <div class="action-form">
+                  <div class="form-group mb-0 text-center">
+                      <button type="submit" class="btn btn-info waves-effect waves-light">Guardar</button>
+                      <button type="submit" class="btn btn-dark waves-effect waves-light">Cancelar</button>
+                  </div>
+              </div>
+              <div class="ml-auto mt-3 mt-md-0">
+                  <div class="btn-group btn-list">
+                      <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fas fa-download"></i> Import
+                      </button>
+                      <div class="dropdown-menu">
+                          <a class="dropdown-item" href="javascript:void(0)">Action</a>
+                          <a class="dropdown-item" href="javascript:void(0)">Another action</a>
+                          <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="javascript:void(0)">Separated link</a>
+                      </div>
+                  </div>
+                  <div class="btn-group">
+                      <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fas fa-sign-in-alt"></i> Export
+                      </button>
+                      <div class="dropdown-menu">
+                          <a class="dropdown-item" href="javascript:void(0)">Action</a>
+                          <a class="dropdown-item" href="javascript:void(0)">Another action</a>
+                          <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="javascript:void(0)">Separated link</a>
+                      </div>
+                  </div>
+                  <div class="btn-group">
+                      <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fas fa-upload"></i> Upload
+                      </button>
+                      <div class="dropdown-menu">
+                          <a class="dropdown-item" href="javascript:void(0)">Action</a>
+                          <a class="dropdown-item" href="javascript:void(0)">Another action</a>
+                          <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="javascript:void(0)">Separated link</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </form>
+</div>
