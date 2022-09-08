@@ -19,7 +19,7 @@ const routes: Routes = [
     path: 'sivigyp', component: ContenedorComponent, children: [{ path: 'login', component: LoginComponent }, {
       path: 'principal', component: PrincipalComponent
       , children: [{ path: 'inicio', component: AtencionGestanteComponent }, { path: 'registro-gestante', component: GestantesListadoComponent }, { path: 'atencion-gestante', component: AtencionGestanteComponent },
-      { path: 'pruebas', component: NuevaGestanteComponent },]
+      { path: 'NuevoPaciente', component: NuevaGestanteComponent },]
 
 
     }]

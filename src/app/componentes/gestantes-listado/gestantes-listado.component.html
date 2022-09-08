@@ -24,7 +24,7 @@
 
         </div>
 
-        <button type="button" class="btn btn-primary">Ingresar Nuevo Paciente</button>
+        <button type="button" class="btn btn-primary" (click)="Nuevo_Paciente()">Ingresar Nuevo Paciente</button>
       </div>
        </div>
         <div class="month-table">
@@ -86,8 +86,8 @@
         <p>{{gestante_detalle.ID_TIPOD}} &amp; {{gestante_detalle.NRO_DOCUMENTO}}</p>
         <p><small>Lorem ipsum dolor sit amet, this is a consectetur adipisicing elit orem ipsum dolor sit amet, this is
             a consectetur adipisicing elit orem ipsum dolor sit amet, this is a consectetur adipisicing elit</small></p>
-        <a [routerLink]="['/atencion-gestante']"
-          class="mt-1 waves-effect waves-dark btn btn-primary btn-md btn-rounded">ATENDER GESTANTE</a>
+        <a [routerLink]="['/sivigyp/principal/','atencion-gestante']"
+          class="mt-1 waves-effect waves-dark btn btn-primary btn-md btn-rounded" >ATENDER GESTANTE</a>
         <div class="row text-center mt-3 justify-content-center">
           <div class="col-6 col-md-4 mt-3">
             <h3 class="mb-0 font-weight-light">2</h3><small>Numero de Controles</small>

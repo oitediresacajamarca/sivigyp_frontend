@@ -5,10 +5,11 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class MstPacienteService {
+export class HistoriaClinicaService {
 
   constructor(private http: HttpClient) { }
-  devolver_mst_paciente(numero_documento: string) {
-    return this.http.get<any>(environment.url_api_node + 'persona-risc/' + numero_documento)
+
+  nueva_historia_clinica(numero_documento: string, body: any) {
+    return this.http.post(environment.url_api_node + 'gestante/persona_hc/' + numero_documento, body);
   }
 }

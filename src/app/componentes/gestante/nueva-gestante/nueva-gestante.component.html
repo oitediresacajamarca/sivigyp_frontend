@@ -1,15 +1,7 @@
 <div class="card">
   <form>
-    <div class="card-body">
+    <div class="card-body tit" >
       <h4 class="card-title">NUEVO PACIENTE</h4>
-      <div class="alert alert-info alert-dismissible fade show mt-4" role="alert" *ngIf="mensaje">
-        <span class="badge badge-info"><i class="fas fa-info"></i></span>
-        <strong>Form Action at mulitple space top,bottom and left,right.</strong>
-        <button type="button" class="close ml-auto" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-
     </div>
     <hr>
 
@@ -76,7 +68,7 @@
             <div class="col-3">
               <div class="form-group">
                 <label for="title2" class="control-label col-form-label">Departamento</label>
-                <input type="text" class="form-control" id="title2">
+                <input type="text" class="form-control" id="title2" value="CAJAMARCA">
               </div>
             </div>
             <div class="col-3">
@@ -100,32 +92,32 @@
             </div>
             <div class="col-4">
               <div class="form-group">
-                <label for="comname1" class="control-label col-form-label">Direccion</label>
-                <input type="text" class="form-control" id="comname1">
+                <label for="comname1" class="control-label col-form-label" >Direccion</label>
+                <input type="text" class="form-control" id="comname1" formControlName="direccion">
               </div>
             </div>
             <div class="col-4">
               <div class="form-group">
                 <div class="form-group">
                   <label for="email4" class="control-label col-form-label">Email</label>
-                  <input type="email" class="form-control" id="email4" placeholder="Email Here">
+                  <input type="email" class="form-control" id="email4" placeholder="Email Here" formControlName="correo">
                 </div>
               </div>
             </div>
             <div class="col-4">
               <div class="form-group">
                 <label for="title2" class="control-label col-form-label">Numero de telefono</label>
-                <input type="text" class="form-control" id="title2">
+                <input type="text" class="form-control" id="title2" formControlName="numero_telefono">
               </div>
             </div>
 
             <div class="col-12">
               <div class="form-group">
                 <label class="control-label col-form-label">Beneficaria Juntos</label>
-                <input name="radio-stacked" type="radio" id="customControlValidation2"
+                <input name="beneficiaria_juntos" value="1" type="radio" id="customControlValidation2"  formControlName="beneficiaria_juntos"
                   class="radio-col-indigo material-inputs">
-                <label for="customControlValidation2">Yes</label>
-                <input name="radio-stacked" type="radio" id="customControlValidation3"
+                <label for="customControlValidation2">Si</label>
+                <input name="radio-stacked" value="0" type="radio" id="customControlValidation3" formControlName="beneficiaria_juntos"
                   class="radio-col-indigo material-inputs">
                 <label for="customControlValidation3">No</label>
               </div>
@@ -142,61 +134,58 @@
       <div class="tab-pane " id="datos_complementarios">
 
         <div class="card-body">
+          <form [formGroup]="datos_complemntarios">
+
           <div class="row m-auto">
             <div class="col-3">
               <div class="form-group">
                 <label for="fname3" class="control-label col-form-label">Grado de Instruccion</label>
-                <input type="text" class="form-control" id="fname3">
+                <app-selector-grados-instruccion formControlName="grado_instruccion"></app-selector-grados-instruccion>
               </div>
             </div>
             <div class="col-3">
               <div class="form-group">
                 <label for="title2" class="control-label col-form-label">Idioma</label>
-                <input type="text" class="form-control" id="title2">
+                <input type="text" class="form-control" id="title2" formControlName="idioma">
               </div>
             </div>
             <div class="col-3">
               <div class="form-group">
                 <label for="title2" class="control-label col-form-label">Religion</label>
-                <input type="text" class="form-control" id="title2">
+                <input type="text" class="form-control" id="title2" formControlName="religion">
               </div>
             </div>
             <div class="col-3">
               <div class="form-group">
                 <label for="title2" class="control-label col-form-label">Estado Civil</label>
-                <input type="text" class="form-control" id="title2">
+                <app-selector-estado-civil formControlName="estado_civil"></app-selector-estado-civil>
               </div>
             </div>
 
             <div class="col-3">
               <div class="form-group">
                 <label for="title2" class="control-label col-form-label">Tipo de Seguro</label>
-                <input type="text" class="form-control" id="title2">
+                <app-selector-tipo-seguro formControlName="tipo_seguro"></app-selector-tipo-seguro>
               </div>
             </div>
             <div class="col-3">
               <div class="form-group">
                 <label for="title2" class="control-label col-form-label">Grupo Sanguinio</label>
-                <app-selector-provincia (seleciono_provincia)="selecciono_provincia($event)"></app-selector-provincia>
+                <app-selector-grupo-sanguinio formControlName="grupo_sanguineo"> </app-selector-grupo-sanguinio>
               </div>
             </div>
             <div class="col-3">
               <div class="form-group">
                 <label for="title2" class="control-label col-form-label">Factor Sanguinio</label>
-                <app-selector-distrito #selector_distrito (selecciono_distrito)="selecciono_distrito($event)">
-                </app-selector-distrito>
+                <app-selector-factor-sanguinio formControlName="factor_sanguineo"></app-selector-factor-sanguinio>
               </div>
             </div>
-            <div class="col-3">
-              <div class="form-group">
-                <label for="title2" class="control-label col-form-label">Idioma</label>
-                <app-selector-centro-poblado #selector_centro_poblado></app-selector-centro-poblado>
-              </div>
-            </div>
+
 
 
 
           </div>
+        </form>
         </div>
 
       </div>
@@ -214,7 +203,7 @@
         </div>
         <div class="ml-auto mt-3 mt-md-0">
           <div class="form-group mb-0 text-center">
-            <button type="submit" class="btn btn-info waves-effect waves-light btn-accion">Guardar</button>
+            <button type="submit" class="btn btn-info waves-effect waves-light btn-accion" (click)="Guardar()">Guardar</button>
             <button type="submit" class="btn btn-dark waves-effect waves-light btn-accion">Cancelar</button>
           </div>
 

@@ -27,6 +27,15 @@ import { NuevaGestanteComponent } from './componentes/gestante/nueva-gestante/nu
 import { SelectorProvinciaComponent } from './controles/comunes/selector-provincia/selector-provincia.component';
 import { SelectorDistritoComponent } from './controles/comunes/selector-distrito/selector-distrito.component';
 import { SelectorCentroPobladoComponent } from './controles/comunes/selector-centro-poblado/selector-centro-poblado.component';
+import { SelectorGradosInstruccionComponent } from './controles/comunes/selector-grados-instruccion/selector-grados-instruccion.component';
+import { SelectorEstadoCivilComponent } from './controles/comunes/selector-estado-civil/selector-estado-civil.component';
+import { SelectorTipoSeguroComponent } from './controles/comunes/selector-tipo-seguro/selector-tipo-seguro.component';
+import { SelectorGrupoSanguinioComponent } from './controles/comunes/selector-grupo-sanguinio/selector-grupo-sanguinio.component';
+import { SelectorFactorSanguinioComponent } from './controles/comunes/selector-factor-sanguinio/selector-factor-sanguinio.component';
+import { CumplePipe } from './pipes/cumple.pipe';
+import { EstadoCivilPipe } from './pipes/estado-civil.pipe';
+import { SelectorFechaComponent } from './controles/comunes/selector-fecha/selector-fecha.component';
+
 
 @NgModule({
   declarations: [
@@ -51,7 +60,16 @@ import { SelectorCentroPobladoComponent } from './controles/comunes/selector-cen
     NuevaGestanteComponent,
     SelectorProvinciaComponent,
     SelectorDistritoComponent,
-    SelectorCentroPobladoComponent
+    SelectorCentroPobladoComponent,
+    SelectorGradosInstruccionComponent,
+    SelectorEstadoCivilComponent,
+    SelectorTipoSeguroComponent,
+    SelectorGrupoSanguinioComponent,
+    SelectorFactorSanguinioComponent,
+    CumplePipe,
+    EstadoCivilPipe,
+    SelectorFechaComponent,
+
   ],
   imports: [
     BrowserModule,

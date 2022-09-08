@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DataGestanteInterface } from 'src/app/interface/data-gestante-interface';
 import { EstadoServiceService } from 'src/app/servicios/estado-service.service';
 import { PersonaService } from 'src/app/servicios/persona.service';
@@ -67,7 +68,7 @@ export class GestantesListadoComponent implements OnInit {
     }
 
 
-  constructor( private estados_s:EstadoServiceService,private persona_s:PersonaService) { }
+  constructor( private estados_s:EstadoServiceService,private persona_s:PersonaService,private route:Router) { }
   data_encontrada:DataGestanteInterface[]=[];
   fila_ant!: ElementRef
 
@@ -91,6 +92,8 @@ export class GestantesListadoComponent implements OnInit {
   visualizar_detalle(data: DataGestanteInterface, index: number) {
     this.gestante_detalle = data;
     this.selected_row = index;
+    this.estados_s.paciente=this.gestante_detalle
+
   }
   cargar_data_por_ambito_actual(){
     this.estados_s.devolver_ambito_actual().cod_ambito
@@ -106,5 +109,17 @@ export class GestantesListadoComponent implements OnInit {
 
     this.data_encontrada=data
   }
+
+  Nuevo_Paciente(){
+    this.route.navigate(['/sivigyp/principal/','NuevoPaciente'])
+  }
+
+  EstablecerPaciente(){
+
+    console.log(this.estados_s.paciente)
+    this.estados_s.paciente=this.gestante_detalle
+
+  }
+
 
 }
