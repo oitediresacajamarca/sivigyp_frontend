@@ -25,7 +25,7 @@ export class EstadoServiceService {
       "FECHA_NAC": "1984-02-03T05:00:00.000Z",
       "TELEFONO": '',
       "CORREO": "PENDIENTE",
-      "ID_HC": '',
+      "ID_HC": 1415,
       "NRO_HCL": "42359805",
       "COD_IPRESS": "000004791",
       "ID_CENTRO_POBLADO": "0601010001",

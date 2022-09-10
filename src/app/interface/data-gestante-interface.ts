@@ -26,7 +26,7 @@ export interface DataGestanteInterface {
     BENEFICIARIA_JUNTOS:number;
     TIPO_SEGURO:number;
     COD_IPRESS:string;
-    ID_HC:string;
+    ID_HC:number;
     NRO_HCL:string;
     ipress:Ipress;
     distrito:Distrito;

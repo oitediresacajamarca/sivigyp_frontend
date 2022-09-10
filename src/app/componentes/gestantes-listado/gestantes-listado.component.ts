@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { DataGestanteInterface } from 'src/app/interface/data-gestante-interface';
 import { EstadoServiceService } from 'src/app/servicios/estado-service.service';
 import { PersonaService } from 'src/app/servicios/persona.service';
-import { relativeTimeThreshold } from 'src/assets/libs/moment/moment';
+
 
 @Component({
   selector: 'app-gestantes-listado',
@@ -30,7 +30,7 @@ export class GestantesListadoComponent implements OnInit {
       "FECHA_NAC": "1984-02-03T05:00:00.000Z",
       "TELEFONO": '',
       "CORREO": "PENDIENTE",
-      "ID_HC": '',
+      "ID_HC": 0,
       "NRO_HCL": "42359805",
       "COD_IPRESS": "000004791",
       "ID_CENTRO_POBLADO": "0601010001",
