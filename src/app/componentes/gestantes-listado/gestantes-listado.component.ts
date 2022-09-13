@@ -5,6 +5,7 @@ import { EstadoServiceService } from 'src/app/servicios/estado-service.service';
 import { PersonaService } from 'src/app/servicios/persona.service';
 
 
+
 @Component({
   selector: 'app-gestantes-listado',
   templateUrl: './gestantes-listado.component.html',
@@ -12,6 +13,19 @@ import { PersonaService } from 'src/app/servicios/persona.service';
 })
 export class GestantesListadoComponent implements OnInit {
   selected_row: number = -1;
+  paginas = 0;
+  counter(i: number) {
+    let arr = new Array(i)
+    for (let j = 0; j <= i - 1; j++) {
+      arr[j] = j
+    }
+    console.log(arr)
+    return arr;
+  }
+  cargar_pagina(pagina:any){
+    this.cargar_data_por_ambito_actual_pagina(pagina)
+
+  }
 
 
   filtro: any
@@ -68,8 +82,8 @@ export class GestantesListadoComponent implements OnInit {
     }
 
 
-  constructor( private estados_s:EstadoServiceService,private persona_s:PersonaService,private route:Router) { }
-  data_encontrada:DataGestanteInterface[]=[];
+  constructor(private estados_s: EstadoServiceService, private persona_s: PersonaService, private route: Router) { }
+  data_encontrada: DataGestanteInterface[] = [];
   fila_ant!: ElementRef
 
   data_gestante: DataGestanteInterface[] = []
@@ -92,32 +106,47 @@ export class GestantesListadoComponent implements OnInit {
   visualizar_detalle(data: DataGestanteInterface, index: number) {
     this.gestante_detalle = data;
     this.selected_row = index;
-    this.estados_s.paciente=this.gestante_detalle
+    this.estados_s.paciente = this.gestante_detalle
 
   }
-  cargar_data_por_ambito_actual(){
-    this.estados_s.devolver_ambito_actual().cod_ambito
-    this.persona_s.buscar_lista_persona_en_ipress(   this.estados_s.devolver_ambito_actual().cod_ambito).subscribe(data=>{console.log(data)
-      this.data_encontrada=data
+
+  cargar_data_por_ambito_actual_pagina(pagina:any) {
+
+    this.persona_s.buscar_lista_persona_en_ipress_pagina(this.estados_s.devolver_ambito_actual().cod_ambito,pagina).subscribe(data => {
+      console.log(data)
+      this.data_encontrada = data.datos
+      console.log(data)
+      this.paginas = data.cantidad_paginas
+
+    })
+
+  }
+  cargar_data_por_ambito_actual() {
+
+    this.persona_s.buscar_lista_persona_en_ipress(this.estados_s.devolver_ambito_actual().cod_ambito).subscribe(data => {
+      console.log(data)
+      this.data_encontrada = data.datos
+      console.log(data)
+      this.paginas = data.cantidad_paginas
 
     })
 
   }
 
-  cargar_personas_buscadas(data:any[]){
-    this.data_encontrada=[]
+  cargar_personas_buscadas(data: any[]) {
+    this.data_encontrada = []
 
-    this.data_encontrada=data
+    this.data_encontrada = data
   }
 
-  Nuevo_Paciente(){
-    this.route.navigate(['/sivigyp/principal/','NuevoPaciente'])
+  Nuevo_Paciente() {
+    this.route.navigate(['/sivigyp/principal/', 'NuevoPaciente'])
   }
 
-  EstablecerPaciente(){
+  EstablecerPaciente() {
 
     console.log(this.estados_s.paciente)
-    this.estados_s.paciente=this.gestante_detalle
+    this.estados_s.paciente = this.gestante_detalle
 
   }
 

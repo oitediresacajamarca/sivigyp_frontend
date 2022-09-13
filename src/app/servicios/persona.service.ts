@@ -14,6 +14,10 @@ export class PersonaService {
 
   }
 
+  buscar_lista_persona_en_ipress_pagina(ipress: string,pagina:string) {
+    return this.http.get<any>(environment.url_api_node + 'gestante/persona_hc_por_ipress/' + ipress+'?skip='+pagina)
+  }
+
   buscar_lista_persona_en_ipress(ipress: string) {
     return this.http.get<any>(environment.url_api_node + 'gestante/persona_hc_por_ipress/' + ipress)
   }

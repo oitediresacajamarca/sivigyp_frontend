@@ -1,0 +1,51 @@
+<div class="card">
+  <div class="card-body">
+    <div class="d-md-flex no-block">
+      <h4 class="card-title">Programacion de Citas</h4>
+
+    </div>
+    <div class="month-table">
+      <div class="table-responsive mt-3">
+        <table class="table stylish-table v-middle mb-0 no-wrap">
+          <thead>
+            <tr>
+              <th class="border-0 text-muted font-weight-normal" >Numero</th>
+              <th class="border-0 text-muted font-weight-normal">Fecha</th>
+              <th class="border-0 text-muted font-weight-normal">Edad gest</th>
+              <th class="border-0 text-muted font-weight-normal">Estado</th>
+              <th class="border-0 text-muted font-weight-normal">Lugar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let aten of atenciones_reg">
+              <td style="width:50px;"><span
+                  class="round text-white d-inline-block text-center rounded-circle bg-info">S</span>
+              </td>
+
+              <td>{{aten.FECHA_ATENCION_REG| date: 'dd/MM/yyyy'}}</td>
+              <td>{{aten.EDAD_GESTACIONAL}}</td>
+              <td><span [ngClass]="{'badge-success': aten.ESTADO_ATENCION === 2, 'badge-warning' : aten.ESTADO_ATENCION === 1 }" class="badge  px-2 py-1">{{aten.ESTADO_ATENCION|estadoAtencion}}</span></td>
+              <td *ngIf="aten.ultima==true">
+                <div class="btn-group show">
+                  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="true">
+                    Accion
+                  </button>
+                  <div class="dropdown-menu "
+                    style="position: absolute; transform: translate3d(-44px, 35px, 0px); top: 0px; left: 0px; will-change: transform;"
+                    x-placement="bottom-start">
+                    <a class="dropdown-item" href="javascript:void(0)">Atender</a>
+                    <a class="dropdown-item" href="javascript:void(0)">Reprogramar Cita</a>
+
+                  </div>
+                </div>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>

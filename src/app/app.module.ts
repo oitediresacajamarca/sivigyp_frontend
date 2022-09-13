@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PrincipalComponent } from './layouts/principal/principal.component';
@@ -35,6 +34,9 @@ import { SelectorFactorSanguinioComponent } from './controles/comunes/selector-f
 import { CumplePipe } from './pipes/cumple.pipe';
 import { EstadoCivilPipe } from './pipes/estado-civil.pipe';
 import { SelectorFechaComponent } from './controles/comunes/selector-fecha/selector-fecha.component';
+import { ToastComponent } from './ui/comunes/toast/toast.component';
+import { ProgramacionCitasComponent } from './componentes/atencion/atencion-gestante/programacion-citas/programacion-citas.component';
+import { EstadoAtencionPipe } from './pipes/estado-atencion.pipe';
 
 
 @NgModule({
@@ -69,13 +71,17 @@ import { SelectorFechaComponent } from './controles/comunes/selector-fecha/selec
     CumplePipe,
     EstadoCivilPipe,
     SelectorFechaComponent,
+    ToastComponent,
+    ProgramacionCitasComponent,
+    EstadoAtencionPipe,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,FormsModule,
     HttpClientModule ,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

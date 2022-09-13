@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Http2Stream } from 'http2';
+
 import { environment } from 'src/environments/environment';
 import { AtencionGestanteGto } from './dto/atencion-gestante-gto';
 
@@ -17,7 +17,7 @@ export class AtencionGestanteService {
 
   }
   actualizar_atencion(num_hcl:string,data:any){
-    return  this.http.patch(environment.url_api_node+'atencion-gestante/'+num_hcl,data);
+    return  this.http.patch<AtencionGestanteGto>(environment.url_api_node+'atencion-gestante/'+num_hcl,data);
 
   }
 
