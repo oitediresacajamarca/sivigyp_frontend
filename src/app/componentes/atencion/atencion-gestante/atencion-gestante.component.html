@@ -58,6 +58,12 @@
                 <span class="d-none d-lg-block">Datos Para la gestacion</span>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="#riesgos" data-toggle="tab" aria-expanded="true" class="nav-link">
+                <i class="mdi mdi-account-circle d-lg-none d-block mr-1"></i>
+                <span class="d-none d-lg-block">Riesgos</span>
+              </a>
+            </li>
 
           </ul>
 
@@ -160,6 +166,59 @@
 
                       </select>
                     </div>
+                  </div>
+                </form>
+
+              </div>
+
+            </div>
+
+            <div class="tab-pane show" id="riesgos">
+              <div class="card-body">
+
+                <form [formGroup]="riesgos_gestacion_form">
+
+                  <h4 class="card-title">Tipo de Riesgo</h4>
+                  <div class="row form-group ">
+
+                    <div class="col-md-6">
+                        <input name="tipo_riesgo" class="material-inputs" value="BRO" type="radio" id="radio_1" formControlName="tipo_riesgo">
+                        <label for="radio_1">BRO</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input name="tipo_riesgo" class="material-inputs" value="ARO" type="radio" id="radio_2" formControlName="tipo_riesgo">
+                        <label for="radio_2">ARO</label>
+                    </div>
+
+                </div>
+
+
+
+
+                  <div class="form-group row">
+                    <label class="col-sm-4 text-right control-label col-form-label">Riesgos</label>
+                    <div class="col-sm-4">
+                      <select class="form-control">
+                        <option>Riesgo 1</option>
+                        <option>Riesgo 2</option>
+                        <option>Riesgo 3</option>
+
+                      </select>
+
+                    </div>
+
+                    <div class="col-sm-4"><button type="button"
+                        class="btn waves-effect waves-light btn-primary">Agregar</button></div>
+                  </div>
+
+                  <div class="form-group row">
+                    <select multiple="multiple" id="bootstrap-duallistbox-selected-list_" class="form-control"
+                    name="_helper2" style="height: 102px;">
+                    <option value="3" selected="selected" data-sortindex="7">Athens</option>
+                    <option value="10" selected="selected" data-sortindex="9">Bucharest</option>
+                    <option value="16" selected="selected" data-sortindex="12">Dublin</option>
+                    <option value="18" selected="selected" data-sortindex="13">Essen</option>
+                  </select>
                   </div>
                 </form>
 

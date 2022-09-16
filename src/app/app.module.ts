@@ -37,6 +37,8 @@ import { SelectorFechaComponent } from './controles/comunes/selector-fecha/selec
 import { ToastComponent } from './ui/comunes/toast/toast.component';
 import { ProgramacionCitasComponent } from './componentes/atencion/atencion-gestante/programacion-citas/programacion-citas.component';
 import { EstadoAtencionPipe } from './pipes/estado-atencion.pipe';
+import { SelectorRiesgosGestanteComponent } from './controles/comunes/selector-riesgos-gestante/selector-riesgos-gestante.component';
+
 
 
 @NgModule({
@@ -74,6 +76,7 @@ import { EstadoAtencionPipe } from './pipes/estado-atencion.pipe';
     ToastComponent,
     ProgramacionCitasComponent,
     EstadoAtencionPipe,
+    SelectorRiesgosGestanteComponent,
 
   ],
   imports: [
@@ -81,6 +84,7 @@ import { EstadoAtencionPipe } from './pipes/estado-atencion.pipe';
     AppRoutingModule,FormsModule,
     HttpClientModule ,
     ReactiveFormsModule,
+
 
   ],
   providers: [],

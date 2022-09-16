@@ -23,6 +23,8 @@ export class AtencionGestanteComponent implements OnInit {
   seguro!: TipoSeguro | undefined
   informacion_gestante_form!: FormGroup
   informacion_para_gestacion_form!: FormGroup
+  riesgos_gestacion_form!:FormGroup
+
   estado = 'crear'
   id_atencion = 0
   atenciones_reg:any[]=[]
@@ -43,6 +45,11 @@ export class AtencionGestanteComponent implements OnInit {
       fecha_confirmacion_gestacion: '',
       fecha_probable_parto: '',
 
+
+    })
+    this.riesgos_gestacion_form=this.fb.group({
+      riesgos:'',
+      tipo_riesgo:''
 
     })
 

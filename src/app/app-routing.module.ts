@@ -9,6 +9,7 @@ import { ListaUsuariosComponent } from './componentes/usuarios/lista-usuarios/li
 import { NuevoUsuarioComponent } from './componentes/usuarios/nuevo-usuario/nuevo-usuario.component';
 import { BuscarPersonaHcComponent } from './controles/busquedas/buscar-persona-hc/buscar-persona-hc.component';
 import { SelectorRedComponent } from './controles/comunes/selector-red/selector-red.component';
+import { SelectorRiesgosGestanteComponent } from './controles/comunes/selector-riesgos-gestante/selector-riesgos-gestante.component';
 import { ContenedorComponent } from './layouts/contenedor/contenedor.component';
 import { PrincipalComponent } from './layouts/principal/principal.component';
 import { InicioComponent } from './paginas/inicio/inicio.component';
@@ -33,6 +34,7 @@ const routes: Routes = [
 
   { path: 'controles/red-selector', component: SelectorRedComponent },
   { path: 'lista-usuarios', component: ListaUsuariosComponent },
+  { path: 'pru', component: SelectorRiesgosGestanteComponent },
   { path: '', component: GestantesListadoComponent }
 ];
 
