@@ -598,8 +598,8 @@
           <i class="mdi mdi-dots-horizontal"></i>
           <span class="hide-menu">Personal</span>
         </li>
-        <li class="sidebar-item">
-          <a href="inbox-email.html" class="sidebar-link">
+        <li class="sidebar-item"  routerLinkActive="selected">
+          <a [routerLink]="['Personal']"class="sidebar-link">
             <i class="mr-2 mdi mdi-account"></i>
 
             <span class="hide-menu"> Gestion de Personal </span></a
@@ -609,9 +609,10 @@
           <i class="mdi mdi-dots-horizontal"></i>
           <span class="hide-menu">Atencion </span>
         </li>
-        <li class="sidebar-item">
-          <a href="inbox-email.html" class="sidebar-link"
-            ><svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+        <li class="sidebar-item" routerLinkActive="selected">
+          <a [routerLink]="['registro-gestante']" class="sidebar-link"
+            >
+            <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
             width="25px" height="26px" viewBox="0 0 209.000000 241.000000"
             preserveAspectRatio="xMidYMid meet">
 
@@ -649,8 +650,8 @@
        <span class="hide-menu"> Registro de Gestante </span></a
           >
         </li>
-        <li class="sidebar-item">
-          <a href="inbox-email.html" class="sidebar-link"
+        <li class="sidebar-item" routerLinkActive="selected">
+          <a  class="sidebar-link" [routerLink]="['atencion-gestante']"
             >
             <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
             width="25px" height="26px" viewBox="0 0 209.000000 241.000000"
@@ -692,8 +693,8 @@
             <span class="hide-menu"> Atencion de Gestante </span></a
           >
         </li>
-        <li class="sidebar-item">
-          <a href="inbox-email.html" class="sidebar-link"
+        <li class="sidebar-item" routerLinkActive="selected">
+          <a [routerLink]="['registro-puerperio']" class="sidebar-link"
             ><svg version="1.0" xmlns="http://www.w3.org/2000/svg"
             width="25px" height="26px" viewBox="0 0 209.000000 241.000000"
             preserveAspectRatio="xMidYMid meet">

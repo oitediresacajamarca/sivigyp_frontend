@@ -1,0 +1,64 @@
+<div class="card">
+  <div class="card-body">
+      <div class="d-md-flex no-block">
+          <h4 class="card-title">Listado de Personal</h4>
+          <div class="ml-auto">
+              <select class="custom-select">
+                  <option selected="">January</option>
+                  <option value="1">February</option>
+                  <option value="2">March</option>
+                  <option value="3">April</option>
+              </select>
+          </div>
+      </div>
+      <div class="month-table">
+          <div class="table-responsive mt-3">
+              <table class="table stylish-table v-middle mb-0 no-wrap">
+                  <thead>
+                      <tr>
+                          <th class="border-0 text-muted font-weight-normal" colspan="1">Assigned</th>
+                          <th class="border-0 text-muted font-weight-normal">Nombres</th>
+                          <th class="border-0 text-muted font-weight-normal">DNI</th>
+                          <th class="border-0 text-muted font-weight-normal">FECHA NACIMIENTO</th>
+                          <th class="border-0 text-muted font-weight-normal">EDAD</th>
+                          <th class="border-0 text-muted font-weight-normal">PROFESION</th>
+                          <th class="border-0 text-muted font-weight-normal">CONDICION LABORAL</th>
+                          <th class="border-0 text-muted font-weight-normal">DESCRIPCION</th>
+                          <th class="border-0 text-muted font-weight-normal">FECHA INGRESO</th>
+                          <th class="border-0 text-muted font-weight-normal">TELEFONO</th>
+                          <th class="border-0 text-muted font-weight-normal">CORREO</th>
+                          <th class="border-0 text-muted font-weight-normal">Budget</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let data of datos_personal">
+                          <td style="width:50px;"><span class="round text-white d-inline-block text-center rounded-circle bg-info">S</span>
+                          </td>
+                          <td>
+                              <h6 class="font-weight-medium mb-0">{{data.persona.NOMBRES+' '+data.persona.APELLIDO_PAT+' '+data.persona.APELLIDO_MAT}}</h6><small class="text-muted">Web
+                                  Designer</small>
+                          </td>
+                          <td>{{data.persona.NRO_DOCUMENTO}}</td>
+                          <td>{{data.persona.FECHA_NAC}}</td>
+                          <td>{{data.persona.EDAD}}</td>
+                          <td>{{data.profesion.DESCRIPCION_PROFESION}}</td>
+                          <td>{{data.codicion_laboral.DESCRIPCION}}</td>
+                          <td>{{data.codicion_laboral.DESCRIPCION}}</td>
+                          <td>{{data.FEC_INGRESO}}</td>
+                          <td>{{data.persona.TELEFONO}}</td>
+                          <td>{{data.persona.CORREO}}</td>
+                          <td><span class="badge badge-success px-2 py-1">Low</span></td>
+                          <td>$3.9K</td>
+                      </tr>
+
+
+
+
+
+                  </tbody>
+              </table>
+          </div>
+      </div>
+
+  </div>
+</div>

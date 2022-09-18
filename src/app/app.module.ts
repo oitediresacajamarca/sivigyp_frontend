@@ -38,6 +38,8 @@ import { ToastComponent } from './ui/comunes/toast/toast.component';
 import { ProgramacionCitasComponent } from './componentes/atencion/atencion-gestante/programacion-citas/programacion-citas.component';
 import { EstadoAtencionPipe } from './pipes/estado-atencion.pipe';
 import { SelectorRiesgosGestanteComponent } from './controles/comunes/selector-riesgos-gestante/selector-riesgos-gestante.component';
+import { SelectorRiesgoComponent } from './controles/comunes/selector-riesgo/selector-riesgo.component';
+import { ListaPersonalComponent } from './componentes/personal/lista-personal/lista-personal.component';
 
 
 
@@ -77,6 +79,8 @@ import { SelectorRiesgosGestanteComponent } from './controles/comunes/selector-r
     ProgramacionCitasComponent,
     EstadoAtencionPipe,
     SelectorRiesgosGestanteComponent,
+    SelectorRiesgoComponent,
+    ListaPersonalComponent,
 
   ],
   imports: [

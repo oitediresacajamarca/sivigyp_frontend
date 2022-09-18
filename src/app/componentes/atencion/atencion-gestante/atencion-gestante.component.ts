@@ -23,11 +23,13 @@ export class AtencionGestanteComponent implements OnInit {
   seguro!: TipoSeguro | undefined
   informacion_gestante_form!: FormGroup
   informacion_para_gestacion_form!: FormGroup
-  riesgos_gestacion_form!:FormGroup
+  riesgos_gestacion_form!: FormGroup
+  lista_riesgos: any[] = []
 
   estado = 'crear'
   id_atencion = 0
-  atenciones_reg:any[]=[]
+  atenciones_reg: any[] = []
+  tipo_riesgo = ''
 
 
   ngOnInit(): void {
@@ -47,9 +49,10 @@ export class AtencionGestanteComponent implements OnInit {
 
 
     })
-    this.riesgos_gestacion_form=this.fb.group({
-      riesgos:'',
-      tipo_riesgo:''
+    this.riesgos_gestacion_form = this.fb.group({
+      riesgos: '',
+      tipo_riesgo: '',
+      nuevo_riesgo: {}
 
     })
 
@@ -133,7 +136,7 @@ export class AtencionGestanteComponent implements OnInit {
 
       this.atencionreg_rep.cargar_atencion_reg(this.id_atencion).subscribe(data => {
         console.log(data)
-        this.atenciones_reg=data
+        this.atenciones_reg = data
 
       })
 
@@ -189,7 +192,7 @@ export class AtencionGestanteComponent implements OnInit {
       })
 
       this.atencionreg_rep.cargar_atencion_reg(this.id_atencion).subscribe(data => {
-        this.atenciones_reg=data
+        this.atenciones_reg = data
         console.log(data)
       })
 
@@ -210,6 +213,42 @@ export class AtencionGestanteComponent implements OnInit {
 
       })
 
+  }
+
+  AgregarRiesgo() {
+
+
+    this.lista_riesgos
+
+    let index = this.lista_riesgos.findIndex(dat => {
+      return dat.ID_RIESGO == this.riesgos_gestacion_form.value.nuevo_riesgo.ID_RIESGO
+    })
+
+
+    if (index < 0) {
+
+      this.lista_riesgos.push(this.riesgos_gestacion_form.value.nuevo_riesgo)
+    }
+
+
+
+  }
+  seleciono_tipo_riesgo(tipo: string) {
+    this.tipo_riesgo = tipo
+    if(this.tipo_riesgo=='BRO'){
+      this.eliminar_todos_riesgos()
+
+    }
+
+  }
+
+  eliminar_riesgo(e: any) {
+    this.lista_riesgos = this.lista_riesgos.filter(dat => {
+      return dat.ID_RIESGO != e.ID_RIESGO
+    })
+  }
+  eliminar_todos_riesgos() {
+    this.lista_riesgos = []
   }
 
 }
