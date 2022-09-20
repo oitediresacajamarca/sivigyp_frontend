@@ -14,4 +14,9 @@ export class AtencionRegService {
   cargar_atencion_reg(id_atencion: number) {
     return this.http.get<AtencionReg[]>(environment.url_api_node + 'atencion-reg/atencion/' + id_atencion)
   }
+
+  generar_atencion_reg(id_atencion:number){
+    return this.http.post<AtencionReg[]>(environment.url_api_node + 'atencion-reg/atencion/generar_atencion_reg/'+id_atencion,{id_atencion})
+
+  }
 }

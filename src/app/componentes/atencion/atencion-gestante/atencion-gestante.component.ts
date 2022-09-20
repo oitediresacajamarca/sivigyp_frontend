@@ -25,6 +25,7 @@ export class AtencionGestanteComponent implements OnInit {
   informacion_para_gestacion_form!: FormGroup
   riesgos_gestacion_form!: FormGroup
   lista_riesgos: any[] = []
+  atencion: any
 
   estado = 'crear'
   id_atencion = 0
@@ -82,6 +83,9 @@ export class AtencionGestanteComponent implements OnInit {
 
     this.atencion_gestante.nueva_atencion(this.estados.paciente.NRO_HCL, data).subscribe(respuesta => {
 
+      console.log(respuesta)
+      this.atencion=respuesta
+
       const Toast = Swal.mixin({
         toast: true,
         position: 'top-end',
@@ -130,12 +134,12 @@ export class AtencionGestanteComponent implements OnInit {
     this.atencion_gestante.actualizar_atencion(this.estados.paciente.NRO_HCL, data).subscribe(respuesta => {
 
 
-
+console.log(respuesta)
 
       this.id_atencion = respuesta.ID_ATENCION
 
       this.atencionreg_rep.cargar_atencion_reg(this.id_atencion).subscribe(data => {
-        console.log(data)
+
         this.atenciones_reg = data
 
       })
@@ -171,9 +175,11 @@ export class AtencionGestanteComponent implements OnInit {
 
 
     this.atencion_gestante.devolver_atencion(this.estados.paciente.NRO_HCL).subscribe(respuesta => {
+      console.log(respuesta)
 
 
       this.id_atencion = respuesta.ID_ATENCION
+
 
       this.informacion_gestante_form.patchValue({
         fecha_registro: respuesta.FEC_REGISTRO,
@@ -235,7 +241,7 @@ export class AtencionGestanteComponent implements OnInit {
   }
   seleciono_tipo_riesgo(tipo: string) {
     this.tipo_riesgo = tipo
-    if(this.tipo_riesgo=='BRO'){
+    if (this.tipo_riesgo == 'BRO') {
       this.eliminar_todos_riesgos()
 
     }

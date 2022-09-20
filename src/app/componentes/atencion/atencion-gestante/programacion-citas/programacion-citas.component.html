@@ -4,8 +4,19 @@
       <h4 class="card-title">Programacion de Citas</h4>
 
     </div>
+    <div class="d-md-flex no-block">
+      <input class="form-control" type="date" value="2011-08-19" id="example-date-input" [(ngModel)]="fecha_asignar">
+
+      <div class="input-group-append">
+        <button class="btn btn-info" type="button" (click)="asignar_fecha()">Asignar</button>
+    </div>
+    </div>
     <div class="month-table">
-      <div class="table-responsive mt-3">
+      <div>
+        <button class="btn btn-info" type="button" (click)="generar_atencion_reg()">Generar Citas</button>
+      </div>
+      <div class="table-responsive mt-3" *ngIf="atenciones_reg.length>0">
+
         <table class="table stylish-table v-middle mb-0 no-wrap">
           <thead>
             <tr>
