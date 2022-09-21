@@ -13,7 +13,7 @@ export class AtencionGestanteService {
 
   nueva_atencion(num_hcl:string,data:any){
 
-   return  this.http.post(environment.url_api_node+'atencion-gestante/'+num_hcl,data);
+   return  this.http.post<AtencionGestanteGto>(environment.url_api_node+'atencion-gestante/'+num_hcl,data);
 
   }
   actualizar_atencion(num_hcl:string,data:any){

@@ -14,5 +14,7 @@ export interface AtencionReg {
 
   ESTADO_CERRADO: number;
   ultima?:boolean;
+
+  CORRELATIVO:number;
 }
 

@@ -5,17 +5,15 @@
 
     </div>
     <div class="d-md-flex no-block">
-      <input class="form-control" type="date" value="2011-08-19" id="example-date-input" [(ngModel)]="fecha_asignar">
+
 
       <div class="input-group-append">
-        <button class="btn btn-info" type="button" (click)="asignar_fecha()">Asignar</button>
+        <button class="btn btn-info" type="button" (click)="generar_atencion_reg()"  *ngIf="atenciones_reg.length==0" [disabled]="this.atencion==undefined">Generar Citas</button>
     </div>
     </div>
     <div class="month-table">
-      <div>
-        <button class="btn btn-info" type="button" (click)="generar_atencion_reg()">Generar Citas</button>
-      </div>
-      <div class="table-responsive mt-3" *ngIf="atenciones_reg.length>0">
+
+      <div class="table-responsive mt-3">
 
         <table class="table stylish-table v-middle mb-0 no-wrap">
           <thead>
@@ -30,7 +28,7 @@
           <tbody>
             <tr *ngFor="let aten of atenciones_reg">
               <td style="width:50px;"><span
-                  class="round text-white d-inline-block text-center rounded-circle bg-info">S</span>
+                  class="round text-white d-inline-block text-center rounded-circle bg-info">{{aten.CORRELATIVO}}</span>
               </td>
 
               <td>{{aten.FECHA_ATENCION_REG| date: 'dd/MM/yyyy'}}</td>
@@ -45,8 +43,9 @@
                   <div class="dropdown-menu "
                     style="position: absolute; transform: translate3d(-44px, 35px, 0px); top: 0px; left: 0px; will-change: transform;"
                     x-placement="bottom-start">
-                    <a class="dropdown-item" href="javascript:void(0)">Atender</a>
+                    <a class="dropdown-item" (click)="Registrar_Atencion(aten.ID_ATENCION_REG,aten)">Atender</a>
                     <a class="dropdown-item" href="javascript:void(0)">Reprogramar Cita</a>
+                    <a class="dropdown-item" (click)="Eliminar_Atencion(aten.ID_ATENCION_REG)">Eliminar Cita</a>
 
                   </div>
                 </div>

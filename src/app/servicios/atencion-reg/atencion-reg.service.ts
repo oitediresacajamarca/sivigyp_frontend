@@ -19,4 +19,12 @@ export class AtencionRegService {
     return this.http.post<AtencionReg[]>(environment.url_api_node + 'atencion-reg/atencion/generar_atencion_reg/'+id_atencion,{id_atencion})
 
   }
+  atender(ID_ATENCION_REG:number,payload:any){
+    return this.http.post<AtencionReg>(environment.url_api_node + 'atencion-reg/atender/'+ID_ATENCION_REG,{...payload})
+
+  }
+  eliminar(ID_ATENCION_REG:number){
+    return this.http.delete<AtencionReg>(environment.url_api_node + 'atencion-reg/'+ID_ATENCION_REG)
+
+  }
 }

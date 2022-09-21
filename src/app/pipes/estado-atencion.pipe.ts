@@ -8,8 +8,7 @@ export class EstadoAtencionPipe implements PipeTransform {
 
   estados=['','PENDIENTE','ATENDIDO']
   transform(value: number, ...args: unknown[]): unknown {
-    console.log(value)
-    console.log(this.estados[value])
+
 
 
     return this.estados[value];

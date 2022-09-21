@@ -19,7 +19,7 @@ export class GestantesListadoComponent implements OnInit {
     for (let j = 0; j <= i - 1; j++) {
       arr[j] = j
     }
-    console.log(arr)
+
     return arr;
   }
   cargar_pagina(pagina:any){
@@ -113,9 +113,9 @@ export class GestantesListadoComponent implements OnInit {
   cargar_data_por_ambito_actual_pagina(pagina:any) {
 
     this.persona_s.buscar_lista_persona_en_ipress_pagina(this.estados_s.devolver_ambito_actual().cod_ambito,pagina).subscribe(data => {
-      console.log(data)
+
       this.data_encontrada = data.datos
-      console.log(data)
+
       this.paginas = data.cantidad_paginas
 
     })
@@ -124,9 +124,9 @@ export class GestantesListadoComponent implements OnInit {
   cargar_data_por_ambito_actual() {
 
     this.persona_s.buscar_lista_persona_en_ipress(this.estados_s.devolver_ambito_actual().cod_ambito).subscribe(data => {
-      console.log(data)
+
       this.data_encontrada = data.datos
-      console.log(data)
+
       this.paginas = data.cantidad_paginas
 
     })
@@ -145,7 +145,7 @@ export class GestantesListadoComponent implements OnInit {
 
   EstablecerPaciente() {
 
-    console.log(this.estados_s.paciente)
+
     this.estados_s.paciente = this.gestante_detalle
 
   }

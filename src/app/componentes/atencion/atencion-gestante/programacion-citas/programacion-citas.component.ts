@@ -9,32 +9,62 @@ import { AtencionRegService } from 'src/app/servicios/atencion-reg/atencion-reg.
 })
 export class ProgramacionCitasComponent implements OnInit {
 
-  constructor( private atencion_reg_service:AtencionRegService) { }
-  fecha_asignar!:Date
+  constructor(private atencion_reg_service: AtencionRegService) { }
+  fecha_asignar!: Date
 
   @Input('atencion')
-  atencion!:any
+  atencion!: any
 
 
 
   @Input('atenciones_reg')
-  atenciones_reg:AtencionReg[]=[]
+  atenciones_reg: AtencionReg[] = []
 
   ngOnInit(): void {
   }
-  asignar_fecha(){
+  asignar_fecha() {
 
 
   }
-  generar_atencion_reg(){
+  generar_atencion_reg() {
 
-
-
-    this.atencion_reg_service.generar_atencion_reg(this.atencion.ID_ATENCION).subscribe(data=>{
-      this.atenciones_reg=data
+    console.log(this.atencion)
+    this.atencion_reg_service.generar_atencion_reg(this.atencion.ID_ATENCION).subscribe(data => {
+      console.log(data)
+      this.atenciones_reg = data
 
     })
 
   }
+
+  Registrar_Atencion(ID_ATENCION: number, aten: any) {
+
+    this.atencion_reg_service.atender(ID_ATENCION, {}).subscribe(respuesta => {
+      aten = respuesta
+      this.Cargar_Atencion_Reg()
+
+    })
+  }
+
+  Eliminar_Atencion(ID_ATENCION: number) {
+    this.atencion_reg_service.eliminar(ID_ATENCION).subscribe(respuesta => {
+      console.log(respuesta)
+
+      this.Cargar_Atencion_Reg()
+
+    })
+
+  }
+
+  Cargar_Atencion_Reg() {
+    this.atencion_reg_service.cargar_atencion_reg(this.atencion.ID_ATENCION).subscribe(respuesta => {
+      this.atenciones_reg = respuesta
+    })
+
+
+
+
+  }
+
 
 }

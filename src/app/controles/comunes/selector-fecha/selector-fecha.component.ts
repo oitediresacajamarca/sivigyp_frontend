@@ -1,4 +1,4 @@
-import { Component, forwardRef, OnInit } from '@angular/core';
+import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import * as moment from 'moment';
 
@@ -14,6 +14,9 @@ import * as moment from 'moment';
 })
 export class SelectorFechaComponent implements OnInit,ControlValueAccessor {
   valor_fecha!:string
+
+  @Input('disabled')
+  disabled:boolean=false
 
   constructor() { }
   writeValue(obj: Date): void {
