@@ -6,8 +6,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class EstadoAtencionPipe implements PipeTransform {
 
-  estados=['','PENDIENTE','ATENDIDO']
+  estados=['','PENDIENTE','ATENDIDO','NO ATENDIDO']
   transform(value: number, ...args: unknown[]): unknown {
+
 
 
 

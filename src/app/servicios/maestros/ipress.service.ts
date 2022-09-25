@@ -9,7 +9,7 @@ export class IpressService {
 
   constructor(private http: HttpClient) { }
   cargar_ipress_microred(id_microred: any) {
-    return this.http.get<any>(environment.url_api_django + 'maestros/ipress/?search=' + id_microred)
+    return this.http.get<any>(environment.url_api_node + 'ipress/microred/'+id_microred)
 
   }
 }

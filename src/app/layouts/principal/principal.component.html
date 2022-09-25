@@ -738,9 +738,9 @@
           <span class="hide-menu">Reportes </span>
         </li>
         <li class="sidebar-item">
-          <a href="inbox-email.html" class="sidebar-link"
+          <a (click)="abrir_modulo_reporte_gestante()"  class="sidebar-link"
             ><i class="fa fa-table"></i
-            ><span class="hide-menu"> Reportes de Gestante </span></a
+            ><span class="hide-menu" > Reportes de Gestante </span></a
           >
         </li>
         <li class="sidebar-item">
@@ -766,7 +766,7 @@
 
 <div class="page-wrapper">
   <div class="original">
-    <app-menu-pagina></app-menu-pagina>
+    <app-menu-pagina ></app-menu-pagina>
     <router-outlet></router-outlet>
   </div>
 </div>

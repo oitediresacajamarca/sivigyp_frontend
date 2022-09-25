@@ -44,7 +44,7 @@ export class SelectorFechaComponent implements OnInit,ControlValueAccessor {
   }
 
   selecciono_fecha(e:any){
-    console.log(e.target.value)
+
     this.onChange(e.target.value)
 
   }

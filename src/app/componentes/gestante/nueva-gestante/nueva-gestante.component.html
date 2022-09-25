@@ -33,7 +33,7 @@
             <div class="col-3">
               <div class="form-group">
                 <label for="fname3" class="control-label col-form-label">Numero de Documento</label>
-                <input type="text" class="form-control" id="fname3" formControlName="nro_documento">
+                <input type="text" class="form-control" id="fname3" formControlName="nro_documento" >
                 <div class="input-group-append">
                   <button class="btn btn-outline-secondary" type="button" (click)="Buscar_Persona()">Buscar</button>
                 </div>
@@ -42,26 +42,27 @@
             <div class="col-3">
               <div class="form-group">
                 <label for="title2" class="control-label col-form-label">Nombre</label>
-                <input type="text" class="form-control" id="title2" formControlName="nombres">
+                <input type="text" class="form-control" id="title2" formControlName="nombres" [readonly]="encontrado==true" >
               </div>
             </div>
             <div class="col-3">
               <div class="form-group">
                 <label for="title2" class="control-label col-form-label">Apellido Paterno</label>
-                <input type="text" class="form-control" id="title2" formControlName="apellido_paterno">
+                <input type="text" class="form-control" id="title2" formControlName="apellido_paterno" [readonly]="encontrado==true"   >
+
               </div>
             </div>
             <div class="col-3">
               <div class="form-group">
                 <label for="title2" class="control-label col-form-label">Apellido Materno</label>
-                <input type="text" class="form-control" id="title2" formControlName="apellido_materno">
+                <input type="text" class="form-control" id="title2" formControlName="apellido_materno" [readonly]="encontrado==true" >
               </div>
             </div>
 
             <div class="col-3">
               <div class="form-group">
                 <label for="title2" class="control-label col-form-label">Fecha de Nacimiento</label>
-                <input type="date" class="form-control"  formControlName="fecha_nacimiento">
+                <input type="date" class="form-control"  formControlName="fecha_nacimiento" [readonly]="encontrdao_fec_nac==true">
               </div>
             </div>
 
@@ -110,6 +111,12 @@
                 <input type="text" class="form-control" id="title2" formControlName="numero_telefono">
               </div>
             </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="title2" class="control-label col-form-label">Numero de telefono adicional</label>
+                <input type="text" class="form-control" id="title2" formControlName="numero_telefono_adicional">
+              </div>
+            </div>
 
             <div class="col-12">
               <div class="form-group">
@@ -146,7 +153,8 @@
             <div class="col-3">
               <div class="form-group">
                 <label for="title2" class="control-label col-form-label">Idioma</label>
-                <input type="text" class="form-control" id="title2" formControlName="idioma">
+                <app-selector-idioma formControlName="idioma"></app-selector-idioma>
+
               </div>
             </div>
             <div class="col-3">

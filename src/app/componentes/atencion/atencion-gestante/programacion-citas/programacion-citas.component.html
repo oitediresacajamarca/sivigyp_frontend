@@ -7,9 +7,16 @@
     <div class="d-md-flex no-block">
 
 
-      <div class="input-group-append">
-        <button class="btn btn-info" type="button" (click)="generar_atencion_reg()"  *ngIf="atenciones_reg.length==0" [disabled]="this.atencion==undefined">Generar Citas</button>
+      <div class="input-group-append sep">
+        <button class="btn btn-info" type="button" (click)="generar_atencion_reg()"   [disabled]="this.atencion==undefined">Generar Citas</button>
     </div>
+    <div class="input-group-append sep">
+      <button class="btn btn-info" type="button"  *ngIf="atenciones_reg.length>0" [disabled]="this.atencion==undefined">Finalizar Atencion</button>
+  </div>
+  <div class="input-group-append sep">
+    <button type="button" class="btn waves-effect waves-light btn-primary" [routerLink]="['../registrar_parto']" *ngIf="atenciones_reg.length>10" [disabled]="this.atencion==undefined">Registrar Parto</button>
+
+</div>
     </div>
     <div class="month-table">
 
@@ -33,7 +40,7 @@
 
               <td>{{aten.FECHA_ATENCION_REG| date: 'dd/MM/yyyy'}}</td>
               <td>{{aten.EDAD_GESTACIONAL}}</td>
-              <td><span [ngClass]="{'badge-success': aten.ESTADO_ATENCION === 2, 'badge-warning' : aten.ESTADO_ATENCION === 1 }" class="badge  px-2 py-1">{{aten.ESTADO_ATENCION|estadoAtencion}}</span></td>
+              <td><span [ngClass]="{'badge-danger': aten.ESTADO_ATENCION === 3,'badge-success': aten.ESTADO_ATENCION === 2, 'badge-warning' : aten.ESTADO_ATENCION === 1 }" class="badge  px-2 py-1">{{aten.ESTADO_ATENCION|estadoAtencion}}</span></td>
               <td *ngIf="aten.ultima==true">
                 <div class="btn-group show">
                   <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
@@ -44,6 +51,7 @@
                     style="position: absolute; transform: translate3d(-44px, 35px, 0px); top: 0px; left: 0px; will-change: transform;"
                     x-placement="bottom-start">
                     <a class="dropdown-item" (click)="Registrar_Atencion(aten.ID_ATENCION_REG,aten)">Atender</a>
+                    <a class="dropdown-item" (click)="Registrar_No_Atencion(aten.ID_ATENCION_REG,aten)">No Atendido</a>
                     <a class="dropdown-item" href="javascript:void(0)">Reprogramar Cita</a>
                     <a class="dropdown-item" (click)="Eliminar_Atencion(aten.ID_ATENCION_REG)">Eliminar Cita</a>
 

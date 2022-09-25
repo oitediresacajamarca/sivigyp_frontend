@@ -1,0 +1,141 @@
+<div class="row">
+
+  <div class="col-lg-6 col-md-12">
+    <div class="card card-body">
+      <h3 class="mb-0">REGISTRO DE PARTO</h3>
+
+      <div class="row">
+        <div class="col-sm-12 col-xs-12">
+          <form [formGroup]="formPartoReg">
+            <div class="form-group">
+              <label >FECHA DE PARTO</label>
+              <app-selector-fecha formControlName="FECHA_PARTO"></app-selector-fecha>
+            </div>
+            <div class="form-group">
+              <label >HORA DE PARTO</label>
+              <input class="form-control" formControlName="HORA_PARTO">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">TIPO DE PARTO</label>
+              <select class="form-control" id="exampleFormControlSelect1" formControlName="TIPO_PARTO">
+                <option>VAGINAL</option>
+                <option>CESAREA</option>
+
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">TIPO DE RECIEN NACIDO</label>
+              <select class="form-control" id="exampleFormControlSelect1" formControlName="TIPO_RECIEN_NACIDO">
+                <option value="1">A TERMINO</option>
+                <option value="2">PREMATURO</option>
+
+                <option value="3">ABORTO</option>
+                <option value="4">POST TERMINO</option>
+
+              </select>
+            </div>
+
+
+
+
+            <div class="form-group">
+              <label for="exampleInputPassword1">TIPO DE ATENCION PARTO</label>
+              <select class="form-control" formControlName="ID_ATENDIO_PARTO">
+
+                <option value="1">OBSTETRA</option>
+                <option value="2">GINECO OBSTETRA</option>
+                <option value="3">LIC. EN ENFERMERÍA</option>
+                <option value="4">TEC. EN ENFERMERÍA</option>
+                <option value="5">PARTERA O PROMOTOR</option>
+                <option value="6">FAMILIAR</option>
+                <option value="7">MÉDICO</option>
+                <option value="8">OTRO</option>
+
+              </select>
+            </div>
+            <div class="card-body">
+              <h4 class="card-title"> VIVO</h4>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input material-inputs" type="radio" name="RN_VIVO" id="RN_VIVO_SI" formControlName="RN_VIVO"
+                  value="1">
+                <label class="form-check-label" for="RN_VIVO_SI">SI</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input material-inputs" type="radio" name="RN_VIVO" id="RN_VIVO_NO" formControlName="RN_VIVO"
+                  value="0">
+                <label class="form-check-label" for="RN_VIVO_NO">NO</label>
+              </div>
+
+            </div>
+            <div class="card-body">
+              <h4 class="card-title"> SEXO</h4>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input material-inputs" type="radio" name="RN_SEXO" id="inlineRadio1" formControlName="RN_SEXO"
+                  value="1">
+                <label class="form-check-label" for="inlineRadio1">MASCULINO</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input material-inputs" type="radio" name="RN_SEXO" id="inlineRadio2" formControlName="RN_SEXO"
+                  value="0">
+                <label class="form-check-label" for="inlineRadio2">FEMENINO</label>
+              </div>
+
+            </div>
+
+            <div class="form-group">
+              <label for="exampleInputEmail1">PESO</label>
+              <input class="form-control" formControlName="RN_PESO">
+            </div>
+
+
+
+            <button type="submit" class="btn btn-success waves-effect waves-light mr-2" (click)="REGISTRAR_PARTO()">REGISTRAR</button>
+            <button type="submit" class="btn btn-inverse waves-effect waves-light">CANCELAR</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-6 col-md-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-md-flex no-block">
+          <h4 class="card-title">PARTOS REGISTRADOS</h4>
+
+        </div>
+        <div class="month-table">
+          <div class="table-responsive mt-3">
+            <table class="table stylish-table v-middle mb-0 no-wrap">
+              <thead>
+                <tr>
+                  <th class="border-0 text-muted font-weight-normal">FECHA DE PARTO</th>
+                  <th class="border-0 text-muted font-weight-normal">TIPO PARTO</th>
+                  <th class="border-0 text-muted font-weight-normal">LUGAR</th>
+                  <th class="border-0 text-muted font-weight-normal">TIPO PARTO</th>
+                  <th class="border-0 text-muted font-weight-normal">ACCION</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width:50px;"><span class=" text-white d-inline-block text-center ">S</span>
+                  </td>
+                  <td>
+                    <h6 class="font-weight-medium mb-0">Sunil Joshi</h6><small class="text-muted">Web
+                      Designer</small>
+                  </td>
+                  <td>Elite Admin</td>
+                  <td><span class="badge badge-success px-2 py-1">Low</span></td>
+                  <td>$3.9K</td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -12,13 +12,22 @@ export class SelectorIpressComponent implements OnInit {
 
   ipress:any[] = []
 
+  @Output('selecciono_ambito')
+  selecciono_ambito:EventEmitter<any>= new EventEmitter()
+
   ngOnInit(): void {
   }
   cargar_ipress_por_microred(id_microred: any) {
     this.ipres_s.cargar_ipress_microred(id_microred).subscribe(data => {
       console.log(data)
+
+
       this.ipress = data
     })
+
+  }
+  seleciono_ipress(e:any){
+    this.selecciono_ambito.emit(e)
 
   }
 

@@ -46,6 +46,15 @@ export class ProgramacionCitasComponent implements OnInit {
     })
   }
 
+  Registrar_No_Atencion(ID_ATENCION: number, aten: any){
+    this.atencion_reg_service.no_atender(ID_ATENCION, {}).subscribe(respuesta => {
+      aten = respuesta
+      this.Cargar_Atencion_Reg()
+
+    })
+
+  }
+
   Eliminar_Atencion(ID_ATENCION: number) {
     this.atencion_reg_service.eliminar(ID_ATENCION).subscribe(respuesta => {
       console.log(respuesta)
@@ -65,6 +74,8 @@ export class ProgramacionCitasComponent implements OnInit {
 
 
   }
+
+
 
 
 }

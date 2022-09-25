@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { EstadoServiceService } from 'src/app/servicios/estado-service.service';
 
 @Component({
@@ -11,6 +11,9 @@ export class MenuPaginaComponent implements OnInit {
   constructor(private estado_s:EstadoServiceService) { }
   Ipress_Atencion=''
   Renipress_Atencion=''
+
+  @Input('modulo')
+  modulo:string='GESTANTES'
 
   ngOnInit(): void {
     this.Cargar_Ipress_Atencion()

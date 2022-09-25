@@ -5,6 +5,7 @@ import { AtencionPuerperioComponent } from './componentes/atencion/atencion-puer
 import { NuevaGestanteComponent } from './componentes/gestante/nueva-gestante/nueva-gestante.component';
 import { GestantesListadoComponent } from './componentes/gestantes-listado/gestantes-listado.component';
 import { PrincipalNotificacionesComponent } from './componentes/Notificaciones/principal-notificaciones/principal-notificaciones.component';
+import { RegistroPartoComponent } from './componentes/parto/registro-parto/registro-parto.component';
 import { ListaPersonalComponent } from './componentes/personal/lista-personal/lista-personal.component';
 import { ListaUsuariosComponent } from './componentes/usuarios/lista-usuarios/lista-usuarios.component';
 import { NuevoUsuarioComponent } from './componentes/usuarios/nuevo-usuario/nuevo-usuario.component';
@@ -15,13 +16,15 @@ import { ContenedorComponent } from './layouts/contenedor/contenedor.component';
 import { PrincipalComponent } from './layouts/principal/principal.component';
 import { InicioComponent } from './paginas/inicio/inicio.component';
 import { LoginComponent } from './paginas/login/login.component';
+import { ReporteGestanteGeneradorComponent } from './reportes/reporte-gestante-generador/reporte-gestante-generador.component';
 
 const routes: Routes = [
   {
     path: 'sivigyp', component: ContenedorComponent, children: [{ path: 'login', component: LoginComponent }, {
       path: 'principal', component: PrincipalComponent
       , children: [{ path: 'inicio', component: AtencionGestanteComponent }, { path: 'registro-gestante', component: GestantesListadoComponent }, { path: 'atencion-gestante', component: AtencionGestanteComponent },
-      { path: 'NuevoPaciente', component: NuevaGestanteComponent },{ path: 'Personal', component: ListaPersonalComponent }]
+      { path: 'NuevoPaciente', component: NuevaGestanteComponent },{ path: 'Personal', component: ListaPersonalComponent }
+      ,{ path: 'reporte-gestante', component: ReporteGestanteGeneradorComponent },{path:'registrar_parto',component:RegistroPartoComponent}]
 
 
     }]

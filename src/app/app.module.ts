@@ -40,6 +40,11 @@ import { EstadoAtencionPipe } from './pipes/estado-atencion.pipe';
 import { SelectorRiesgosGestanteComponent } from './controles/comunes/selector-riesgos-gestante/selector-riesgos-gestante.component';
 import { SelectorRiesgoComponent } from './controles/comunes/selector-riesgo/selector-riesgo.component';
 import { ListaPersonalComponent } from './componentes/personal/lista-personal/lista-personal.component';
+import { ReporteGestanteGeneradorComponent } from './reportes/reporte-gestante-generador/reporte-gestante-generador.component';
+import { FiltrosRedMicroredIpressComponent } from './controles/comunes/filtros/filtros-red-microred-ipress/filtros-red-microred-ipress.component';
+import { FiltrosRangoEntreFechasComponent } from './controles/comunes/filtros/filtros-rango-entre-fechas/filtros-rango-entre-fechas.component';
+import { RegistroPartoComponent } from './componentes/parto/registro-parto/registro-parto.component';
+import { SelectorIdiomaComponent } from './controles/comunes/selector-idioma/selector-idioma.component';
 
 
 
@@ -81,6 +86,11 @@ import { ListaPersonalComponent } from './componentes/personal/lista-personal/li
     SelectorRiesgosGestanteComponent,
     SelectorRiesgoComponent,
     ListaPersonalComponent,
+    ReporteGestanteGeneradorComponent,
+    FiltrosRedMicroredIpressComponent,
+    FiltrosRangoEntreFechasComponent,
+    RegistroPartoComponent,
+    SelectorIdiomaComponent,
 
   ],
   imports: [
