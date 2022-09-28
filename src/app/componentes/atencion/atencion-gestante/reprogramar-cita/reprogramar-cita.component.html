@@ -1,0 +1,32 @@
+<div class="modal  fade show" *ngIf="mostrar==true" role="dialog" aria-modal="true" style="padding-right: 17px; display: block;">
+  <div class="modal-dialog">
+      <div class="modal-content">
+
+          <div class="text-center bg-success fondo p-3">
+
+                  <span class="titulo" >REPROGRAMACION DE CITA</span>
+
+          </div>
+          <div class="modal-body">
+
+              <form class="pl-3 pr-3" action="#">
+
+                  <div class="form-group">
+                      <label for="observacion">FECHA DE REPROGRAMCION</label>
+                      <app-selector-fecha [(ngModel)]="fecha_reprogramacion" name="fecha_reporgramacion"></app-selector-fecha>
+                  </div>
+                  <div class="form-group">
+                    <label for="observacion">OBSERVACION</label>
+                    <textarea id="observacion" class="form-control" rows="4" [(ngModel)]="observacion" name="observacion"></textarea>
+                </div>
+                  <div class="form-group text-center">
+                    <button  class="btn btn-dark waves-effect waves-light pad" >Cancelar</button>
+                      <button class="btn btn-info" (click)="Aceptar()" type="submit">REPROGRAMAR</button>
+                  </div>
+
+              </form>
+
+          </div>
+      </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>

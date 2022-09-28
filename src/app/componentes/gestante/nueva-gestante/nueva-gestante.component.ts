@@ -146,6 +146,7 @@ export class NuevaGestanteComponent implements OnInit {
   Guardar() {
 
     this.datos_generales.patchValue({ COD_IPRESS: this.estados_s.devolver_ambito_actual().cod_ambito })
+
     this.persona_hc.nueva_historia_clinica(this.datos_generales.value.nro_documento,
       { persona: this.datos_generales.value, datos_complementarios: this.datos_complemntarios.value }
     ).subscribe(resultado => {

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AtencionGestanteComponent } from './componentes/atencion/atencion-gestante/atencion-gestante.component';
+import { ObservacionCitaComponent } from './componentes/atencion/atencion-gestante/programacion-citas/observacion-cita/observacion-cita.component';
 import { AtencionPuerperioComponent } from './componentes/atencion/atencion-puerperio/atencion-puerperio.component';
 import { NuevaGestanteComponent } from './componentes/gestante/nueva-gestante/nueva-gestante.component';
 import { GestantesListadoComponent } from './componentes/gestantes-listado/gestantes-listado.component';
@@ -20,14 +21,22 @@ import { ReporteGestanteGeneradorComponent } from './reportes/reporte-gestante-g
 
 const routes: Routes = [
   {
-    path: 'sivigyp', component: ContenedorComponent, children: [{ path: 'login', component: LoginComponent }, {
-      path: 'principal', component: PrincipalComponent
-      , children: [{ path: 'inicio', component: AtencionGestanteComponent }, { path: 'registro-gestante', component: GestantesListadoComponent }, { path: 'atencion-gestante', component: AtencionGestanteComponent },
-      { path: 'NuevoPaciente', component: NuevaGestanteComponent },{ path: 'Personal', component: ListaPersonalComponent }
-      ,{ path: 'reporte-gestante', component: ReporteGestanteGeneradorComponent },{path:'registrar_parto',component:RegistroPartoComponent}]
-
-
-    }]
+    path: 'sivigyp', component: ContenedorComponent,
+    children: [
+      { path: 'login', component: LoginComponent },
+      { path: 'principal', component: PrincipalComponent
+        , children:
+          [{ path: 'inicio', component: AtencionGestanteComponent },
+          { path: 'registro-gestante', component: GestantesListadoComponent },
+          { path: 'atencion-gestante', component: AtencionGestanteComponent },
+          { path: 'NuevoPaciente', component: NuevaGestanteComponent },
+          { path: 'Personal', component: ListaPersonalComponent },
+          { path: 'reporte-gestante', component: ReporteGestanteGeneradorComponent },
+          { path: 'registrar_parto/:id_atencion', component: RegistroPartoComponent },
+          { path: 'prueba', component: PrincipalNotificacionesComponent },
+          { path: 'atencion-puerperio', component: AtencionPuerperioComponent }
+          ]
+      }]
   },
 
   { path: 'inicio', component: InicioComponent },

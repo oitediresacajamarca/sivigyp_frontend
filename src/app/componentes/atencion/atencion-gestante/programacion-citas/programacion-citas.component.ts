@@ -1,6 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { createViewChildren } from '@angular/compiler/src/core';
+import { IfStmt, THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { Component, Input, OnInit, ViewChild, ViewChildren } from '@angular/core';
 import { AtencionReg } from 'src/app/interface/atencion-reg';
 import { AtencionRegService } from 'src/app/servicios/atencion-reg/atencion-reg.service';
+import { ReprogramarCitaComponent } from '../reprogramar-cita/reprogramar-cita.component';
+import { ObservacionCitaComponent } from './observacion-cita/observacion-cita.component';
 
 @Component({
   selector: 'app-programacion-citas',
@@ -12,8 +16,16 @@ export class ProgramacionCitasComponent implements OnInit {
   constructor(private atencion_reg_service: AtencionRegService) { }
   fecha_asignar!: Date
 
+  observacion: string = ''
+
   @Input('atencion')
   atencion!: any
+
+  @ViewChild('dialog')
+  dialog!: ObservacionCitaComponent
+
+  @ViewChild('dialog_reprogra')
+  dialog_reprogra!: ReprogramarCitaComponent
 
 
 
@@ -39,15 +51,24 @@ export class ProgramacionCitasComponent implements OnInit {
 
   Registrar_Atencion(ID_ATENCION: number, aten: any) {
 
-    this.atencion_reg_service.atender(ID_ATENCION, {}).subscribe(respuesta => {
+    this.atencion_reg_service.atender(ID_ATENCION, aten).subscribe(respuesta => {
       aten = respuesta
       this.Cargar_Atencion_Reg()
 
     })
   }
 
-  Registrar_No_Atencion(ID_ATENCION: number, aten: any){
-    this.atencion_reg_service.no_atender(ID_ATENCION, {}).subscribe(respuesta => {
+  Registrar_No_Atencion(ID_ATENCION: number, aten: any) {
+    this.atencion_reg_service.no_atender(ID_ATENCION, aten).subscribe(respuesta => {
+      aten = respuesta
+      this.Cargar_Atencion_Reg()
+
+    })
+
+  }
+
+  Reprogramar_Cita(ID_ATENCION: number, aten: any) {
+    this.atencion_reg_service.no_atender(ID_ATENCION, aten).subscribe(respuesta => {
       aten = respuesta
       this.Cargar_Atencion_Reg()
 
@@ -75,6 +96,51 @@ export class ProgramacionCitasComponent implements OnInit {
 
   }
 
+  Abrir_Dialogo(ID_ATENCION_REG: number, aten: any, accion: string) {
+    if (accion == 'ATENDER') {
+      this.dialog.titulo = 'REGISTRAR ATENCION'
+    }
+    if (accion == 'NO ATENDER') {
+      this.dialog.titulo = 'REGISTRAR NO ATENCION'
+    }
+    if (accion == 'REPROGRAMAR') {
+      this.dialog.titulo = 'REGISTRAR NO ATENCION'
+    }
+
+    this.dialog.accion = accion
+    this.dialog.ID_ATENCION_REG = ID_ATENCION_REG
+    this.dialog.mostrar = true
+  }
+
+  aceptar(payload: string) {
+
+
+    this.observacion = payload
+
+
+    if (this.dialog.accion == 'ATENDER') {
+      this.Registrar_Atencion(this.dialog.ID_ATENCION_REG, { OBSERVACION: this.observacion })
+    }
+
+    if (this.dialog.accion == 'NO ATENDER') {
+      this.Registrar_No_Atencion(this.dialog.ID_ATENCION_REG, { OBSERVACION: this.observacion })
+    }
+    if (this.dialog.accion == 'REPROGRAMAR') {
+      this.Registrar_No_Atencion(this.dialog.ID_ATENCION_REG, { OBSERVACION: this.observacion })
+    }
+
+  }
+
+
+  Abrir_Dialogo_Reprogamar(ID_ATENCION_REG: number, data: any) {
+    this.dialog_reprogra.ID_CITA_REG=ID_ATENCION_REG
+    this.dialog_reprogra.mostrar = true
+  }
+
+  recargar_atenciones_reg(){
+    this.Cargar_Atencion_Reg()
+
+  }
 
 
 

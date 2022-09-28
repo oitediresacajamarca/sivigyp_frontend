@@ -694,7 +694,7 @@
           >
         </li>
         <li class="sidebar-item" routerLinkActive="selected">
-          <a [routerLink]="['registro-puerperio']" class="sidebar-link"
+          <a [routerLink]="['atencion-puerperio']" class="sidebar-link"
             ><svg version="1.0" xmlns="http://www.w3.org/2000/svg"
             width="25px" height="26px" viewBox="0 0 209.000000 241.000000"
             preserveAspectRatio="xMidYMid meet">
@@ -764,7 +764,7 @@
   <!-- End Sidebar scroll-->
 </aside>
 
-<div class="page-wrapper">
+<div class="page-wrapper" [ngClass]="{alerta:estad.alerta ===true}">
   <div class="original">
     <app-menu-pagina ></app-menu-pagina>
     <router-outlet></router-outlet>

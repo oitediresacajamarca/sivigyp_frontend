@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { EstadoServiceService } from 'src/app/servicios/estado-service.service';
 
 @Component({
   selector: 'app-principal',
@@ -10,9 +11,10 @@ export class PrincipalComponent implements OnInit {
 
   modulo='GESTANTES'
 
-  constructor(private rout:Router,private route: ActivatedRoute) { }
+  constructor(private rout:Router,private route: ActivatedRoute,public estad:EstadoServiceService) { }
 
   ngOnInit(): void {
+    this.estad.alerta
   }
   abrir_modulo_reporte_gestante(){
     this.modulo='REPORTES_GESTANTES'

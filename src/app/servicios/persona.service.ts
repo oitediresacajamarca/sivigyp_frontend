@@ -29,4 +29,5 @@ export class PersonaService {
     return this.http.get<any>(environment.url_api_node + 'gestante/persona_hc/' + dni)
   }
 
+
 }

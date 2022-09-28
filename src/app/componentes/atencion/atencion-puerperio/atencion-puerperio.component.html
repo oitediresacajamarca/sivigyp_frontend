@@ -1,1 +1,28 @@
-<p>atencion-puerperio works!</p>
+<div class="row">
+  <div class="col-4">     <div class="card">
+    <H2 class="card-title">DATOS DE LA GESTANTE</H2>
+    <img class="card-img-top w-70 profile-bg-height h_50" src="../assets/images/background/profile-bg.jpg"
+      alt="Card image cap">
+
+    <div class="card-body little-profile text-center">
+      <div class="pro-img"><img src="../assets/images/users/4.jpg" alt="user" class="rounded-circle shadow-sm"
+          width="150"></div>
+      <h3 class="mb-0">{{detalle_persona.APELLIDO_PAT+ ' '+detalle_persona.APELLIDO_MAT+ ' '+detalle_persona.NOMBRES}}</h3>
+      <p>dni &amp; {{detalle_persona.NRO_DOCUMENTO}}</p>
+
+      <p>Tipo de Seguro : {{detalle_persona?.NOMBRE}}</p>
+      <p>Beneficiaria de Juntos : {{detalle_persona.BENEFICIARIA_JUNTOS|cumple}}</p>
+      <p>Estado Civil: {{detalle_persona.ESTADO_CIVIL|estadoCivil}}</p>
+      <p>Idioma: {{detalle_persona.IDIOMA}}</p>
+      <p>Telefono: {{detalle_persona.TELEFONO}}</p>
+      <p>Correo: {{detalle_persona.CORREO}}</p>
+
+
+
+
+
+    </div>
+  </div></div>
+  <div class="col-4"></div>
+  <div class="col-4"></div>
+</div>

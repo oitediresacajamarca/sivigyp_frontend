@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { AtencionPartoService } from 'src/app/servicios/atencion-parto/atencion-parto.service';
 
 @Component({
   selector: 'app-registro-parto',
@@ -9,8 +11,13 @@ import { FormBuilder } from '@angular/forms';
 })
 export class RegistroPartoComponent implements OnInit {
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private activa_route: ActivatedRoute, private atencion_parto_serv: AtencionPartoService) { }
   formPartoReg!: FormGroup
+
+  ID_ATENCION!: number;
+  PARTOS:any[]=[]
+
+
 
   ngOnInit(): void {
     this.formPartoReg = this.fb.group({
@@ -30,9 +37,27 @@ export class RegistroPartoComponent implements OnInit {
       EDAD_GESTACIONAL: ''
     })
 
+    this.activa_route.params.subscribe(params => {
+     this.ID_ATENCION= params['id_atencion'];
+
+    })
+    this.CARGAR_PARTOS()
+
   }
   REGISTRAR_PARTO() {
-    console.log(this.formPartoReg.value)
+
+
+    this.atencion_parto_serv.Registrar_Parto(this.ID_ATENCION, this.formPartoReg.value).subscribe(respuesta => {
+      this.CARGAR_PARTOS()
+
+    }, error => alert(JSON.stringify(error)))
+
+  }
+  CARGAR_PARTOS(){
+    this.atencion_parto_serv.Cargar_Partos(this.ID_ATENCION).subscribe(respuesta=>{console.log(respuesta)
+    this.PARTOS=respuesta
+    }
+    )
   }
 
 }

@@ -45,6 +45,9 @@ import { FiltrosRedMicroredIpressComponent } from './controles/comunes/filtros/f
 import { FiltrosRangoEntreFechasComponent } from './controles/comunes/filtros/filtros-rango-entre-fechas/filtros-rango-entre-fechas.component';
 import { RegistroPartoComponent } from './componentes/parto/registro-parto/registro-parto.component';
 import { SelectorIdiomaComponent } from './controles/comunes/selector-idioma/selector-idioma.component';
+import { ObservacionCitaComponent } from './componentes/atencion/atencion-gestante/programacion-citas/observacion-cita/observacion-cita.component';
+import { ReprogramarCitaComponent } from './componentes/atencion/atencion-gestante/reprogramar-cita/reprogramar-cita.component';
+import { ComparativoHisComponent } from './componentes/atencion/analisis-seguimiento/comparativo-his/comparativo-his.component';
 
 
 
@@ -91,6 +94,9 @@ import { SelectorIdiomaComponent } from './controles/comunes/selector-idioma/sel
     FiltrosRangoEntreFechasComponent,
     RegistroPartoComponent,
     SelectorIdiomaComponent,
+    ObservacionCitaComponent,
+    ReprogramarCitaComponent,
+    ComparativoHisComponent,
 
   ],
   imports: [

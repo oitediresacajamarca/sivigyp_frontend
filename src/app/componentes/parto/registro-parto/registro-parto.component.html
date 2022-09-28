@@ -4,6 +4,7 @@
     <div class="card card-body">
       <h3 class="mb-0">REGISTRO DE PARTO</h3>
 
+
       <div class="row">
         <div class="col-sm-12 col-xs-12">
           <form [formGroup]="formPartoReg">
@@ -13,13 +14,14 @@
             </div>
             <div class="form-group">
               <label >HORA DE PARTO</label>
-              <input class="form-control" formControlName="HORA_PARTO">
+              <input type="time" class="form-control" value="22:33:00" formControlName="HORA_PARTO">
+
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">TIPO DE PARTO</label>
               <select class="form-control" id="exampleFormControlSelect1" formControlName="TIPO_PARTO">
-                <option>VAGINAL</option>
-                <option>CESAREA</option>
+                <option value="1">VAGINAL</option>
+                <option value="2">CESAREA</option>
 
               </select>
             </div>
@@ -76,7 +78,7 @@
               </div>
               <div class="form-check form-check-inline">
                 <input class="form-check-input material-inputs" type="radio" name="RN_SEXO" id="inlineRadio2" formControlName="RN_SEXO"
-                  value="0">
+                  value="2">
                 <label class="form-check-label" for="inlineRadio2">FEMENINO</label>
               </div>
 
@@ -110,6 +112,7 @@
               <thead>
                 <tr>
                   <th class="border-0 text-muted font-weight-normal">FECHA DE PARTO</th>
+                  <th class="border-0 text-muted font-weight-normal">SEXO</th>
                   <th class="border-0 text-muted font-weight-normal">TIPO PARTO</th>
                   <th class="border-0 text-muted font-weight-normal">LUGAR</th>
                   <th class="border-0 text-muted font-weight-normal">TIPO PARTO</th>
@@ -117,12 +120,14 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td style="width:50px;"><span class=" text-white d-inline-block text-center ">S</span>
+                <tr *ngFor="let data of PARTOS">
+                  <td>
+                    <h6 class="font-weight-medium mb-0">{{data.FECHA_PARTO}}</h6><small class="text-muted">{{data.HORA_PARTO}}</small>
+                  </td>
+                  <td style="width:50px;"><span class=" text-white d-inline-block text-center ">{{data.RN_SEXO}}</span>
                   </td>
                   <td>
-                    <h6 class="font-weight-medium mb-0">Sunil Joshi</h6><small class="text-muted">Web
-                      Designer</small>
+                    <h6 class="font-weight-medium mb-0">{{data.TIPO_PARTO}}</h6>
                   </td>
                   <td>Elite Admin</td>
                   <td><span class="badge badge-success px-2 py-1">Low</span></td>

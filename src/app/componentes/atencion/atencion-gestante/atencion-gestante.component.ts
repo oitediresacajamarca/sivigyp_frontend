@@ -32,10 +32,10 @@ export class AtencionGestanteComponent implements OnInit {
   atenciones_reg: any[] = []
   tipo_riesgo = ''
 
-  edad_gestacional_actual:number=0
-  fecha_probable_parto!:Date
-  hoy:Date= new Date()
-  mostrar_estado_gestacional=false
+  edad_gestacional_actual: number = 0
+  fecha_probable_parto!: Date
+  hoy: Date = new Date()
+  mostrar_estado_gestacional = false
 
 
   ngOnInit(): void {
@@ -49,7 +49,7 @@ export class AtencionGestanteComponent implements OnInit {
       numero_hijos_vivos: ''
 
     })
-    this.hoy= new Date()
+    this.hoy = new Date()
     this.informacion_para_gestacion_form = this.fb.group({
       fecha_confirmacion_gestacion: '',
       fecha_probable_parto: '',
@@ -91,20 +91,21 @@ export class AtencionGestanteComponent implements OnInit {
     this.atencion_gestante.nueva_atencion(this.estados.paciente.NRO_HCL, data).subscribe(respuesta => {
 
       this.atencion = respuesta
-      this.edad_gestacional_actual=moment().diff(respuesta.FUR_ATENCION,'weeks')
-      if(this.edad_gestacional_actual>=42){
-        this.edad_gestacional_actual=0
+      this.edad_gestacional_actual = moment().diff(respuesta.FUR_ATENCION, 'weeks')
+      if (this.edad_gestacional_actual >= 42) {
+        this.edad_gestacional_actual = 0
+
 
       }
-      this.fecha_probable_parto= respuesta.FECHA_POSIBLE_PARTO
-      if(moment(this.fecha_probable_parto)>=moment(this.hoy)){
+      this.fecha_probable_parto = respuesta.FECHA_POSIBLE_PARTO
+      if (moment(this.fecha_probable_parto) >= moment(this.hoy)) {
 
 
-        this.mostrar_estado_gestacional=true
-       }
-       else{
-        this.mostrar_estado_gestacional=false
-       }
+        this.mostrar_estado_gestacional = true
+      }
+      else {
+        this.mostrar_estado_gestacional = false
+      }
 
 
       const Toast = Swal.mixin({
@@ -156,22 +157,22 @@ export class AtencionGestanteComponent implements OnInit {
 
 
 
-      this.edad_gestacional_actual=moment().diff(respuesta.FUR_ATENCION,'weeks')
-      if(this.edad_gestacional_actual>=42){
-        this.edad_gestacional_actual=0
+      this.edad_gestacional_actual = moment().diff(respuesta.FUR_ATENCION, 'weeks')
+      if (this.edad_gestacional_actual >= 42) {
+        this.edad_gestacional_actual = 0
 
       }
       console.log(this.fecha_probable_parto)
-      this.fecha_probable_parto= respuesta.FECHA_POSIBLE_PARTO
+      this.fecha_probable_parto = respuesta.FECHA_POSIBLE_PARTO
 
-      if(moment(this.fecha_probable_parto)>=moment(this.hoy)){
+      if (moment(this.fecha_probable_parto) >= moment(this.hoy)) {
 
 
-        this.mostrar_estado_gestacional=true
-       }
-       else{
-        this.mostrar_estado_gestacional=false
-       }
+        this.mostrar_estado_gestacional = true
+      }
+      else {
+        this.mostrar_estado_gestacional = false
+      }
 
       this.id_atencion = respuesta.ID_ATENCION
 
@@ -215,23 +216,22 @@ export class AtencionGestanteComponent implements OnInit {
 
 
       this.atencion = respuesta
-      this.edad_gestacional_actual=moment().diff(respuesta.FUR_ATENCION,'weeks')
-      if(this.edad_gestacional_actual>=42){
-        this.edad_gestacional_actual=0
+      this.edad_gestacional_actual = moment().diff(respuesta.FUR_ATENCION, 'weeks')
+      if (this.edad_gestacional_actual >= 42) {
+        this.edad_gestacional_actual = 0
 
       }
 
-     this.fecha_probable_parto= respuesta.FECHA_POSIBLE_PARTO
-     console.log(this.hoy)
-     console.log( this.fecha_probable_parto)
-     if(moment(this.fecha_probable_parto)>=moment(this.hoy)){
+      this.fecha_probable_parto = respuesta.FECHA_POSIBLE_PARTO
+
+      if (moment(this.fecha_probable_parto) >= moment(this.hoy)) {
 
 
-      this.mostrar_estado_gestacional=true
-     }
-     else{
-      this.mostrar_estado_gestacional=false
-     }
+        this.mostrar_estado_gestacional = true
+      }
+      else {
+        this.mostrar_estado_gestacional = false
+      }
 
 
       this.id_atencion = respuesta.ID_ATENCION
@@ -292,6 +292,9 @@ export class AtencionGestanteComponent implements OnInit {
       this.lista_riesgos.push(this.riesgos_gestacion_form.value.nuevo_riesgo)
     }
 
+    if (this.lista_riesgos.length > 0) {
+      this.estados.alerta = true
+    }
 
 
   }
@@ -299,8 +302,11 @@ export class AtencionGestanteComponent implements OnInit {
     this.tipo_riesgo = tipo
     if (this.tipo_riesgo == 'BRO') {
       this.eliminar_todos_riesgos()
-
+      if (this.lista_riesgos.length > 0) {
+        this.estados.alerta = true
+      } else { this.estados.alerta = false }
     }
+
 
   }
 
@@ -315,7 +321,7 @@ export class AtencionGestanteComponent implements OnInit {
 
   seleciono_fecha_regla() {
 
-    this.informacion_para_gestacion_form.patchValue({ fecha_probable_parto: moment(this.informacion_gestante_form.value.fecha_ultima_regla).add(1,'year').add(-3, 'month').add(7, 'days').toDate() })
+    this.informacion_para_gestacion_form.patchValue({ fecha_probable_parto: moment(this.informacion_gestante_form.value.fecha_ultima_regla).add(1, 'year').add(-3, 'month').add(7, 'days').toDate() })
 
   }
 

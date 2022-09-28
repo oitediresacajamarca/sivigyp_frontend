@@ -62,6 +62,8 @@ export class EstadoServiceService {
       }
     }
 
+    alerta:boolean=false;
+
 
   constructor(private http: HttpClient) {
 
