@@ -48,6 +48,7 @@ import { SelectorIdiomaComponent } from './controles/comunes/selector-idioma/sel
 import { ObservacionCitaComponent } from './componentes/atencion/atencion-gestante/programacion-citas/observacion-cita/observacion-cita.component';
 import { ReprogramarCitaComponent } from './componentes/atencion/atencion-gestante/reprogramar-cita/reprogramar-cita.component';
 import { ComparativoHisComponent } from './componentes/atencion/analisis-seguimiento/comparativo-his/comparativo-his.component';
+import { ModalNotificaacionesComponent } from './componentes/Notificaciones/modal-notificaaciones/modal-notificaaciones.component';
 
 
 
@@ -97,6 +98,7 @@ import { ComparativoHisComponent } from './componentes/atencion/analisis-seguimi
     ObservacionCitaComponent,
     ReprogramarCitaComponent,
     ComparativoHisComponent,
+    ModalNotificaacionesComponent,
 
   ],
   imports: [

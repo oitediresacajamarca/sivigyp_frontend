@@ -5,6 +5,7 @@ import { ObservacionCitaComponent } from './componentes/atencion/atencion-gestan
 import { AtencionPuerperioComponent } from './componentes/atencion/atencion-puerperio/atencion-puerperio.component';
 import { NuevaGestanteComponent } from './componentes/gestante/nueva-gestante/nueva-gestante.component';
 import { GestantesListadoComponent } from './componentes/gestantes-listado/gestantes-listado.component';
+import { ModalNotificaacionesComponent } from './componentes/Notificaciones/modal-notificaaciones/modal-notificaaciones.component';
 import { PrincipalNotificacionesComponent } from './componentes/Notificaciones/principal-notificaciones/principal-notificaciones.component';
 import { RegistroPartoComponent } from './componentes/parto/registro-parto/registro-parto.component';
 import { ListaPersonalComponent } from './componentes/personal/lista-personal/lista-personal.component';
@@ -34,6 +35,7 @@ const routes: Routes = [
           { path: 'reporte-gestante', component: ReporteGestanteGeneradorComponent },
           { path: 'registrar_parto/:id_atencion', component: RegistroPartoComponent },
           { path: 'prueba', component: PrincipalNotificacionesComponent },
+          { path: 'modal', component: ModalNotificaacionesComponent },
           { path: 'atencion-puerperio', component: AtencionPuerperioComponent }
           ]
       }]
