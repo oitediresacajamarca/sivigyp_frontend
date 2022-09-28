@@ -8,6 +8,7 @@ import { TipoSeguroService } from 'src/app/servicios/maestros/tipo-seguro.servic
 import * as moment from 'moment';
 import Swal from 'sweetalert2'
 import { AtencionRegService } from 'src/app/servicios/atencion-reg/atencion-reg.service';
+import { RiesgosService } from 'src/app/servicios/riesgos/riesgos.service';
 
 @Component({
   selector: 'app-atencion-gestante',
@@ -17,7 +18,7 @@ import { AtencionRegService } from 'src/app/servicios/atencion-reg/atencion-reg.
 export class AtencionGestanteComponent implements OnInit {
 
   constructor(private estados: EstadoServiceService, private segurs: TipoSeguroService, private fb: FormBuilder, private atencion_gestante: AtencionGestanteService,
-    private atencionreg_rep: AtencionRegService) { }
+    private atencionreg_rep: AtencionRegService, private riesgos_serv: RiesgosService) { }
 
   gestante: DataGestanteInterface = this.estados.paciente
   seguro!: TipoSeguro | undefined
@@ -211,10 +212,10 @@ export class AtencionGestanteComponent implements OnInit {
   }
   CargarAtencion() {
 
-
     this.atencion_gestante.devolver_atencion(this.estados.paciente.NRO_HCL).subscribe(respuesta => {
+      this.lista_riesgos = respuesta.RIESGOS
 
-
+      console.log(respuesta)
       this.atencion = respuesta
       this.edad_gestacional_actual = moment().diff(respuesta.FUR_ATENCION, 'weeks')
       if (this.edad_gestacional_actual >= 42) {
@@ -296,7 +297,7 @@ export class AtencionGestanteComponent implements OnInit {
       this.estados.alerta = true
     }
 
-
+    this.riesgos_serv.asignar_riesgos(this.id_atencion, this.lista_riesgos).subscribe(respuesta => console.log(respuesta))
   }
   seleciono_tipo_riesgo(tipo: string) {
     this.tipo_riesgo = tipo
@@ -317,6 +318,9 @@ export class AtencionGestanteComponent implements OnInit {
   }
   eliminar_todos_riesgos() {
     this.lista_riesgos = []
+  }
+  cargar_riesgos() {
+
   }
 
   seleciono_fecha_regla() {

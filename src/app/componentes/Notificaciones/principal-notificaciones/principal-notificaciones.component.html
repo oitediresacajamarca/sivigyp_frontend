@@ -21,7 +21,7 @@
                   <th class="border-0 text-muted font-weight-normal">FECHA CITA</th>
                   <th class="border-0 text-muted font-weight-normal">FECHA ULTIMA REGLA</th>
                   <th class="border-0 text-muted font-weight-normal">RIEGOS</th>
-                  <th class="border-0 text-muted font-weight-normal">TIPO ATENCON</th>
+
                   <th class="border-0 text-muted font-weight-normal">ACCION</th>
                 </tr>
               </thead>
@@ -40,7 +40,9 @@
                   <td>{{dat.ATENCION.FUR_ATENCION|date:'dd-MM-yyyy'}}</td>
                   <td><span *ngFor="let riesgo of dat.ATENCION.RIESGOS" class="badge badge-success px-2 py-1">
                       {{riesgo.NOMBRE}}</span></td>
-                  <td>$3.9K</td>
+                      <td><button type="button" (click)="Ingresar(dat.ATENCION.HistoriaClinica.PERSONA.NRO_DOCUMENTO)" class="btn btn-primary">
+                        Ingresar</button></td>
+
                 </tr>
 
               </tbody>
@@ -51,8 +53,8 @@
                       <ul class="pagination justify-content-center">
                         <li class="footable-page-nav disabled" data-page="first"><a class="footable-page-link"
                             href="#">«</a></li>
-                        <li class="footable-page-nav disabled" data-page="prev"><a class="footable-page-link"
-                            href="#">‹</a></li>
+                        <li class="footable-page-nav disabled" data-page="prev"   (click)="previo()"><a class="footable-page-link"
+                        >‹</a></li>
                         <li class="footable-page-nav disabled" data-page="prev-limit"><a class="footable-page-link"
                             href="#">...</a></li>
                         <li *ngFor="let i of paginas" class="footable-page visible " data-page="1"><a class="footable-page-link"
@@ -60,8 +62,8 @@
 
                         <li class="footable-page-nav" data-page="next-limit"><a class="footable-page-link"
                             href="#">...</a></li>
-                        <li class="footable-page-nav" data-page="next"><a class="footable-page-link" href="#">›</a></li>
-                        <li class="footable-page-nav" data-page="last"><a class="footable-page-link" href="#">»</a></li>
+                        <li class="footable-page-nav" data-page="next" (click)="siguiente()"><a class="footable-page-link" >›</a></li>
+                        <li class="footable-page-nav" data-page="last"><a class="footable-page-link" >»</a></li>
                       </ul>
                       <div class="divider"></div><span class="label label-primary">1 of 6</span>
                     </div>

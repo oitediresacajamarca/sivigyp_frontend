@@ -1,3 +1,5 @@
+import { RIESGOS } from "../../atencion-reg/interface/atenciones-pendientes";
+
 export interface AtencionGestanteGto {
   ID_ATENCION: number;
   ID_HC: number;
@@ -18,5 +20,6 @@ export interface AtencionGestanteGto {
   ESTADO_ATENCION: number;
   OBSERVACIONES_FIN?: string;
   FEC_ACTUALIZACION?: Date;
+  RIESGOS:RIESGOS[]
 }
 
