@@ -42,6 +42,7 @@ export class AtencionGestanteComponent implements OnInit {
   ngOnInit(): void {
     this.informacion_gestante_form = this.fb.group({
       fecha_registro: new Date(),
+      fecha_atencion_prenatal:new Date(),
       fecha_ultima_regla: '',
       numero_gestaciones: '',
       recien_nacidos_termino: '',
@@ -240,6 +241,7 @@ export class AtencionGestanteComponent implements OnInit {
 
       this.informacion_gestante_form.patchValue({
         fecha_registro: respuesta.FEC_REGISTRO,
+        fecha_atencion_prenatal:respuesta.FECHA_ATENCION_PRENATAL,
         fecha_ultima_regla: respuesta.FUR_ATENCION,
         numero_gestaciones: respuesta.NRO_GESTACIONES,
         recien_nacidos_termino: respuesta.RECIEN_NACIDOS_TERMINO,

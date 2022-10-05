@@ -41,9 +41,8 @@ export class FiltrosRedMicroredIpressComponent implements OnInit {
 
   selecciono_ipress(e:any){
 
-    this.selecciono_ambito.emit(e)
 
-    console.log(e)
+    this.selecciono_ambito.emit(e)
 
   }
 

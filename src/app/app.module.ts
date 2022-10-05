@@ -49,6 +49,8 @@ import { ObservacionCitaComponent } from './componentes/atencion/atencion-gestan
 import { ReprogramarCitaComponent } from './componentes/atencion/atencion-gestante/reprogramar-cita/reprogramar-cita.component';
 import { ComparativoHisComponent } from './componentes/atencion/analisis-seguimiento/comparativo-his/comparativo-his.component';
 import { ModalNotificaacionesComponent } from './componentes/Notificaciones/modal-notificaaciones/modal-notificaaciones.component';
+import { ReporteGestantePadronComponent } from './reportes/reporte-gestante-padron/reporte-gestante-padron.component';
+import { SelectorReligionComponent } from './controles/comunes/selector-religion/selector-religion.component';
 
 
 
@@ -99,6 +101,8 @@ import { ModalNotificaacionesComponent } from './componentes/Notificaciones/moda
     ReprogramarCitaComponent,
     ComparativoHisComponent,
     ModalNotificaacionesComponent,
+    ReporteGestantePadronComponent,
+    SelectorReligionComponent,
 
   ],
   imports: [

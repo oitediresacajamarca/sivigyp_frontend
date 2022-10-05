@@ -34,11 +34,12 @@ export class SelectorIdiomaComponent implements OnInit,ControlValueAccessor {
 
   idiomas= ['CASTELLANO',
     'AIMARA',
+    'AWAJÚN',
   'AMAHUACA',
   'ARABELA',
   'ASHANINKA',
   'ASHENINKA',
-  'AWAJÚN',
+
   'BORA',
   'CASHINAHUA',
   'CHAMIKURO',

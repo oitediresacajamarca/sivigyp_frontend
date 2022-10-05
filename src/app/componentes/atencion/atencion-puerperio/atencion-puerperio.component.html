@@ -5,7 +5,7 @@
       alt="Card image cap">
 
     <div class="card-body little-profile text-center">
-      <div class="pro-img"><img src="../assets/images/users/4.jpg" alt="user" class="rounded-circle shadow-sm"
+      <div class="pro-img"><img src="../assets/images/users/2.jpg" alt="user" class="rounded-circle shadow-sm"
           width="150"></div>
       <h3 class="mb-0">{{detalle_persona.APELLIDO_PAT+ ' '+detalle_persona.APELLIDO_MAT+ ' '+detalle_persona.NOMBRES}}</h3>
       <p>dni &amp; {{detalle_persona.NRO_DOCUMENTO}}</p>
@@ -23,6 +23,104 @@
 
     </div>
   </div></div>
-  <div class="col-4"></div>
-  <div class="col-4"></div>
+  <div class="col-4">
+    <div class="card">
+
+
+      <div class="card-body">
+        <div class="card-title"><h3>DATOS DE PARTO</h3></div>
+        <div><p> FECHA PARTO :{{PARTO.FECHA_PARTO|date:'dd-MM-yyyy'}} </p></div>
+          <br>
+          <div><p> HORA PARTO :{{PARTO.HORA_PARTO|date:'hh:mm'}}</p></div>
+          <br>
+          <div><p>TIIPO PARTO:{{PARTO.TIPO_PARTO}}</p></div>
+          <br>
+          <div><p>LUGAR PARTO:{{PARTO.LUGAR_PARTO}}</p></div>
+          <br>
+          <div><p>SEXO: {{PARTO.RN_SEXO}}</p></div>
+          <br>
+          <div>PESO:{{PARTO.RN_PESO}}</div>
+
+          <br>
+          <div>EDAD GESTACIONAL:{{PARTO.EDAD_GESTACIONAL}}</div>
+
+
+      </div>
+  </div>
+  </div>
+  <div class="col-4">
+
+
+    <div class="card">
+      <div class="card-body">
+        <div class="d-md-flex no-block">
+          <h4 class="card-title">Programacion de Citas Puerperas</h4>
+
+        </div>
+        <div class="d-md-flex no-block">
+
+
+          <div class="input-group-append sep">
+            <button class="btn btn-info" type="button" (click)="generar_citas()"
+            >Generar Citas</button>
+          </div>
+
+
+
+        </div>
+        <div class="month-table">
+
+          <div class="table-responsive mt-3 mb">
+
+            <table class="table stylish-table v-middle mb-0 no-wrap">
+              <thead>
+                <tr>
+                  <th class="border-0 text-muted font-weight-normal">Numero</th>
+                  <th class="border-0 text-muted font-weight-normal">Fecha</th>
+
+                  <th class="border-0 text-muted font-weight-normal">Estado</th>
+                  <th class="border-0 text-muted font-weight-normal">Lugar</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let aten of ATENCIONES_PUERPERIO">
+                  <td style="width:50px;"><span
+                      class="round text-white d-inline-block text-center rounded-circle bg-info">{{aten.NRO_ATENCION}}</span>
+                  </td>
+
+                  <td>{{aten.FECHA_ATENCION|date:'dd-MM-yyyy'}}</td>
+
+                  <td><span
+                      [ngClass]="{'badge-danger': aten.ESTADO_PUERPERIO === 3 }"
+                      class="badge  px-2 py-1">{{aten.ESTADO_PUERPERIO|estadoAtencion}}</span></td>
+                  <td >
+                    <div class="btn-group show">
+                      <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="true">
+                        Accion
+                      </button>
+                      <div class="dropdown-menu "
+                        style="position: absolute; transform: translate3d(-44px, 35px, 0px); top: 0px; left: 0px; will-change: transform;"
+                        x-placement="bottom-start">
+                        <a class="dropdown-item" >Atender</a>
+                        <a class="dropdown-item" >No
+                          Atendido</a>
+                        <a class="dropdown-item" >Reprogramar
+                          Cita</a>
+                        <a class="dropdown-item" >Eliminar Cita</a>
+
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
 </div>

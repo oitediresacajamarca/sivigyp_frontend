@@ -25,12 +25,16 @@ export class ReporteGestanteGeneradorComponent implements OnInit {
 
 
     this.atencion_serv.reporte_gestante(this.ambito, { desde: this.desde, hasta: this.hasta }).subscribe(respuesta => {
+      sheet.addRow({ id: 1, name: 'John Doe', dob: new Date(1970, 1, 1) })
+      sheet.addRow({ id: 1, name: 'John Doe', dob: new Date(1970, 1, 1) })
+
       let encabezado = sheet.addRow({ id: 1, name: 'John Doe', dob: new Date(1970, 1, 1) })
 
       let f: Fill = {
         type: 'pattern',
         pattern: 'solid',
         fgColor: { argb: 'fc4b6c' },
+        bgColor:{argb:'000000'}
 
 
 
@@ -38,90 +42,90 @@ export class ReporteGestanteGeneradorComponent implements OnInit {
       let cell = encabezado.getCell(1)
       cell.value = 'DEPARTAMENTO';
       cell.fill = f
-      cell.font = { name: 'Arial', size: 14};
+      cell.font = { name: 'Arial', size: 12};
       cell.alignment = {horizontal: 'center' };
       cell = encabezado.getCell(2)
       cell.value = 'RED'
       cell.fill = f
 
-      cell.font = { name: 'Arial', size: 14};
+      cell.font = { name: 'Arial', size: 12};
       cell.alignment = {horizontal: 'center' };
       cell = encabezado.getCell(3)
       cell.value = 'MICRORED'
       cell.fill = f
-      cell.font = { name: 'Arial', size: 14};
+      cell.font = { name: 'Arial', size: 12};
       cell.alignment = {horizontal: 'center' };
       cell = encabezado.getCell(4)
       cell.value = 'PROVINCIA'
       cell.fill = f
-      cell.font = { name: 'Arial', size: 14};
+      cell.font = { name: 'Arial', size: 12};
       cell.alignment = {horizontal: 'center' };
       cell = encabezado.getCell(5)
       cell.value = 'DISTRITO'
       cell.fill = f
-      cell.font = { name: 'Arial', size: 14};
+      cell.font = { name: 'Arial', size: 12};
       cell.alignment = {horizontal: 'center' };
 
       cell = encabezado.getCell(6)
       cell.value = 'UBIGEO DISTRITO'
       cell.fill = f
-      cell.font = { name: 'Arial', size: 14};
+      cell.font = { name: 'Arial', size: 12};
       cell.alignment = {horizontal: 'center' };
 
       cell = encabezado.getCell(7)
       cell.value = 'CENTRO POBLADO'
       cell.fill = f
-      cell.font = { name: 'Arial', size: 14};
+      cell.font = { name: 'Arial', size: 12};
       cell.alignment = {horizontal: 'center' };
 
 
       cell = encabezado.getCell(8)
       cell.value = 'CODIGO CENTRO POBLADO'
       cell.fill = f
-      cell.font = { name: 'Arial', size: 14};
+      cell.font = { name: 'Arial', size: 12};
       cell.alignment = {horizontal: 'center' };
 
       cell = encabezado.getCell(10)
       cell.value = 'NOMBRES'
       cell.fill = f
-      cell.font = { name: 'Arial', size: 14};
+      cell.font = { name: 'Arial', size: 12};
       cell.alignment = {horizontal: 'center' };
 
       cell = encabezado.getCell(11)
       cell.value = 'APELLIDO PATERNO'
       cell.fill = f
-      cell.font = { name: 'Arial', size: 14};
+      cell.font = { name: 'Arial', size: 12};
       cell.alignment = {horizontal: 'center' };
 
       cell = encabezado.getCell(12)
       cell.value = 'APELLIDO MATERNO'
       cell.fill = f
-      cell.font = { name: 'Arial', size: 14};
+      cell.font = { name: 'Arial', size: 12};
       cell.alignment = {horizontal: 'center' };
 
       cell = encabezado.getCell(13)
       cell.value = 'FECHA NACIMIENTO'
       cell.fill = f
-      cell.font = { name: 'Arial', size: 14};
+      cell.font = { name: 'Arial', size: 12};
       cell.alignment = {horizontal: 'center' };
 
       cell = encabezado.getCell(15)
       cell.value = 'NUMERO DOCUMENTO'
       cell.fill = f
-      cell.font = { name: 'Arial', size: 14};
+      cell.font = { name: 'Arial', size: 12};
       cell.alignment = {horizontal: 'center' };
 
 
       cell = encabezado.getCell(17)
       cell.value = 'ATENCIONES'
       cell.fill = f
-      cell.font = { name: 'Arial', size: 14};
+      cell.font = { name: 'Arial', size: 12};
       cell.alignment = {horizontal: 'center' };
 
       cell = encabezado.getCell(18)
       cell.value = 'EDAD GESTACIONAL'
       cell.fill = f
-      cell.font = { name: 'Arial', size: 14};
+      cell.font = { name: 'Arial', size: 12};
       cell.alignment = {horizontal: 'center' };
 
       let border:any={

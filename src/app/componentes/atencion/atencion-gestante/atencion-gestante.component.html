@@ -8,7 +8,7 @@
           alt="Card image cap">
 
         <div class="card-body little-profile text-center">
-          <div class="pro-img"><img src="../assets/images/users/4.jpg" alt="user" class="rounded-circle shadow-sm"
+          <div class="pro-img"><img src="../assets/images/users/2.jpg" alt="user" class="rounded-circle shadow-sm"
               width="150"></div>
           <h3 class="mb-0">{{gestante.APELLIDO_PAT+ ' '+gestante.APELLIDO_MAT+ ' '+gestante.NOMBRES}}</h3>
           <p>dni &amp; {{gestante.NRO_DOCUMENTO}}</p>
@@ -76,9 +76,9 @@
 
                   <div class="form-group row">
                     <label for="fname" class="col-sm-4 text-right control-label col-form-label">Fecha de
-                      registro</label>
+                      primera atencion prenatal</label>
                     <div class="col-sm-8">
-                      <app-selector-fecha formControlName="fecha_registro"></app-selector-fecha>
+                      <app-selector-fecha formControlName="fecha_atencion_prenatal"></app-selector-fecha>
                     </div>
                   </div>
                   <div class="form-group row">
@@ -131,13 +131,7 @@
               <div class="card-body">
 
                 <form [formGroup]="informacion_para_gestacion_form">
-                  <div class="form-group row">
-                    <label for="com1" class="col-sm-4 text-right control-label col-form-label">Fec confirmación de
-                      Gestación</label>
-                    <div class="col-sm-8">
-                      <app-selector-fecha formControlName="fecha_confirmacion_gestacion"></app-selector-fecha>
-                    </div>
-                  </div>
+
 
                   <div class="form-group row">
                     <label for="com1" class="col-sm-4 text-right control-label col-form-label">Fec probable de

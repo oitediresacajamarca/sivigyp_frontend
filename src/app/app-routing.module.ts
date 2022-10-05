@@ -19,6 +19,7 @@ import { PrincipalComponent } from './layouts/principal/principal.component';
 import { InicioComponent } from './paginas/inicio/inicio.component';
 import { LoginComponent } from './paginas/login/login.component';
 import { ReporteGestanteGeneradorComponent } from './reportes/reporte-gestante-generador/reporte-gestante-generador.component';
+import { ReporteGestantePadronComponent } from './reportes/reporte-gestante-padron/reporte-gestante-padron.component';
 
 const routes: Routes = [
   {
@@ -27,7 +28,7 @@ const routes: Routes = [
       { path: 'login', component: LoginComponent },
       { path: 'principal', component: PrincipalComponent
         , children:
-          [{ path: 'inicio', component: AtencionGestanteComponent },
+          [{ path: 'inicio', component: GestantesListadoComponent },
           { path: 'registro-gestante', component: GestantesListadoComponent },
           { path: 'atencion-gestante', component: AtencionGestanteComponent },
           { path: 'NuevoPaciente', component: NuevaGestanteComponent },
@@ -36,21 +37,16 @@ const routes: Routes = [
           { path: 'registrar_parto/:id_atencion', component: RegistroPartoComponent },
           { path: 'prueba', component: PrincipalNotificacionesComponent },
           { path: 'modal', component: ModalNotificaacionesComponent },
-          { path: 'atencion-puerperio', component: AtencionPuerperioComponent }
+          { path: 'atencion-puerperio/:ID_ATENCION', component: AtencionPuerperioComponent },
+          { path: 'reporte', component: ReporteGestantePadronComponent }
           ]
       }]
   },
+  {path:'' ,component:LoginComponent}
 
-  { path: 'inicio', component: InicioComponent },
-  { path: 'registro-gestante', component: GestantesListadoComponent },
-  { path: 'atencion-puerperio', component: AtencionPuerperioComponent },
-  { path: 'Notificaciones', component: PrincipalNotificacionesComponent },
-  { path: 'usuarios/nuevo', component: NuevoUsuarioComponent },
 
-  { path: 'controles/red-selector', component: SelectorRedComponent },
-  { path: 'lista-usuarios', component: ListaUsuariosComponent },
-  { path: 'pru', component: SelectorRiesgosGestanteComponent },
-  { path: '', component: GestantesListadoComponent }
+
+
 ];
 
 @NgModule({

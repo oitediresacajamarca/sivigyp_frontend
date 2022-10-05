@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
 
   Iniciar_Sesion(){
     this.auth_serv.login(this.formGroup.value.user,this.formGroup.value.password).subscribe(respuesta=>{
-      console.log(respuesta)
+
       this.router.navigate(['/sivigyp/principal/inicio'])
     })
 

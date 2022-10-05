@@ -22,5 +22,11 @@ export class PrincipalComponent implements OnInit {
     this.rout.navigate(['reporte-gestante'],{ relativeTo: this.route})
 
   }
+  cerrar_session(){
+    console.log('diez')
+
+    this.rout.navigate(['../login'],{ relativeTo: this.route})
+  }
+
 
 }

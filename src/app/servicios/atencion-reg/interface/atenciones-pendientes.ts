@@ -3,6 +3,7 @@ export interface AtencionesPendientes {
     ID_ATENCION_REG:    number;
     ID_ATENCION:        number;
     FECHA_ATENCION_REG: Date;
+
     EDAD_GESTACIONAL:   number;
     ESTADO_ATENCION:    number;
     USU:                string;
@@ -35,6 +36,7 @@ export interface Atencion {
     FEC_ACTUALIZACION:         null;
     ESTADO_ACTUAL_GESTANTE:    null;
     HistoriaClinica:           HistoriaClinica;
+    FECHA_ATENCION_PRENATAL:Date;
     RIESGOS:RIESGOS[];
 }
 

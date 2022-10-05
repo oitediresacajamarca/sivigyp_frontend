@@ -27,6 +27,7 @@ export class SelectorIpressComponent implements OnInit {
 
   }
   seleciono_ipress(e:any){
+
     this.selecciono_ambito.emit(e)
 
   }

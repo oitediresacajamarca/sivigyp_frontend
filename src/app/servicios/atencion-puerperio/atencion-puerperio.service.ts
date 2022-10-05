@@ -1,0 +1,20 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
+import { AtencionPuerperioInterface } from './interface/atencion-puerperio-interface';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AtencionPuerperioService {
+
+  constructor(private http: HttpClient) { }
+  cargar_aatenciones_puerperio(ID_ATENCION: string) {
+    return this.http.get<AtencionPuerperioInterface>(environment.url_api_node + 'atencion-gestante/atencion_puerperio_parto/' + ID_ATENCION)
+  }
+
+  generar_citas(ID_ATENCION_PARTO:number){
+    return this.http.post(environment.url_api_node+'atencion-puerperio/crear_citas',{ID_ATENCION_PARTO})
+  }
+
+}

@@ -1,5 +1,6 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormArray, FormGroup } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AtencionPartoService } from 'src/app/servicios/atencion-parto/atencion-parto.service';
@@ -34,7 +35,10 @@ export class RegistroPartoComponent implements OnInit {
       RN_PESO: '',
       USU: '',
       FEC_REGISTRO: '',
-      EDAD_GESTACIONAL: ''
+      EDAD_GESTACIONAL: '',
+      NACIMIENTOS:this.fb.array([this.fb.group({RN_VIVO: '',
+      RN_SEXO: '',
+      RN_PESO: ''})])
     })
 
     this.activa_route.params.subscribe(params => {
@@ -45,12 +49,12 @@ export class RegistroPartoComponent implements OnInit {
 
   }
   REGISTRAR_PARTO() {
+console.log(this.formPartoReg.value)
 
-
-    this.atencion_parto_serv.Registrar_Parto(this.ID_ATENCION, this.formPartoReg.value).subscribe(respuesta => {
+  /*  this.atencion_parto_serv.Registrar_Parto(this.ID_ATENCION, this.formPartoReg.value).subscribe(respuesta => {
       this.CARGAR_PARTOS()
 
-    }, error => alert(JSON.stringify(error)))
+    }, error => alert(JSON.stringify(error)))*/
 
   }
   CARGAR_PARTOS(){
@@ -58,6 +62,16 @@ export class RegistroPartoComponent implements OnInit {
     this.PARTOS=respuesta
     }
     )
+  }
+  get NACIMIENTOS_FORM(){
+    return this.formPartoReg.controls['NACIMIENTOS'] as FormArray
+  }
+
+  async agregar_nacimiento(){
+    this.NACIMIENTOS_FORM.push(this.fb.group({RN_VIVO: '',
+    RN_SEXO: '',
+    RN_PESO: ''}))
+
   }
 
 }

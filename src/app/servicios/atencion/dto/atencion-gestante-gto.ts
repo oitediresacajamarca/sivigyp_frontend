@@ -7,6 +7,7 @@ export interface AtencionGestanteGto {
   FECHA: Date;
   FEC_REGISTRO: Date;
   FUR_ATENCION: Date;
+  FECHA_ATENCION_PRENATAL:Date,
   NRO_GESTACIONES: number;
   TIPO_PARIEDAD: string;
   RECIEN_NACIDOS_TERMINO: number;
