@@ -9,11 +9,11 @@
         <div class="col-sm-12 col-xs-12">
           <form [formGroup]="formPartoReg">
             <div class="form-group">
-              <label >FECHA DE PARTO</label>
+              <label>FECHA DE PARTO</label>
               <app-selector-fecha formControlName="FECHA_PARTO"></app-selector-fecha>
             </div>
             <div class="form-group">
-              <label >HORA DE PARTO</label>
+              <label>HORA DE PARTO</label>
               <input type="time" class="form-control" value="22:33:00" formControlName="HORA_PARTO">
 
             </div>
@@ -55,88 +55,84 @@
 
               </select>
             </div>
-            <div  formArrayName="NACIMIENTOS">
-            <button (click)="agregar_nacimiento()" class="btn btn-primary"> AGREGAR</button>
+            <div formArrayName="NACIMIENTOS">
+              <button (click)="agregar_nacimiento()" class="btn btn-primary"> AGREGAR</button>
 
-            <ul class="nav nav-tabs mb-3">
-              <li class="nav-item" *ngFor="let o of NACIMIENTOS_FORM.controls;let i=index ">
-                  <a href="#hij{{i}}" data-toggle="tab" aria-expanded="false" class="nav-link ">
-                      <i class="mdi mdi-home-variant d-lg-none d-block mr-1"></i>
-                      <span class="d-none d-lg-block">Home</span>
+              <ul class="nav nav-tabs mb-3">
+                <li class="nav-item" *ngFor="let o of NACIMIENTOS_FORM.controls;let i=index ">
+                  <a href="#hij{{i}}" data-toggle="tab" aria-expanded="false" class="nav-link " (click)="nacimiento=i">
+                    <i class="mdi mdi-home-variant d-lg-none d-block mr-1"></i>
+                    <span class="d-none d-lg-block">Recien Nacido {{i+1}}</span>
                   </a>
-              </li>
+                </li>
 
-          </ul>
-          <div class="tab-content">
-            <ng-container *ngFor="let o of NACIMIENTOS_FORM.controls;let i=index ">
+              </ul>
+              <div class="tab-content">
+                <ng-container *ngFor="let o of NACIMIENTOS_FORM.controls;let i=index ">
 
-                <div class="tab-pane" id="hij{{i}}">
-
-
-                  <div [formGroupName]="i">
+                  <div class="tab-pane active" id="hij{{i}}" [ngClass]="{active: nacimiento===i}">
 
 
+                    <div [formGroupName]="i">
 
 
+                      <div class="card-body">
+                        <h4 class="card-title"> VIVO</h4>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input material-inputs" type="radio" id="RN_VIVO_SI{{i}}"
+                            formControlName="RN_VIVO" value="1">
+                          <label class="form-check-label" for="RN_VIVO_SI{{i}}">SI</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input material-inputs" type="radio" id="RN_VIVO_NO{{i}}"
+                            formControlName="RN_VIVO" value="0">
+                          <label class="form-check-label" for="RN_VIVO_NO{{i}}">NO</label>
+                        </div>
 
 
-
-
-                    <div class="card-body">
-                      <h4 class="card-title"> VIVO</h4>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input material-inputs" type="radio" name="RN_VIVO" id="RN_VIVO_SI" formControlName="RN_VIVO"
-                          value="1">
-                        <label class="form-check-label" for="RN_VIVO_SI">SI</label>
                       </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input material-inputs" type="radio" name="RN_VIVO" id="RN_VIVO_NO" formControlName="RN_VIVO"
-                          value="0">
-                        <label class="form-check-label" for="RN_VIVO_NO">NO</label>
+                      <div class="card-body">
+                        <h4 class="card-title"> SEXO</h4>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input material-inputs" type="radio" id="RN_SEXOM{{i}}"
+                            formControlName="RN_SEXO" value="1">
+                          <label class="form-check-label" for="RN_SEXOM{{i}}">MASCULINO</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input material-inputs" type="radio" id="RN_SEXOF{{i}}"
+                            formControlName="RN_SEXO" value="2">
+                          <label class="form-check-label" for="RN_SEXOF{{i}}">FEMENINO</label>
+                        </div>
+
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">PESO</label>
+                        <input class="form-control" formControlName="RN_PESO">
                       </div>
 
-                    <div class="card-body">
-                      <h4 class="card-title"> SEXO</h4>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input material-inputs" type="radio" name="RN_SEXO" id="inlineRadio1" formControlName="RN_SEXO"
-                          value="1">
-                        <label class="form-check-label" for="inlineRadio1">MASCULINO</label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input material-inputs" type="radio" name="RN_SEXO" id="inlineRadio2" formControlName="RN_SEXO"
-                          value="2">
-                        <label class="form-check-label" for="inlineRadio2">FEMENINO</label>
-                      </div>
-
-                    </div>
-                  </div>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">PESO</label>
-                      <input class="form-control" formControlName="RN_PESO">
                     </div>
 
                   </div>
 
-                </div>
 
 
 
 
 
 
-
-                      </ng-container>
-
+                </ng-container>
 
 
 
-          </div>
+
+              </div>
 
 
-          </div>
+            </div>
 
 
-            <button type="submit" class="btn btn-success waves-effect waves-light mr-2" (click)="REGISTRAR_PARTO()">REGISTRAR</button>
+            <button type="submit" class="btn btn-success waves-effect waves-light mr-2"
+              (click)="REGISTRAR_PARTO()">REGISTRAR</button>
             <button type="submit" class="btn btn-inverse waves-effect waves-light">CANCELAR</button>
           </form>
         </div>
@@ -167,7 +163,8 @@
               <tbody>
                 <tr *ngFor="let data of PARTOS">
                   <td>
-                    <h6 class="font-weight-medium mb-0">{{data.FECHA_PARTO|date:'dd-MM-yyyy'}}</h6><small class="text-muted">{{data.HORA_PARTO|date:'hh:mm'}}</small>
+                    <h6 class="font-weight-medium mb-0">{{data.FECHA_PARTO|date:'dd-MM-yyyy'}}</h6><small
+                      class="text-muted">{{data.HORA_PARTO|date:'hh:mm'}}</small>
                   </td>
                   <td style="width:50px;"><span class=" text-white d-inline-block text-center ">{{data.RN_SEXO}}</span>
                   </td>
@@ -176,7 +173,9 @@
                   </td>
 
                   <td>
-                    <button type="button" class="btn waves-effect waves-light btn-success"[routerLink]="['/sivigyp/principal/atencion-puerperio',ID_ATENCION]">Ir Atencion Puerperio</button>
+                    <button type="button" class="btn waves-effect waves-light btn-success"
+                      [routerLink]="['/sivigyp/principal/atencion-puerperio',ID_ATENCION]">Ir Atencion
+                      Puerperio</button>
                   </td>
 
                 </tr>

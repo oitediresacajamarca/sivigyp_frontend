@@ -49,31 +49,31 @@ export class ReporteGestantePadronComponent implements OnInit {
       cell.alignment = { horizontal: 'center' };
 
       cell = encabezado.getCell(2)
-      cell.value = 'MICRORED';
+      cell.value = 'PROVINCIA';
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
       cell = encabezado.getCell(3)
-      cell.value = 'RENIPRESS';
+      cell.value = 'DISTRITO';
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
       cell = encabezado.getCell(4)
-      cell.value = 'IPRESS';
+      cell.value = 'CENTRO POBLADO';
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
       cell = encabezado.getCell(5)
-      cell.value = 'FECHA ATENCION';
+      cell.value = 'IPRESS';
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
       cell = encabezado.getCell(6)
-      cell.value = 'NUMERO DOCUMENTO';
+      cell.value = 'RENIPRESS';
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
@@ -95,6 +95,92 @@ export class ReporteGestantePadronComponent implements OnInit {
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
+
+      cell = encabezado.getCell(10)
+      cell.value = 'NOMBRES';
+      cell.fill = f
+      cell.font = { name: 'Arial', size: 12 };
+      cell.alignment = { horizontal: 'center' };
+
+      cell = encabezado.getCell(11)
+      cell.value = 'FECHA NACIMIENTO';
+      cell.fill = f
+      cell.font = { name: 'Arial', size: 12 };
+      cell.alignment = { horizontal: 'center' };
+
+      cell = encabezado.getCell(12)
+      cell.value = 'EDAD';
+      cell.fill = f
+      cell.font = { name: 'Arial', size: 12 };
+      cell.alignment = { horizontal: 'center' };
+
+      cell = encabezado.getCell(13)
+      cell.value = 'ESTADO CIVIL';
+      cell.fill = f
+      cell.font = { name: 'Arial', size: 12 };
+      cell.alignment = { horizontal: 'center' };
+
+      cell = encabezado.getCell(14)
+      cell.value = 'DIRECCION';
+      cell.fill = f
+      cell.font = { name: 'Arial', size: 12 };
+      cell.alignment = { horizontal: 'center' };
+
+
+      cell = encabezado.getCell(15)
+      cell.value = 'TIPO SEGURO';
+      cell.fill = f
+      cell.font = { name: 'Arial', size: 12 };
+      cell.alignment = { horizontal: 'center' };
+
+      cell = encabezado.getCell(16)
+      cell.value = 'NIVEL DE INSTRUCCCION';
+      cell.fill = f
+      cell.font = { name: 'Arial', size: 12 };
+      cell.alignment = { horizontal: 'center' };
+
+
+      cell = encabezado.getCell(17)
+      cell.value = 'BENEFICIARIO JUNTOS';
+      cell.fill = f
+      cell.font = { name: 'Arial', size: 12 };
+      cell.alignment = { horizontal: 'center' };
+
+      cell = encabezado.getCell(18)
+      cell.value = 'IDIOMA';
+      cell.fill = f
+      cell.font = { name: 'Arial', size: 12 };
+      cell.alignment = { horizontal: 'center' };
+
+      cell = encabezado.getCell(19)
+      cell.value = 'FECHA ULTIMA REGLA';
+      cell.fill = f
+      cell.font = { name: 'Arial', size: 12 };
+      cell.alignment = { horizontal: 'center' };
+
+
+      cell = encabezado.getCell(20)
+      cell.value = 'FECHA REGISTRO';
+      cell.fill = f
+      cell.font = { name: 'Arial', size: 12 };
+      cell.alignment = { horizontal: 'center' };
+
+
+      cell = encabezado.getCell(21)
+      cell.value = 'FECHA PRIMERA APP';
+      cell.fill = f
+      cell.font = { name: 'Arial', size: 12 };
+      cell.alignment = { horizontal: 'center' };
+
+
+      cell = encabezado.getCell(22)
+      cell.value = 'FECHA PRIMERA APP';
+      cell.fill = f
+      cell.font = { name: 'Arial', size: 12 };
+      cell.alignment = { horizontal: 'center' };
+
+
+
 
       let col = sheet.getColumn(1)
       col.width = 20
@@ -119,6 +205,33 @@ export class ReporteGestantePadronComponent implements OnInit {
       col = sheet.getColumn(10)
       col.width = 20
 
+
+      col = sheet.getColumn(11)
+      col.width = 20
+      col = sheet.getColumn(12)
+      col.width = 20
+      col = sheet.getColumn(13)
+      col.width = 20
+
+
+      col = sheet.getColumn(14)
+      col.width = 20
+      col = sheet.getColumn(15)
+      col.width = 20
+      col = sheet.getColumn(16)
+      col.width = 20
+
+
+      col = sheet.getColumn(17)
+      col.width = 20
+      col = sheet.getColumn(18)
+      col.width = 20
+      col = sheet.getColumn(19)
+      col.width = 20
+
+      col = sheet.getColumn(20)
+      col.width = 20
+
       let row_it
 
       reporte.map(registro => {
@@ -128,29 +241,84 @@ export class ReporteGestantePadronComponent implements OnInit {
         cell.value = registro.RED
 
         cell = row_it.getCell(2)
-        cell.value = registro.MICRORED
+        cell.value = registro.PROVINCIA
 
         cell = row_it.getCell(3)
-        cell.value = registro.RENIPRESS
+        cell.value = registro.DISTRITO
 
 
         cell = row_it.getCell(4)
-        cell.value = registro.IPRESS
+        cell.value = registro.CP
 
         cell = row_it.getCell(5)
-        cell.value = registro.FECHA_ATENCION
+        cell.value = registro.IPRESS
 
         cell = row_it.getCell(6)
-        cell.value = registro.NUMERO_DOCUMENTO
+        cell.value = registro.COD_IPRESS
 
         cell = row_it.getCell(7)
         cell.value = registro.APELLIDO_PATERNO
 
-        cell = row_it.getCell(8)
+        cell = row_it.getCell(9)
         cell.value = registro.APELLIDO_MATERNO
 
         cell = row_it.getCell(10)
         cell.value = registro.NOMBRES
+
+        cell = row_it.getCell(11)
+        cell.value = registro.FECHA_NAC
+
+        cell = row_it.getCell(12)
+        cell.value = registro.EDAD
+
+
+        cell = row_it.getCell(13)
+        cell.value = registro.ESTADO_CIVIL
+
+        cell = row_it.getCell(14)
+        cell.value = registro.TIPO_SEGURO
+
+        cell = row_it.getCell(15)
+        cell.value = registro.NRO_DOCUMENTO
+
+        cell = row_it.getCell(16)
+        cell.value = registro.ESTADO_CIVIL
+
+        cell = row_it.getCell(17)
+        cell.value = registro.DIRECCION
+
+        cell = row_it.getCell(18)
+        cell.value = registro.TIPO_SEGURO
+
+        cell = row_it.getCell(19)
+        cell.value = registro.GRADO_INSTRUCION
+
+        cell = row_it.getCell(20)
+        cell.value = registro.NOMBRES
+
+        cell = row_it.getCell(21)
+        cell.value = registro.NOMBRES
+
+        cell = row_it.getCell(22)
+        cell.value = registro.FUR_ATENCION
+
+        cell = row_it.getCell(23)
+        cell.value = registro.FECHA_POSIBLE_PARTO
+
+        cell = row_it.getCell(24)
+        cell.value = registro.FEC_REGISTRO
+
+        cell = row_it.getCell(25)
+        cell.value = registro.FECHA_PAP
+
+        cell = row_it.getCell(26)
+        cell.value = registro.NRO_GESTACIONES
+
+        cell = row_it.getCell(27)
+        cell.value = registro.HIJOS_VIVOS
+
+        cell = row_it.getCell(28)
+        cell.value = registro.RIESGOS
 
 
       })

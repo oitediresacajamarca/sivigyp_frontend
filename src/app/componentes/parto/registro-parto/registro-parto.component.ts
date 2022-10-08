@@ -17,6 +17,7 @@ export class RegistroPartoComponent implements OnInit {
 
   ID_ATENCION!: number;
   PARTOS:any[]=[]
+  nacimiento=0;
 
 
 
@@ -42,6 +43,7 @@ export class RegistroPartoComponent implements OnInit {
     })
 
     this.activa_route.params.subscribe(params => {
+
      this.ID_ATENCION= params['id_atencion'];
 
     })
@@ -49,12 +51,12 @@ export class RegistroPartoComponent implements OnInit {
 
   }
   REGISTRAR_PARTO() {
-console.log(this.formPartoReg.value)
 
-  /*  this.atencion_parto_serv.Registrar_Parto(this.ID_ATENCION, this.formPartoReg.value).subscribe(respuesta => {
+
+  this.atencion_parto_serv.Registrar_Parto(this.ID_ATENCION, this.formPartoReg.value).subscribe(respuesta => {
       this.CARGAR_PARTOS()
 
-    }, error => alert(JSON.stringify(error)))*/
+    }, error => alert(JSON.stringify(error)))
 
   }
   CARGAR_PARTOS(){

@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataGestanteInterface } from 'src/app/interface/data-gestante-interface';
 import { EstadoServiceService } from 'src/app/servicios/estado-service.service';
+import { PersonaServiceInterface } from 'src/app/servicios/persona-service/persona-service-interface';
 import { PersonaService } from 'src/app/servicios/persona.service';
 
 
@@ -113,6 +114,7 @@ export class GestantesListadoComponent implements OnInit {
   cargar_data_por_ambito_actual_pagina(pagina:any) {
 
     this.persona_s.buscar_lista_persona_en_ipress_pagina(this.estados_s.devolver_ambito_actual().cod_ambito,pagina).subscribe(data => {
+
 
       this.data_encontrada = data.datos
 

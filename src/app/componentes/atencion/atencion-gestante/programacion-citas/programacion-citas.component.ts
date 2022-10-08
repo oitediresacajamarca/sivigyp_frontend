@@ -88,6 +88,7 @@ export class ProgramacionCitasComponent implements OnInit {
 
   Cargar_Atencion_Reg() {
     this.atencion_reg_service.cargar_atencion_reg(this.atencion.ID_ATENCION).subscribe(respuesta => {
+      console.log(respuesta)
       this.atenciones_reg = respuesta
     })
 
@@ -133,11 +134,11 @@ export class ProgramacionCitasComponent implements OnInit {
 
 
   Abrir_Dialogo_Reprogamar(ID_ATENCION_REG: number, data: any) {
-    this.dialog_reprogra.ID_CITA_REG=ID_ATENCION_REG
+    this.dialog_reprogra.ID_CITA_REG = ID_ATENCION_REG
     this.dialog_reprogra.mostrar = true
   }
 
-  recargar_atenciones_reg(){
+  recargar_atenciones_reg() {
     this.Cargar_Atencion_Reg()
 
   }

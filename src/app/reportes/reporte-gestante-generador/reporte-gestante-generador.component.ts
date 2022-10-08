@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AtencionRegService } from 'src/app/servicios/atencion-reg/atencion-reg.service';
 import { Fill, Workbook } from 'exceljs';
 import * as fs from 'file-saver';
+import { SeguimientoSiviService } from 'src/app/servicios/reportes/seguimiento/seguimiento-sivi.service';
 
 @Component({
   selector: 'app-reporte-gestante-generador',
@@ -10,7 +11,7 @@ import * as fs from 'file-saver';
 })
 export class ReporteGestanteGeneradorComponent implements OnInit {
 
-  constructor(private atencion_serv: AtencionRegService) { }
+  constructor(private atencion_serv: AtencionRegService, private repseg:SeguimientoSiviService) { }
   ambito: string = ''
   desde!: Date
   hasta!: Date
@@ -24,7 +25,7 @@ export class ReporteGestanteGeneradorComponent implements OnInit {
 
 
 
-    this.atencion_serv.reporte_gestante(this.ambito, { desde: this.desde, hasta: this.hasta }).subscribe(respuesta => {
+    this.repseg.cargar_seguimiento().subscribe(respuesta => {
       sheet.addRow({ id: 1, name: 'John Doe', dob: new Date(1970, 1, 1) })
       sheet.addRow({ id: 1, name: 'John Doe', dob: new Date(1970, 1, 1) })
 
@@ -174,65 +175,7 @@ export class ReporteGestanteGeneradorComponent implements OnInit {
 
       let row_it
 
-      respuesta.forEach(registro => {
-        row_it = sheet.addRow({ id: 1, name: 'John Doe', dob: new Date(1970, 1, 1) })
-        cell = row_it.getCell(1)
-        cell.value = 'CAJAMARCA'
-        cell = row_it.getCell(2)
-        cell.value = registro.ATENCION.HistoriaClinica.IPRESS.MICRORED.RED.NOMBRE
 
-        cell = row_it.getCell(3)
-        cell.value = registro.ATENCION.HistoriaClinica.IPRESS.MICRORED.NOMBRE
-
-
-        cell = row_it.getCell(4)
-        cell.value = registro.ATENCION.HistoriaClinica.PERSONA.DISTRITO.PROVINCIA.NOMBRE
-
-        cell = row_it.getCell(5)
-        cell.value = registro.ATENCION.HistoriaClinica.PERSONA.DISTRITO.NOMBRE
-
-        cell = row_it.getCell(6)
-        cell.value = registro.ATENCION.HistoriaClinica.PERSONA.DISTRITO.ID_DISTRITO
-        cell = row_it.getCell(7)
-        cell.value = registro.ATENCION.HistoriaClinica.CENTRO_POBLADO.NOMBRE
-
-        cell = row_it.getCell(8)
-        cell.value = registro.ATENCION.HistoriaClinica.ID_CENTRO_POBLADO
-
-
-        cell = row_it.getCell(10)
-        cell.value = registro.ATENCION.HistoriaClinica.PERSONA.NOMBRES
-
-        cell = row_it.getCell(11)
-        cell.value = registro.ATENCION.HistoriaClinica.PERSONA.APELLIDO_PAT
-
-        cell = row_it.getCell(12)
-        cell.value = registro.ATENCION.HistoriaClinica.PERSONA.APELLIDO_MAT
-
-        cell = row_it.getCell(13)
-        cell.value = registro.ATENCION.HistoriaClinica.PERSONA.FECHA_NAC
-
-
-        cell = row_it.getCell(15)
-        cell.value = registro.ATENCION.HistoriaClinica.PERSONA.NRO_DOCUMENTO
-
-
-        cell = row_it.getCell(17)
-        cell.value = registro.FECHA_ATENCION_REG
-
-        cell = row_it.getCell(18)
-        cell.value = registro.EDAD_GESTACIONAL
-
-
-
-
-
-
-
-
-
-
-      })
       console.log(respuesta)
 
       workbook.xlsx.writeBuffer().then((data) => {

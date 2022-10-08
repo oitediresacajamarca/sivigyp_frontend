@@ -40,20 +40,20 @@
                   <th class="border-0 text-muted font-weight-normal">Provincia</th>
                   <th class="border-0 text-muted font-weight-normal">Distrito</th>
                   <th class="border-0 text-muted font-weight-normal">Residencia</th>
-                  <th class="border-0 text-muted font-weight-normal">Prioridad</th>
+
                   <th class="border-0 text-muted font-weight-normal">Acciones</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let data of data_encontrada;let i=index" (click)="visualizar_detalle(data,i)"
-                  [ngClass]="{ 'bg-secondary': selected_row === i ,'seleccionado': selected_row === i}">
+                  [ngClass]="{ 'bg-success': selected_row === i ,'seleccionado': selected_row === i}">
                   <td style="width:50px;"><span
                       class="round text-white d-inline-block text-center rounded-circle bg-info">S</span>
                   </td>
                   <td>
-                    <h6 class="font-weight-medium mb-0">{{data.APELLIDO_PAT+' '+data.APELLIDO_MAT+' '+data.NOMBRES}}
-                    </h6><small class="text-muted">
-                      Designer</small>
+                    <h6 class="font-weight-medium mb-0"    [ngClass]="{'seleccionado': selected_row === i}">{{data.APELLIDO_PAT+' '+data.APELLIDO_MAT+' '+data.NOMBRES}}
+                    </h6><small class="text-muted">{{data.ID_PERSONA}}-{{data.ID_HC}}
+                   </small>
                   </td>
 
                   <td>{{data.NRO_DOCUMENTO}}</td>
@@ -62,8 +62,8 @@
                   <td>{{data.provincia.NOMBRE}}</td>
                   <td>{{data.distrito.NOMBRE}}</td>
                   <td>{{data.DIRECCION}}</td>
-                  <td><span class="badge badge-success px-2 py-1">Low</span></td>
-                  <td>$3.9K</td>
+
+                  <td></td>
                 </tr>
 
               </tbody>
