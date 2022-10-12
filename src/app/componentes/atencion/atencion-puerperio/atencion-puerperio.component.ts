@@ -60,6 +60,12 @@ export class AtencionPuerperioComponent implements OnInit {
       this.cargarAtencionPuerperio()
     })
   }
+  ATENDER( id_atencion:number){
+    this.atencion_serv.ATENDER(id_atencion).subscribe(respuesta=>{
+      this.cargarAtencionPuerperio()
+    })
+
+  }
 
 
 }

@@ -9,6 +9,6 @@ export class MicroredService {
 
   constructor(private http: HttpClient) { }
   cargar_microred_segun_microred(id_red: any) {
-    return this.http.get<any[]>(environment.url_api_django + 'maestros/microred/?search=' + id_red)
+    return this.http.get<any[]>(environment.url_api_node + 'microred/red/'+ id_red)
   }
 }

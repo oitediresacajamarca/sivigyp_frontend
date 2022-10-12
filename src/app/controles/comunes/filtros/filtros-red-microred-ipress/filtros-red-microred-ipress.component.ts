@@ -18,6 +18,12 @@ export class FiltrosRedMicroredIpressComponent implements OnInit {
   selecciono_ambito:EventEmitter<any>=new EventEmitter()
 
 
+  @Output('selecciono_ambito_2')
+  selecciono_ambito_2:EventEmitter<any>=new EventEmitter()
+
+  ambito_filtrado={ID_RED:0,ID_MICRORED:0,ID_IPRESS:0}
+
+
   ambito:string=''
 
   constructor() { }
@@ -29,6 +35,10 @@ export class FiltrosRedMicroredIpressComponent implements OnInit {
 
 
     this.microred.cargar_microred_por_red(e)
+    this.ambito_filtrado.ID_RED=e
+    this.ambito_filtrado.ID_MICRORED=0
+    this.ambito_filtrado.ID_IPRESS=0
+    this.selecciono_ambito_2.emit(this.ambito_filtrado)
 
   }
   seleciono_microred(e:any)
@@ -37,12 +47,20 @@ export class FiltrosRedMicroredIpressComponent implements OnInit {
 
     this.ipress.cargar_ipress_por_microred(e)
 
+    this.ambito_filtrado.ID_MICRORED=e
+    this.ambito_filtrado.ID_IPRESS=0
+    this.selecciono_ambito_2.emit(this.ambito_filtrado)
+
   }
 
   selecciono_ipress(e:any){
 
 
     this.selecciono_ambito.emit(e)
+
+
+    this.ambito_filtrado.ID_IPRESS=e
+    this.selecciono_ambito_2.emit(this.ambito_filtrado)
 
   }
 

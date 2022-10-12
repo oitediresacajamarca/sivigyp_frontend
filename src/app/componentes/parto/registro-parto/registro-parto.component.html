@@ -17,9 +17,15 @@
               <input type="time" class="form-control" value="22:33:00" formControlName="HORA_PARTO">
 
             </div>
+
+            <div class="form-group">
+              <label for="exampleInputPassword1">LUGAR DE PARTO</label>
+              <app-filtros-red-microred-ipress></app-filtros-red-microred-ipress>
+            </div>
+
             <div class="form-group">
               <label for="exampleInputPassword1">TIPO DE PARTO</label>
-              <select class="form-control" id="exampleFormControlSelect1" formControlName="TIPO_PARTO">
+              <select class="form-control" id="exampleFormControlSelect1" formControlName="TIPO_PARTO" (change)="ABORTO()">
                 <option value="1">VAGINAL</option>
                 <option value="2">CESAREA</option>
                 <option value="3">ABORTO</option>
@@ -28,7 +34,7 @@
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">TIPO DE RECIEN NACIDO</label>
-              <select class="form-control" id="exampleFormControlSelect1" formControlName="TIPO_RECIEN_NACIDO">
+              <select class="form-control" id="exampleFormControlSelect1" formControlName="TIPO_RECIEN_NACIDO" *ngIf="this.formPartoReg.value.TIPO_PARTO!=3" >
                 <option value="1">A TERMINO</option>
                 <option value="2">PREMATURO</option>
                 <option value="4">POST TERMINO</option>
@@ -42,7 +48,7 @@
 
             <div class="form-group">
               <label for="exampleInputPassword1">TIPO DE ATENCION PARTO</label>
-              <select class="form-control" formControlName="ID_ATENDIO_PARTO">
+              <select class="form-control" formControlName="ID_ATENDIO_PARTO" *ngIf="this.formPartoReg.value.TIPO_PARTO!=3" >
 
                 <option value="1">OBSTETRA</option>
                 <option value="2">GINECO OBSTETRA</option>
@@ -56,7 +62,7 @@
               </select>
             </div>
             <div formArrayName="NACIMIENTOS">
-              <button (click)="agregar_nacimiento()" class="btn btn-primary"> AGREGAR</button>
+              <button (click)="agregar_nacimiento()" class="btn btn-primary" [disabled]="this.formPartoReg.value.TIPO_PARTO==3"> AGREGAR</button>
 
               <ul class="nav nav-tabs mb-3">
                 <li class="nav-item" *ngFor="let o of NACIMIENTOS_FORM.controls;let i=index ">
@@ -67,7 +73,7 @@
                 </li>
 
               </ul>
-              <div class="tab-content">
+              <div class="tab-content" *ngIf="this.formPartoReg.value.TIPO_PARTO!=3">
                 <ng-container *ngFor="let o of NACIMIENTOS_FORM.controls;let i=index ">
 
                   <div class="tab-pane active" id="hij{{i}}" [ngClass]="{active: nacimiento===i}">

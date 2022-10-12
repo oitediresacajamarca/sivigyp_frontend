@@ -46,7 +46,7 @@
               <td>{{aten.FECHA_ATENCION_REG| date: 'dd/MM/yyyy'}}</td>
               <td>{{aten.EDAD_GESTACIONAL}}</td>
               <td><span
-                  [ngClass]="{'badge-danger': aten.ESTADO_ATENCION === 3,'badge-success': aten.ESTADO_ATENCION === 2, 'badge-warning' : aten.ESTADO_ATENCION === 1 ,'badge-success': aten.ESTADO_ATENCION === 5}"
+                  [ngClass]="{'badge-danger': aten.ESTADO_ATENCION === 3,'badge-success': aten.ESTADO_ATENCION === 2 || aten.ESTADO_ATENCION === 5 , 'badge-warning' : aten.ESTADO_ATENCION === 1 }"
                   class="badge  px-2 py-1">{{aten.ESTADO_ATENCION|estadoAtencion}}</span></td>
 
                   <td>{{aten.LUGAR}}</td>

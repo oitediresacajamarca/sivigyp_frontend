@@ -16,8 +16,9 @@ export class RegistroPartoComponent implements OnInit {
   formPartoReg!: FormGroup
 
   ID_ATENCION!: number;
-  PARTOS:any[]=[]
-  nacimiento=0;
+  PARTOS: any[] = []
+  nacimiento = 0;
+  TIPO_PARTO = 0;
 
 
 
@@ -37,14 +38,16 @@ export class RegistroPartoComponent implements OnInit {
       USU: '',
       FEC_REGISTRO: '',
       EDAD_GESTACIONAL: '',
-      NACIMIENTOS:this.fb.array([this.fb.group({RN_VIVO: '',
-      RN_SEXO: '',
-      RN_PESO: ''})])
+      NACIMIENTOS: this.fb.array([this.fb.group({
+        RN_VIVO: '',
+        RN_SEXO: '',
+        RN_PESO: ''
+      })])
     })
 
     this.activa_route.params.subscribe(params => {
 
-     this.ID_ATENCION= params['id_atencion'];
+      this.ID_ATENCION = params['id_atencion'];
 
     })
     this.CARGAR_PARTOS()
@@ -53,26 +56,34 @@ export class RegistroPartoComponent implements OnInit {
   REGISTRAR_PARTO() {
 
 
-  this.atencion_parto_serv.Registrar_Parto(this.ID_ATENCION, this.formPartoReg.value).subscribe(respuesta => {
+    this.atencion_parto_serv.Registrar_Parto(this.ID_ATENCION, this.formPartoReg.value).subscribe(respuesta => {
       this.CARGAR_PARTOS()
 
     }, error => alert(JSON.stringify(error)))
 
   }
-  CARGAR_PARTOS(){
-    this.atencion_parto_serv.Cargar_Partos(this.ID_ATENCION).subscribe(respuesta=>{console.log(respuesta)
-    this.PARTOS=respuesta
+  CARGAR_PARTOS() {
+    this.atencion_parto_serv.Cargar_Partos(this.ID_ATENCION).subscribe(respuesta => {
+      console.log(respuesta)
+      this.PARTOS = respuesta
     }
     )
   }
-  get NACIMIENTOS_FORM(){
+  get NACIMIENTOS_FORM() {
     return this.formPartoReg.controls['NACIMIENTOS'] as FormArray
   }
 
-  async agregar_nacimiento(){
-    this.NACIMIENTOS_FORM.push(this.fb.group({RN_VIVO: '',
-    RN_SEXO: '',
-    RN_PESO: ''}))
+  async agregar_nacimiento() {
+    this.NACIMIENTOS_FORM.push(this.fb.group({
+      RN_VIVO: '',
+      RN_SEXO: '',
+      RN_PESO: ''
+    }))
+
+  }
+  ABORTO() {
+    this.TIPO_PARTO = this.formPartoReg.value.TIPO_PARTO
+
 
   }
 

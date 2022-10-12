@@ -60,19 +60,19 @@
         <div class="d-md-flex no-block">
 
 
-          <div class="input-group-append sep">
+          <!-- <div class="input-group-append sep">
             <button class="btn btn-info" type="button" (click)="generar_citas()"
             >Generar Citas</button>
-          </div>
+          </div> -->
 
 
 
         </div>
         <div class="month-table">
 
-          <div class="table-responsive mt-3 mb">
+          <div class="table-responsive mt-3 mb caja">
 
-            <table class="table stylish-table v-middle mb-0 no-wrap">
+            <table class="table stylish-table v-middle mb-0 no-wrap ">
               <thead>
                 <tr>
                   <th class="border-0 text-muted font-weight-normal">Numero</th>
@@ -102,12 +102,12 @@
                       <div class="dropdown-menu "
                         style="position: absolute; transform: translate3d(-44px, 35px, 0px); top: 0px; left: 0px; will-change: transform;"
                         x-placement="bottom-start">
-                        <a class="dropdown-item" >Atender</a>
+                        <a class="dropdown-item"  (click)="ATENDER(aten.ID_ATENCION_PUERPERIO)">Atender</a>
                         <a class="dropdown-item" >No
                           Atendido</a>
                         <a class="dropdown-item" >Reprogramar
                           Cita</a>
-                        <a class="dropdown-item" >Eliminar Cita</a>
+
 
                       </div>
                     </div>
