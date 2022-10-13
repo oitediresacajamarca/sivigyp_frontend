@@ -42,9 +42,6 @@
         <div class="card-body">
           <h4 class="card-title">Datos Inicio de la Atencion</h4>
 
-
-
-
           <ul class="nav nav-tabs mb-3">
             <li class="nav-item">
               <a href="#home" data-toggle="tab" aria-expanded="false" class="nav-link active">
@@ -52,12 +49,7 @@
                 <span class="d-none d-lg-block">Informacion Gestante</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="#profile" data-toggle="tab" aria-expanded="true" class="nav-link">
-                <i class="mdi mdi-account-circle d-lg-none d-block mr-1"></i>
-                <span class="d-none d-lg-block">Datos Para la gestacion</span>
-              </a>
-            </li>
+
             <li class="nav-item">
               <a href="#riesgos" data-toggle="tab" aria-expanded="true" class="nav-link">
                 <i class="mdi mdi-account-circle d-lg-none d-block mr-1"></i>
@@ -75,51 +67,65 @@
                 <form [formGroup]="informacion_gestante_form">
 
                   <div class="form-group row">
-                    <label for="fname" class="col-sm-4 text-right control-label col-form-label">Fecha de
+                    <label for="fname" class="col-sm-6 text-right control-label col-form-label">Fecha de
                       primera atencion prenatal</label>
-                    <div class="col-sm-8">
+                    <div class="col-sm-6">
                       <app-selector-fecha formControlName="fecha_atencion_prenatal"></app-selector-fecha>
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="lname" class="col-sm-4 text-right control-label col-form-label">Fecha de Ultima
+                    <label for="lname" class="col-sm-6 text-right control-label col-form-label">Fecha de Ultima
                       Regla</label>
-                    <div class="col-sm-8">
+                    <div class="col-sm-6">
                       <app-selector-fecha formControlName="fecha_ultima_regla" (change)="seleciono_fecha_regla()"></app-selector-fecha>
                     </div>
                   </div>
+
                   <div class="form-group row">
-                    <label for="email1" class="col-sm-4 text-right control-label col-form-label">Numero de
-                      gestaciones</label>
-                    <div class="col-sm-8">
-                      <input type="number" class="form-control" formControlName="numero_gestaciones" value="0">
+                    <label for="lname" class="col-sm-6 text-right control-label col-form-label badge badge-warning">Fecha Probable de Parto  </label>
+                    <div class="col-sm-6">
+                      <app-selector-fecha formControlName="fecha_probable_parto" [disabled]=true></app-selector-fecha>
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="cono1" class="col-sm-4 text-right control-label col-form-label">Recien Nacidos a
+                    <label for="email1" class="col-sm-6 text-right control-label col-form-label">Numero de
+                      gestaciones</label>
+                    <div class="col-sm-6">
+                      <input type="number" class="form-control" formControlName="numero_gestaciones" value="1">
+                      <div class="invalid-feedback" *ngIf="informacion_gestante_form.controls['numero_gestaciones'].errors?.min" >
+                        El valor debe de ser mayor a 1.
+                      </div>
+                      <div class="invalid-feedback" *ngIf="informacion_gestante_form.controls['numero_gestaciones'].errors?.error_ges">
+                        numero de gestaciones debe ser mayor igual numero de recien naaacidos a termino + numero de prematuros+abortos.
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="form-group row">
+                    <label for="cono1" class="col-sm-6 text-right control-label col-form-label">Recien Nacidos a
                       termino</label>
-                    <div class="col-sm-8">
+                    <div class="col-sm-6">
                       <input type="number" class="form-control" formControlName="recien_nacidos_termino" value="0">
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="cono1" class="col-sm-4 text-right control-label col-form-label">Recien Nacidos
+                    <label for="cono1" class="col-sm-6 text-right control-label col-form-label">Recien Nacidos
                       Prematuros</label>
-                    <div class="col-sm-8">
+                    <div class="col-sm-6">
                       <input type="number" class="form-control" value="0" formControlName="recien_nacidos_prematuros">
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="cono1" class="col-sm-4 text-right control-label col-form-label">Numero de
+                    <label for="cono1" class="col-sm-6 text-right control-label col-form-label">Numero de
                       Abortos</label>
-                    <div class="col-sm-8">
+                    <div class="col-sm-6">
                       <input type="number" class="form-control" value="0" formControlName="numero_abortos">
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="cono1" class="col-sm-4 text-right control-label col-form-label">Numero de hijos
+                    <label for="cono1" class="col-sm-6 text-right control-label col-form-label">Numero de hijos
                       actualmente vivos</label>
-                    <div class="col-sm-8">
+                    <div class="col-sm-6">
                       <input type="number" class="form-control" value="0" formControlName="numero_hijos_vivos">
                     </div>
                   </div>
@@ -130,28 +136,7 @@
             <div class="tab-pane show" id="profile">
               <div class="card-body">
 
-                <form [formGroup]="informacion_para_gestacion_form">
 
-
-                  <div class="form-group row">
-                    <label for="com1" class="col-sm-4 text-right control-label col-form-label">Fec probable de
-                      Parto</label>
-                    <div class="col-sm-8">
-                      <app-selector-fecha formControlName="fecha_probable_parto" [disabled]=true></app-selector-fecha>
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-
-
-
-
-                  </div>
-
-
-
-             >
-                </form>
 
               </div>
 

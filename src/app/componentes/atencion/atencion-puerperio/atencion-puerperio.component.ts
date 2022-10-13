@@ -1,10 +1,11 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { Component, OnInit } from '@angular/core';
+
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AtencionPuerperioService } from 'src/app/servicios/atencion-puerperio/atencion-puerperio.service';
 import { AtencionesPuerperio, AtencionPuerperioInterface, Parto } from 'src/app/servicios/atencion-puerperio/interface/atencion-puerperio-interface';
 import { EstadoServiceService } from 'src/app/servicios/estado-service.service';
 import { PersonaService } from 'src/app/servicios/persona.service';
+import { AtencionPfComponent } from './atencion-pf/atencion-pf.component';
 
 @Component({
   selector: 'app-atencion-puerperio',
@@ -19,9 +20,14 @@ export class AtencionPuerperioComponent implements OnInit {
   ID_ATENCION: string = ''
   ATENCIONES_PUERPERIO: AtencionesPuerperio[] = []
 
+
+
   detalle_persona: any = {}
 
   PARTO!: Parto
+
+  @ViewChild('atencion_ppf')
+  atencion_pff!:AtencionPfComponent
 
 
 
@@ -60,12 +66,32 @@ export class AtencionPuerperioComponent implements OnInit {
       this.cargarAtencionPuerperio()
     })
   }
+MOSTRAR_DIALOG(ID_ATENCION_PUERPERIO:number){
+  this.atencion_pff.ID_ATENCION_PUERPERIO=ID_ATENCION_PUERPERIO
+
+  this.atencion_pff.mostrar=true
+
+}
+
   ATENDER( id_atencion:number){
+
+
     this.atencion_serv.ATENDER(id_atencion).subscribe(respuesta=>{
       this.cargarAtencionPuerperio()
     })
 
   }
+
+
+  acepto_dialogo( e:any){
+
+
+
+    this.ATENDER(e.ID_ATENCION)
+
+  }
+
+
 
 
 }

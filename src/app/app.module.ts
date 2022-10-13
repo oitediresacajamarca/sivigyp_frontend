@@ -51,6 +51,9 @@ import { ComparativoHisComponent } from './componentes/atencion/analisis-seguimi
 import { ModalNotificaacionesComponent } from './componentes/Notificaciones/modal-notificaaciones/modal-notificaaciones.component';
 import { ReporteGestantePadronComponent } from './reportes/reporte-gestante-padron/reporte-gestante-padron.component';
 import { SelectorReligionComponent } from './controles/comunes/selector-religion/selector-religion.component';
+import { SelectorTipoLugarPartoComponent } from './controles/comunes/selector-tipo-lugar-parto/selector-tipo-lugar-parto.component';
+import { AtencionPfComponent } from './componentes/atencion/atencion-puerperio/atencion-pf/atencion-pf.component';
+import { SelectorMetodosPlanificacionComponent } from './controles/comunes/selector-metodos-planificacion/selector-metodos-planificacion.component';
 
 
 
@@ -103,6 +106,9 @@ import { SelectorReligionComponent } from './controles/comunes/selector-religion
     ModalNotificaacionesComponent,
     ReporteGestantePadronComponent,
     SelectorReligionComponent,
+    SelectorTipoLugarPartoComponent,
+    AtencionPfComponent,
+    SelectorMetodosPlanificacionComponent,
 
   ],
   imports: [

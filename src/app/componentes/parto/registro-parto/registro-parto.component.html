@@ -20,7 +20,8 @@
 
             <div class="form-group">
               <label for="exampleInputPassword1">LUGAR DE PARTO</label>
-              <app-filtros-red-microred-ipress></app-filtros-red-microred-ipress>
+              <app-selector-tipo-lugar-parto></app-selector-tipo-lugar-parto>
+
             </div>
 
             <div class="form-group">
@@ -34,7 +35,7 @@
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">TIPO DE RECIEN NACIDO</label>
-              <select class="form-control" id="exampleFormControlSelect1" formControlName="TIPO_RECIEN_NACIDO" *ngIf="this.formPartoReg.value.TIPO_PARTO!=3" >
+              <select class="form-control" id="exampleFormControlSelect1" formControlName="TIPO_RECIEN_NACIDO" *ngIf="this.formPartoReg.value.TIPO_PARTO!=3" (change)="selecciono_tipo_recien()" >
                 <option value="1">A TERMINO</option>
                 <option value="2">PREMATURO</option>
                 <option value="4">POST TERMINO</option>
@@ -111,9 +112,13 @@
                         </div>
 
                       </div>
-                      <div class="form-group">
+                      <div class="form-group input-group">
                         <label for="exampleInputEmail1">PESO</label>
-                        <input class="form-control" formControlName="RN_PESO">
+                        <input class="form-control" formControlName="RN_PESO" type="number">
+                        <div class="input-group-append">
+                          <span class="input-group-text">gramos</span>
+
+                      </div>
                       </div>
 
                     </div>

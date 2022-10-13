@@ -87,4 +87,13 @@ export class RegistroPartoComponent implements OnInit {
 
   }
 
+  selecciono_tipo_recien() {
+    if(this.formPartoReg.controls['TIPO_RECIEN_NACIDO'].value == 5 && this.NACIMIENTOS_FORM.length == 1){
+      this.agregar_nacimiento()
+    }
+    else{
+
+    }
+  }
+
 }

@@ -38,7 +38,7 @@
                   </td>
                   <td>{{dat.FECHA_ATENCION_REG|date:'dd-MM-yyyy'}}</td>
                   <td>{{dat.ATENCION.FECHA_POSIBLE_PARTO|date:'dd-MM-yyyy'}}</td>
-                  <td><span *ngFor="let riesgo of dat.ATENCION.RIESGOS" class="badge badge-success px-2 py-1">
+                  <td><span *ngFor="let riesgo of dat.ATENCION.RIESGOS" class="badge badge-danger mx-1 ">
                       {{riesgo.NOMBRE}}</span></td>
                       <td><button type="button" (click)="Ingresar(dat.ATENCION.HistoriaClinica.PERSONA.NRO_DOCUMENTO)" class="btn btn-primary">
                         Ingresar</button></td>

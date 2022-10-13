@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataGestanteInterface } from 'src/app/interface/data-gestante-interface';
 import { TipoSeguro } from 'src/app/interface/tipo-seguro';
 import { AtencionGestanteService } from 'src/app/servicios/atencion/atencion-gestante.service';
@@ -38,19 +38,35 @@ export class AtencionGestanteComponent implements OnInit {
   hoy: Date = new Date()
   mostrar_estado_gestacional = false
 
+  validar_consistencia() {
+    return (formGroup: FormGroup) => {
+      const res = formGroup.controls['numero_gestaciones'].value >= formGroup.controls['recien_nacidos_prematuros'].value + formGroup.controls['recien_nacidos_termino'].value + formGroup.controls['numero_abortos'].value;
+
+      if (res) {
+
+      } else {
+        formGroup.controls['numero_gestaciones'].setErrors({...  formGroup.controls['numero_gestaciones'].errors, error_ges: true })
+      }
+
+    }
+  }
+
 
   ngOnInit(): void {
     this.informacion_gestante_form = this.fb.group({
       fecha_registro: new Date(),
-      fecha_atencion_prenatal:new Date(),
+      fecha_atencion_prenatal: new Date(),
       fecha_ultima_regla: '',
-      numero_gestaciones: '',
+      numero_gestaciones: [1, Validators.min(1)],
       recien_nacidos_termino: '',
       recien_nacidos_prematuros: '',
       numero_abortos: '',
-      numero_hijos_vivos: ''
+      numero_hijos_vivos: '',
+      fecha_probable_parto: ''
 
-    })
+    }, { validator: this.validar_consistencia() })
+
+
     this.hoy = new Date()
     this.informacion_para_gestacion_form = this.fb.group({
       fecha_confirmacion_gestacion: '',
@@ -82,61 +98,66 @@ export class AtencionGestanteComponent implements OnInit {
 
   }
   Guardar_Atencion() {
+    if(this.informacion_gestante_form.valid){
 
-
-    let data = {
-      informacion_gestante_form: this.informacion_gestante_form.value,
-      informacion_para_gestacion_form: this.informacion_para_gestacion_form.value
-    }
-
-
-    this.atencion_gestante.nueva_atencion(this.estados.paciente.NRO_HCL, data).subscribe(respuesta => {
-
-      this.atencion = respuesta
-      this.edad_gestacional_actual = moment().diff(respuesta.FUR_ATENCION, 'weeks')
-      if (this.edad_gestacional_actual >= 42) {
-        this.edad_gestacional_actual = 0
-
+      let data = {
+        informacion_gestante_form: this.informacion_gestante_form.value,
 
       }
-      this.fecha_probable_parto = respuesta.FECHA_POSIBLE_PARTO
-      if (moment(this.fecha_probable_parto) >= moment(this.hoy)) {
 
 
-        this.mostrar_estado_gestacional = true
-      }
-      else {
-        this.mostrar_estado_gestacional = false
-      }
+      this.atencion_gestante.nueva_atencion(this.estados.paciente.NRO_HCL, data).subscribe(respuesta => {
+
+        this.atencion = respuesta
+        this.edad_gestacional_actual = moment().diff(respuesta.FUR_ATENCION, 'weeks')
+        if (this.edad_gestacional_actual >= 42) {
+          this.edad_gestacional_actual = 0
 
 
-      const Toast = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener('mouseenter', Swal.stopTimer)
-          toast.addEventListener('mouseleave', Swal.resumeTimer)
         }
+        this.fecha_probable_parto = respuesta.FECHA_POSIBLE_PARTO
+        if (moment(this.fecha_probable_parto) >= moment(this.hoy)) {
+
+
+          this.mostrar_estado_gestacional = true
+        }
+        else {
+          this.mostrar_estado_gestacional = false
+        }
+
+
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        })
+
+        Toast.fire({
+          icon: 'success',
+          title: 'Se actualizo correctamente'
+        })
+
+      }, error => {
+
+        if (error.error.message == 'No existe Atencion') { }
+        else {
+          alert(JSON.stringify(error))
+
+        }
+
+
       })
 
-      Toast.fire({
-        icon: 'success',
-        title: 'Se actualizo correctamente'
-      })
 
-    }, error => {
-
-      if (error.error.message == 'No existe Atencion') { }
-      else {
-        alert(JSON.stringify(error))
-
-      }
-
-
-    })
+    }else{
+      alert('corrija los errores aantes de enviar')
+    }
 
 
 
@@ -146,65 +167,73 @@ export class AtencionGestanteComponent implements OnInit {
 
   Actualizar_Atencion() {
 
+    console.log(this.informacion_gestante_form.valid)
+
+
+if(this.informacion_gestante_form.valid){
+
+  let data = {
+    informacion_gestante_form: this.informacion_gestante_form.value,
+
+  }
+
+
+  this.atencion_gestante.actualizar_atencion(this.estados.paciente.NRO_HCL, data).subscribe(respuesta => {
 
 
 
-    let data = {
-      informacion_gestante_form: this.informacion_gestante_form.value,
-      informacion_para_gestacion_form: this.informacion_para_gestacion_form.value
+    this.edad_gestacional_actual = moment().diff(respuesta.FUR_ATENCION, 'weeks')
+    if (this.edad_gestacional_actual >= 42) {
+      this.edad_gestacional_actual = 0
+
+    }
+    console.log(this.fecha_probable_parto)
+    console.log(respuesta.FECHA_POSIBLE_PARTO)
+    this.fecha_probable_parto = respuesta.FECHA_POSIBLE_PARTO
+
+    if (moment(this.fecha_probable_parto) >= moment(this.hoy)) {
+
+
+      this.mostrar_estado_gestacional = true
+    }
+    else {
+      this.mostrar_estado_gestacional = false
     }
 
+    this.id_atencion = respuesta.ID_ATENCION
 
-    this.atencion_gestante.actualizar_atencion(this.estados.paciente.NRO_HCL, data).subscribe(respuesta => {
+    this.atencionreg_rep.cargar_atencion_reg(this.id_atencion).subscribe(data => {
 
+      this.atenciones_reg = data
 
-
-      this.edad_gestacional_actual = moment().diff(respuesta.FUR_ATENCION, 'weeks')
-      if (this.edad_gestacional_actual >= 42) {
-        this.edad_gestacional_actual = 0
-
-      }
-      console.log(this.fecha_probable_parto)
-      this.fecha_probable_parto = respuesta.FECHA_POSIBLE_PARTO
-
-      if (moment(this.fecha_probable_parto) >= moment(this.hoy)) {
-
-
-        this.mostrar_estado_gestacional = true
-      }
-      else {
-        this.mostrar_estado_gestacional = false
-      }
-
-      this.id_atencion = respuesta.ID_ATENCION
-
-      this.atencionreg_rep.cargar_atencion_reg(this.id_atencion).subscribe(data => {
-
-        this.atenciones_reg = data
-
-      })
-
-
-      const Toast = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener('mouseenter', Swal.stopTimer)
-          toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
-      })
-
-      Toast.fire({
-        icon: 'success',
-        title: 'Se actualizo correctamente'
-      })
-
-    }, error => {
-      alert(JSON.stringify(error))
     })
+
+
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+
+    Toast.fire({
+      icon: 'success',
+      title: 'Se actualizo correctamente'
+    })
+
+  }, error => {
+    alert(JSON.stringify(error))
+  })
+
+
+} else{
+  alert('corrija los errores antes')
+}
 
 
 
@@ -241,20 +270,17 @@ export class AtencionGestanteComponent implements OnInit {
 
       this.informacion_gestante_form.patchValue({
         fecha_registro: respuesta.FEC_REGISTRO,
-        fecha_atencion_prenatal:respuesta.FECHA_ATENCION_PRENATAL,
+        fecha_atencion_prenatal: respuesta.FECHA_ATENCION_PRENATAL,
         fecha_ultima_regla: respuesta.FUR_ATENCION,
         numero_gestaciones: respuesta.NRO_GESTACIONES,
         recien_nacidos_termino: respuesta.RECIEN_NACIDOS_TERMINO,
         recien_nacidos_prematuros: respuesta.RECIEN_NACIDOS_PREMATUROS,
         numero_abortos: respuesta.NUMERO_ABORTOS,
-        numero_hijos_vivos: respuesta.HIJOS_VIVOS
+        numero_hijos_vivos: respuesta.HIJOS_VIVOS,
+        fecha_probable_parto: respuesta.FECHA_POSIBLE_PARTO
       })
 
-      this.informacion_para_gestacion_form.patchValue({
-        fecha_confirmacion_gestacion: respuesta.FECHA_CONFIRMO_GESTACION,
-        fecha_probable_parto: respuesta.FECHA_POSIBLE_PARTO,
 
-      })
 
       this.atencionreg_rep.cargar_atencion_reg(this.id_atencion).subscribe(data => {
         this.atenciones_reg = data
@@ -327,7 +353,7 @@ export class AtencionGestanteComponent implements OnInit {
 
   seleciono_fecha_regla() {
 
-    this.informacion_para_gestacion_form.patchValue({ fecha_probable_parto: moment(this.informacion_gestante_form.value.fecha_ultima_regla).add(1, 'year').add(-3, 'month').add(7, 'days').toDate() })
+    this.informacion_gestante_form.patchValue({ fecha_probable_parto: moment(this.informacion_gestante_form.value.fecha_ultima_regla).add(1, 'year').add(-3, 'month').add(7, 'days').toDate() })
 
   }
 

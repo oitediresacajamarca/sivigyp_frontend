@@ -404,7 +404,8 @@ export class ReporteGestanteGeneradorComponent implements OnInit {
 
         j = j + 1
         cell = fila.getCell(j)
-        cell.value = registro.HistoriaClinica?.PERSONA?.FECHA_NAC + ''
+
+        cell.value = moment(registro.HistoriaClinica?.PERSONA?.FECHA_NAC).format('DD-MM-yyyy')
 
         j = j + 1
         cell = fila.getCell(j)
@@ -501,7 +502,7 @@ export class ReporteGestanteGeneradorComponent implements OnInit {
           cell = fila.getCell(j + SEM.NUMERO_SEMANA! - 4)
           if (SEM.FECHA_ATENCION_REG + '' != 'null') {
 
-            cell.value = moment(SEM.FECHA_ATENCION_REG).format('DD-MM-yyyy')
+            cell.value = SEM.FECHA_ATENCION_REG+''
           }
 
 

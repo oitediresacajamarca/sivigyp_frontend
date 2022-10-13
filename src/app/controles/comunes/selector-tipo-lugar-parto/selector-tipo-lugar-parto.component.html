@@ -1,0 +1,7 @@
+<select class="form-control" (change)="seleciono_tipo_lugar($any($event.target).value)" [(ngModel)]="tipo_lugar">
+  <option  *ngFor="let tipo of tipo_lugares" [ngValue]="tipo.nombre" >{{tipo.nombre}}</option>
+</select>
+
+<div *ngIf="tipo_lugar=='INSTITUCIONAL'||tipo_lugar=='EN EL TRAYECTO'">
+  <app-filtros-red-microred-ipress></app-filtros-red-microred-ipress>
+</div>
