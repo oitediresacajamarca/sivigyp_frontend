@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     this.auth_serv.login(this.formGroup.value.user,this.formGroup.value.password).subscribe(async respuesta=>{
       console.log(respuesta)
 
-    await  this.router.navigate(['/sivigyp/principal/inicio'])
+    await  this.router.navigate(['sivigyp/principal/inicio']).then(()=>{ window.location.reload();})
     })
 
 

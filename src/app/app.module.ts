@@ -54,6 +54,8 @@ import { SelectorReligionComponent } from './controles/comunes/selector-religion
 import { SelectorTipoLugarPartoComponent } from './controles/comunes/selector-tipo-lugar-parto/selector-tipo-lugar-parto.component';
 import { AtencionPfComponent } from './componentes/atencion/atencion-puerperio/atencion-pf/atencion-pf.component';
 import { SelectorMetodosPlanificacionComponent } from './controles/comunes/selector-metodos-planificacion/selector-metodos-planificacion.component';
+import { PadreComponent } from './pruebas/padre/padre.component';
+import { HijoComponent } from './pruebas/hijo/hijo.component';
 
 
 
@@ -109,6 +111,8 @@ import { SelectorMetodosPlanificacionComponent } from './controles/comunes/selec
     SelectorTipoLugarPartoComponent,
     AtencionPfComponent,
     SelectorMetodosPlanificacionComponent,
+    PadreComponent,
+    HijoComponent,
 
   ],
   imports: [

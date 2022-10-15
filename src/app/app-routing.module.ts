@@ -18,15 +18,19 @@ import { ContenedorComponent } from './layouts/contenedor/contenedor.component';
 import { PrincipalComponent } from './layouts/principal/principal.component';
 import { InicioComponent } from './paginas/inicio/inicio.component';
 import { LoginComponent } from './paginas/login/login.component';
+import { HijoComponent } from './pruebas/hijo/hijo.component';
+import { PadreComponent } from './pruebas/padre/padre.component';
 import { ReporteGestanteGeneradorComponent } from './reportes/reporte-gestante-generador/reporte-gestante-generador.component';
 import { ReporteGestantePadronComponent } from './reportes/reporte-gestante-padron/reporte-gestante-padron.component';
 
 const routes: Routes = [
   {
     path: 'sivigyp', component: ContenedorComponent,
+
     children: [
       { path: 'login', component: LoginComponent },
-      { path: 'principal', component: PrincipalComponent
+      {
+        path: 'principal', component: PrincipalComponent
         , children:
           [{ path: 'inicio', component: GestantesListadoComponent },
           { path: 'registro-gestante', component: GestantesListadoComponent },
@@ -42,7 +46,26 @@ const routes: Routes = [
           ]
       }]
   },
-  {path:'' ,component:LoginComponent}
+
+
+  { path: 'login', component: LoginComponent },
+  /* { path: 'principal', component: PrincipalComponent ,children:[{path:'inicio', component:HijoComponent}]},
+     { path: 'principal', component: PrincipalComponent
+        , children:
+          [{ path: 'inicio', component: GestantesListadoComponent },
+          { path: 'registro-gestante', component: GestantesListadoComponent },
+          { path: 'atencion-gestante', component: AtencionGestanteComponent },
+          { path: 'NuevoPaciente', component: NuevaGestanteComponent },
+          { path: 'Personal', component: ListaPersonalComponent },
+          { path: 'reporte-gestante', component: ReporteGestanteGeneradorComponent },
+          { path: 'registrar_parto/:id_atencion', component: RegistroPartoComponent },
+          { path: 'prueba', component: PrincipalNotificacionesComponent },
+          { path: 'modal', component: ModalNotificaacionesComponent },
+          { path: 'atencion-puerperio/:ID_ATENCION', component: AtencionPuerperioComponent },
+          { path: 'reporte', component: ReporteGestantePadronComponent }
+          ]
+      },*/
+
 
 
 

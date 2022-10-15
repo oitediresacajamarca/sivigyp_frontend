@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataGestanteInterface } from 'src/app/interface/data-gestante-interface';
 import { EstadoServiceService } from 'src/app/servicios/estado-service.service';
-import { PersonaServiceInterface } from 'src/app/servicios/persona-service/persona-service-interface';
+
 import { PersonaService } from 'src/app/servicios/persona.service';
 
 
@@ -91,6 +91,7 @@ export class GestantesListadoComponent implements OnInit {
 
 
   ngOnInit(): void {
+
 
 
     this.cargar_data_por_ambito_actual()

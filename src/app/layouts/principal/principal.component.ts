@@ -15,6 +15,9 @@ export class PrincipalComponent implements OnInit {
 
   ngOnInit(): void {
     this.estad.alerta
+    console.log(this.route)
+
+    this.rout.navigate(['inicio'],{ relativeTo: this.route})
   }
   abrir_modulo_reporte_gestante(){
     this.modulo='REPORTES_GESTANTES'

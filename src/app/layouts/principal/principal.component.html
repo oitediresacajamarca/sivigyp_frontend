@@ -578,7 +578,7 @@
   <!-- End Sidebar scroll-->
 </aside>
 
-<div class="page-wrapper" [ngClass]="{alerta:estad.alerta ===true}">
+<div class="page-wrapper" [ngClass]="{'alerta':estad.alerta ===true}">
   <div class="original">
     <app-menu-pagina ></app-menu-pagina>
     <router-outlet></router-outlet>
