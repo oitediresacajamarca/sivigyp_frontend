@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PadronGestanteServiService } from 'src/app/servicios/reportes/padron-gestante-servi.service';
 import { Fill, Workbook } from 'exceljs';
 import * as fs from 'file-saver';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-reporte-gestante-padron',
@@ -10,7 +11,7 @@ import * as fs from 'file-saver';
 })
 export class ReporteGestantePadronComponent implements OnInit {
 
-  constructor(private rpt_serv: PadronGestanteServiService) { }
+  constructor(private rpt_serv: PadronGestanteServiService,private spinner: NgxSpinnerService) { }
   ambito_ipres: string = ''
 
   ngOnInit(): void {
@@ -26,7 +27,10 @@ export class ReporteGestantePadronComponent implements OnInit {
     const workbook = new Workbook();
     const sheet = workbook.addWorksheet('PADRON DE GESTANTES');
 
+    this.spinner.show();
+
     this.rpt_serv.cargar_padron(this.ambito_ipres).subscribe(reporte => {
+      this.spinner.hide();
       sheet.addRow({ id: 1, name: 'John Doe', dob: new Date(1970, 1, 1) })
       sheet.addRow({ id: 1, name: 'John Doe', dob: new Date(1970, 1, 1) })
       let encabezado = sheet.addRow({ id: 1, name: 'John Doe', dob: new Date(1970, 1, 1) })
@@ -328,6 +332,7 @@ export class ReporteGestantePadronComponent implements OnInit {
           type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
         });
         fs.saveAs(blob, 'REPORTE PADRON GESTANTE' + '.xlsx');
+
       });
 
 

@@ -56,6 +56,7 @@ import { AtencionPfComponent } from './componentes/atencion/atencion-puerperio/a
 import { SelectorMetodosPlanificacionComponent } from './controles/comunes/selector-metodos-planificacion/selector-metodos-planificacion.component';
 import { PadreComponent } from './pruebas/padre/padre.component';
 import { HijoComponent } from './pruebas/hijo/hijo.component';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 
 
@@ -120,8 +121,7 @@ import { HijoComponent } from './pruebas/hijo/hijo.component';
     AppRoutingModule,FormsModule,
     HttpClientModule ,
     ReactiveFormsModule,
-
-
+    NgxSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
