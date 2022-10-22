@@ -9,17 +9,11 @@ import { ModalNotificaacionesComponent } from './componentes/Notificaciones/moda
 import { PrincipalNotificacionesComponent } from './componentes/Notificaciones/principal-notificaciones/principal-notificaciones.component';
 import { RegistroPartoComponent } from './componentes/parto/registro-parto/registro-parto.component';
 import { ListaPersonalComponent } from './componentes/personal/lista-personal/lista-personal.component';
-import { ListaUsuariosComponent } from './componentes/usuarios/lista-usuarios/lista-usuarios.component';
-import { NuevoUsuarioComponent } from './componentes/usuarios/nuevo-usuario/nuevo-usuario.component';
-import { BuscarPersonaHcComponent } from './controles/busquedas/buscar-persona-hc/buscar-persona-hc.component';
-import { SelectorRedComponent } from './controles/comunes/selector-red/selector-red.component';
-import { SelectorRiesgosGestanteComponent } from './controles/comunes/selector-riesgos-gestante/selector-riesgos-gestante.component';
 import { ContenedorComponent } from './layouts/contenedor/contenedor.component';
 import { PrincipalComponent } from './layouts/principal/principal.component';
-import { InicioComponent } from './paginas/inicio/inicio.component';
+import { AmbitoProfileSelectComponent } from './paginas/ambito-profile-select/ambito-profile-select.component';
 import { LoginComponent } from './paginas/login/login.component';
-import { HijoComponent } from './pruebas/hijo/hijo.component';
-import { PadreComponent } from './pruebas/padre/padre.component';
+
 import { ReporteGestanteGeneradorComponent } from './reportes/reporte-gestante-generador/reporte-gestante-generador.component';
 import { ReporteGestantePadronComponent } from './reportes/reporte-gestante-padron/reporte-gestante-padron.component';
 
@@ -42,13 +36,15 @@ const routes: Routes = [
           { path: 'prueba', component: PrincipalNotificacionesComponent },
           { path: 'modal', component: ModalNotificaacionesComponent },
           { path: 'atencion-puerperio/:ID_ATENCION', component: AtencionPuerperioComponent },
-          { path: 'reporte', component: ReporteGestantePadronComponent }
+          { path: 'reporte', component: ReporteGestantePadronComponent },
+          { path: 'profile-ambito', component: AmbitoProfileSelectComponent }
           ]
       }]
   },
 
 
   { path: 'login', component: LoginComponent },
+  { path: '', component: LoginComponent },
   /* { path: 'principal', component: PrincipalComponent ,children:[{path:'inicio', component:HijoComponent}]},
      { path: 'principal', component: PrincipalComponent
         , children:

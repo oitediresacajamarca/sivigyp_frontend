@@ -1,0 +1,109 @@
+<div id="myModal" class="modal fade " [ngClass]="{'show': mostrar===true,'hide':mostrar===false}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: block; padding-right: 17px;" aria-modal="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header d-flex align-items-center">
+              <h4 class="modal-title" id="myModalLabel">SELECCIÓN DE ESTABLECIMIENTOS</h4>
+              <button type="button" class="close ml-auto" data-dismiss="modal" aria-hidden="true" (click)="cerrar()">×</button>
+          </div>
+
+          <div class="modal-body">
+              <div class="col-sm-12">
+                  <form class="form">
+                      <div class="form-group mt-2 row">
+                          <div class="col-md-12" style="text-align: center;">
+                              <button class="btn waves-effect waves-light btnn btn-info" id="btnn1" type="button" onclick="vtipo(1)">
+                                  <span class="btn-label"><i class="mr-2 mdi mdi-book-multiple"></i></span> Administrativo
+                              </button>
+
+                          </div>
+                      </div>
+                      <hr>
+                      <div class="v_tipos" id="vtip1" >
+
+                        <form >
+                          <div class="form-group row">
+                              <label for="example-search-input" class="col-md-4 col-form-label">Red</label>
+                              <div class="col-md-8">
+                                  <select class="form-control" id="idred" (change)="selecciono_red($event)">
+                                    <option value="0">No pertenece a ninguna</option>
+                                    <option *ngFor="let rede of REDES_FIL" value="{{rede.Id}}">{{rede.Nombre}}</option>
+                                  </select>
+                              </div>
+                          </div>
+                          <div class="form-group row">
+                              <label for="example-search-input" class="col-md-4 col-form-label">Micro Red</label>
+                              <div class="col-md-8">
+                                  <select class="form-control" id="idmicrored"  (change)="selecciono_microred($event)">
+                                    <option value="0">No pertenece a ninguna</option>
+                                    <option *ngFor="let rede of MICRORED_FIL" value="{{rede.Id}}">{{rede.Nombre}}</option>
+                                  </select>
+                              </div>
+                          </div>
+                          <div class="form-group row">
+                              <label for="example-search-input" class="col-md-4 col-form-label">Establecimiento</label>
+                              <div class="col-md-8">
+                                  <select class="form-control" name="ID_IPRESS" id="idestablecimiento" [(ngModel)]="ID_IPRESS">
+                                    <option value="0">No pertenece a ninguna</option>
+                                    <option *ngFor="let establec of ESTABLECIMIENTOS_FIL" value="{{establec.Id+0}}">{{establec.Nombre}}</option>
+                                  </select>
+                              </div>
+                          </div>
+                        </form>
+                      </div>
+
+                      <div class="v_tipos" id="vtip2" style="display: none;">
+                          <div class="form-group row">
+                              <label for="example-search-input" class="col-md-4 col-form-label">Provincia</label>
+                              <div class="col-md-8">
+                                  <select class="form-control" name="" id="idprovincia" onchange="lugar(2)"></select>
+
+                              </div>
+                          </div>
+                          <div class="form-group row">
+                              <label for="example-search-input" class="col-md-4 col-form-label">Distrito</label>
+                              <div class="col-md-8">
+                                  <select class="form-control" onchange="lugar(5)" id="iddistrito">
+                                      <option value="0">--buscando</option>
+                                  </select>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="v_tipos" id="vtip3" style="display: none;">
+                          <div class="form-group row">
+                              <label for="example-search-input" class="col-md-5 col-form-label">RIS</label>
+                              <div class="col-md-7">
+                                  <select class="form-control" id="idris" onchange="lugar(9)"><option value="1">CAJAMARCA</option><option value="2">JAÉN</option><option value="3">SAN IGNACIO</option></select>
+                              </div>
+                          </div>
+                          <div class="form-group row">
+                              <label for="example-search-input" class="col-md-5 col-form-label">Zona Sanitaria</label>
+                              <div class="col-md-7">
+                                  <select class="form-control" id="idzona" onchange="lugar(10)"><option value="4593">BAÑOS DEL INCA</option><option value="4620">HUAMBOCANCHA BAJA</option><option value="4645">MAGNA VALLEJO</option><option value="4657">PACHACUTEC</option><option value="4633">SAN JUAN</option></select>
+                              </div>
+                          </div>
+                          <div class="form-group row">
+                              <label for="example-search-input" class="col-md-5 col-form-label">Puerta de Entrada</label>
+                              <div class="col-md-7">
+                                  <select class="form-control" id="idpuerta" onchange="lugar(11)"><option value="4593">BAÑOS DEL INCA</option><option value="4648">COMBAYO</option><option value="4605">ENCAÑADA</option><option value="4604">LLACANORA</option><option value="4603">MATARA</option><option value="4602">NAMORA</option><option value="4658">OTUZCO</option><option value="27190">PUESTO DE SALUD QUELLUACOCHA </option><option value="4649">SANTA BARBARA</option></select>
+                              </div>
+                          </div>
+                          <div class="form-group row">
+                              <label for="example-search-input" class="col-md-5 col-form-label">Vinculado</label>
+                              <div class="col-md-7">
+                                  <select class="form-control" id="idvinculado"><option value="11578">SARIN</option></select>
+                              </div>
+                          </div>
+                      </div>
+
+                  </form>
+              </div>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-light" data-dismiss="modal" (click)="cerrar()">CERRAR</button>
+
+              <button type="button" (click)="EstablecerAmbito()" class="btn btn-info waves-effect waves-light">GUARDAR</button>
+          </div>
+      </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
+<div class="modal-backdrop fade " [ngClass]="{'show': mostrar===true,'hide':mostrar===false}"></div>

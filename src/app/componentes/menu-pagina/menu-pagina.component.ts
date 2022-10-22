@@ -17,13 +17,15 @@ export class MenuPaginaComponent implements OnInit {
 
   ngOnInit(): void {
     this.Cargar_Ipress_Atencion()
+    this.estado_s.cambio_ambito.subscribe(()=>{this.Cargar_Ipress_Atencion()})
+
   }
   Cargar_Ipress_Atencion(){
   let dat:any=  this.estado_s.devolver_ambito_actual()
   this.Ipress_Atencion=dat.nombre_ambito
   this.Renipress_Atencion=dat.cod_ambito
-
-
   }
+
+
 
 }

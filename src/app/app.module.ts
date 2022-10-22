@@ -57,6 +57,8 @@ import { SelectorMetodosPlanificacionComponent } from './controles/comunes/selec
 import { PadreComponent } from './pruebas/padre/padre.component';
 import { HijoComponent } from './pruebas/hijo/hijo.component';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AmbitoProfileSelectComponent } from './paginas/ambito-profile-select/ambito-profile-select.component';
 
 
 
@@ -114,6 +116,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
     SelectorMetodosPlanificacionComponent,
     PadreComponent,
     HijoComponent,
+    AmbitoProfileSelectComponent,
 
   ],
   imports: [
@@ -122,6 +125,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
     HttpClientModule ,
     ReactiveFormsModule,
     NgxSpinnerModule,
+    BrowserAnimationsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

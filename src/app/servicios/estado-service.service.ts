@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+
+
 import { DataGestanteInterface } from '../interface/data-gestante-interface';
 
 @Injectable({
@@ -64,6 +66,11 @@ export class EstadoServiceService {
 
     alerta:boolean=false;
 
+    ambito:{cod_ambito:string,nombre_ambito:string}={cod_ambito:'',nombre_ambito:''}
+
+    cambio_ambito:EventEmitter<any>= new EventEmitter()
+
+
 
   constructor(private http: HttpClient) {
 
@@ -72,9 +79,6 @@ export class EstadoServiceService {
     return this.http.get(environment.url_api_django + 'persona/person/' + dni + '/?format=json')
   }
   devolver_ambito_actual() {
-    return {
-      cod_ambito: '000004645',
-      nombre_ambito: 'REGIONAL CAJAMARCA'
-    }
+    return this.ambito
   }
 }

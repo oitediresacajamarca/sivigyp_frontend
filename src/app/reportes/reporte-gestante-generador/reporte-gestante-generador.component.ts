@@ -4,6 +4,7 @@ import { Fill, Workbook } from 'exceljs';
 import * as fs from 'file-saver';
 import { SeguimientoSiviService } from 'src/app/servicios/reportes/seguimiento/seguimiento-sivi.service';
 import * as moment from 'moment';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-reporte-gestante-generador',
@@ -12,7 +13,7 @@ import * as moment from 'moment';
 })
 export class ReporteGestanteGeneradorComponent implements OnInit {
 
-  constructor(private atencion_serv: AtencionRegService, private repseg: SeguimientoSiviService) { }
+  constructor(private atencion_serv: AtencionRegService, private repseg: SeguimientoSiviService,private spinner: NgxSpinnerService) { }
   ambito: string = ''
   desde!: Date
   hasta!: Date
@@ -24,7 +25,7 @@ export class ReporteGestanteGeneradorComponent implements OnInit {
     const workbook = new Workbook();
     const sheet = workbook.addWorksheet('My Sheet');
 
-
+this.spinner.show()
 
     this.repseg.cargar_seguimiento_2(this.ambito).subscribe(respuesta => {
 
@@ -409,12 +410,12 @@ export class ReporteGestanteGeneradorComponent implements OnInit {
 
         j = j + 1
         cell = fila.getCell(j)
-        cell.value = ''
+        cell.value = moment().diff(registro.HistoriaClinica?.PERSONA?.FECHA_NAC,'year')
 
 
         j = j + 1
         cell = fila.getCell(j)
-        cell.value = registro.HistoriaClinica?.ESTADO_CIVIL + ''
+        cell.value = registro.HistoriaClinica?.ESTADO_CIVIL_DESCRIPCION.NOMBRE + ''
 
         j = j + 1
         cell = fila.getCell(j)
@@ -482,7 +483,10 @@ export class ReporteGestanteGeneradorComponent implements OnInit {
 
         j = j + 1
         cell = fila.getCell(j)
-        cell.value = ''
+        cell.value =      registro.RIESGOS?.map(riesgo=>{ return riesgo.NOMBRE}).join('|')+''
+
+
+
 
 
         j = j + 1
@@ -499,8 +503,8 @@ export class ReporteGestanteGeneradorComponent implements OnInit {
         registro.ATENCIONES_SEMANALES?.forEach(SEM => {
 
 
-          cell = fila.getCell(j + SEM.NUMERO_SEMANA! - 4)
-          if (SEM.FECHA_ATENCION_REG + '' != 'null') {
+          cell = fila.getCell(j + SEM.NUMERO_SEMANA! - 5)
+          if (SEM.FECHA_ATENCION_REG + '' != 'null' && SEM.NUMERO_SEMANA >=5 ) {
 
             cell.value = SEM.FECHA_ATENCION_REG+''
           }
@@ -587,6 +591,8 @@ export class ReporteGestanteGeneradorComponent implements OnInit {
         });
         fs.saveAs(blob, 'REPORTE GESTANTE' + '.xlsx');
       });
+
+      this.spinner.hide()
 
     })
 

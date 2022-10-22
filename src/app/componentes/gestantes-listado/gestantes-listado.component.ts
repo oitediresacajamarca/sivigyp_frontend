@@ -110,11 +110,14 @@ export class GestantesListadoComponent implements OnInit {
     this.selected_row = index;
     this.estados_s.paciente = this.gestante_detalle
 
+    console.log( this.estados_s.paciente.NRO_HCL)
+
   }
 
   cargar_data_por_ambito_actual_pagina(pagina:any) {
 
     this.persona_s.buscar_lista_persona_en_ipress_pagina(this.estados_s.devolver_ambito_actual().cod_ambito,pagina).subscribe(data => {
+      console.log(data)
 
 
       this.data_encontrada = data.datos
@@ -127,6 +130,7 @@ export class GestantesListadoComponent implements OnInit {
   cargar_data_por_ambito_actual() {
 
     this.persona_s.buscar_lista_persona_en_ipress(this.estados_s.devolver_ambito_actual().cod_ambito).subscribe(data => {
+      console.log(data)
 
       this.data_encontrada = data.datos
 

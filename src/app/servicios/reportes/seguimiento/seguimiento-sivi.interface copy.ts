@@ -1,3 +1,6 @@
+import { Interface } from "readline";
+import { RIESGOS } from "../../atencion-reg/interface/atenciones-pendientes";
+
 export interface SeguimientoSiviInterfaaceOb {
 
    ID_ATENCION?:               number;
@@ -23,7 +26,7 @@ export interface SeguimientoSiviInterfaaceOb {
     ESTADO_ACTUAL_GESTANTE?:    null;
     ATENCIONES_SEMANALES?:      AtencionesSemanale[];
     HistoriaClinica?:           HistoriaClinica;
-    RIESGOS?:                   any[];
+    RIESGOS?:                   RIESGOS[];
 
     PARTOS:PARTO[];
 }
@@ -56,7 +59,7 @@ export interface AtencionesSemanale {
     ID_ATENCION_REG?:    null;
     ID_ATENCION?:        number;
     FECHA_ATENCION_REG?: null;
-    NUMERO_SEMANA?:      number;
+    NUMERO_SEMANA:      number;
     ESTADO_ATENCION?:    null;
     USU?:                null;
     ESTADO_CERRADO?:     null;
@@ -83,6 +86,13 @@ export interface HistoriaClinica {
     PERSONA?:              Persona;
     IPRESS?:               Ipress;
     CENTRO_POBLADO:CentroPoblado;
+    ESTADO_CIVIL_DESCRIPCION:ESTADO_CIVIL_DESCRIPCION;
+}
+
+export interface ESTADO_CIVIL_DESCRIPCION{
+  ID_ESTADO_CIVIL:number;
+  NOMBRE:string
+
 }
 
 export interface Ipress {

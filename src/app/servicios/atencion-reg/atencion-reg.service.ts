@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { AtencionReg } from 'src/app/interface/atencion-reg';
 import { ReporteGestanteInterface } from 'src/app/reportes/reporte-gestante-generador/interface/reporte-gestante-interface';
 import { environment } from 'src/environments/environment';
-import { AtencionesPendientes } from './interface/atenciones-pendientes';
+import { AtencionesPendientes, respuesta_pendiente } from './interface/atenciones-pendientes';
 
 @Injectable({
   providedIn: 'root'
@@ -43,7 +43,7 @@ export class AtencionRegService {
   }
 
   pendientes_actuales(ipress:string,data:any){
-    return this.http.post<AtencionesPendientes[]>(environment.url_api_node+'atencion-reg/pendientes/'+ipress,data)
+    return this.http.post<respuesta_pendiente>(environment.url_api_node+'atencion-reg/pendientes/'+ipress,data)
 
   }
 

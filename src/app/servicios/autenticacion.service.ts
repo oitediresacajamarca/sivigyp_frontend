@@ -11,6 +11,6 @@ export class AutenticacionService {
 
   login(user: string, password: string) {
     // return this.http.post(environment.url_api_node + 'autentificacion/login', { user, password });
-    return this.http.post("https://sir.diresacajamarca.gob.pe:8050/api/login", { email: user, password: password })
+    return this.http.post<any>("https://sir.diresacajamarca.gob.pe:8050/api/sivigyp", { email: user, password: password })
   }
 }

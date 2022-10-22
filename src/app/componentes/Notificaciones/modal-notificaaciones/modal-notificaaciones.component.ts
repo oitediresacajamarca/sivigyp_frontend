@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Location } from '@angular/common';
+
 @Component({
   selector: 'app-modal-notificaaciones',
   templateUrl: './modal-notificaaciones.component.html',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalNotificaacionesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private location: Location) { }
 
   ngOnInit(): void {
+  }
+
+  cerrar() {
+    this.location.back()
   }
 
 }

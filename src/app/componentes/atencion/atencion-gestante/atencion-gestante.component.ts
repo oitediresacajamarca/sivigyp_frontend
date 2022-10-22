@@ -243,9 +243,10 @@ if(this.informacion_gestante_form.valid){
   CargarAtencion() {
 
     this.atencion_gestante.devolver_atencion(this.estados.paciente.NRO_HCL).subscribe(respuesta => {
+
       this.lista_riesgos = respuesta.RIESGOS
 
-      console.log(respuesta)
+
       this.atencion = respuesta
       this.edad_gestacional_actual = moment().diff(respuesta.FUR_ATENCION, 'weeks')
       if (this.edad_gestacional_actual >= 42) {
@@ -284,18 +285,14 @@ if(this.informacion_gestante_form.valid){
 
       this.atencionreg_rep.cargar_atencion_reg(this.id_atencion).subscribe(data => {
         this.atenciones_reg = data
-
       })
-
-
       this.estado = 'actualizar'
-
-
-
     },
       error => {
 
-        if (error.error.message == 'No existe Atencion') { }
+        if (error.error.message == 'No existe Atencion') {
+          this.estado = 'crear'
+        }
         else {
           alert(JSON.stringify(error))
 

@@ -1,3 +1,8 @@
+export interface respuesta_pendiente{
+  data:AtencionesPendientes[],
+  total:number
+}
+
 export interface AtencionesPendientes {
 
     ID_ATENCION_REG:    number;

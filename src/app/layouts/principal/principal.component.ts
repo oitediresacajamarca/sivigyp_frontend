@@ -26,7 +26,7 @@ export class PrincipalComponent implements OnInit {
 
   }
   cerrar_session(){
-    console.log('diez')
+
 
     this.rout.navigate(['../login'],{ relativeTo: this.route})
   }
