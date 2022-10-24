@@ -1,4 +1,3 @@
-import { Interface } from "readline";
 import { RIESGOS } from "../../atencion-reg/interface/atenciones-pendientes";
 
 export interface SeguimientoSiviInterfaaceOb {
