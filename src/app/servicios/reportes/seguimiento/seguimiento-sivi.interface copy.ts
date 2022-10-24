@@ -53,8 +53,13 @@ export interface PARTO{
   USU?:                string;
   FEC_REGISTRO?:       Date;
   EDAD_GESTACIONAL?:   number;
+  TIPO_ATENCION_PARTO?:TIPO_ATENCION_PARTO;
 }
 
+export interface TIPO_ATENCION_PARTO {
+  ID_TIPO_ATENCION_PARTO:number;
+    NOMBRE_TIPO_ATENCION_PARTO:string
+}
 export interface AtencionesSemanale {
     ID_ATENCION_REG?:    null;
     ID_ATENCION?:        number;
@@ -87,11 +92,25 @@ export interface HistoriaClinica {
     IPRESS?:               Ipress;
     CENTRO_POBLADO:CentroPoblado;
     ESTADO_CIVIL_DESCRIPCION:ESTADO_CIVIL_DESCRIPCION;
+    TIPO_SEGURO_DESCRIPCION:TIPO_SEGURO_DESCRIPCION;
+    GRADO_INSTRUCCION_DESCRIPCION:GRADO_INSTRUCCION_DESCRIPCION;
 }
 
 export interface ESTADO_CIVIL_DESCRIPCION{
   ID_ESTADO_CIVIL:number;
   NOMBRE:string
+
+}
+export interface GRADO_INSTRUCCION_DESCRIPCION{
+  ID_GRADO_INSTRUCCION:number;
+  NOMBRE:string
+
+}
+
+export interface TIPO_SEGURO_DESCRIPCION{
+  ID_TIPO_SEGUROL:number;
+  NOMBRE:string;
+  ABRV:string;
 
 }
 

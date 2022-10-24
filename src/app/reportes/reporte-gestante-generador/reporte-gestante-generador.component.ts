@@ -23,11 +23,12 @@ export class ReporteGestanteGeneradorComponent implements OnInit {
 
   Buscar() {
     const workbook = new Workbook();
-    const sheet = workbook.addWorksheet('My Sheet');
+    const sheet = workbook.addWorksheet('Reporte Seguimiento');
 
 this.spinner.show()
 
     this.repseg.cargar_seguimiento_2(this.ambito).subscribe(respuesta => {
+      console.log(respuesta)
 
       sheet.addRow({ id: 1, name: 'John Doe', dob: new Date(1970, 1, 1) })
       sheet.addRow({ id: 1, name: 'John Doe', dob: new Date(1970, 1, 1) })
@@ -36,9 +37,8 @@ this.spinner.show()
 
       let f: Fill = {
         type: 'pattern',
-        pattern: 'solid',
-        fgColor: { argb: 'fc4b6c' },
-        bgColor: { argb: '000000' }
+        pattern:'solid',
+        fgColor:{ argb:'cccccc' }
 
 
 
@@ -256,57 +256,57 @@ this.spinner.show()
       }
 
 
-      cell = encabezado.getCell(32+42+1)
+      cell = encabezado.getCell(72)
       cell.value = 'FFCHA'
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
-      cell = encabezado.getCell(32+42+2)
+      cell = encabezado.getCell(73)
       cell.value = 'TIPO PARTO'
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
-      cell = encabezado.getCell(32+42+3)
+      cell = encabezado.getCell(74)
       cell.value = 'LUGAR PARTO'
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
-      cell = encabezado.getCell(32+42+4)
+      cell = encabezado.getCell(75)
       cell.value = 'QUIEN ATENDIO'
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
-      cell = encabezado.getCell(32+42+5)
+      cell = encabezado.getCell(76)
       cell.value = 'TIPO RECIEN NACIDO'
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
 
-      cell = encabezado.getCell(32+42+6)
+      cell = encabezado.getCell(77)
       cell.value = 'PESO'
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
-      cell = encabezado.getCell(32+42+7)
+      cell = encabezado.getCell(78)
       cell.value = 'SEXO'
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
 
-      cell = encabezado.getCell(32+42+8)
+      cell = encabezado.getCell(79)
       cell.value = 'PRIMER CONTROL'
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
-      cell = encabezado.getCell(32+42+9)
+      cell = encabezado.getCell(80)
       cell.value = 'SEGUNDO CONTROL'
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
@@ -325,10 +325,10 @@ this.spinner.show()
 
       let col = sheet.getColumn(1)
       col.width = 20
-      col.border = border
+     // col.border = border
       col = sheet.getColumn(2)
       col.width = 20
-      col.border = border
+    //  col.border = border
       col = sheet.getColumn(3)
       col.width = 20
       col = sheet.getColumn(4)
@@ -420,6 +420,28 @@ this.spinner.show()
         j = j + 1
         cell = fila.getCell(j)
         cell.value = registro.HistoriaClinica?.PERSONA?.ID_TIPOD + ''
+        if(registro.HistoriaClinica?.PERSONA?.ID_TIPOD==1){
+          cell.value='DNI'
+        }
+        if(registro.HistoriaClinica?.PERSONA?.ID_TIPOD==2){
+          cell.value='PASAPORTE'
+        }
+
+        if(registro.HistoriaClinica?.PERSONA?.ID_TIPOD==3){
+          cell.value='CÉDULA'
+        }
+        if(registro.HistoriaClinica?.PERSONA?.ID_TIPOD==4){
+          cell.value='CARNET DE EXTRANJERÍA'
+        }
+        if(registro.HistoriaClinica?.PERSONA?.ID_TIPOD==5){
+          cell.value='SIN DNI'
+        }
+        if(registro.HistoriaClinica?.PERSONA?.ID_TIPOD==6){
+          cell.value='C.U.I.'
+        }
+
+
+
 
         j = j + 1
         cell = fila.getCell(j)
@@ -434,11 +456,11 @@ this.spinner.show()
 
         j = j + 1
         cell = fila.getCell(j)
-        cell.value = registro.HistoriaClinica?.TIPO_SEGURO + ''
+        cell.value = registro.HistoriaClinica?.TIPO_SEGURO_DESCRIPCION.ABRV + ''
 
         j = j + 1
         cell = fila.getCell(j)
-        cell.value = registro.HistoriaClinica?.ID_GRADO_INSTRUCCION + ''
+        cell.value = registro.HistoriaClinica?.GRADO_INSTRUCCION_DESCRIPCION.NOMBRE + ''
 
 
         j = j + 1
@@ -512,11 +534,21 @@ this.spinner.show()
 
         })
 
-        j = j + 42
+        j = 73
 
         if (registro.PARTOS.length > 0) {
           cell = fila.getCell(j)
           cell.value = registro.PARTOS[0].TIPO_PARTO + ''
+if(registro.PARTOS[0].TIPO_PARTO==1){
+  cell.value = 'VAGINAL'
+}
+if(registro.PARTOS[0].TIPO_PARTO==2){
+  cell.value = 'CESAREA'
+}
+if(registro.PARTOS[0].TIPO_PARTO==3){
+  cell.value = 'ABORTO'
+}
+
         }
 
 
@@ -531,8 +563,16 @@ this.spinner.show()
         j = j + 1
         if (registro.PARTOS.length > 0) {
 
+
+          console.log(registro.PARTOS[0].TIPO_ATENCION_PARTO)
+          cell.value = registro.PARTOS[0].TIPO_ATENCION_PARTO?.NOMBRE_TIPO_ATENCION_PARTO + ''
+
+        }
+        j = j + 1
+        if (registro.PARTOS.length > 0) {
+
           cell = fila.getCell(j)
-          cell.value = registro.PARTOS[0].ID_ATENDIO_PARTO + ''
+          cell.value = registro.PARTOS[0].TIPO_RECIEN_NACIDO + ''
 
         }
 
@@ -577,7 +617,37 @@ this.spinner.show()
 
 
 
+        sheet.eachRow({ includeEmpty: false }, function(row, rowNumber){
+          row.eachCell(function(cell, colNumber){
+           cell.font = {
+             name: 'Arial',
+             family: 2,
+             bold: false,
+             size: 10,
+           };
+           cell.alignment = {
+             vertical: 'middle', horizontal: 'center'
+           };
 
+            if (rowNumber >= 3) {
+             for (var i = 1; i < 84; i++) {
+               if (rowNumber == 3) {
+                 row.getCell(i).fill = {
+                   type: 'pattern',
+                   pattern:'solid',
+                   fgColor:{argb:'C7C7C7'}
+                 };
+               }
+               row.getCell(i).border = {
+               top: {style:'thin'},
+               left: {style:'thin'},
+               bottom: {style:'thin'},
+               right: {style:'thin'}
+             };
+           }
+          }
+         });
+        });
 
 
 
@@ -599,7 +669,6 @@ this.spinner.show()
   }
   selecciono_ambito(e: any) {
 
-    console.log(e)
 
     this.ambito = e
 
