@@ -22,10 +22,13 @@ export class LoginComponent implements OnInit {
   Iniciar_Sesion(){
     this.auth_serv.login(this.formGroup.value.user,this.formGroup.value.password).subscribe(async respuesta=>{
 
+
+
       localStorage.setItem('LOGIN',JSON.stringify(respuesta))
       localStorage.setItem('TOKEN',JSON.stringify(respuesta.access_token))
 
     await  this.router.navigate(['sivigyp/principal/inicio']).then(()=>{ window.location.reload();})
+    console.log(respuesta)
     })
 
 

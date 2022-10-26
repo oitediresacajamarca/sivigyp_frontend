@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   url_api_django:'http://localhost:8000/api/',
-  url_api_node:'http://localhost:3000/api/'
+  url_api_node:'http://localhost:8006/api/'
 };
 
 
