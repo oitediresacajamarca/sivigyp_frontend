@@ -1,0 +1,35 @@
+export interface hecho_multisectorial {
+  ID_UNIDAD_ANALISIS?:            string;
+    ID_INDICADOR?:                  string;
+    ID_UBICACION?:                  string;
+    ANIO?:                          string;
+    MES?:                           string;
+    CUMPLE?:                string;
+    FUENTE?:                 string;
+    CODIGO_UNICO_HECHO?:            string;
+    JUNTOS?:                       string;
+    CUNA_MAS?:                  string;
+    TIPO_DOC_MO?:                string;
+    NUM_DOC_MO?:                    string;
+    DOC_DNI?:                       string;
+    DOC_CUI?:                       string;
+    COD_PADRON_NOMINAL?:            string;
+    DIF_DIAS_NAC_MES_EVAL?:        string;
+    pn_FEC_NAC?:                    Date;
+    ROT_NEU_VACS?:                  string;
+    APELLIDO_PATERNO_NIÑO?:         string;
+    APELLIDO_MATERNO_NIÑO?:         string;
+    NOMBRES_NIÑO?:                  string;
+    GENERO?:                      string;
+    FECHA_NACIMIENTO_NIÑO?:         Date;
+    META_4?:                     string;
+    DOC_CNV?:                       string;
+    ntn_Codigo_Item?:             string;
+    ntn_Valor_Lab?:         string;
+    ntn_Fecha_Nacimiento_Paciente?: Date;
+    ntn_Fecha_Atencion?:            Date;
+    ntn_ANIO_ATENCION?:             string;
+    ntn_MES_ATENCION?:              string;
+    ntn_DIA_ATENCION?:              string;
+    ntn_ID_ESTABLECIMIENTO?:        string;
+}

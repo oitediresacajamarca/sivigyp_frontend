@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-12">
+      <div class="card">
+          <div class="card-body">
+              <ul class="timeline timeline-left">
+                  <li class="timeline-inverted timeline-item" *ngFor="let dat of data">
+                      <div class="timeline-badge ">fechas </div>
+                      <div class="timeline-panel">
+                          <div class="timeline-heading">
+                              <h4 class="timeline-title">{{dat.nombres+' '+ dat.apellido_paterno+' '+dat.apellido_materno}}</h4>
+                              <p><small class="text-muted"><i class="fa fa-clock-o"></i>FECHA ATENCION {{dat.fecha_atencion|date:'dd-MM-yyyy'}}</small> </p>
+                          </div>
+                          <div class="timeline-body">
+                             <div class="row">
+                              <div class="col-2">CODIGO ATENCION</div>
+                              <div class="col-2">RED</div>
+                              <div class="col-2">MICRORED</div>
+                              <div class="col-2">ESTABLECIMIENTO</div>
+                              <div class="col-2">FECHA DE NACIMIENTO</div>
+                              <div class="col-2">EDAD</div>
+                             </div>
+                             <div class="row">
+                              <div class="col-2">{{dat.Codigo_Item}}</div>
+                              <div class="col-2">{{dat.Red}}</div>
+                              <div class="col-2">{{dat.MicroRed}}</div>
+                              <div class="col-2">{{dat.Nombre_Establecimiento}}</div>
+                              <div class="col-2">{{dat.fecha_nacimiento|date:'dd-MM-yyyy'}}</div>
+                              <div class="col-2">{{dat.Edad_Reg+dat.Tipo_Edad}}</div>
+                             </div>
+                          </div>
+                      </div>
+                  </li>
+              
+              </ul>
+          </div>
+      </div>
+  </div>
+</div>

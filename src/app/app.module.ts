@@ -59,6 +59,10 @@ import { HijoComponent } from './pruebas/hijo/hijo.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AmbitoProfileSelectComponent } from './paginas/ambito-profile-select/ambito-profile-select.component';
+import { SeguimientoNinioComponent } from './componentes/seguimiento-ninio/seguimiento-ninio.component';
+import { FiltrosProvinciaDistritoComponent } from './controles/comunes/filtros/filtros-provincia-distrito/filtros-provincia-distrito.component';
+import { FiltrosIndMultisectorialComponent } from './controles/comunes/filtros/filtros-ind-multisectorial/filtros-ind-multisectorial.component';
+import { DetalleAtencionHisNinioComponent } from './componentes/seguimiento-ninio/detalle-atencion-his-ninio/detalle-atencion-his-ninio.component';
 
 
 
@@ -117,6 +121,10 @@ import { AmbitoProfileSelectComponent } from './paginas/ambito-profile-select/am
     PadreComponent,
     HijoComponent,
     AmbitoProfileSelectComponent,
+    SeguimientoNinioComponent,
+    FiltrosProvinciaDistritoComponent,
+    FiltrosIndMultisectorialComponent,
+    DetalleAtencionHisNinioComponent,
 
   ],
   imports: [

@@ -1,0 +1,115 @@
+
+<div class="card">
+  <div class="card-body"> 
+    <div class="row">
+      <div class="col-5"> <app-filtros-provincia-distrito (selecciono_ambito)="selecciono_ambito($event)" ></app-filtros-provincia-distrito></div>
+      <div class="col-5"> <app-filtros-ind-multisectorial (selecciono_indicador_ev)="selecciono_indicador($event)"></app-filtros-ind-multisectorial></div>
+      <div class="col-2"><button type="button" class="btn waves-effect waves-light btn-lg btn-primary" (click)="BUSCAR()">BUSCAR </button></div>
+    </div>
+    <br>
+
+    <div class="row">
+      <div class="col-4">
+        ANIO <select class="select2 form-control custom-select select2-hidden-accessible" style="width: 100%; height:36px;"
+        data-select2-id="1" tabindex="-1" aria-hidden="true" (change)="selecciono_anio($any($event.target).value)">
+        <option data-select2-id="3">Select</option>
+      
+      
+      
+        <option data-select2-id="394"  value="2021">2021</option>
+        <option data-select2-id="394"  value="2022">2022</option>
+      
+      
+      </select>
+      </div>
+      <div class="col-4"> 
+        MES <select class="select2 form-control custom-select select2-hidden-accessible" style="width: 100%; height:36px;"
+        data-select2-id="1" tabindex="-1" aria-hidden="true" (change)="selecciono_mes($any($event.target).value)">
+        <option data-select2-id="3">Select</option>
+      
+      
+      
+        <option data-select2-id="394"  value="1">ENERO</option>
+        <option data-select2-id="394"  value="2">FEBRERO</option>
+        <option data-select2-id="394"  value="3">MARZO</option>
+        <option data-select2-id="394"  value="4">ABRIL</option>
+        <option data-select2-id="394"  value="5">MAYO</option>
+        <option data-select2-id="394"  value="6">JUNIO</option>
+        <option data-select2-id="394"  value="7">JULIO</option>
+        <option data-select2-id="394"  value="8">AGOSTO</option>
+        <option data-select2-id="394"  value="9">SETIEMBRE</option>
+        <option data-select2-id="394"  value="10">OCTUBRE</option>
+        <option data-select2-id="394"  value="11">NOVIEMBRE</option>
+        <option data-select2-id="394"  value="12">DICIEMBRE</option>
+      
+      
+      </select>
+      </div>
+      <div class="col-4"> NUMERO DE DOCUMENTO <input type="text" (change)="cambio_nro_documento($any($event.target).value)"></div>
+    </div>
+    
+   </div>
+
+
+
+</div>
+
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <div class="d-md-flex no-block">
+                <h4 class="card-title">Seguimiento Nominal</h4>
+           
+            </div>
+            <div class="month-table">
+                <div class="table-responsive mt-3">
+                    <table class="table stylish-table v-middle mb-0 no-wrap">
+                        <thead>
+                            <tr>
+                                <th class="border-0 text-muted font-weight-normal" colspan="1">Assigned</th>
+                                <th class="border-0 text-muted font-weight-normal">Numero de Documento</th>
+                                <th class="border-0 text-muted font-weight-normal">FECHA NACIMIENTO</th>
+                                <th class="border-0 text-muted font-weight-normal">APELLIDO PATERNO</th>
+                                <th class="border-0 text-muted font-weight-normal">APELLIDO MATERNO</th>
+                                <th class="border-0 text-muted font-weight-normal">NOMBRES</th>
+                                <th class="border-0 text-muted font-weight-normal">AÑO</th>
+                                <th class="border-0 text-muted font-weight-normal">MES</th>
+                                <th class="border-0 text-muted font-weight-normal">ESTADO</th>
+                                <th class="border-0 text-muted font-weight-normal">JUNTOS</th>
+                                <th class="border-0 text-muted font-weight-normal">CUNA MAS</th>
+                                <th class="border-0 text-muted font-weight-normal">META 4</th>
+                                <th class="border-0 text-muted font-weight-normal">ACCION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let dat of data">
+                                <td style="width:50px;"><span class="round text-white d-inline-block text-center rounded-circle bg-info">S</span>
+                                </td>
+                          
+                                <td>{{dat.ID_UNIDAD_ANALISIS}}</td>
+                                <td>{{dat['FECHA_NACIMIENTO_NIÑO']|date:'dd-MM-yyyy'}}</td>
+                                <td>{{dat['APELLIDO_PATERNO_NIÑO']}}</td>
+                                <td>{{dat['APELLIDO_MATERNO_NIÑO']}}</td>
+                                <td>{{dat['NOMBRES_NIÑO']}}</td>
+                                <td>{{dat['ANIO']}}</td>
+                                <td>{{dat['MES']}}</td>
+                                <td>{{dat['CUMPLE']}}</td>
+                                <td>{{dat['JUNTOS']}}</td>
+                                <td>{{dat['CUNA_MAS']}}</td>
+                                <td>{{dat['META_4']}}</td>
+                                <td><button type="button" class="btn waves-effect waves-light btn-info" [routerLink]="['../detalle-ninio/'+dat.ID_UNIDAD_ANALISIS]">Atencion His</button></td>
+                            </tr>
+                     
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+
+

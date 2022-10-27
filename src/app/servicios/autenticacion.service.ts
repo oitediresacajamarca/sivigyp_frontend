@@ -24,5 +24,4 @@ export class AutenticacionService {
 
     return this.http.get<any>("http://sir.diresacajamarca.gob.pe:8050/api/user", { headers })
   }
-
 }

@@ -9,6 +9,8 @@ import { ModalNotificaacionesComponent } from './componentes/Notificaciones/moda
 import { PrincipalNotificacionesComponent } from './componentes/Notificaciones/principal-notificaciones/principal-notificaciones.component';
 import { RegistroPartoComponent } from './componentes/parto/registro-parto/registro-parto.component';
 import { ListaPersonalComponent } from './componentes/personal/lista-personal/lista-personal.component';
+import { DetalleAtencionHisNinioComponent } from './componentes/seguimiento-ninio/detalle-atencion-his-ninio/detalle-atencion-his-ninio.component';
+import { SeguimientoNinioComponent } from './componentes/seguimiento-ninio/seguimiento-ninio.component';
 import { ContenedorComponent } from './layouts/contenedor/contenedor.component';
 import { PrincipalComponent } from './layouts/principal/principal.component';
 import { AmbitoProfileSelectComponent } from './paginas/ambito-profile-select/ambito-profile-select.component';
@@ -37,7 +39,9 @@ const routes: Routes = [
           { path: 'modal', component: ModalNotificaacionesComponent },
           { path: 'atencion-puerperio/:ID_ATENCION', component: AtencionPuerperioComponent },
           { path: 'reporte', component: ReporteGestantePadronComponent },
-          { path: 'profile-ambito', component: AmbitoProfileSelectComponent }
+          { path: 'profile-ambito', component: AmbitoProfileSelectComponent },
+          { path: 'ninio', component: SeguimientoNinioComponent },
+          {path:'detalle-ninio/:NRO_DOCUMENTO',component:DetalleAtencionHisNinioComponent}
           ]
       }]
   },
