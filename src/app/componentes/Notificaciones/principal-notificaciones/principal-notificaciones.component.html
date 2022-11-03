@@ -51,19 +51,16 @@
                   <td colspan="5">
                     <div class="footable-pagination-wrapper">
                       <ul class="pagination justify-content-center">
-                        <li class="footable-page-nav disabled" data-page="first"><a class="footable-page-link"
-                            href="#">«</a></li>
+
                         <li class="footable-page-nav disabled" data-page="prev"   (click)="previo()"><a class="footable-page-link"
-                        >‹</a></li>
-                        <li class="footable-page-nav disabled" data-page="prev-limit"><a class="footable-page-link"
-                            href="#">...</a></li>
+                        ><<</a></li>
+
                         <li *ngFor="let i of paginas" class="footable-page visible " data-page="1"><a class="footable-page-link"
                             (click)="selecciono_pagina(i)">{{i}}</a></li>
 
-                        <li class="footable-page-nav" data-page="next-limit"><a class="footable-page-link"
-                            href="#">...</a></li>
-                        <li class="footable-page-nav" data-page="next" (click)="siguiente()"><a class="footable-page-link" >›</a></li>
-                        <li class="footable-page-nav" data-page="last"><a class="footable-page-link" >»</a></li>
+
+                        <li class="footable-page-nav" data-page="next" (click)="siguiente()"><a class="footable-page-link" >>></a></li>
+
                       </ul>
                       <div class="divider"></div><span class="label label-primary">{{atenciones_pendientes.length}} of {{nro_atenciones_pendientes}}</span>
                     </div>
