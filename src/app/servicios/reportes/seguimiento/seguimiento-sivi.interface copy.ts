@@ -1,3 +1,4 @@
+import { AtencionesPuerperios } from "src/app/reportes/reporte-gestante-generador/interface/reporte-gestante-interface";
 import { RIESGOS } from "../../atencion-reg/interface/atenciones-pendientes";
 
 export interface SeguimientoSiviInterfaaceOb {
@@ -26,6 +27,7 @@ export interface SeguimientoSiviInterfaaceOb {
     ATENCIONES_SEMANALES?:      AtencionesSemanale[];
     HistoriaClinica?:           HistoriaClinica;
     RIESGOS?:                   RIESGOS[];
+    AtencionesPuerperios: AtencionesPuerperios[];
 
     PARTOS:PARTO[];
 }

@@ -13,7 +13,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class ReporteGestanteGeneradorComponent implements OnInit {
 
-  constructor(private atencion_serv: AtencionRegService, private repseg: SeguimientoSiviService,private spinner: NgxSpinnerService) { }
+  constructor(private atencion_serv: AtencionRegService, private repseg: SeguimientoSiviService, private spinner: NgxSpinnerService) { }
   ambito: string = ''
   desde!: Date
   hasta!: Date
@@ -25,7 +25,7 @@ export class ReporteGestanteGeneradorComponent implements OnInit {
     const workbook = new Workbook();
     const sheet = workbook.addWorksheet('Reporte Seguimiento');
 
-this.spinner.show()
+    this.spinner.show()
 
     this.repseg.cargar_seguimiento_2(this.ambito).subscribe(respuesta => {
       console.log(respuesta)
@@ -37,8 +37,8 @@ this.spinner.show()
 
       let f: Fill = {
         type: 'pattern',
-        pattern:'solid',
-        fgColor:{ argb:'cccccc' }
+        pattern: 'solid',
+        fgColor: { argb: 'cccccc' }
 
 
 
@@ -187,7 +187,7 @@ this.spinner.show()
       cell.alignment = { horizontal: 'center' };
 
       cell = encabezado.getCell(24)
-      cell.value = 'FORMULA ESTETICA'
+      cell.value = 'FORMULA OBSTETRICA'
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
@@ -199,7 +199,7 @@ this.spinner.show()
       cell.alignment = { horizontal: 'center' };
 
       cell = encabezado.getCell(26)
-      cell.value = 'FECHA PROBABLE DE PAARTO'
+      cell.value = 'FECHA PROBABLE DE PARTO'
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
@@ -323,40 +323,17 @@ this.spinner.show()
         right: { style: 'thin' }
       };
 
+
       let col = sheet.getColumn(1)
       col.width = 20
-     // col.border = border
-      col = sheet.getColumn(2)
-      col.width = 20
-    //  col.border = border
-      col = sheet.getColumn(3)
-      col.width = 20
-      col = sheet.getColumn(4)
-      col.width = 20
-      col = sheet.getColumn(5)
-      col.width = 20
-      col = sheet.getColumn(6)
-      col.width = 20
-      col = sheet.getColumn(7)
-      col.width = 20
-      col = sheet.getColumn(8)
-      col.width = 20
-      col = sheet.getColumn(9)
-      col.width = 20
-      col = sheet.getColumn(10)
-      col.width = 20
-      col = sheet.getColumn(11)
-      col.width = 20
-      col = sheet.getColumn(12)
-      col.width = 20
-      col = sheet.getColumn(13)
-      col.width = 20
-      col = sheet.getColumn(14)
-      col.width = 20
-      col = sheet.getColumn(15)
-      col.width = 20
-      col = sheet.getColumn(16)
-      col.width = 20
+      // col.border = border
+      for (let l = 1; l <= 90; l++) {
+        col = sheet.getColumn(l)
+        col.width = 22
+      }
+
+      //  col.border = border
+
 
 
 
@@ -410,7 +387,7 @@ this.spinner.show()
 
         j = j + 1
         cell = fila.getCell(j)
-        cell.value = moment().diff(registro.HistoriaClinica?.PERSONA?.FECHA_NAC,'year')
+        cell.value = moment().diff(registro.HistoriaClinica?.PERSONA?.FECHA_NAC, 'year')
 
 
         j = j + 1
@@ -420,24 +397,24 @@ this.spinner.show()
         j = j + 1
         cell = fila.getCell(j)
         cell.value = registro.HistoriaClinica?.PERSONA?.ID_TIPOD + ''
-        if(registro.HistoriaClinica?.PERSONA?.ID_TIPOD==1){
-          cell.value='DNI'
+        if (registro.HistoriaClinica?.PERSONA?.ID_TIPOD == 1) {
+          cell.value = 'DNI'
         }
-        if(registro.HistoriaClinica?.PERSONA?.ID_TIPOD==2){
-          cell.value='PASAPORTE'
+        if (registro.HistoriaClinica?.PERSONA?.ID_TIPOD == 2) {
+          cell.value = 'PASAPORTE'
         }
 
-        if(registro.HistoriaClinica?.PERSONA?.ID_TIPOD==3){
-          cell.value='CÉDULA'
+        if (registro.HistoriaClinica?.PERSONA?.ID_TIPOD == 3) {
+          cell.value = 'CÉDULA'
         }
-        if(registro.HistoriaClinica?.PERSONA?.ID_TIPOD==4){
-          cell.value='CARNET DE EXTRANJERÍA'
+        if (registro.HistoriaClinica?.PERSONA?.ID_TIPOD == 4) {
+          cell.value = 'CARNET DE EXTRANJERÍA'
         }
-        if(registro.HistoriaClinica?.PERSONA?.ID_TIPOD==5){
-          cell.value='SIN DNI'
+        if (registro.HistoriaClinica?.PERSONA?.ID_TIPOD == 5) {
+          cell.value = 'SIN DNI'
         }
-        if(registro.HistoriaClinica?.PERSONA?.ID_TIPOD==6){
-          cell.value='C.U.I.'
+        if (registro.HistoriaClinica?.PERSONA?.ID_TIPOD == 6) {
+          cell.value = 'C.U.I.'
         }
 
 
@@ -448,7 +425,7 @@ this.spinner.show()
         cell.value = registro.HistoriaClinica?.PERSONA?.NRO_DOCUMENTO + ''
         j = j + 1
         cell = fila.getCell(j)
-        cell.value = registro.HistoriaClinica?.ESTADO_CIVIL + ''
+        cell.value = registro.HistoriaClinica?.ESTADO_CIVIL_DESCRIPCION.NOMBRE + ''
 
         j = j + 1
         cell = fila.getCell(j)
@@ -465,8 +442,12 @@ this.spinner.show()
 
         j = j + 1
         cell = fila.getCell(j)
-        cell.value = registro.HistoriaClinica?.BENEFICIARIA_JUNTOS + ''
-
+        if (registro.HistoriaClinica?.BENEFICIARIA_JUNTOS == 0) {
+          cell.value = 'NO'
+        }
+        if (registro.HistoriaClinica?.BENEFICIARIA_JUNTOS == 1) {
+          cell.value = 'SI'
+        }
         j = j + 1
         cell = fila.getCell(j)
         cell.value = registro.HistoriaClinica?.IDIOMA + ''
@@ -481,31 +462,37 @@ this.spinner.show()
 
         j = j + 1
         cell = fila.getCell(j)
-        cell.value = ''
+        cell.value = 'G' + registro.NRO_GESTACIONES + ' ' + 'P' + registro.RECIEN_NACIDOS_TERMINO + registro.RECIEN_NACIDOS_PREMATUROS + registro.NUMERO_ABORTOS + registro.HIJOS_VIVOS
 
         j = j + 1
         cell = fila.getCell(j)
-        cell.value = registro.FUR_ATENCION + ''
+        cell.value = moment(registro.FUR_ATENCION).format('DD-MM-yyyy') + ''
 
         j = j + 1
         cell = fila.getCell(j)
-        cell.value = registro.FECHA_POSIBLE_PARTO + ''
+        cell.value = moment(registro.FECHA_POSIBLE_PARTO).format('DD-MM-yyyy') + ''
 
         j = j + 1
         cell = fila.getCell(j)
-        cell.value = registro.FECHA_ATENCION_PRENATAL + ''
+        cell.value = moment(registro.FEC_REGISTRO).format('DD-MM-yyyy') + ''
 
         j = j + 1
         cell = fila.getCell(j)
-        cell.value = registro.FECHA_ATENCION_PRENATAL + ''
+        cell.value = moment(registro.FECHA_ATENCION_PRENATAL).format('DD-MM-yyyy') + ''
+        if (registro?.FECHA_ATENCION_PRENATAL + '' == 'null' || registro.FECHA_ATENCION_PRENATAL == undefined) {
+          cell.value = 'NO EXISTE EN HIS'
+        }
 
         j = j + 1
         cell = fila.getCell(j)
-        cell.value = ''
+        cell.value = moment(registro.FECHA_ATENCION_PRENATAL).diff(registro.FUR_ATENCION, 'weeks') + ''
+        if (registro?.FECHA_ATENCION_PRENATAL + '' == 'null' || registro.FECHA_ATENCION_PRENATAL == undefined) {
+          cell.value = 'NO EXISTE EN HIS'
+        }
 
         j = j + 1
         cell = fila.getCell(j)
-        cell.value =      registro.RIESGOS?.map(riesgo=>{ return riesgo.NOMBRE}).join('|')+''
+        cell.value = registro.RIESGOS?.map(riesgo => { return riesgo.NOMBRE }).join('|') + ''
 
 
 
@@ -526,28 +513,36 @@ this.spinner.show()
 
 
           cell = fila.getCell(j + SEM.NUMERO_SEMANA! - 5)
-          if (SEM.FECHA_ATENCION_REG + '' != 'null' && SEM.NUMERO_SEMANA >=5 ) {
+          if (SEM.FECHA_ATENCION_REG + '' != 'null' && SEM.NUMERO_SEMANA >= 5) {
 
-            cell.value = SEM.FECHA_ATENCION_REG+''
+            cell.value = SEM.FECHA_ATENCION_REG + ''
           }
 
 
         })
 
-        j = 73
 
+
+        j = 72
         if (registro.PARTOS.length > 0) {
           cell = fila.getCell(j)
+          cell.value = moment(registro.PARTOS[0].FECHA_PARTO).format('DD-MM-yyyy')
+        }
+
+        j = 73
+        if (registro.PARTOS.length > 0) {
+
+          cell = fila.getCell(j)
           cell.value = registro.PARTOS[0].TIPO_PARTO + ''
-if(registro.PARTOS[0].TIPO_PARTO==1){
-  cell.value = 'VAGINAL'
-}
-if(registro.PARTOS[0].TIPO_PARTO==2){
-  cell.value = 'CESAREA'
-}
-if(registro.PARTOS[0].TIPO_PARTO==3){
-  cell.value = 'ABORTO'
-}
+          if (registro.PARTOS[0].TIPO_PARTO == 1) {
+            cell.value = 'VAGINAL'
+          }
+          if (registro.PARTOS[0].TIPO_PARTO == 2) {
+            cell.value = 'CESAREA'
+          }
+          if (registro.PARTOS[0].TIPO_PARTO == 3) {
+            cell.value = 'ABORTO'
+          }
 
         }
 
@@ -563,8 +558,8 @@ if(registro.PARTOS[0].TIPO_PARTO==3){
         j = j + 1
         if (registro.PARTOS.length > 0) {
 
+          cell = fila.getCell(j)
 
-          console.log(registro.PARTOS[0].TIPO_ATENCION_PARTO)
           cell.value = registro.PARTOS[0].TIPO_ATENCION_PARTO?.NOMBRE_TIPO_ATENCION_PARTO + ''
 
         }
@@ -572,7 +567,20 @@ if(registro.PARTOS[0].TIPO_PARTO==3){
         if (registro.PARTOS.length > 0) {
 
           cell = fila.getCell(j)
-          cell.value = registro.PARTOS[0].TIPO_RECIEN_NACIDO + ''
+
+          if (registro.PARTOS[0].TIPO_RECIEN_NACIDO == 1) {
+            cell.value = 'A TÉRMINO'
+          }
+          if (registro.PARTOS[0].TIPO_RECIEN_NACIDO == 2) {
+            cell.value = 'PREMATURO'
+          }
+          if (registro.PARTOS[0].TIPO_RECIEN_NACIDO == 3) {
+            cell.value = 'ABORTO'
+          }
+          if (registro.PARTOS[0].TIPO_RECIEN_NACIDO == 4) {
+            cell.value = 'POST TÉRMINO'
+          }
+
 
         }
 
@@ -590,6 +598,37 @@ if(registro.PARTOS[0].TIPO_PARTO==3){
           cell = fila.getCell(j)
           cell.value = registro.PARTOS[0].RN_SEXO + ''
 
+          if (registro.PARTOS[0].RN_SEXO == 1) {
+            cell.value = 'MASCULINO'
+          }
+          if (registro.PARTOS[0].RN_SEXO == 2) {
+            cell.value = 'FEMENINO'
+          }
+          if (registro.PARTOS[0].RN_SEXO == 3) {
+            cell.value = 'NO DEFINIDO'
+          }
+
+
+        }
+        j = j + 1
+
+
+        if (registro.AtencionesPuerperios?.length > 0) {
+          cell = fila.getCell(j)
+          if (registro.AtencionesPuerperios[0].ESTADO_PUERPERIO == 1) {
+            cell.value = 'A|' + moment(registro.AtencionesPuerperios[0].FECHA_ATENCION).format('DD-MM-yyyy')
+          }
+
+
+        }
+        j = j + 1
+        if (registro.AtencionesPuerperios?.length > 1) {
+          cell = fila.getCell(j)
+
+          if (registro.AtencionesPuerperios[1].ESTADO_PUERPERIO == 0) {
+            cell.value = 'P|' + moment(registro.AtencionesPuerperios[1].FECHA_ATENCION).format('DD-MM-yyyy')
+          }
+
         }
 
 
@@ -617,36 +656,40 @@ if(registro.PARTOS[0].TIPO_PARTO==3){
 
 
 
-        sheet.eachRow({ includeEmpty: false }, function(row, rowNumber){
-          row.eachCell(function(cell, colNumber){
-           cell.font = {
-             name: 'Arial',
-             family: 2,
-             bold: false,
-             size: 10,
-           };
-           cell.alignment = {
-             vertical: 'middle', horizontal: 'center'
-           };
+
+
+
+
+        sheet.eachRow({ includeEmpty: false }, function (row, rowNumber) {
+          row.eachCell(function (cell, colNumber) {
+            cell.font = {
+              name: 'Arial',
+              family: 2,
+              bold: false,
+              size: 10,
+            };
+            cell.alignment = {
+              vertical: 'middle', horizontal: 'center'
+            };
 
             if (rowNumber >= 3) {
-             for (var i = 1; i < 84; i++) {
-               if (rowNumber == 3) {
-                 row.getCell(i).fill = {
-                   type: 'pattern',
-                   pattern:'solid',
-                   fgColor:{argb:'C7C7C7'}
-                 };
-               }
-               row.getCell(i).border = {
-               top: {style:'thin'},
-               left: {style:'thin'},
-               bottom: {style:'thin'},
-               right: {style:'thin'}
-             };
-           }
-          }
-         });
+              for (var i = 1; i < 84; i++) {
+                if (rowNumber == 3) {
+                  row.getCell(i).fill = {
+                    type: 'pattern',
+                    pattern: 'solid',
+                    fgColor: { argb: 'C7C7C7' }
+                  };
+                }
+                row.getCell(i).border = {
+                  top: { style: 'thin' },
+                  left: { style: 'thin' },
+                  bottom: { style: 'thin' },
+                  right: { style: 'thin' }
+                };
+              }
+            }
+          });
         });
 
 
@@ -664,6 +707,9 @@ if(registro.PARTOS[0].TIPO_PARTO==3){
 
       this.spinner.hide()
 
+    }, err => {
+      alert('ocurrio error de servicio')
+      this.spinner.hide()
     })
 
   }

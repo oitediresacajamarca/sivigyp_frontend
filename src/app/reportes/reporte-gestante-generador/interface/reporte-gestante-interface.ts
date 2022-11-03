@@ -25,8 +25,19 @@ export interface ReporteGestanteInterface
   ATENCIONES_SEMANALES?:      AtencionesSemanale[];
   HistoriaClinica?:           HistoriaClinica;
   RIESGOS?:                   any[];
+  AtencionesPuerperios?:AtencionesPuerperios[]
 }
 
+export interface AtencionesPuerperios{
+  ID_ATENCION_PUERPERIO?: number;
+    ID_ATENCION?:           number;
+    FECHA_ATENCION?:        Date;
+    FECHA_REGISTRO?:        Date;
+    USU?:                   string;
+    ESTADO_PUERPERIO?:      number;
+    ESTADO_CERRADO?:        number;
+    NRO_ATENCION?:          number;
+}
 export interface AtencionesSemanale {
   ID_ATENCION_REG?:    null;
   ID_ATENCION?:        number;
