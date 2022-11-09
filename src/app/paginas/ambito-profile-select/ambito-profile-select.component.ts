@@ -78,7 +78,7 @@ export class AmbitoProfileSelectComponent implements OnInit {
   cargar_estbalec_por_microred() {
     this.ESTABLECIMIENTOS_FIL = []
 
-    this.est.cargar_microred_fil(this.ambito_origen, this.ID_RED).subscribe(respuesta => {
+    this.est.cargar_estable_fil(this.ambito_origen, this.ID_MICRORED).subscribe(respuesta => {
 
 
       this.ESTABLECIMIENTOS_FIL = respuesta
