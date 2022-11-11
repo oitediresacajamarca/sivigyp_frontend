@@ -125,7 +125,7 @@ export class NuevaGestanteComponent implements OnInit {
         'numero_telefono': ['', Validators.required],
         'numero_telefono_adicional': '',
         'beneficiaria_juntos': ['', Validators.required],
-        COD_IPRESS: this.estados_s.devolver_ambito_actual().cod_ambito
+        COD_IPRESS: [this.estados_s.devolver_ambito_actual().cod_ambito,Validators.required]
       })
 
     this.datos_complemntarios = this.fb.group(
@@ -158,6 +158,7 @@ export class NuevaGestanteComponent implements OnInit {
     }
     if (this.datos_generales.valid == false) {
       alert('datos generales no validos')
+
 
     }
     if (this.datos_complemntarios.valid == false) {

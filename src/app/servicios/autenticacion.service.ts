@@ -20,9 +20,10 @@ export class AutenticacionService {
     const headers = new HttpHeaders();
 
     headers.append('Authorization', 'Bearer ' + toke)
+    console.log(toke)
 
 
-    return this.http.get<any>("http://sir.diresacajamarca.gob.pe:8050/api/user", { headers })
+    return this.http.get<any>("https://sir.diresacajamarca.gob.pe:8050/api/user", { headers })
   }
 
 }
