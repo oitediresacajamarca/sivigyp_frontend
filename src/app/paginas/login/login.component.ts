@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('TOKEN',JSON.stringify(respuesta.access_token))
 
     await  this.router.navigate(['sivigyp/principal/inicio']).then(
-   //   ()=>{ window.location.reload();}
+     ()=>{ window.location.reload();}
       )
     console.log(respuesta)
     })
