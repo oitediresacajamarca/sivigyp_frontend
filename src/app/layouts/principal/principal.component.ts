@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
+import { EstablecimientosOneService } from 'src/app/servicios/establecimientos-on/establecimientos-one.service';
 import { EstadoServiceService } from 'src/app/servicios/estado-service.service';
 
 @Component({
@@ -13,13 +14,22 @@ export class PrincipalComponent implements OnInit {
 
   modulo = 'GESTANTES'
 
-  constructor(private rout: Router, private route: ActivatedRoute, public estad: EstadoServiceService, private http: HttpClient, private autentic: AutenticacionService) { }
+  constructor(private rout: Router, private route: ActivatedRoute,public est_ser:EstablecimientosOneService, public estad: EstadoServiceService, private http: HttpClient, private autentic: AutenticacionService) { }
 
   ngOnInit(): void {
-    this.estad.alerta
 
-    this.autentic.get_profile(localStorage.getItem('TOKEN') + '').subscribe(respuesta => {
-      console.log(respuesta)
+    this.autentic.get_profile(localStorage.getItem('TOKEN')?.toString().replace('"','')+'').subscribe(respuesta => {
+
+      this.est_ser.cargar_estable(respuesta.origen).subscribe(fer=>{
+
+        if(fer.IdNivelesEstablecimientos==5 ||fer.IdNivelesEstablecimientos==6){
+          this.estad.ambito.cod_ambito=String(1000000000+(fer.Id)).slice(1,10)
+          this.estad.ambito.nombre_ambito=fer.Nombre
+          this.estad.cambio_ambito.emit()
+        }
+
+
+      })
 
     })
 

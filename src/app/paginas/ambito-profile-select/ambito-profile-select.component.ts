@@ -86,7 +86,7 @@ export class AmbitoProfileSelectComponent implements OnInit {
 
   }
   EstablecerAmbito() {
-    console.log(this.ID_IPRESS)
+
 
     this.est.cargar_estable(this.ID_IPRESS).subscribe(data=>{
 

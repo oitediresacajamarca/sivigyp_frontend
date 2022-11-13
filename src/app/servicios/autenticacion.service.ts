@@ -17,13 +17,12 @@ export class AutenticacionService {
   get_profile(toke: string) {
     // return this.http.post(environment.url_api_node + 'autentificacion/login', { user, password });
 
-    const headers = new HttpHeaders();
-
-    headers.append('Authorization', 'Bearer ' + toke)
-    console.log(toke)
+    let headers = new HttpHeaders().set('Authorization', 'Bearer ' + toke.replace('"','')).set('Content-Type', 'application/json');
 
 
-    return this.http.get<any>("https://sir.diresacajamarca.gob.pe:8050/api/user", { headers })
+
+
+    return this.http.get<any>("https://sir.diresacajamarca.gob.pe:8050/api/user", { headers:headers })
   }
 
 }

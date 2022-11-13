@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataGestanteInterface } from 'src/app/interface/data-gestante-interface';
 import { TipoSeguro } from 'src/app/interface/tipo-seguro';
@@ -15,16 +15,18 @@ import { RiesgosService } from 'src/app/servicios/riesgos/riesgos.service';
   templateUrl: './atencion-gestante.component.html',
   styleUrls: ['./atencion-gestante.component.scss']
 })
-export class AtencionGestanteComponent implements OnInit {
+export class AtencionGestanteComponent implements OnInit ,OnChanges {
 
   constructor(private estados: EstadoServiceService, private segurs: TipoSeguroService, private fb: FormBuilder, private atencion_gestante: AtencionGestanteService,
     private atencionreg_rep: AtencionRegService, private riesgos_serv: RiesgosService) { }
+
 
   gestante: DataGestanteInterface = this.estados.paciente
   seguro!: TipoSeguro | undefined
   informacion_gestante_form!: FormGroup
   informacion_para_gestacion_form!: FormGroup
   riesgos_gestacion_form!: FormGroup
+  @Input()
   lista_riesgos: any[] = []
   atencion: any
 
@@ -50,7 +52,9 @@ export class AtencionGestanteComponent implements OnInit {
 
     }
   }
-
+  ngOnChanges(){
+    console.log("The book property changed")
+  }
 
   ngOnInit(): void {
     this.informacion_gestante_form = this.fb.group({
