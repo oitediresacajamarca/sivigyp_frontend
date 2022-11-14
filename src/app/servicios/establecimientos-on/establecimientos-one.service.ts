@@ -21,4 +21,7 @@ export class EstablecimientosOneService {
   cargar_estable(id_establec:number) {
     return this.http.get<any>(environment.url_api_node + 'establecimientos-one/ESTABLECIMIENTO_ONE/'+id_establec )
   }
+  cargar_superior(ID:number){
+    return this.http.get<any>(environment.url_api_node + 'establecimientos-one/ESTABLECIMIENTO_ONE_SUP/'+ID )
+  }
 }

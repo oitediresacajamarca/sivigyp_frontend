@@ -21,10 +21,23 @@ export class PrincipalComponent implements OnInit {
     this.autentic.get_profile(localStorage.getItem('TOKEN')?.toString().replace('"','')+'').subscribe(respuesta => {
 
       this.est_ser.cargar_estable(respuesta.origen).subscribe(fer=>{
+        console.log(fer)
 
+        this.estad.ambito.ambito_origen=String(1000000000+(fer.Id)).slice(1,10)
+        this.estad.ambito.nivel_ambito_origen=fer.IdNivelesEstablecimientos
         if(fer.IdNivelesEstablecimientos==5 ||fer.IdNivelesEstablecimientos==6){
           this.estad.ambito.cod_ambito=String(1000000000+(fer.Id)).slice(1,10)
+
           this.estad.ambito.nombre_ambito=fer.Nombre
+          this.estad.ambito.nivel_ambito=fer.IdNivelesEstablecimientos
+          this.estad.cambio_ambito.emit()
+        }
+
+        if(fer.IdNivelesEstablecimientos==4 ||fer.IdNivelesEstablecimientos==3||fer.IdNivelesEstablecimientos==2||fer.IdNivelesEstablecimientos==1){
+          this.estad.ambito.cod_ambito=String(1000000000+(fer.Id)).slice(1,10)
+
+          this.estad.ambito.nombre_ambito=fer.Nombre
+          this.estad.ambito.nivel_ambito=fer.IdNivelesEstablecimientos
           this.estad.cambio_ambito.emit()
         }
 

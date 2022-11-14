@@ -66,9 +66,11 @@ export class EstadoServiceService {
 
     alerta:boolean=false;
 
-    ambito:{cod_ambito:string,nombre_ambito:string}={cod_ambito:'',nombre_ambito:''}
+    ambito:{cod_ambito:string,nombre_ambito:string,nivel_ambito:string,ambito_origen:string,nivel_ambito_origen:''}=
+    {cod_ambito:'',nombre_ambito:'',nivel_ambito:'',ambito_origen:'',nivel_ambito_origen:''}
 
     cambio_ambito:EventEmitter<any>= new EventEmitter()
+
 
 
 

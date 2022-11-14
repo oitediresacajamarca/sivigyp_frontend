@@ -25,7 +25,7 @@
                               <label for="example-search-input" class="col-md-4 col-form-label">Red</label>
                               <div class="col-md-8">
                                   <select class="form-control" id="idred" (change)="selecciono_red($event)">
-                                    <option value="0">No pertenece a ninguna</option>
+                                    <option value="0" *ngIf="REDES_FIL.length!=1">No pertenece a ninguna</option>
                                     <option *ngFor="let rede of REDES_FIL" value="{{rede.Id}}">{{rede.Nombre}}</option>
                                   </select>
                               </div>
@@ -34,7 +34,7 @@
                               <label for="example-search-input" class="col-md-4 col-form-label">Micro Red</label>
                               <div class="col-md-8">
                                   <select class="form-control" id="idmicrored"  (change)="selecciono_microred($event)">
-                                    <option value="0">No pertenece a ninguna</option>
+                                    <option value="0" *ngIf="MICRORED_FIL.length!=1">No pertenece a ninguna</option>
                                     <option *ngFor="let rede of MICRORED_FIL" value="{{rede.Id}}">{{rede.Nombre}}</option>
                                   </select>
                               </div>
@@ -43,7 +43,7 @@
                               <label for="example-search-input" class="col-md-4 col-form-label">Establecimiento</label>
                               <div class="col-md-8">
                                   <select class="form-control" name="ID_IPRESS" id="idestablecimiento" [(ngModel)]="ID_IPRESS">
-                                    <option value="0">No pertenece a ninguna</option>
+                                    <option value="0" *ngIf="ESTABLECIMIENTOS_FIL.length!=1">Seleccione un establecimiento</option>
                                     <option *ngFor="let establec of ESTABLECIMIENTOS_FIL" value="{{establec.Id+0}}">{{establec.Nombre}}</option>
                                   </select>
                               </div>
