@@ -20,5 +20,12 @@ export class AtencionPuerperioService {
 
     return this.http.get(environment.url_api_node+'atencion-puerperio/atender/'+id_atencion)
   }
+  reprogramar_cita(data:any){
+    return this.http.post(environment.url_api_node+'atencion-puerperio/reprogramar/'+data.id_atencion,data)
+  }
+  no_atender(data:any){
+    return this.http.post(environment.url_api_node+'atencion-puerperio/no_atender/'+data.id_atencion,data)
+
+  }
 
 }

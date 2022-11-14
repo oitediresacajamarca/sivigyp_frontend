@@ -59,6 +59,8 @@ import { HijoComponent } from './pruebas/hijo/hijo.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AmbitoProfileSelectComponent } from './paginas/ambito-profile-select/ambito-profile-select.component';
+import { ReprogramarAtencionPuerperioComponent } from './componentes/atencion/atencion-puerperio/reprogramar-atencion-puerperio/reprogramar-atencion-puerperio.component';
+import { NoAtencionPuerperioComponent } from './componentes/atencion/atencion-puerperio/no-atencion-puerperio/no-atencion-puerperio.component';
 
 
 
@@ -117,6 +119,8 @@ import { AmbitoProfileSelectComponent } from './paginas/ambito-profile-select/am
     PadreComponent,
     HijoComponent,
     AmbitoProfileSelectComponent,
+    ReprogramarAtencionPuerperioComponent,
+    NoAtencionPuerperioComponent,
 
   ],
   imports: [

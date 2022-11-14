@@ -86,6 +86,7 @@
                 <tr *ngFor="let aten of ATENCIONES_PUERPERIO">
                   <td style="width:50px;"><span
                       class="round text-white d-inline-block text-center rounded-circle bg-info">{{aten.NRO_ATENCION}}</span>
+                      {{aten.ID_ATENCION_PUERPERIO}}
                   </td>
 
                   <td>{{aten.FECHA_ATENCION|date:'dd-MM-yyyy'}}</td>
@@ -103,7 +104,8 @@
                         style="position: absolute; transform: translate3d(-44px, 35px, 0px); top: 0px; left: 0px; will-change: transform;"
                         x-placement="bottom-start">
                         <a class="dropdown-item"  (click)="MOSTRAR_DIALOG(aten.ID_ATENCION_PUERPERIO)">Atender</a>
-
+                        <a class="dropdown-item"  (click)="mostra_dialog_no_atender(aten.ID_ATENCION_PUERPERIO)" >No Atendido</a>
+                        <a class="dropdown-item"  (click)="mostra_dialog_reprogramar(aten.ID_ATENCION_PUERPERIO)" >Reprogramar</a>
 
 
                       </div>
@@ -122,3 +124,6 @@
   </div>
 </div>
 <app-atencion-pf #atencion_ppf (acepto_dialogo)="acepto_dialogo($event)"></app-atencion-pf>
+<app-reprogramar-atencion-puerperio #reprogramar (acepto_reprogramar)="reprogramar_cita($event)"></app-reprogramar-atencion-puerperio>
+<app-no-atencion-puerperio #no_atender (acepto_no_atender)="acepto_no_atender($event)"></app-no-atencion-puerperio>
+

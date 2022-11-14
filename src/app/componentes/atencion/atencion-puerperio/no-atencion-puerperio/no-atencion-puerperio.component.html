@@ -5,7 +5,7 @@
 
       <div class="text-center bg-success fondo p-3">
 
-        <span class="titulo">GUADAR ATENCION PUERPERIO</span>
+        <span class="titulo">REGITRAR NO ATENCION</span>
 
       </div>
       <div class="modal-body">
@@ -14,13 +14,14 @@
 
 
           <div class="form-group">
-            <label for="observacion">METODO DE PLANIFICACION FAMILIAR</label>
+            <label for="observacion">OBSERVACION</label>
+            <textarea id="observacion" class="form-control" rows="4" [(ngModel)]="OBSERVACION" name="OBSERVACION"></textarea>
 
-            <app-selector-metodos-planificacion (change)="selecciono_metodo($event)" name="METODO" [(ngModel)]="METODO"></app-selector-metodos-planificacion>
+
           </div>
           <div class="form-group text-center">
             <button class="btn btn-dark waves-effect waves-light pad" (click)="CANCELAR()">Cancelar</button>
-            <button class="btn btn-info" type="submit" (click)="ACEPTAR()" >ATENDER</button>
+            <button class="btn btn-info" type="submit" (click)="ACEPTAR()" >ACEPTAR</button>
           </div>
 
         </form>

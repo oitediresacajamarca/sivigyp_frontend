@@ -37,4 +37,7 @@ export class AtencionPfComponent implements OnInit {
     this.acepto_dialogo.emit({METODO:this.METODO,ID_ATENCION:this.ID_ATENCION_PUERPERIO})
     this.mostrar=false
   }
+  CANCELAR(){
+    this.mostrar=false
+  }
 }

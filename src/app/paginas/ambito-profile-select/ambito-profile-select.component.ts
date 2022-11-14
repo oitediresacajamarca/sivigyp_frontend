@@ -34,6 +34,7 @@ export class AmbitoProfileSelectComponent implements OnInit {
   }
   cargar_ambito_usuario() {
     this.ambito_origen = this.estados.ambito.ambito_origen
+
     console.log(this.estados.ambito.ambito_origen)
 
     console.log(this.estados.ambito.nivel_ambito_origen)
@@ -46,15 +47,10 @@ export class AmbitoProfileSelectComponent implements OnInit {
 
     }
     if (this.NIVEL == '5') {
-      console.log('is')
+
       this.setMicrored(parseInt(this.estados.ambito.ambito_origen))
 
     }
-
-
-
-
-
 
   }
 

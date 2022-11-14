@@ -20,7 +20,7 @@
                     <textarea id="observacion" class="form-control" rows="4" [(ngModel)]="observacion" name="observacion"></textarea>
                 </div>
                   <div class="form-group text-center">
-                    <button  class="btn btn-dark waves-effect waves-light pad" >Cancelar</button>
+                    <button  class="btn btn-dark waves-effect waves-light pad" (click)="Cancelar()" >Cancelar</button>
                       <button class="btn btn-info" (click)="Aceptar()" type="submit">REPROGRAMAR</button>
                   </div>
 

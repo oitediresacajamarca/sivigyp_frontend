@@ -5,7 +5,7 @@
 
       <div class="text-center bg-success fondo p-3">
 
-        <span class="titulo">GUADAR ATENCION PUERPERIO</span>
+        <span class="titulo">REPROGRAMAR ATENCION PUERPERIO</span>
 
       </div>
       <div class="modal-body">
@@ -14,13 +14,13 @@
 
 
           <div class="form-group">
-            <label for="observacion">METODO DE PLANIFICACION FAMILIAR</label>
+            <label for="observacion">FECHA DE REPROGRAMACION</label>
+            <app-selector-fecha [(ngModel)]="fecha_reprogramacion" name="fecha_reprogramacion"></app-selector-fecha>
 
-            <app-selector-metodos-planificacion (change)="selecciono_metodo($event)" name="METODO" [(ngModel)]="METODO"></app-selector-metodos-planificacion>
           </div>
           <div class="form-group text-center">
             <button class="btn btn-dark waves-effect waves-light pad" (click)="CANCELAR()">Cancelar</button>
-            <button class="btn btn-info" type="submit" (click)="ACEPTAR()" >ATENDER</button>
+            <button class="btn btn-info" type="submit" (click)="ACEPTAR()" >REPROGRAMAR</button>
           </div>
 
         </form>
