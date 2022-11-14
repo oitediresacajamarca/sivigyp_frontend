@@ -18,13 +18,13 @@ export class SelectorMicroredComponent implements OnInit {
   }
   cargar_microred_por_red(id_red: any) {
     this.microred_se.cargar_microred_segun_microred(id_red).subscribe(data => {
-      console.log(data)
+
       this.miroredes = data
     })
 
   }
   cambio_microredf(e: any) {
-    console.log('cambio')
+
 
     this.cambio_microred.emit(e)
 

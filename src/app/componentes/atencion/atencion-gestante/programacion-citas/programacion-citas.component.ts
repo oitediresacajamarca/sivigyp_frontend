@@ -1,8 +1,8 @@
-import { createViewChildren } from '@angular/compiler/src/core';
-import { IfStmt, THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+
 import { Component, Input, OnInit, ViewChild, ViewChildren } from '@angular/core';
 import { AtencionReg } from 'src/app/interface/atencion-reg';
 import { AtencionRegService } from 'src/app/servicios/atencion-reg/atencion-reg.service';
+import { AgregarCitaGestanteComponent } from '../agregar-cita-gestante/agregar-cita-gestante.component';
 import { ReprogramarCitaComponent } from '../reprogramar-cita/reprogramar-cita.component';
 import { ObservacionCitaComponent } from './observacion-cita/observacion-cita.component';
 
@@ -27,6 +27,11 @@ export class ProgramacionCitasComponent implements OnInit {
   @ViewChild('dialog_reprogra')
   dialog_reprogra!: ReprogramarCitaComponent
 
+  @ViewChild('agrega_cita')
+  agrega_cita!: AgregarCitaGestanteComponent
+
+
+
 
 
   @Input('atenciones_reg')
@@ -40,9 +45,9 @@ export class ProgramacionCitasComponent implements OnInit {
   }
   generar_atencion_reg() {
 
-    console.log(this.atencion)
+
     this.atencion_reg_service.generar_atencion_reg(this.atencion.ID_ATENCION).subscribe(data => {
-      console.log(data)
+
       this.atenciones_reg = data
 
     })
@@ -78,7 +83,7 @@ export class ProgramacionCitasComponent implements OnInit {
 
   Eliminar_Atencion(ID_ATENCION: number) {
     this.atencion_reg_service.eliminar(ID_ATENCION).subscribe(respuesta => {
-      console.log(respuesta)
+
 
       this.Cargar_Atencion_Reg()
 
@@ -88,7 +93,7 @@ export class ProgramacionCitasComponent implements OnInit {
 
   Cargar_Atencion_Reg() {
     this.atencion_reg_service.cargar_atencion_reg(this.atencion.ID_ATENCION).subscribe(respuesta => {
-      console.log(respuesta)
+
       this.atenciones_reg = respuesta
     })
 
@@ -143,6 +148,22 @@ export class ProgramacionCitasComponent implements OnInit {
 
   }
 
+  mostrar_dialogo_agrega_cita() {
+
+    this.agrega_cita.ID_ATENCION = this.atencion.ID_ATENCION
+
+    this.agrega_cita.mostrar = true
+
+  }
+
+  acepto_nueva_cita(e: any) {
+
+    this.atencion_reg_service.nueva_cita(e).subscribe(respuesta => {
+this.Cargar_Atencion_Reg()
+
+    }, error => { alert('conexion de internet') })
+
+  }
 
 
 }

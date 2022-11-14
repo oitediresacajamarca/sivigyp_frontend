@@ -19,7 +19,7 @@ export class SelectorIpressComponent implements OnInit {
   }
   cargar_ipress_por_microred(id_microred: any) {
     this.ipres_s.cargar_ipress_microred(id_microred).subscribe(data => {
-      console.log(data)
+
 
 
       this.ipress = data

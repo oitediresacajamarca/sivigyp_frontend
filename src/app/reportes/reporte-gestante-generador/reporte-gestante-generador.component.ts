@@ -28,7 +28,7 @@ export class ReporteGestanteGeneradorComponent implements OnInit {
     this.spinner.show()
 
     this.repseg.cargar_seguimiento_2(this.ambito).subscribe(respuesta => {
-      console.log(respuesta)
+
 
       sheet.addRow({ id: 1, name: 'John Doe', dob: new Date(1970, 1, 1) })
       sheet.addRow({ id: 1, name: 'John Doe', dob: new Date(1970, 1, 1) })

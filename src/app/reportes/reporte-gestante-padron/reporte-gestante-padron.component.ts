@@ -34,7 +34,7 @@ export class ReporteGestantePadronComponent implements OnInit {
       sheet.addRow({ id: 1, name: 'John Doe', dob: new Date(1970, 1, 1) })
       sheet.addRow({ id: 1, name: 'John Doe', dob: new Date(1970, 1, 1) })
       let encabezado = sheet.addRow({ id: 1, name: 'John Doe', dob: new Date(1970, 1, 1) })
-      console.log(reporte)
+
 
       let f: Fill = {
         type: 'pattern',

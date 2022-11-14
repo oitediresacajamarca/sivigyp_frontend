@@ -35,9 +35,6 @@ export class AmbitoProfileSelectComponent implements OnInit {
   cargar_ambito_usuario() {
     this.ambito_origen = this.estados.ambito.ambito_origen
 
-    console.log(this.estados.ambito.ambito_origen)
-
-    console.log(this.estados.ambito.nivel_ambito_origen)
 
 
     this.NIVEL = this.estados.ambito.nivel_ambito_origen
@@ -101,7 +98,7 @@ export class AmbitoProfileSelectComponent implements OnInit {
 
   cargar_estbalec_por_microred() {
     this.ESTABLECIMIENTOS_FIL = []
-    console.log(this.ID_MICRORED)
+
 
     this.est.cargar_estable_fil(this.ambito_origen, this.ID_MICRORED).subscribe(respuesta => {
 
@@ -140,10 +137,10 @@ export class AmbitoProfileSelectComponent implements OnInit {
   }
   async setMicrored(ID: number) {
     this.est.cargar_estable(ID).subscribe(data => {
-      console.log(data)
+
       this.MICRORED_FIL = [data]
       this.ID_MICRORED = ID
-      console.log(ID)
+
       this.est.cargar_estable(data.idRed).subscribe(red => {
         this.REDES_FIL = [red]
       })

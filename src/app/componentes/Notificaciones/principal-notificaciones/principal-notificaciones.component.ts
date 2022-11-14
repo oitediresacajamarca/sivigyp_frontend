@@ -44,7 +44,7 @@ for(let i=0; i<cantidad_paginas;i++){
 
 
     this.atencion_reg_ser.pendientes_actuales(this.estados_.devolver_ambito_actual().cod_ambito, { fecha: new Date(), pagina: pagina, len: len }).subscribe(respuesta => {
-      console.log(respuesta)
+
       this.nro_atenciones_pendientes = respuesta.total
       this.atenciones_pendientes = respuesta.data
       this.gen_paginas()

@@ -20,7 +20,7 @@ export class SelectorRiesgoComponent implements OnInit, ControlValueAccessor {
   onTouch = () => { }
   estado = false
   writeValue(obj: any): void {
-    console.log(obj)
+
     this.riesgo = obj
   }
   registerOnChange(fn: any): void {
@@ -41,14 +41,14 @@ export class SelectorRiesgoComponent implements OnInit, ControlValueAccessor {
   cargar_riesgos() {
     this.riesgo_s.devolver_riesgos().subscribe(res => {
       this.riesgos = res
-      console.log(this.riesgos)
+
     })
 
 
   }
   seleciono_riesgo() {
 
-    console.log(this.riesgo)
+
 
     this.onChange( this.riesgo)
   }

@@ -33,7 +33,7 @@ export class SelectorRedComponent implements OnInit, ControlValueAccessor {
   }
   registerOnChange(fn: any): void {
    this.onChange=fn
-   console.log(fn)
+
   }
   registerOnTouched(fn: any): void {
    this.onTouch=fn

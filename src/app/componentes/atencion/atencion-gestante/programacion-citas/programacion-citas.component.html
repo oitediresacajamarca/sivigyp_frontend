@@ -21,6 +21,11 @@
            [disabled]="this.atencion==undefined">Registrar Parto</button>
 
       </div>
+      <div class="input-group-append sep">
+        <button type="button" class="btn waves-effect waves-light btn-primary"  (click)="mostrar_dialogo_agrega_cita()"
+           [disabled]="this.atencion==undefined">Agregar Cita</button>
+
+      </div>
     </div>
     <div class="month-table">
 
@@ -68,7 +73,7 @@
                           Atendido</a>
                         <a class="dropdown-item" (click)="Abrir_Dialogo_Reprogamar(aten.ID_ATENCION_REG,aten)">Reprogramar
                           Cita</a>
-                        <!-- <a class="dropdown-item" (click)="Eliminar_Atencion(aten.ID_ATENCION_REG)">Eliminar Cita</a> -->
+               <a class="dropdown-item" (click)="Eliminar_Atencion(aten.ID_ATENCION_REG)">Eliminar Cita</a>
 
                       </div>
                     </div>
@@ -89,3 +94,4 @@
 </div>
 <app-observacion-cita #dialog (acepto)="aceptar($event)"></app-observacion-cita>
 <app-reprogramar-cita #dialog_reprogra (reprogramacion_realizada)="recargar_atenciones_reg()"></app-reprogramar-cita>
+<app-agregar-cita-gestante #agrega_cita (acepto_nueva_cita)="acepto_nueva_cita($event)" ></app-agregar-cita-gestante>

@@ -64,7 +64,7 @@ export class RegistroPartoComponent implements OnInit {
   }
   CARGAR_PARTOS() {
     this.atencion_parto_serv.Cargar_Partos(this.ID_ATENCION).subscribe(respuesta => {
-      console.log(respuesta)
+
       this.PARTOS = respuesta
     }
     )

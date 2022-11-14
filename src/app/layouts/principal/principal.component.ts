@@ -21,7 +21,7 @@ export class PrincipalComponent implements OnInit {
     this.autentic.get_profile(localStorage.getItem('TOKEN')?.toString().replace('"','')+'').subscribe(respuesta => {
 
       this.est_ser.cargar_estable(respuesta.origen).subscribe(fer=>{
-        console.log(fer)
+
 
         this.estad.ambito.ambito_origen=String(1000000000+(fer.Id)).slice(1,10)
         this.estad.ambito.nivel_ambito_origen=fer.IdNivelesEstablecimientos

@@ -46,6 +46,10 @@ export class AtencionRegService {
     return this.http.post<respuesta_pendiente>(environment.url_api_node+'atencion-reg/pendientes/'+ipress,data)
 
   }
+  nueva_cita(data:any){
+    return this.http.post<any>(environment.url_api_node+'atencion-reg/nuevo/',data)
+
+  }
 
 
 }

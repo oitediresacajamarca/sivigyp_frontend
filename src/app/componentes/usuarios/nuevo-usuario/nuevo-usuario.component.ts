@@ -43,20 +43,19 @@ export class NuevoUsuarioComponent implements OnInit {
 
   onSubmit(from: any) {
 
-    console.log(from)
+
   }
   cambio_red(e: any) {
-    console.log(e)
+
     this.selector_microred.cargar_microred_por_red(e)
   }
   cambio_microred(e: any) {
-    console.log('si escuhe')
 
     this.selector_ipress.cargar_ipress_por_microred(e)
 
   }
   Guardar() {
-    console.log(this.nuevo_usuario.value)
+
   }
 
 

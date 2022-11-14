@@ -81,7 +81,7 @@ export class BuscarPersonaHcComponent implements OnInit {
     this.person_s.buscar_persona_hc_en_region(this.nro_cod_fil).subscribe(
 
       data => {
-        console.log(data)
+
         if (data.length == 0) {
 
           this.mensaje_dialogo = ''

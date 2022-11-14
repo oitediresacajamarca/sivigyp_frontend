@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, ViewChild, ViewChildren } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataGestanteInterface } from 'src/app/interface/data-gestante-interface';
 import { TipoSeguro } from 'src/app/interface/tipo-seguro';
@@ -9,6 +9,7 @@ import * as moment from 'moment';
 import Swal from 'sweetalert2'
 import { AtencionRegService } from 'src/app/servicios/atencion-reg/atencion-reg.service';
 import { RiesgosService } from 'src/app/servicios/riesgos/riesgos.service';
+import { AgregarCitaGestanteComponent } from './agregar-cita-gestante/agregar-cita-gestante.component';
 
 @Component({
   selector: 'app-atencion-gestante',
@@ -39,6 +40,9 @@ export class AtencionGestanteComponent implements OnInit ,OnChanges {
   fecha_probable_parto!: Date
   hoy: Date = new Date()
   mostrar_estado_gestacional = false
+
+  @ViewChild('agrega_cita')
+  agrega_cita!:AgregarCitaGestanteComponent
 
   validar_consistencia() {
     return (formGroup: FormGroup) => {
@@ -171,7 +175,7 @@ export class AtencionGestanteComponent implements OnInit ,OnChanges {
 
   Actualizar_Atencion() {
 
-    console.log(this.informacion_gestante_form.valid)
+
 
 
 if(this.informacion_gestante_form.valid){
@@ -191,8 +195,7 @@ if(this.informacion_gestante_form.valid){
       this.edad_gestacional_actual = 0
 
     }
-    console.log(this.fecha_probable_parto)
-    console.log(respuesta.FECHA_POSIBLE_PARTO)
+
     this.fecha_probable_parto = respuesta.FECHA_POSIBLE_PARTO
 
     if (moment(this.fecha_probable_parto) >= moment(this.hoy)) {

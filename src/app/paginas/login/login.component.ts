@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     await  this.router.navigate(['sivigyp/principal/inicio']).then(
      ()=>{ window.location.reload();}
       )
-    console.log(respuesta)
+
     })
 
 

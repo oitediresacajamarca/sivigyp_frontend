@@ -19,7 +19,7 @@ export class ListaPersonalComponent implements OnInit {
   cargar_personal() {
 
     this.personal_rep.cargar_personal_ipress(this.estado_s.devolver_ambito_actual().cod_ambito).subscribe(datos => {
-      console.log(datos)
+
 
       this.datos_personal = datos
     })

@@ -24,7 +24,7 @@ export class ReprogramarCitaComponent implements OnInit {
   }
   Aceptar() {
     this.atencion_serv.reprogramar(this.ID_CITA_REG, { FECHA: this.fecha_reprogramacion, OBSERVACION: this.observacion }).subscribe(respuesta => {
-      console.log(respuesta)
+
       this.reprogramacion_realizada.emit()
       this.mostrar = false
     })

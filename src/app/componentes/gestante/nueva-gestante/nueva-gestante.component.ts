@@ -56,7 +56,7 @@ export class NuevaGestanteComponent implements OnInit {
 
 
     this.mst_per.devolver_mst_paciente(this.datos_generales.value.nro_documento).subscribe(per => {
-      console.log(per)
+
       // this.desabilitar()
       if (per != undefined) {
         if (per.fecha_nacimiento != undefined) {
@@ -151,7 +151,7 @@ export class NuevaGestanteComponent implements OnInit {
       this.persona_hc.nueva_historia_clinica(this.datos_generales.value.nro_documento,
         { persona: this.datos_generales.value, datos_complementarios: this.datos_complemntarios.value }
       ).subscribe(resultado => {
-        console.log(resultado)
+
         this.route.navigate(['/sivigyp/principal/', 'registro-gestante'])
 
       }, error => { alert('error' + JSON.stringify(error)); })

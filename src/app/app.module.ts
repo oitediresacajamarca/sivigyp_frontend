@@ -61,6 +61,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AmbitoProfileSelectComponent } from './paginas/ambito-profile-select/ambito-profile-select.component';
 import { ReprogramarAtencionPuerperioComponent } from './componentes/atencion/atencion-puerperio/reprogramar-atencion-puerperio/reprogramar-atencion-puerperio.component';
 import { NoAtencionPuerperioComponent } from './componentes/atencion/atencion-puerperio/no-atencion-puerperio/no-atencion-puerperio.component';
+import { AgregarCitaGestanteComponent } from './componentes/atencion/atencion-gestante/agregar-cita-gestante/agregar-cita-gestante.component';
 
 
 
@@ -121,6 +122,7 @@ import { NoAtencionPuerperioComponent } from './componentes/atencion/atencion-pu
     AmbitoProfileSelectComponent,
     ReprogramarAtencionPuerperioComponent,
     NoAtencionPuerperioComponent,
+    AgregarCitaGestanteComponent,
 
   ],
   imports: [

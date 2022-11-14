@@ -22,7 +22,7 @@ export class SelectorTipoSeguroComponent implements OnInit,ControlValueAccessor 
   }
 
   selecciono_tipo_seguro(e:any){
-    console.log(e)
+
     this.onChange(e)
 
   }
