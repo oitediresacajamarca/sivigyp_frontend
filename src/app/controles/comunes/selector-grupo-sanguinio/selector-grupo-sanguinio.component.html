@@ -4,7 +4,7 @@
 
 
 
-  <option *ngFor="let grupo_s of grupos_sanguineos" [value]="grupo_s.ID" data-select2-id="394" >{{grupo_s.ID}}</option>
+  <option *ngFor="let grupo_s of grupos_sanguineos" [value]="grupo_s.ID" [selected]="grupo_sanguineo==grupo_s.ID" >{{grupo_s.ID}}</option>
 
 
 </select>

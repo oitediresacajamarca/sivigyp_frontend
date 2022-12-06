@@ -23,6 +23,8 @@ export class SelectorProvinciaComponent implements OnInit, ControlValueAccessor 
 
   constructor(private provincia_s: ProvinciaService) { }
   writeValue(obj: any): void {
+    console.log('se dio valor')
+    console.log(obj)
 
     this.provincia = obj;
   }

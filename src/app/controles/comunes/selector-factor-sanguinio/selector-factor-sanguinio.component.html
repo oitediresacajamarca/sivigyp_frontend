@@ -4,7 +4,7 @@
 
 
 
-  <option *ngFor="let f_s of factor_sanguineos" [value]="f_s.ID" data-select2-id="394" >{{f_s.ID}}</option>
+  <option *ngFor="let f_s of factor_sanguineos" [value]="f_s.ID" [selected]="f_s.ID==factor_sanguinio">{{f_s.ID}}</option>
 
 
 </select>

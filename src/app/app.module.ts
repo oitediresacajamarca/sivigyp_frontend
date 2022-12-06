@@ -62,6 +62,13 @@ import { AmbitoProfileSelectComponent } from './paginas/ambito-profile-select/am
 import { ReprogramarAtencionPuerperioComponent } from './componentes/atencion/atencion-puerperio/reprogramar-atencion-puerperio/reprogramar-atencion-puerperio.component';
 import { NoAtencionPuerperioComponent } from './componentes/atencion/atencion-puerperio/no-atencion-puerperio/no-atencion-puerperio.component';
 import { AgregarCitaGestanteComponent } from './componentes/atencion/atencion-gestante/agregar-cita-gestante/agregar-cita-gestante.component';
+import { FichaComponent } from './componentes/ficha/ficha.component';
+import { SelectorDepartamentoComponent } from './controles/comunes/selectores-geograficos/selector-departamento/selector-departamento.component';
+import { SelectorEstablecNacComponent } from './controles/comunes/selectores-geograficos/selector-establec-nac/selector-establec-nac.component';
+import { FitrosDepartamentoProvinciaDistritoEstablecNacionalComponent } from './controles/comunes/filtros/fitros-departamento-provincia-distrito-establec-nacional/fitros-departamento-provincia-distrito-establec-nacional.component';
+import { SelectorProvinciaNacComponent } from './controles/comunes/selectores-geograficos/selector-provincia/selector-provincia.component';
+import { SelectorDistritoNacComponent } from './controles/comunes/selectores-geograficos/selector-distrito/selector-distrito.component';
+import { ActualizarGestanteComponent } from './componentes/gestante/actualizar-gestante/actualizar-gestante.component';
 
 
 
@@ -123,6 +130,13 @@ import { AgregarCitaGestanteComponent } from './componentes/atencion/atencion-ge
     ReprogramarAtencionPuerperioComponent,
     NoAtencionPuerperioComponent,
     AgregarCitaGestanteComponent,
+    FichaComponent,
+    SelectorDepartamentoComponent,
+    SelectorEstablecNacComponent,
+    FitrosDepartamentoProvinciaDistritoEstablecNacionalComponent,
+    SelectorProvinciaNacComponent,
+    SelectorDistritoNacComponent,
+    ActualizarGestanteComponent
 
   ],
   imports: [

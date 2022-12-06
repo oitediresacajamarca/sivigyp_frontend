@@ -1,0 +1,80 @@
+
+
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">Textarea</h4>
+    <form class="mt-3" action="http://sir.diresacajamarca.gob.pe:8050/api/ficha/registrar" [formGroup]="fromG">
+      <div class="row">
+        <div class="col-6">
+          <div class="form-group">
+            <label for="">NOMBRE_FICHA</label>
+            <textarea class="form-control" rows="3" formControlName="NOMBRE_FICHA"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="">DESCRIPCION_FICHA</label>
+            <textarea class="form-control" rows="3" formControlName="DESCRIPCION_FICHA"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="">FORMULA_FICHA</label>
+            <textarea class="form-control" rows="3" formControlName="FORMULA_FICHA" ></textarea>
+          </div>
+          <div class="form-group">
+            <label for="">RESPONSABLE_FICHA</label>
+            <textarea class="form-control" rows="3" formControlName="RESPONSABLE_FICHA"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="">FRECUENCIA_MEDICION</label>
+            <textarea class="form-control" rows="3" formControlName="FRECUENCIA_MEDICION"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="">TIPO_INDICADOR</label>
+            <textarea class="form-control" rows="3" formControlName="TIPO_INDICADOR"></textarea>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <label for="">VIGENCIA</label>
+            <textarea class="form-control" rows="3" formControlName="VIGENCIA"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="">UNIDAD</label>
+            <textarea class="form-control" rows="3" formControlName="UNIDAD"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="">ID_INDICADOR</label>
+            <textarea class="form-control" rows="3" formControlName="ID_INDICADOR"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="">OBSERVACIONES_FICHA</label>
+            <textarea class="form-control" rows="3" formControlName="OBSERVACIONES_FICHA"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="">NUMERADOR</label>
+            <textarea class="form-control" rows="3" formControlName="NUMERADOR"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="">DENOMINADOR</label>
+            <textarea class="form-control" rows="3" formControlName="DENOMINADOR"></textarea>
+          </div>
+        </div>
+      </div>
+<div class="row">
+  <button class="waves-effect waves-light btn btn-info d-block" type="submit" id="add-task" (click)="enviar()" >Guardar</button>
+</div>
+
+    </form>
+  </div>
+</div>
+
+NOMBRE_FICHA,
+DESCRIPCION_FICHA,
+FORMULA_FICHA,
+RESPONSABLE_FICHA,
+FRECUENCIA_MEDICION,
+TIPO_INDICADOR,
+VIGENCIA,
+UNIDAD,
+ID_INDICADOR,
+OBSERVACIONES_FICHA,
+NUMERADOR,
+DENOMINADOR

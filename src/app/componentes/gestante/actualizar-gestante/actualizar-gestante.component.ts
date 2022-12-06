@@ -1,21 +1,19 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { SelectorCentroPobladoComponent } from 'src/app/controles/comunes/selector-centro-poblado/selector-centro-poblado.component';
 import { SelectorDistritoComponent } from 'src/app/controles/comunes/selector-distrito/selector-distrito.component';
+import { EstadoServiceService } from 'src/app/servicios/estado-service.service';
+import { HistoriaClinicaService } from 'src/app/servicios/historia-clinica/historia-clinica.service';
 import { MstPacienteService } from 'src/app/servicios/risc/mst-paciente.service';
 import * as moment from 'moment';
-import { HistoriaClinicaService } from 'src/app/servicios/historia-clinica/historia-clinica.service';
-import { EstadoServiceService } from 'src/app/servicios/estado-service.service';
-
-import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-nueva-gestante',
-  templateUrl: './nueva-gestante.component.html',
-  styleUrls: ['./nueva-gestante.component.scss']
+  selector: 'app-actualizar-gestante',
+  templateUrl: './actualizar-gestante.component.html',
+  styleUrls: ['./actualizar-gestante.component.scss']
 })
-export class NuevaGestanteComponent implements OnInit {
-
+export class ActualizarGestanteComponent implements OnInit {
   constructor(private mst_per: MstPacienteService, private fb: FormBuilder, private persona_hc: HistoriaClinicaService, 
     private estados_s: EstadoServiceService, private route: Router) { }
 
@@ -128,6 +126,7 @@ export class NuevaGestanteComponent implements OnInit {
         'beneficiaria_juntos': ['', Validators.required],
         COD_IPRESS: [this.estados_s.devolver_ambito_actual().cod_ambito,Validators.required]
       })
+      this.datos_generales.controls['beneficiaria_juntos'].value
 
     this.datos_complemntarios = this.fb.group(
       {
@@ -141,15 +140,48 @@ export class NuevaGestanteComponent implements OnInit {
 
 
       })
+      this.cargar_datos()
   }
   mensaje = false
+  cargar_datos(){
+   console.log( this.estados_s.paciente)
+
+    this.datos_generales.patchValue({
+      nro_documento:  this.estados_s.paciente.NRO_DOCUMENTO,
+      nombres:this.estados_s.paciente.NOMBRES,
+      apellido_paterno:this.estados_s.paciente.APELLIDO_PAT,
+      apellido_materno:this.estados_s.paciente.APELLIDO_MAT,
+      fecha_nacimiento:this.estados_s.paciente.FECHA_NAC,
+      provincia:this.estados_s.paciente.provincia.ID_PROVINCIA,
+      distrito:this.estados_s.paciente.distrito.ID_DISTRITO,
+      centro_poblado:this.estados_s.paciente.ID_CENTRO_POBLADO,
+      direccion:this.estados_s.paciente.DIRECCION,
+      correo:this.estados_s.paciente.CORREO,
+      numero_telefono:this.estados_s.paciente.TELEFONO,
+      numero_telefono_adicional:this.estados_s.paciente.TELEFONO_ADICIONAL==null ?'':this.estados_s.paciente.TELEFONO_ADICIONAL,
+      beneficiaria_juntos:this.estados_s.paciente.BENEFICIARIA_JUNTOS
+    })
+    this.datos_complemntarios.patchValue(
+    {
+      grado_instruccion:this.estados_s.paciente.ID_GRADO_INSTRUCCION,
+      idioma:this.estados_s.paciente.IDIOMA,
+      religion:this.estados_s.paciente.RELIGION,
+      estado_civil:this.estados_s.paciente.ESTADO_CIVIL,
+      tipo_seguro:this.estados_s.paciente.TIPO_SEGURO,
+      grupo_sanguineo:this.estados_s.paciente.GRUPO_SANGUINEO,
+      factor_sanguineo:this.estados_s.paciente.FACTOR_SANGUINEO   
+
+    })
+
+    
+  }
 
   Guardar() {
 
     if (this.datos_generales.valid == true && this.datos_complemntarios.valid == true) {
       this.datos_generales.patchValue({ COD_IPRESS: this.estados_s.devolver_ambito_actual().cod_ambito })
 
-      this.persona_hc.nueva_historia_clinica(this.datos_generales.value.nro_documento,
+      this.persona_hc.actualizar_historia_clinica(this.datos_generales.value.nro_documento,
         { persona: this.datos_generales.value, datos_complementarios: this.datos_complemntarios.value }
       ).subscribe(resultado => {
 
@@ -158,7 +190,10 @@ export class NuevaGestanteComponent implements OnInit {
       }, error => { alert('error' + JSON.stringify(error)); })
     }
     if (this.datos_generales.valid == false) {
-      alert('datos generales no validos')
+      alert('datos generales no validos'    )
+
+
+
 
 
     }

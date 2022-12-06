@@ -10,6 +10,7 @@ export interface DataGestanteInterface {
 
     DIRECCION:       string;
     TELEFONO:        string;
+    TELEFONO_ADICIONAL: string;
     CORREO:          String;
     ID_GENERO:       number;
 

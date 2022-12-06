@@ -64,6 +64,9 @@
                   <td>{{data.DIRECCION}}</td>
 
                   <td>  <button type="button" (click)="visualizar_detalle(data,i)"  [routerLink]="['/sivigyp/principal/','atencion-gestante']" class="btn waves-effect waves-light btn-primary">ATENDER GESTANTE</button>
+                    <button type="button" (click)="visualizar_detalle(data,i)"  class="btn waves-effect waves-light btn-secondary"
+                    [routerLink]="['/sivigyp/principal/','actualizar-gestante']">EDITAR DATOS</button>
+                  </td>
 
                 </tr>
 

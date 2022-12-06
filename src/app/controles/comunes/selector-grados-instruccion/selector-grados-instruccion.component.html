@@ -4,7 +4,7 @@
 
 
 
-  <option *ngFor="let dis of grados_dat" [value]="dis.ID_GRADO_INSTRUCCION" data-select2-id="394" >{{dis.NOMBRE}}</option>
+  <option *ngFor="let dis of grados_dat" [value]="dis.ID_GRADO_INSTRUCCION" [selected]="dis.ID_GRADO_INSTRUCCION==grado_instruccion" >{{dis.NOMBRE}}</option>
 
 
 </select>

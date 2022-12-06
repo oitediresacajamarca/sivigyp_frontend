@@ -1,31 +1,21 @@
-import { Component, EventEmitter, forwardRef, OnInit, Output } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Distrito } from 'src/app/interface/data-gestante-interface';
-import { DistritoService } from 'src/app/servicios/maestros/distrito.service';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { EstablecimientosNacService } from 'src/app/servicios/establecimientos-nac.service';
 
 @Component({
-  selector: 'app-selector-distrito',
+  selector: 'app-selector-distrito-nac',
   templateUrl: './selector-distrito.component.html',
-  styleUrls: ['./selector-distrito.component.scss'],
-  providers: [{
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => SelectorDistritoComponent),
-    multi: true
-  }]
+  styleUrls: ['./selector-distrito.component.scss']
 })
-export class SelectorDistritoComponent implements OnInit, ControlValueAccessor {
+export class SelectorDistritoNacComponent implements OnInit {
 
   distrito = ''
   onChange = (data: any) => { }
   onTouched = (data: any) => { }
   estado = false;
 
-  constructor(private distr_ser: DistritoService) { }
+  constructor(private distr_ser: EstablecimientosNacService) { }
   writeValue(obj: any): void {
     this.distrito = obj
-
-    this.cargar_distrito_por_provincia(    this.distrito.substring(0,4))
-
   }
   registerOnChange(fn: any): void {
     this.onChange = fn
@@ -36,7 +26,7 @@ export class SelectorDistritoComponent implements OnInit, ControlValueAccessor {
   setDisabledState?(isDisabled: boolean): void {
     this.estado = isDisabled
   }
-  distritos_dat: Distrito[] = []
+  distritos_dat: any[] = []
 
   @Output('selecciono_distrito')
   selecciono_distrito = new EventEmitter()
@@ -45,14 +35,13 @@ export class SelectorDistritoComponent implements OnInit, ControlValueAccessor {
   }
   cargar_distrito_por_provincia(cod_provincia: string) {
     this.distr_ser.devolver_distritos_por_provincia(cod_provincia).subscribe(data => {
-      console.log(data)
       this.distritos_dat = data
     })
   }
   selecciono_dis(e: any) {
+    console.log(e)
     this.onChange(e)
     this.selecciono_distrito.emit(e)
   }
-
 
 }

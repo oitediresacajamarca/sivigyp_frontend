@@ -4,7 +4,7 @@
 
 
 
-  <option *ngFor="let cp of centros_poblados_dat" [value]="cp.ID_CENTROP" data-select2-id="394" >{{cp.NOMBRE}}</option>
+  <option *ngFor="let cp of centros_poblados_dat" [value]="cp.ID_CENTROP" [selected]="cp.ID_CENTROP==centro_poblado" >{{cp.NOMBRE}}</option>
 
 
 </select>

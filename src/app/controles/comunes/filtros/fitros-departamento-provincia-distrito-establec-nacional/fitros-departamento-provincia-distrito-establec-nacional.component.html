@@ -1,0 +1,22 @@
+<div class="card">
+
+    <div class="row entre">
+      <div class="col-3">DEPARTAMENTO</div>
+      <div class="col-2"> PROVINCIA</div>
+      <div class="col-3"> DISTRITO</div>
+      <div class="col-3"> ESTABLECIMIENTO</div>
+  
+    </div>
+  
+    <div class="row entre">
+      <div class="col-3"><app-selector-departamento (seleciono_departamento)="seleciono_departamento($event)" ></app-selector-departamento></div>
+      <div class="col-2"> <app-selector-provincia-nac #provincia  (selecciono_provincia)="selecciono_provincia($event)"></app-selector-provincia-nac></div>
+      <div class="col-3"> <app-selector-distrito-nac #distrito (selecciono_distrito)="selecciono_distrito($event)"></app-selector-distrito-nac> </div>
+      <div class="col-3">      <app-selector-establec-nac #establec></app-selector-establec-nac></div>
+
+
+  
+    </div>
+  
+  
+  </div>

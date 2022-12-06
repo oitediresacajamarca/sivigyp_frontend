@@ -22,7 +22,9 @@ export class SelectorCentroPobladoComponent implements OnInit,ControlValueAccess
 
   constructor(private centr_ser: CentroPobladoService) { }
   writeValue(obj: any): void {
+
     this.centro_poblado=obj
+    this.cargar_centro_poblador_por_distrito(this.centro_poblado.substring(0,6))
   }
   registerOnChange(fn: any): void {
     this.onChange=fn

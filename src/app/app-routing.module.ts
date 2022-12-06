@@ -3,12 +3,16 @@ import { Routes, RouterModule } from '@angular/router';
 import { AtencionGestanteComponent } from './componentes/atencion/atencion-gestante/atencion-gestante.component';
 import { ObservacionCitaComponent } from './componentes/atencion/atencion-gestante/programacion-citas/observacion-cita/observacion-cita.component';
 import { AtencionPuerperioComponent } from './componentes/atencion/atencion-puerperio/atencion-puerperio.component';
+import { FichaComponent } from './componentes/ficha/ficha.component';
+import { ActualizarGestanteComponent } from './componentes/gestante/actualizar-gestante/actualizar-gestante.component';
 import { NuevaGestanteComponent } from './componentes/gestante/nueva-gestante/nueva-gestante.component';
 import { GestantesListadoComponent } from './componentes/gestantes-listado/gestantes-listado.component';
 import { ModalNotificaacionesComponent } from './componentes/Notificaciones/modal-notificaaciones/modal-notificaaciones.component';
 import { PrincipalNotificacionesComponent } from './componentes/Notificaciones/principal-notificaciones/principal-notificaciones.component';
 import { RegistroPartoComponent } from './componentes/parto/registro-parto/registro-parto.component';
 import { ListaPersonalComponent } from './componentes/personal/lista-personal/lista-personal.component';
+import { FitrosDepartamentoProvinciaDistritoEstablecNacionalComponent } from './controles/comunes/filtros/fitros-departamento-provincia-distrito-establec-nacional/fitros-departamento-provincia-distrito-establec-nacional.component';
+import { SelectorDepartamentoComponent } from './controles/comunes/selectores-geograficos/selector-departamento/selector-departamento.component';
 import { ContenedorComponent } from './layouts/contenedor/contenedor.component';
 import { PrincipalComponent } from './layouts/principal/principal.component';
 import { AmbitoProfileSelectComponent } from './paginas/ambito-profile-select/ambito-profile-select.component';
@@ -30,10 +34,12 @@ const routes: Routes = [
           { path: 'registro-gestante', component: GestantesListadoComponent },
           { path: 'atencion-gestante', component: AtencionGestanteComponent },
           { path: 'NuevoPaciente', component: NuevaGestanteComponent },
+          { path: 'actualizar-gestante', component: ActualizarGestanteComponent },
+          
           { path: 'Personal', component: ListaPersonalComponent },
           { path: 'reporte-gestante', component: ReporteGestanteGeneradorComponent },
           { path: 'registrar_parto/:id_atencion', component: RegistroPartoComponent },
-          { path: 'prueba', component: PrincipalNotificacionesComponent },
+          { path: 'prueba', component: ActualizarGestanteComponent },
           { path: 'modal', component: ModalNotificaacionesComponent },
           { path: 'atencion-puerperio/:ID_ATENCION', component: AtencionPuerperioComponent },
           { path: 'reporte', component: ReporteGestantePadronComponent },
@@ -42,7 +48,7 @@ const routes: Routes = [
       }]
   },
 
-
+  { path: 'ficha', component: FichaComponent },
   { path: 'login', component: LoginComponent },
   { path: '', component: LoginComponent },
   /* { path: 'principal', component: PrincipalComponent ,children:[{path:'inicio', component:HijoComponent}]},

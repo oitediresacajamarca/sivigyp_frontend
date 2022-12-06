@@ -26,6 +26,7 @@ export class EstadoServiceService {
       "DIRECCION": "MARAYPAMPA",
       "FECHA_NAC": "1984-02-03T05:00:00.000Z",
       "TELEFONO": '',
+      "TELEFONO_ADICIONAL": '',
       "CORREO": "PENDIENTE",
       "ID_HC": 1415,
       "NRO_HCL": "42359805",

@@ -4,7 +4,7 @@
 
 
 
-  <option *ngFor="let tipo_s of tip_seguros" [value]="tipo_s.ID_TIPO_SEGURO" data-select2-id="394" >{{tipo_s.NOMBRE}}</option>
+  <option *ngFor="let tipo_s of tip_seguros" [value]="tipo_s.ID_TIPO_SEGURO" [selected]="tipo_s.ID_TIPO_SEGURO==tipo_seguro" >{{tipo_s.NOMBRE}}</option>
 
 
 </select>

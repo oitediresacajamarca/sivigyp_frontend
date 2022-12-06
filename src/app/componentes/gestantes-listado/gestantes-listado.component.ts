@@ -44,6 +44,7 @@ export class GestantesListadoComponent implements OnInit {
       "DIRECCION": "MARAYPAMPA",
       "FECHA_NAC": "1984-02-03T05:00:00.000Z",
       "TELEFONO": '',
+      TELEFONO_ADICIONAL:'',
       "CORREO": "PENDIENTE",
       "ID_HC": 0,
       "NRO_HCL": "42359805",
@@ -109,6 +110,7 @@ export class GestantesListadoComponent implements OnInit {
     this.gestante_detalle = data;
     this.selected_row = index;
     this.estados_s.paciente = this.gestante_detalle
+    console.log(this.estados_s.paciente )
 
 
 
