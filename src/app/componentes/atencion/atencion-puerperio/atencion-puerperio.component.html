@@ -33,11 +33,11 @@
           <br>
           <div><p> HORA PARTO :{{PARTO.HORA_PARTO|date:'hh:mm'}}</p></div>
           <br>
-          <div><p>TIIPO PARTO:{{PARTO.TIPO_PARTO}}</p></div>
+          <div><p>TIIPO PARTO:{{PARTO.TIPO_PARTO|tipoParto}}</p></div>
           <br>
           <div><p>LUGAR PARTO:{{PARTO.LUGAR_PARTO}}</p></div>
           <br>
-          <div><p>SEXO: {{PARTO.RN_SEXO}}</p></div>
+          <div><p>SEXO: {{PARTO.RN_SEXO==1?'MASCULINO':'FEMENINO'}}</p></div>
           <br>
           <div>PESO:{{PARTO.RN_PESO}}</div>
 

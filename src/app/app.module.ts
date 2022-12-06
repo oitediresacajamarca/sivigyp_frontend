@@ -70,6 +70,7 @@ import { SelectorProvinciaNacComponent } from './controles/comunes/selectores-ge
 import { SelectorDistritoNacComponent } from './controles/comunes/selectores-geograficos/selector-distrito/selector-distrito.component';
 import { ActualizarGestanteComponent } from './componentes/gestante/actualizar-gestante/actualizar-gestante.component';
 import { AgregarCitaPuerperioComponent } from './componentes/atencion/atencion-puerperio/agregar-cita-puerperio/agregar-cita-puerperio.component';
+import { TipoPartoPipe } from './pipes/tipo-parto.pipe';
 
 
 
@@ -140,6 +141,7 @@ import { AgregarCitaPuerperioComponent } from './componentes/atencion/atencion-p
     SelectorDistritoNacComponent,
     ActualizarGestanteComponent,
     AgregarCitaPuerperioComponent,
+    TipoPartoPipe,
   ],
   imports: [
     BrowserModule,
