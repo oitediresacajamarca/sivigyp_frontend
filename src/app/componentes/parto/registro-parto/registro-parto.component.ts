@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormGroup } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { error } from 'console';
 import { AtencionPartoService } from 'src/app/servicios/atencion-parto/atencion-parto.service';
 
 @Component({
@@ -88,12 +89,21 @@ export class RegistroPartoComponent implements OnInit {
   }
 
   selecciono_tipo_recien() {
-    if(this.formPartoReg.controls['TIPO_RECIEN_NACIDO'].value == 5 && this.NACIMIENTOS_FORM.length == 1){
+    if (this.formPartoReg.controls['TIPO_RECIEN_NACIDO'].value == 5 && this.NACIMIENTOS_FORM.length == 1) {
       this.agregar_nacimiento()
     }
-    else{
+    else {
 
     }
+  }
+  eliminar_parto(data: any) {
+
+    console.log(data)
+    this.atencion_parto_serv.Eliminar_Parto(data).subscribe(respuesta => {
+     this.CARGAR_PARTOS()
+    },error=>{
+      alert('error de conexion a internet')
+    })
   }
 
 }

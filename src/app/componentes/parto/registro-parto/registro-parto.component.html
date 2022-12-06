@@ -48,7 +48,7 @@
 
 
             <div class="form-group">
-              <label for="exampleInputPassword1">TIPO DE ATENCION PARTO</label>
+              <label for="exampleInputPassword1">QUIEN ATENDIO EL PARTO</label>
               <select class="form-control" formControlName="ID_ATENDIO_PARTO" *ngIf="this.formPartoReg.value.TIPO_PARTO!=3" >
 
                 <option value="1">OBSTETRA</option>
@@ -187,6 +187,22 @@
                     <button type="button" class="btn waves-effect waves-light btn-success"
                       [routerLink]="['/sivigyp/principal/atencion-puerperio',ID_ATENCION]">Ir Atencion
                       Puerperio</button>
+
+                      <div class="btn-group show" >
+                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                          aria-expanded="true">
+                          Accion
+                        </button>
+                        <div class="dropdown-menu "
+                          style="position: absolute; transform: translate3d(-44px, 35px, 0px); top: 0px; left: 0px; will-change: transform;"
+                          x-placement="bottom-start">
+                          <a class="dropdown-item" (click)="eliminar_parto(data.ID_ATENCION_PARTO)" >Eliminar</a>
+                          
+  
+                        </div>
+                      </div>
+
+                   
                   </td>
 
                 </tr>

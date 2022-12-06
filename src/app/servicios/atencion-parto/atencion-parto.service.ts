@@ -17,4 +17,9 @@ export class AtencionPartoService {
 
 return this.http.get<any[]>(environment.url_api_node+'atencion-parto/atencion/'+id_atencion)
   }
+
+  Eliminar_Parto(ID_ATENCION_PARTO:string){
+    return this.http.delete(environment.url_api_node+'atencion-parto/atencion/'+ID_ATENCION_PARTO)
+
+  }
 }
