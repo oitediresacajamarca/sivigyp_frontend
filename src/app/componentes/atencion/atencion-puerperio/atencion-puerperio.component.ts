@@ -5,6 +5,7 @@ import { AtencionPuerperioService } from 'src/app/servicios/atencion-puerperio/a
 import { AtencionesPuerperio, AtencionPuerperioInterface, Parto } from 'src/app/servicios/atencion-puerperio/interface/atencion-puerperio-interface';
 import { EstadoServiceService } from 'src/app/servicios/estado-service.service';
 import { PersonaService } from 'src/app/servicios/persona.service';
+import { AgregarCitaPuerperioComponent } from './agregar-cita-puerperio/agregar-cita-puerperio.component';
 import { AtencionPfComponent } from './atencion-pf/atencion-pf.component';
 import { NoAtencionPuerperioComponent } from './no-atencion-puerperio/no-atencion-puerperio.component';
 import { ReprogramarAtencionPuerperioComponent } from './reprogramar-atencion-puerperio/reprogramar-atencion-puerperio.component';
@@ -37,6 +38,9 @@ export class AtencionPuerperioComponent implements OnInit {
 
   @ViewChild('no_atender')
   no_atender!: NoAtencionPuerperioComponent
+
+  @ViewChild('agregar_cita')
+  agregar_cita!: AgregarCitaPuerperioComponent
 
 
 
@@ -129,7 +133,27 @@ this.reprogramar.id_atencion_cita=id_atencion
 
   }
 
+  eliminar(ID_ATENCION_PUERPERIO:number){
+    this.atencion_serv.eliminar(ID_ATENCION_PUERPERIO).subscribe(respuesta=>{
+      console.log(respuesta)
+      this.cargarAtencionPuerperio()
+    })
+  }
 
+  acepto_nueva_cita(e:any){
+
+console.log(e)
+    this.atencion_serv.nueva_cita(e).subscribe(respuesta=>{
+      this.cargarAtencionPuerperio()
+
+    })
+
+
+  }
+  Agregar_Cita(){this.agregar_cita
+    this.agregar_cita.ID_ATENCION=this.ID_ATENCION
+    this.agregar_cita.mostrar=true
+  }
 
 
 }

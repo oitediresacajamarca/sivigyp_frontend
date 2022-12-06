@@ -27,5 +27,12 @@ export class AtencionPuerperioService {
     return this.http.post(environment.url_api_node+'atencion-puerperio/no_atender/'+data.id_atencion,data)
 
   }
+  eliminar(ID_ATENCION_PUERPERIO:number){
+    return this.http.delete(environment.url_api_node+'atencion-puerperio/'+ID_ATENCION_PUERPERIO)
+
+  }
+  nueva_cita(data:any){
+    return this.http.post(environment.url_api_node+'atencion-puerperio',data)
+  }
 
 }

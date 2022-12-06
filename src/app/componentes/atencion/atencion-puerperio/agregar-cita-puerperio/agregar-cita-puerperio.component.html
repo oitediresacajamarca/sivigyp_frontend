@@ -1,0 +1,29 @@
+<div class="modal  fade show" *ngIf="mostrar==true" role="dialog" aria-modal="true" style="padding-right: 17px; display: block;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+  
+            <div class="text-center bg-success fondo p-3">
+  
+                    <span class="titulo" >AGREGAR CITA</span>
+  
+            </div>
+            <div class="modal-body">
+  
+                <form class="pl-3 pr-3" action="#">
+  
+                    <div class="form-group">
+                        <label for="observacion">FECHA DE NUEVA CITA</label>
+                        <app-selector-fecha [(ngModel)]="FECHA_NUEVA_CITA" name="FECHA_NUEVA_CITA"></app-selector-fecha>
+                    </div>
+  
+                    <div class="form-group text-center">
+                      <button  class="btn btn-dark waves-effect waves-light pad" (click)="Cancelar()" >Cancelar</button>
+                        <button class="btn btn-info" (click)="Aceptar()" type="submit">AGREGAR CITA</button>
+                    </div>
+  
+                </form>
+  
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div>

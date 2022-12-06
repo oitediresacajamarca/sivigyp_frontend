@@ -69,6 +69,8 @@ import { FitrosDepartamentoProvinciaDistritoEstablecNacionalComponent } from './
 import { SelectorProvinciaNacComponent } from './controles/comunes/selectores-geograficos/selector-provincia/selector-provincia.component';
 import { SelectorDistritoNacComponent } from './controles/comunes/selectores-geograficos/selector-distrito/selector-distrito.component';
 import { ActualizarGestanteComponent } from './componentes/gestante/actualizar-gestante/actualizar-gestante.component';
+import { AgregarCitaPuerperioComponent } from './componentes/atencion/atencion-puerperio/agregar-cita-puerperio/agregar-cita-puerperio.component';
+
 
 
 
@@ -136,8 +138,8 @@ import { ActualizarGestanteComponent } from './componentes/gestante/actualizar-g
     FitrosDepartamentoProvinciaDistritoEstablecNacionalComponent,
     SelectorProvinciaNacComponent,
     SelectorDistritoNacComponent,
-    ActualizarGestanteComponent
-
+    ActualizarGestanteComponent,
+    AgregarCitaPuerperioComponent,
   ],
   imports: [
     BrowserModule,
