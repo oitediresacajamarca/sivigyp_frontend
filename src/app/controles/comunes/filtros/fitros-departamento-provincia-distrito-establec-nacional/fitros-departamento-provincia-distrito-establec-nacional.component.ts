@@ -1,5 +1,5 @@
 import { createViewChild } from '@angular/compiler/src/core';
-import { Component, OnInit, ViewChild, ViewChildren } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild, ViewChildren } from '@angular/core';
 import { SelectorDistritoNacComponent } from '../../selectores-geograficos/selector-distrito/selector-distrito.component';
 import { SelectorEstablecNacComponent } from '../../selectores-geograficos/selector-establec-nac/selector-establec-nac.component';
 import { SelectorProvinciaNacComponent } from '../../selectores-geograficos/selector-provincia/selector-provincia.component';
@@ -12,6 +12,8 @@ import { SelectorProvinciaNacComponent } from '../../selectores-geograficos/sele
 export class FitrosDepartamentoProvinciaDistritoEstablecNacionalComponent implements OnInit {
 
   constructor() { }
+  @Output('selecciono_ipress_')
+  selecciono_ipress_:EventEmitter<any>=new EventEmitter()
 
   ngOnInit(): void {
   }
@@ -38,6 +40,10 @@ export class FitrosDepartamentoProvinciaDistritoEstablecNacionalComponent implem
     console.log(e)
     this.establec.UBIGEO=e
     this.establec.cargar_establecimientos()
+  }
+
+  selecciono_ipress(e:any){
+this.selecciono_ipress_.emit(e)
   }
 
 }

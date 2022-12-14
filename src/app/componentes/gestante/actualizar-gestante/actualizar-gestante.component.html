@@ -63,6 +63,9 @@
                 <div class="form-group">
                   <label for="title2" class="control-label col-form-label">Fecha de Nacimiento</label>
                   <input type="date" class="form-control"  formControlName="fecha_nacimiento" [readonly]="encontrdao_fec_nac==true">
+                  <div class="invalid-feedback">
+                    Please provide a valid city.
+                  </div>
                 </div>
               </div>
   
@@ -70,12 +73,19 @@
                 <div class="form-group">
                   <label for="title2" class="control-label col-form-label">Departamento</label>
                   <input type="text" class="form-control" id="title2" value="CAJAMARCA">
+                  <div class="invalid-feedback  is-invalid">
+                    Tiene que elegir un departamento
+                  </div>
                 </div>
               </div>
               <div class="col-3">
                 <div class="form-group">
                   <label for="title2" class="control-label col-form-label">Provincia</label>
                   <app-selector-provincia (seleciono_provincia)="selecciono_provincia($event)" formControlName="provincia"></app-selector-provincia>
+                  <div class="invalid-feedback" [ngStyle]="{'display':'block'}" *ngIf="datos_generales.get('provincia')?.errors && 
+                  datos_generales.get('provincia')?.hasError('required')">
+                Seleccione una provincia
+                  </div>
                 </div>
               </div>
               <div class="col-3">
@@ -83,18 +93,30 @@
                   <label for="title2" class="control-label col-form-label">Distrito</label>
                   <app-selector-distrito #selector_distrito (selecciono_distrito)="selecciono_distrito($event)" formControlName="distrito">
                   </app-selector-distrito>
+                  <div class="invalid-feedback" [ngStyle]="{'display':'block'}" *ngIf="datos_generales.get('distrito')?.errors && 
+                  datos_generales.get('distrito')?.hasError('required')">
+        Provincia es Requerido
+                  </div>
                 </div>
               </div>
               <div class="col-3">
                 <div class="form-group">
                   <label for="title2" class="control-label col-form-label">Centro Poblado</label>
                   <app-selector-centro-poblado #selector_centro_poblado formControlName="centro_poblado"></app-selector-centro-poblado>
+                  <div class="invalid-feedback" [ngStyle]="{'display':'block'}" *ngIf="datos_generales.get('centro_poblado')?.errors && 
+                  datos_generales.get('centro_poblado')?.hasError('required')">
+             Centro Poblado es Requerdio
+                </div>
                 </div>
               </div>
               <div class="col-4">
                 <div class="form-group">
                   <label for="comname1" class="control-label col-form-label" >Direccion</label>
                   <input type="text" class="form-control" id="comname1" formControlName="direccion">
+                  <div class="invalid-feedback" [ngStyle]="{'display':'block'}" *ngIf="datos_generales.get('direccion')?.errors && 
+                  datos_generales.get('direccion')?.hasError('required')">
+           Direccion es requerido
+                </div>
                 </div>
               </div>
               <div class="col-4">
@@ -102,6 +124,10 @@
                   <div class="form-group">
                     <label for="email4" class="control-label col-form-label">Email</label>
                     <input type="email" class="form-control" id="email4" placeholder="Email Here" formControlName="correo">
+                    <div class="invalid-feedback" [ngStyle]="{'display':'block'}" *ngIf="datos_generales.get('correo')?.errors && 
+                    datos_generales.get('correo')?.hasError('required')">
+                  Seleccione u
+                  </div>
                   </div>
                 </div>
               </div>
@@ -109,12 +135,20 @@
                 <div class="form-group">
                   <label for="title2" class="control-label col-form-label">Numero de telefono</label>
                   <input type="text" class="form-control" id="title2" formControlName="numero_telefono">
+                  <div class="invalid-feedback" [ngStyle]="{'display':'block'}" *ngIf="datos_generales.get('numero_telefono')?.errors && 
+                    datos_generales.get('numero_telefono')?.hasError('required')">
+               El numero de Telfono es Requerdio
+                  </div>
                 </div>
               </div>
               <div class="col-4">
                 <div class="form-group">
                   <label for="title2" class="control-label col-form-label">Numero de telefono adicional</label>
                   <input type="text" class="form-control" id="title2" formControlName="numero_telefono_adicional">
+                  <div class="invalid-feedback" [ngStyle]="{'display':'block'}" *ngIf="datos_generales.get('numero_telefono_adicional')?.errors && 
+                  datos_generales.get('numero_telefono_adicional')?.hasError('required')">
+                Seleccione u
+                </div>
                 </div>
               </div>
   
@@ -127,6 +161,10 @@
                   <input  value="0" type="radio" id="customControlValidation3" [checked]="datos_generales.controls['beneficiaria_juntos'].value==0" formControlName="beneficiaria_juntos"
                     class="radio-col-indigo material-inputs">
                   <label for="customControlValidation3">No  </label>
+                  <div class="invalid-feedback" [ngStyle]="{'display':'block'}" *ngIf="datos_generales.get('beneficiaria_juntos')?.errors && 
+                  datos_generales.get('beneficiaria_juntos')?.hasError('required')">
+      Este campo es requerido
+                </div>
                 </div>
               </div>
   
@@ -148,12 +186,20 @@
                 <div class="form-group">
                   <label for="fname3" class="control-label col-form-label">Grado de Instruccion</label>
                   <app-selector-grados-instruccion formControlName="grado_instruccion"></app-selector-grados-instruccion>
+                  <div class="invalid-feedback" [ngStyle]="{'display':'block'}" *ngIf="datos_generales.get('grado_instruccion')?.errors && 
+                  datos_generales.get('grado_instruccion')?.hasError('required')">
+                Seleccione una grado de Instruccion
+                  </div>
                 </div>
               </div>
               <div class="col-3">
                 <div class="form-group">
                   <label for="title2" class="control-label col-form-label">Idioma</label>
                   <app-selector-idioma formControlName="idioma"></app-selector-idioma>
+                  <div class="invalid-feedback" [ngStyle]="{'display':'block'}" *ngIf="datos_generales.get('idioma')?.errors && 
+                  datos_generales.get('idioma')?.hasError('required')">
+                Seleccione un Idioma
+                  </div>
   
                 </div>
               </div>
@@ -161,6 +207,10 @@
                 <div class="form-group">
                   <label for="title2" class="control-label col-form-label">Religion</label>
                   <app-selector-religion  formControlName="religion" ></app-selector-religion>
+                  <div class="invalid-feedback" [ngStyle]="{'display':'block'}" *ngIf="datos_generales.get('religion')?.errors && 
+                  datos_generales.get('religion')?.hasError('required')">
+                Seleccione la religion
+                  </div>
   
                 </div>
               </div>
@@ -168,6 +218,10 @@
                 <div class="form-group">
                   <label for="title2" class="control-label col-form-label">Estado Civil</label>
                   <app-selector-estado-civil formControlName="estado_civil"></app-selector-estado-civil>
+                  <div class="invalid-feedback" [ngStyle]="{'display':'block'}" *ngIf="datos_generales.get('estado_civil')?.errors && 
+                  datos_generales.get('estado_civil')?.hasError('required')">
+                Seleccione un estado_civil
+                  </div>
                 </div>
               </div>
   
@@ -175,18 +229,30 @@
                 <div class="form-group">
                   <label for="title2" class="control-label col-form-label">Tipo de Seguro</label>
                   <app-selector-tipo-seguro formControlName="tipo_seguro"></app-selector-tipo-seguro>
+                  <div class="invalid-feedback" [ngStyle]="{'display':'block'}" *ngIf="datos_generales.get('tipo_seguro')?.errors && 
+                  datos_generales.get('tipo_seguro')?.hasError('required')">
+                Seleccione un tipo de seguro
+                  </div>
                 </div>
               </div>
               <div class="col-3">
                 <div class="form-group">
                   <label for="title2" class="control-label col-form-label">Grupo Sanguinio</label>
                   <app-selector-grupo-sanguinio formControlName="grupo_sanguineo"> </app-selector-grupo-sanguinio>
+                  <div class="invalid-feedback" [ngStyle]="{'display':'block'}" *ngIf="datos_generales.get('grupo_sanguineo')?.errors && 
+                  datos_generales.get('grupo_sanguineo')?.hasError('required')">
+                Seleccione un grupo sanguineo
+                  </div>
                 </div>
               </div>
               <div class="col-3">
                 <div class="form-group">
                   <label for="title2" class="control-label col-form-label">Factor Sanguinio</label>
                   <app-selector-factor-sanguinio formControlName="factor_sanguineo"></app-selector-factor-sanguinio>
+                  <div class="invalid-feedback" [ngStyle]="{'display':'block'}" *ngIf="datos_generales.get('factor_sanguineo')?.errors && 
+                  datos_generales.get('factor_sanguineo')?.hasError('required')">
+                Seleccione un factor sanguineo
+                  </div>
                 </div>
               </div>
   

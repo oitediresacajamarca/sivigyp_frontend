@@ -20,6 +20,7 @@ export class RegistroPartoComponent implements OnInit {
   PARTOS: any[] = []
   nacimiento = 0;
   TIPO_PARTO = 0;
+  LUGAR:any
 
 
 
@@ -30,7 +31,7 @@ export class RegistroPartoComponent implements OnInit {
       FECHA_PARTO: '',
       HORA_PARTO: '',
       TIPO_PARTO: '',
-      LUGAR_PARTO: '',
+
       ID_ATENDIO_PARTO: '',
       TIPO_RECIEN_NACIDO: '',
       RN_VIVO: '',
@@ -53,11 +54,12 @@ export class RegistroPartoComponent implements OnInit {
     })
     this.CARGAR_PARTOS()
 
+
   }
   REGISTRAR_PARTO() {
 
-
-    this.atencion_parto_serv.Registrar_Parto(this.ID_ATENCION, this.formPartoReg.value).subscribe(respuesta => {
+console.log({...this.formPartoReg.value,LUGAR_PARTO:this.LUGAR.lugar,TIPO_LUGAR_PARTO:this.LUGAR.tipo_lugar})
+    this.atencion_parto_serv.Registrar_Parto(this.ID_ATENCION, {...this.formPartoReg.value,LUGAR_PARTO:this.LUGAR.lugar,TIPO_LUGAR_PARTO:this.LUGAR.tipo_lugar}).subscribe(respuesta => {
       this.CARGAR_PARTOS()
 
     }, error => alert(JSON.stringify(error)))
@@ -104,6 +106,10 @@ export class RegistroPartoComponent implements OnInit {
     },error=>{
       alert('error de conexion a internet')
     })
+  }
+
+  selecciono_lugar(e:any){
+this.LUGAR=e
   }
 
 }

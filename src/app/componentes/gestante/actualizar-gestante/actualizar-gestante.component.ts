@@ -177,11 +177,12 @@ export class ActualizarGestanteComponent implements OnInit {
   }
 
   Guardar() {
+    console.log({ persona: this.datos_generales.value, datos_complementarios: this.datos_complemntarios.value })
 
     if (this.datos_generales.valid == true && this.datos_complemntarios.valid == true) {
       this.datos_generales.patchValue({ COD_IPRESS: this.estados_s.devolver_ambito_actual().cod_ambito })
 
-      this.persona_hc.actualizar_historia_clinica(this.datos_generales.value.nro_documento,
+      this.persona_hc.actualizar_historia_clinica(this.estados_s.paciente.ID_HC.toString(),
         { persona: this.datos_generales.value, datos_complementarios: this.datos_complemntarios.value }
       ).subscribe(resultado => {
 

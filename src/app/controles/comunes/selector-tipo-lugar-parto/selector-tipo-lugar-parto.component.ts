@@ -1,4 +1,4 @@
-import { Component, forwardRef, OnInit } from '@angular/core';
+import { Component, EventEmitter, forwardRef, OnInit, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -16,6 +16,11 @@ export class SelectorTipoLugarPartoComponent implements OnInit, ControlValueAcce
   constructor() { }
   tipo_lugares: any[] = [{ codigo: 1, nombre: 'DOMICILIARIO' }, { codigo: 2, nombre: 'INSTITUCIONAL' }, { codigo: 3, nombre: 'EN EL TRAYECTO' }]
   tipo_lugar = ''
+
+  @Output('selecciono_lugar')
+  selecciono_lugar:EventEmitter<any>= new EventEmitter()
+
+
 
   ngOnInit(): void {
   }
@@ -40,6 +45,14 @@ export class SelectorTipoLugarPartoComponent implements OnInit, ControlValueAcce
 
   seleciono_tipo_lugar(e: any) {
     this.onChange(e)
+  
+      this.selecciono_lugar.emit({tipo_lugar:this.tipo_lugar,lugar:''})
+ 
+  }
+
+  selecciono_ipress(e:any){
+    console.log(e)
+    this.selecciono_lugar.emit({tipo_lugar:this.tipo_lugar,lugar:e})
   }
 
 }

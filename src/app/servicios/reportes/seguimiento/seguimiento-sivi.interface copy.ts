@@ -28,8 +28,14 @@ export interface SeguimientoSiviInterfaaceOb {
     HistoriaClinica?:           HistoriaClinica;
     RIESGOS?:                   RIESGOS[];
     AtencionesPuerperios: AtencionesPuerperios[];
+    AtencionesPPFF:AtencionesPPFF[];
 
     PARTOS:PARTO[];
+}
+
+export interface AtencionesPPFF {
+  TIPO_PPFF:string;
+  INDICACIONES:string
 }
 export interface CentroPoblado {
   ID_CENTROP?:  string;

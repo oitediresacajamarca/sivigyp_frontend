@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { EstablecimientosNacService } from 'src/app/servicios/establecimientos-nac.service';
 
 @Component({
@@ -12,6 +12,10 @@ export class SelectorEstablecNacComponent implements OnInit {
   UBIGEO:string=''
   Establecimientos:any[]=[]
 
+  @Output('selecciono_ipress')
+  selecciono_ipress:EventEmitter<any>=new EventEmitter()
+
+
   ngOnInit(): void {
   }
   cargar_establecimientos(){
@@ -20,7 +24,8 @@ export class SelectorEstablecNacComponent implements OnInit {
     })
   }
   seleciono_ipress(e:any){
-    
+    console.log(e)
+    this.selecciono_ipress.emit(e)
   }
 
 }

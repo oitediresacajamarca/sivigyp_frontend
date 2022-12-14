@@ -3,5 +3,5 @@
 </select>
 
 <div *ngIf="tipo_lugar=='INSTITUCIONAL'||tipo_lugar=='EN EL TRAYECTO'">
-  <app-fitros-departamento-provincia-distrito-establec-nacional></app-fitros-departamento-provincia-distrito-establec-nacional>
+  <app-fitros-departamento-provincia-distrito-establec-nacional (selecciono_ipress_)="selecciono_ipress($event)"></app-fitros-departamento-provincia-distrito-establec-nacional>
 </div>

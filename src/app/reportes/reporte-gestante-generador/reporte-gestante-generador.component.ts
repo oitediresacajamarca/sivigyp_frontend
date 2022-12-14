@@ -140,111 +140,111 @@ export class ReporteGestanteGeneradorComponent implements OnInit {
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
-      cell = encabezado.getCell(17)
+     /* cell = encabezado.getCell(17)
       cell.value = 'ESTADO CIVIL'
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
-      cell.alignment = { horizontal: 'center' };
+      cell.alignment = { horizontal: 'center' };*/
 
-      cell = encabezado.getCell(18)
+      cell = encabezado.getCell(17)
       cell.value = 'DIRECCION HABITUAL'
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
-      cell = encabezado.getCell(19)
+      cell = encabezado.getCell(18)
       cell.value = 'TIPO DE SEGURO'
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
-      cell = encabezado.getCell(20)
+      cell = encabezado.getCell(19)
       cell.value = 'NIVEL DE INSTRUCCION'
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
 
-      cell = encabezado.getCell(21)
+      cell = encabezado.getCell(20)
       cell.value = 'BENEFICIARIA JUNTOS'
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
 
-      cell = encabezado.getCell(22)
+      cell = encabezado.getCell(21)
       cell.value = 'IDIOMA'
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
 
-      cell = encabezado.getCell(23)
+      cell = encabezado.getCell(22)
       cell.value = 'RELIGION'
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
 
-      cell = encabezado.getCell(24)
+      cell = encabezado.getCell(23)
       cell.value = 'TELEFONO'
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
-      cell = encabezado.getCell(25)
+      cell = encabezado.getCell(24)
       cell.value = 'FORMULA OBSTETRICA'
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
-      cell = encabezado.getCell(26)
+      cell = encabezado.getCell(25)
       cell.value = 'FECHA DE ULTIM REGLA'
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
-      cell = encabezado.getCell(27)
+      cell = encabezado.getCell(26)
       cell.value = 'FECHA PROBABLE DE PARTO'
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
-      cell = encabezado.getCell(28)
+      cell = encabezado.getCell(27)
       cell.value = 'FECHA DE REGISTRO'
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
-      cell = encabezado.getCell(29)
+      cell = encabezado.getCell(28)
       cell.value = 'FECHA DE PRIMER CONTROL PRENATAL'
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
 
-      cell = encabezado.getCell(30)
+      cell = encabezado.getCell(29)
       cell.value = 'EDAD GESTACIONAL'
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
 
-      cell = encabezado.getCell(31)
+      cell = encabezado.getCell(30)
       cell.value = 'LISTA DE RIESGOS'
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
 
-      cell = encabezado.getCell(32)
+      cell = encabezado.getCell(31)
       cell.value = 'GRUPO SANGUINEO'
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
 
-      cell = encabezado.getCell(33)
+      cell = encabezado.getCell(32)
       cell.value = 'FACTOR SANGUINEO'
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
@@ -253,67 +253,79 @@ export class ReporteGestanteGeneradorComponent implements OnInit {
 
 
 
-      for (let i = 34; i <= 42 + 34 - 5; i++) {
+      for (let i = 33; i <= 42 + 33 - 5; i++) {
         cell = encabezado.getCell(i)
-        cell.value = 'Sem ' + (5 + (i - 34))
+        cell.value = 'Sem ' + (5 + (i - 33))
         cell.fill = f
         cell.font = { name: 'Arial', size: 12 };
         cell.alignment = { horizontal: 'center' };
       }
 
 
-      cell = encabezado.getCell(73)
+      cell = encabezado.getCell(72)
       cell.value = 'FFCHA'
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
-      cell = encabezado.getCell(74)
+      cell = encabezado.getCell(73)
       cell.value = 'TIPO PARTO'
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
-      cell = encabezado.getCell(75)
+      cell = encabezado.getCell(74)
       cell.value = 'LUGAR PARTO'
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
-      cell = encabezado.getCell(76)
+      cell = encabezado.getCell(75)
       cell.value = 'QUIEN ATENDIO'
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
-      cell = encabezado.getCell(77)
+      cell = encabezado.getCell(76)
       cell.value = 'TIPO RECIEN NACIDO'
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
 
-      cell = encabezado.getCell(78)
+      cell = encabezado.getCell(77)
       cell.value = 'PESO'
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
-      cell = encabezado.getCell(79)
+      cell = encabezado.getCell(78)
       cell.value = 'SEXO'
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
 
-      cell = encabezado.getCell(80)
+      cell = encabezado.getCell(79)
       cell.value = 'PRIMER CONTROL'
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
-      cell = encabezado.getCell(81)
+      cell = encabezado.getCell(80)
       cell.value = 'SEGUNDO CONTROL'
+      cell.fill = f
+      cell.font = { name: 'Arial', size: 12 };
+      cell.alignment = { horizontal: 'center' };
+
+      cell = encabezado.getCell(81)
+      cell.value = 'PPFF 1'
+      cell.fill = f
+      cell.font = { name: 'Arial', size: 12 };
+      cell.alignment = { horizontal: 'center' };
+
+      cell = encabezado.getCell(82)
+      cell.value = 'PPFF2'
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
@@ -431,10 +443,10 @@ export class ReporteGestanteGeneradorComponent implements OnInit {
         j = j + 1
         cell = fila.getCell(j)
         cell.value = registro.HistoriaClinica?.PERSONA?.NRO_DOCUMENTO + ''
-        j = j + 1
+      /*  j = j + 1
         cell = fila.getCell(j)
         cell.value = registro.HistoriaClinica?.ESTADO_CIVIL_DESCRIPCION.NOMBRE + ''
-
+*/
         j = j + 1
         cell = fila.getCell(j)
         cell.value = registro.HistoriaClinica?.PERSONA?.DIRECCION + ''
@@ -526,13 +538,13 @@ export class ReporteGestanteGeneradorComponent implements OnInit {
             }    
           }
         })
-        j = 73
+        j = 72
         if (registro.PARTOS.length > 0) {
           cell = fila.getCell(j)
           cell.value = moment(registro.PARTOS[0].FECHA_PARTO).format('DD/MM/yyyy')
         }
 
-        j = 74
+        j = 73
         if (registro.PARTOS.length > 0) {
 
           cell = fila.getCell(j)
@@ -631,6 +643,23 @@ export class ReporteGestanteGeneradorComponent implements OnInit {
           if (registro.AtencionesPuerperios[1].ESTADO_PUERPERIO == 0) {
             cell.value = 'P|' + moment(registro.AtencionesPuerperios[1].FECHA_ATENCION).format('DD/MM/yyyy')
           }
+
+        }
+
+        j = j + 1
+        if (registro.AtencionesPPFF?.length > 1) {
+          cell = fila.getCell(j)
+          cell.value=registro.AtencionesPPFF[0].TIPO_PPFF+''
+
+      
+
+        }
+        j = j + 1
+        if (registro.AtencionesPPFF?.length > 2) {
+          cell = fila.getCell(j)
+          cell.value=registro.AtencionesPPFF[1].TIPO_PPFF+''
+
+      
 
         }
 
