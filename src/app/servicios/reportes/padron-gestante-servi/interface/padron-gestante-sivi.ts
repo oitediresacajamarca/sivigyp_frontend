@@ -1,5 +1,6 @@
 export interface PadronGestanteSivi {
   RED:                 string;
+  MICRORED:string;
   PROVINCIA:           string;
   DISTRITO:            string;
   CP:                  string;
@@ -12,6 +13,7 @@ export interface PadronGestanteSivi {
   FECHA_NAC:           Date;
   EDAD:                number;
   ESTADO_CIVIL:        number;
+  TIPO_DOCUMENTO:string;
   DIRECCION:           string;
   TIPO_SEGURO:         number;
   GRADO_INSTRUCION:    string;

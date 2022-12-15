@@ -71,6 +71,8 @@ import { SelectorDistritoNacComponent } from './controles/comunes/selectores-geo
 import { ActualizarGestanteComponent } from './componentes/gestante/actualizar-gestante/actualizar-gestante.component';
 import { AgregarCitaPuerperioComponent } from './componentes/atencion/atencion-puerperio/agregar-cita-puerperio/agregar-cita-puerperio.component';
 import { TipoPartoPipe } from './pipes/tipo-parto.pipe';
+import { TipoDocumentoPipe } from './pipes/tipo-documento.pipe';
+import { TipoSeguroPipe } from './pipes/tipo-seguro.pipe';
 
 
 
@@ -142,6 +144,8 @@ import { TipoPartoPipe } from './pipes/tipo-parto.pipe';
     ActualizarGestanteComponent,
     AgregarCitaPuerperioComponent,
     TipoPartoPipe,
+    TipoDocumentoPipe,
+    TipoSeguroPipe,
   ],
   imports: [
     BrowserModule,
@@ -152,7 +156,7 @@ import { TipoPartoPipe } from './pipes/tipo-parto.pipe';
     BrowserAnimationsModule,
 
   ],
-  providers: [],
+  providers: [EstadoCivilPipe,TipoDocumentoPipe,EstadoCivilPipe,TipoSeguroPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

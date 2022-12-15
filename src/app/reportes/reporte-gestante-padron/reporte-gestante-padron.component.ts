@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { PadronGestanteServiService } from 'src/app/servicios/reportes/padron-gestante-servi.service';
 import { Fill, Workbook } from 'exceljs';
 import * as fs from 'file-saver';
+import * as moment from 'moment';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { EstadoCivilPipe } from 'src/app/pipes/estado-civil.pipe';
+import { TipoDocumentoPipe } from 'src/app/pipes/tipo-documento.pipe';
+import { TipoSeguroPipe } from 'src/app/pipes/tipo-seguro.pipe';
 
 @Component({
   selector: 'app-reporte-gestante-padron',
@@ -11,7 +15,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class ReporteGestantePadronComponent implements OnInit {
 
-  constructor(private rpt_serv: PadronGestanteServiService,private spinner: NgxSpinnerService) { }
+  constructor(private rpt_serv: PadronGestanteServiService,private spinner: NgxSpinnerService,private ecp:EstadoCivilPipe,
+    private tdp:TipoDocumentoPipe,private tsp:TipoSeguroPipe ) { }
   ambito_ipres: string = ''
 
   ngOnInit(): void {
@@ -39,146 +44,206 @@ export class ReporteGestantePadronComponent implements OnInit {
       let f: Fill = {
         type: 'pattern',
         pattern: 'solid',
-        fgColor: { argb: 'FF6550' },
-        bgColor: { argb: '000000' }
-
+        fgColor: { argb: 'cccccc' }
 
       };
 
-
-      let cell = encabezado.getCell(1)
+let i=1
+      let cell = encabezado.getCell(i)
       cell.value = 'RED';
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
-      cell = encabezado.getCell(2)
+      i=i+1
+      cell = encabezado.getCell(i)
+      cell.value = 'MICRORED';
+      cell.fill = f
+      cell.font = { name: 'Arial', size: 12 };
+      cell.alignment = { horizontal: 'center' };
+
+      i=i+1
+      cell = encabezado.getCell(i)
       cell.value = 'PROVINCIA';
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
-      cell = encabezado.getCell(3)
+   i=i+1
+      cell = encabezado.getCell(i)
       cell.value = 'DISTRITO';
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
-      cell = encabezado.getCell(4)
+      i=i+1
+      cell = encabezado.getCell(i)
       cell.value = 'CENTRO POBLADO';
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
-      cell = encabezado.getCell(5)
+      i=i+1
+      cell = encabezado.getCell(i)
       cell.value = 'IPRESS';
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
-      cell = encabezado.getCell(6)
+      i=i+1
+      cell = encabezado.getCell(i)
       cell.value = 'RENIPRESS';
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
-      cell = encabezado.getCell(7)
+      i=i+1
+      cell = encabezado.getCell(i)
       cell.value = 'APELLIDO PATERNO';
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
-      cell = encabezado.getCell(8)
+   i=i+1
+      cell = encabezado.getCell(i)
       cell.value = 'APELLIDO MATERNO';
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
-      cell = encabezado.getCell(9)
+      i=i+1
+
+      cell = encabezado.getCell(i)
       cell.value = 'NOMBRES';
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
-      cell = encabezado.getCell(10)
-      cell.value = 'NOMBRES';
-      cell.fill = f
-      cell.font = { name: 'Arial', size: 12 };
-      cell.alignment = { horizontal: 'center' };
 
-      cell = encabezado.getCell(11)
+
+   i=i+1
+      cell = encabezado.getCell(i)
       cell.value = 'FECHA NACIMIENTO';
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
-      cell = encabezado.getCell(12)
+   i=i+1
+      cell = encabezado.getCell(i)
       cell.value = 'EDAD';
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
-      cell = encabezado.getCell(13)
+   i=i+1
+      cell = encabezado.getCell(i)
       cell.value = 'ESTADO CIVIL';
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
-      cell = encabezado.getCell(14)
+      i=i+1
+      cell = encabezado.getCell(i)
+      cell.value = 'TIPO DE DOCUMENTO';
+      cell.fill = f
+      cell.font = { name: 'Arial', size: 12 };
+      cell.alignment = { horizontal: 'center' };
+
+      i=i+1
+      cell = encabezado.getCell(i)
+      cell.value = 'NUMERO DE DOCUMENTO';
+      cell.fill = f
+      cell.font = { name: 'Arial', size: 12 };
+      cell.alignment = { horizontal: 'center' };
+    
+
+
+   i=i+1
+      cell = encabezado.getCell(i)
       cell.value = 'DIRECCION';
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
 
-      cell = encabezado.getCell(15)
+      i=i+1
+      cell = encabezado.getCell(i)
       cell.value = 'TIPO SEGURO';
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
-      cell = encabezado.getCell(16)
+      i=i+1
+      cell = encabezado.getCell(i)
       cell.value = 'NIVEL DE INSTRUCCCION';
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
 
-      cell = encabezado.getCell(17)
+      i=i+1
+      cell = encabezado.getCell(i)
       cell.value = 'BENEFICIARIO JUNTOS';
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
-      cell = encabezado.getCell(18)
+      i=i+1
+      cell = encabezado.getCell(i)
       cell.value = 'IDIOMA';
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
-      cell = encabezado.getCell(19)
+      i=i+1
+      cell = encabezado.getCell(i)
       cell.value = 'FECHA ULTIMA REGLA';
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
+      i=i+1
+      cell = encabezado.getCell(i)
+      cell.value = 'FECHA PROBABLE DE PARTO';
+      cell.fill = f
+      cell.font = { name: 'Arial', size: 12 };
+      cell.alignment = { horizontal: 'center' };
 
-      cell = encabezado.getCell(20)
+
+      i=i+1
+      cell = encabezado.getCell(i)
       cell.value = 'FECHA REGISTRO';
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
 
-      cell = encabezado.getCell(21)
-      cell.value = 'FECHA PRIMERA APP';
+      i=i+1
+      cell = encabezado.getCell(i)
+      cell.value = 'FECHA CONTROL PRENATAL';
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
 
-      cell = encabezado.getCell(22)
-      cell.value = 'FECHA PRIMERA APP';
+      i=i+1
+      cell = encabezado.getCell(i)
+      cell.value = 'NUMERO DE GESTACIONES ';
+      cell.fill = f
+      cell.font = { name: 'Arial', size: 12 };
+      cell.alignment = { horizontal: 'center' };
+
+      i=i+1
+      cell = encabezado.getCell(i)
+      cell.value = 'NUMERO DE HIJOS VIVOS ';
+      cell.fill = f
+      cell.font = { name: 'Arial', size: 12 };
+      cell.alignment = { horizontal: 'center' };
+
+
+      i=i+1
+      cell = encabezado.getCell(i)
+      cell.value = 'LISTA DE RIESGOS';
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
@@ -235,97 +300,194 @@ export class ReporteGestantePadronComponent implements OnInit {
 
       col = sheet.getColumn(20)
       col.width = 20
+      col = sheet.getColumn(21)
+      col.width = 20
+
+      col = sheet.getColumn(22)
+      col.width = 20
+
+      col = sheet.getColumn(23)
+      col.width = 20
+
+      col = sheet.getColumn(24)
+      col.width = 20
+
+      col = sheet.getColumn(25)
+      col.width = 20
+
+      col = sheet.getColumn(26)
+      col.width = 20
+
+      col = sheet.getColumn(27)
+      col.width = 20
+
+      col = sheet.getColumn(28)
+      col.width = 20
+
+      col = sheet.getColumn(29)
+      col.width = 20
+
+      col = sheet.getColumn(30)
+      col.width = 20
+
+      
 
       let row_it
 
       reporte.map(registro => {
 
         row_it = sheet.addRow({ id: 1, name: 'John Doe', dob: new Date(1970, 1, 1) })
-        cell = row_it.getCell(1)
+        i=1
+        cell = row_it.getCell(i)
         cell.value = registro.RED
 
-        cell = row_it.getCell(2)
+        i=i+1
+        cell = row_it.getCell(i)
+        cell.value = registro.MICRORED
+
+        i=i+1
+        cell = row_it.getCell(i)
         cell.value = registro.PROVINCIA
 
-        cell = row_it.getCell(3)
+     i=i+1
+        cell = row_it.getCell(i)
         cell.value = registro.DISTRITO
 
-
-        cell = row_it.getCell(4)
+        i=i+1
+        cell = row_it.getCell(i)
         cell.value = registro.CP
 
-        cell = row_it.getCell(5)
+        i=i+1
+        cell = row_it.getCell(i)
         cell.value = registro.IPRESS
 
-        cell = row_it.getCell(6)
+        i=i+1
+        cell = row_it.getCell(i)
         cell.value = registro.COD_IPRESS
 
-        cell = row_it.getCell(7)
+        i=i+1
+        cell = row_it.getCell(i)
         cell.value = registro.APELLIDO_PATERNO
 
-        cell = row_it.getCell(9)
+        i=i+1
+        cell = row_it.getCell(i)
         cell.value = registro.APELLIDO_MATERNO
 
-        cell = row_it.getCell(10)
+        i=i+1
+        cell = row_it.getCell(i)
         cell.value = registro.NOMBRES
 
-        cell = row_it.getCell(11)
-        cell.value = registro.FECHA_NAC
+        i=i+1
+        cell = row_it.getCell(i)
+      
+        cell.value = new Date(registro.FECHA_NAC)
 
-        cell = row_it.getCell(12)
+        i=i+1
+        cell = row_it.getCell(i)
         cell.value = registro.EDAD
 
 
-        cell = row_it.getCell(13)
-        cell.value = registro.ESTADO_CIVIL
+        i=i+1
+        cell = row_it.getCell(i)
+        cell.value =this.ecp.transform( registro.ESTADO_CIVIL)+''
 
-        cell = row_it.getCell(14)
-        cell.value = registro.TIPO_SEGURO
+        i=i+1
+        cell = row_it.getCell(i)
+        cell.value =this.tdp.transform(registro.TIPO_DOCUMENTO) +''
 
-        cell = row_it.getCell(15)
+        i=i+1
+        cell = row_it.getCell(i)
         cell.value = registro.NRO_DOCUMENTO
 
-        cell = row_it.getCell(16)
-        cell.value = registro.ESTADO_CIVIL
 
-        cell = row_it.getCell(17)
+
+        i=i+1
+        cell = row_it.getCell(i)
         cell.value = registro.DIRECCION
 
-        cell = row_it.getCell(18)
-        cell.value = registro.TIPO_SEGURO
+        i=i+1
+        cell = row_it.getCell(i)
+        cell.value =this.tsp.transform( registro.TIPO_SEGURO)+''
 
-        cell = row_it.getCell(19)
+        i=i+1
+        cell = row_it.getCell(i)
         cell.value = registro.GRADO_INSTRUCION
 
-        cell = row_it.getCell(20)
-        cell.value = registro.NOMBRES
+        i=i+1
+        cell = row_it.getCell(i)
+        cell.value = registro.BENEFICIARIA_JUNTOS
 
-        cell = row_it.getCell(21)
-        cell.value = registro.NOMBRES
+        i=i+1
+        cell = row_it.getCell(i)
+        cell.value = registro.IDIOMA
 
-        cell = row_it.getCell(22)
-        cell.value = registro.FUR_ATENCION
 
-        cell = row_it.getCell(23)
-        cell.value = registro.FECHA_POSIBLE_PARTO
 
-        cell = row_it.getCell(24)
-        cell.value = registro.FEC_REGISTRO
+        i=i+1
+        cell = row_it.getCell(i)
+        cell.value = new Date( registro.FUR_ATENCION)
 
-        cell = row_it.getCell(25)
+        i=i+1
+        cell = row_it.getCell(i)
+        cell.value = new Date( registro.FECHA_POSIBLE_PARTO)
+
+        i=i+1
+        cell = row_it.getCell(i)
+        cell.value = new Date( registro.FEC_REGISTRO)
+
+        i=i+1
+        cell = row_it.getCell(i)
         cell.value = registro.FECHA_PAP
 
-        cell = row_it.getCell(26)
+        i=i+1
+        cell = row_it.getCell(i)
         cell.value = registro.NRO_GESTACIONES
 
-        cell = row_it.getCell(27)
+        i=i+1
+        cell = row_it.getCell(i)
         cell.value = registro.HIJOS_VIVOS
 
-        cell = row_it.getCell(28)
+        i=i+1
+        cell = row_it.getCell(i)
         cell.value = registro.RIESGOS
 
 
       })
+
+
+      
+      sheet.eachRow({ includeEmpty: false }, function (row, rowNumber) {
+        row.eachCell(function (cell, colNumber) {
+          cell.font = {
+            name: 'Arial',
+            family: 2,
+            bold: false,
+            size: 10,
+          };
+          cell.alignment = {
+            vertical: 'middle', horizontal: 'center'
+          };
+
+          if (rowNumber >= 3) {
+            for (var i = 1; i < 40; i++) {
+              if (rowNumber == 3) {
+                row.getCell(i).fill = {
+                  type: 'pattern',
+                  pattern: 'solid',
+                  fgColor: { argb: 'C7C7C7' }
+                };
+              }
+              row.getCell(i).border = {
+                top: { style: 'thin' },
+                left: { style: 'thin' },
+                bottom: { style: 'thin' },
+                right: { style: 'thin' }
+              };
+            }
+          }
+        });
+      });
+
 
       workbook.xlsx.writeBuffer().then((data) => {
         let blob = new Blob([data], {

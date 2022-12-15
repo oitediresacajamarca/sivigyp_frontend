@@ -39,10 +39,7 @@ export class ReporteGestanteGeneradorComponent implements OnInit {
         type: 'pattern',
         pattern: 'solid',
         fgColor: { argb: 'cccccc' }
-
-
-
-      };
+            };
 
       let cell = encabezado.getCell(1)
       cell.value = 'RED'
@@ -403,7 +400,7 @@ export class ReporteGestanteGeneradorComponent implements OnInit {
         j = j + 1
         cell = fila.getCell(j)
 
-        cell.value = moment(registro.HistoriaClinica?.PERSONA?.FECHA_NAC).format('DD/MM/yyyy')
+        cell.value = new Date(registro.HistoriaClinica?.PERSONA?.FECHA_NAC+'')
 
         j = j + 1
         cell = fila.getCell(j)
@@ -486,19 +483,19 @@ export class ReporteGestanteGeneradorComponent implements OnInit {
 
         j = j + 1
         cell = fila.getCell(j)
-        cell.value = moment(registro.FUR_ATENCION).format('DD/MM/yyyy') + ''
+        cell.value = new Date(registro.FUR_ATENCION+'')
 
         j = j + 1
         cell = fila.getCell(j)
-        cell.value = moment(registro.FECHA_POSIBLE_PARTO).format('DD/MM/yyyy') + ''
+        cell.value = new Date(registro.FECHA_POSIBLE_PARTO+'')
 
         j = j + 1
         cell = fila.getCell(j)
-        cell.value = moment(registro.FEC_REGISTRO).format('DD/MM/yyyy') + ''
+        cell.value = new Date(registro.FEC_REGISTRO+'') 
 
         j = j + 1
         cell = fila.getCell(j)
-        cell.value = moment(registro.FECHA_ATENCION_PRENATAL).format('DD/MM/yyyy') + ''
+        cell.value = new Date(registro.FECHA_ATENCION_PRENATAL+'')
         if (registro?.FECHA_ATENCION_PRENATAL + '' == 'null' || registro.FECHA_ATENCION_PRENATAL == undefined) {
           cell.value = 'NO EXISTE EN HIS'
         }
@@ -532,7 +529,7 @@ export class ReporteGestanteGeneradorComponent implements OnInit {
         registro.ATENCIONES_SEMANALES?.forEach(SEM => {
           cell = fila.getCell(j + SEM.NUMERO_SEMANA! - 5)
           if (SEM.FECHA_ATENCION_REG + '' != 'null' && SEM.NUMERO_SEMANA >= 5) {
-            console.log((SEM.FECHA_ATENCION_REG+'').split('|')[0])
+ 
             if(moment((SEM.FECHA_ATENCION_REG+'').split('|')[0]).format('yyyyMM')<=moment().format('yyyyMM')){
               cell.value = SEM.FECHA_ATENCION_REG + ''
             }    
@@ -541,7 +538,7 @@ export class ReporteGestanteGeneradorComponent implements OnInit {
         j = 72
         if (registro.PARTOS.length > 0) {
           cell = fila.getCell(j)
-          cell.value = moment(registro.PARTOS[0].FECHA_PARTO).format('DD/MM/yyyy')
+          cell.value = new Date(registro.PARTOS[0].FECHA_PARTO+'')
         }
 
         j = 73
