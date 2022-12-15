@@ -20,6 +20,7 @@ export class SelectorEstablecNacComponent implements OnInit {
   }
   cargar_establecimientos(){
     this.esta_nac.cargar_por_ubigeo(this.UBIGEO).subscribe(datos=>{
+      console.log(datos)
       this.Establecimientos=datos
     })
   }

@@ -4,7 +4,7 @@
 
 
 
-  <option *ngFor="let ipres of Establecimientos" [value]="ipres.Codigo_Unico"  >{{ipres.establecimiento}}</option>
+  <option *ngFor="let ipres of Establecimientos" [value]="ipres.Codigo_Unico+'-'+ipres.establecimiento"  >{{ipres.establecimiento}}</option>
 
 
 </select>
