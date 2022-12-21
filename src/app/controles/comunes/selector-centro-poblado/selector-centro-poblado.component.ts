@@ -50,6 +50,7 @@ this.estado=isDisabled
     })
   }
   selecciono_cp(e:any){
+    console.log(e)
     this.onChange(e)
     this.seleciono_cp.emit(e);
 
