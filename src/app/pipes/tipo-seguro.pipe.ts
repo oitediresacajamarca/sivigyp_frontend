@@ -7,26 +7,27 @@ export class TipoSeguroPipe implements PipeTransform {
 
   transform(value: unknown, ...args: unknown[]): unknown {
     let ret=''
-    if(value=='1')
+    console.log(value)
+    if(value==1)
     {
-      ret=='SISTEMA INTEGRADO DE SALUD'
+      ret='SISTEMA INTEGRADO DE SALUD'
     }
 
-    if(value=='2')
+    if(value==2)
     {
-      ret=='ESSALUD'
+      ret='ESSALUD'
     }
-    if(value=='3')
+    if(value==3)
     {
-      ret=='SANIDAD'
+      ret='SANIDAD'
     }
-    if(value=='4')
+    if(value==4)
     {
-      ret=='NINGUNO'
+      ret='NINGUNO'
     }
-    if(value=='5')
+    if(value==5)
     {
-      ret=='OTRO'
+      ret='OTRO'
     }
 
     return ret;

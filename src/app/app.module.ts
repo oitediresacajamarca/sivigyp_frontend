@@ -146,6 +146,7 @@ import { TipoSeguroPipe } from './pipes/tipo-seguro.pipe';
     TipoPartoPipe,
     TipoDocumentoPipe,
     TipoSeguroPipe,
+    CumplePipe
   ],
   imports: [
     BrowserModule,
@@ -156,7 +157,7 @@ import { TipoSeguroPipe } from './pipes/tipo-seguro.pipe';
     BrowserAnimationsModule,
 
   ],
-  providers: [EstadoCivilPipe,TipoDocumentoPipe,EstadoCivilPipe,TipoSeguroPipe],
+  providers: [EstadoCivilPipe,TipoDocumentoPipe,EstadoCivilPipe,TipoSeguroPipe,CumplePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

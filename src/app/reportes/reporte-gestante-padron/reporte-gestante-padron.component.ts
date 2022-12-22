@@ -7,6 +7,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { EstadoCivilPipe } from 'src/app/pipes/estado-civil.pipe';
 import { TipoDocumentoPipe } from 'src/app/pipes/tipo-documento.pipe';
 import { TipoSeguroPipe } from 'src/app/pipes/tipo-seguro.pipe';
+import { CumplePipe } from 'src/app/pipes/cumple.pipe';
 
 @Component({
   selector: 'app-reporte-gestante-padron',
@@ -16,7 +17,7 @@ import { TipoSeguroPipe } from 'src/app/pipes/tipo-seguro.pipe';
 export class ReporteGestantePadronComponent implements OnInit {
 
   constructor(private rpt_serv: PadronGestanteServiService,private spinner: NgxSpinnerService,private ecp:EstadoCivilPipe,
-    private tdp:TipoDocumentoPipe,private tsp:TipoSeguroPipe ) { }
+    private tdp:TipoDocumentoPipe,private tsp:TipoSeguroPipe,private cp:CumplePipe ) { }
   ambito_ipres: string = ''
 
   ngOnInit(): void {
@@ -169,6 +170,7 @@ let i=1
       i=i+1
       cell = encabezado.getCell(i)
       cell.value = 'TIPO SEGURO';
+
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
@@ -415,7 +417,7 @@ let i=1
 
         i=i+1
         cell = row_it.getCell(i)
-        cell.value = registro.BENEFICIARIA_JUNTOS
+        cell.value = this.cp.transform( registro.BENEFICIARIA_JUNTOS)+''
 
         i=i+1
         cell = row_it.getCell(i)
