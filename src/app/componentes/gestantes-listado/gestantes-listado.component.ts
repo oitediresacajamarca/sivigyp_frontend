@@ -144,12 +144,14 @@ export class GestantesListadoComponent implements OnInit {
 
   cargar_personas_buscadas(data: any[]) {
     this.data_encontrada = []
-  //  console.log(data[0].ID_HC)
+   console.log(data)
     if(data[0].ID_HC != undefined){
-      this.data_encontrada = data
+      console.log(data[0].ID_HC)
+this.data_encontrada = data
+
     }
 
-
+//this.data_encontrada=data
 
   }
 
