@@ -110,7 +110,6 @@ export class AtencionGestanteComponent implements OnInit ,OnChanges {
 
       let data = {
         informacion_gestante_form: this.informacion_gestante_form.value,
-
       }
 
 
@@ -252,19 +251,15 @@ if(this.informacion_gestante_form.valid){
     this.atencion_gestante.devolver_atencion(this.estados.paciente.NRO_HCL).subscribe(respuesta => {
 
       this.lista_riesgos = respuesta.RIESGOS
-
-
       this.atencion = respuesta
       this.edad_gestacional_actual = moment().diff(respuesta.FUR_ATENCION, 'weeks')
       if (this.edad_gestacional_actual >= 42) {
         this.edad_gestacional_actual = 0
-
       }
 
       this.fecha_probable_parto = respuesta.FECHA_POSIBLE_PARTO
 
       if (moment(this.fecha_probable_parto) >= moment(this.hoy)) {
-
 
         this.mostrar_estado_gestacional = true
       }
@@ -272,9 +267,7 @@ if(this.informacion_gestante_form.valid){
         this.mostrar_estado_gestacional = false
       }
 
-
       this.id_atencion = respuesta.ID_ATENCION
-
 
       this.informacion_gestante_form.patchValue({
         fecha_registro: respuesta.FEC_REGISTRO,
@@ -287,8 +280,6 @@ if(this.informacion_gestante_form.valid){
         numero_hijos_vivos: respuesta.HIJOS_VIVOS,
         fecha_probable_parto: respuesta.FECHA_POSIBLE_PARTO
       })
-
-
 
       this.atencionreg_rep.cargar_atencion_reg(this.id_atencion).subscribe(data => {
         this.atenciones_reg = data
@@ -357,7 +348,7 @@ if(this.informacion_gestante_form.valid){
 
   seleciono_fecha_regla() {
 
-    this.informacion_gestante_form.patchValue({ fecha_probable_parto: moment(this.informacion_gestante_form.value.fecha_ultima_regla).add(1, 'year').add(-3, 'month').add(7, 'days').toDate() })
+    this.informacion_gestante_form.patchValue({ fecha_probable_parto: moment(this.informacion_gestante_form.value.fecha_ultima_regla).add(1, 'year').add(7, 'days').add(-3, 'month').toDate() })
 
   }
 

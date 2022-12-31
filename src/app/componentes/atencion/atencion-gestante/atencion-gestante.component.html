@@ -30,8 +30,9 @@
             <!-- <div class="col-6 col-md-4 mt-3">
               <h3 class="mb-0 font-weight-light">12</h3><small>Controles Realizados</small>
             </div> -->
-            <div class="col-6 col-md-4 mt-3" >
-              <h5 class="mb-0 font-weight-light" >{{fecha_probable_parto|date:'dd-MM-yyyy'}}</h5><small>Fecha Probable de Parto</small>
+            <div class="col-6 col-md-4 mt-3">
+              <h5 class="mb-0 font-weight-light">{{fecha_probable_parto|date:'dd-MM-yyyy'}}</h5><small>Fecha Probable de
+                Parto</small>
             </div>
           </div>
         </div>
@@ -66,7 +67,8 @@
 
                 <form [formGroup]="informacion_gestante_form">
                   <div class="form-group row">
-                    <label for="fname" class="col-sm-6 text-right control-label col-form-label">Fecha de Registro</label>
+                    <label for="fname" class="col-sm-6 text-right control-label col-form-label">Fecha de
+                      Registro</label>
                     <div class="col-sm-6">
                       <app-selector-fecha formControlName="fecha_registro" [disabled]=true></app-selector-fecha>
                     </div>
@@ -83,12 +85,15 @@
                     <label for="lname" class="col-sm-6 text-right control-label col-form-label">Fecha de Ultima
                       Regla</label>
                     <div class="col-sm-6">
-                      <app-selector-fecha formControlName="fecha_ultima_regla" (change)="seleciono_fecha_regla()"></app-selector-fecha>
+                      <app-selector-fecha formControlName="fecha_ultima_regla"
+                        (change)="seleciono_fecha_regla()"></app-selector-fecha>
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="lname" class="col-sm-6 text-right control-label col-form-label badge badge-warning">Fecha Probable de Parto  </label>
+                    <label for="lname"
+                      class="col-sm-6 text-right control-label col-form-label badge badge-warning">Fecha Probable de
+                      Parto </label>
                     <div class="col-sm-6">
                       <app-selector-fecha formControlName="fecha_probable_parto" [disabled]=true></app-selector-fecha>
                     </div>
@@ -98,11 +103,14 @@
                       gestaciones</label>
                     <div class="col-sm-6">
                       <input type="number" class="form-control" formControlName="numero_gestaciones" value="1">
-                      <div class="invalid-feedback" *ngIf="informacion_gestante_form.controls['numero_gestaciones'].errors?.min" >
+                      <div class="invalid-feedback"
+                        *ngIf="informacion_gestante_form.controls['numero_gestaciones'].errors?.min">
                         El valor debe de ser mayor a 1.
                       </div>
-                      <div class="invalid-feedback" *ngIf="informacion_gestante_form.controls['numero_gestaciones'].errors?.error_ges">
-                        numero de gestaciones debe ser mayor igual numero de recien naaacidos a termino + numero de prematuros+abortos.
+                      <div class="invalid-feedback"
+                        *ngIf="informacion_gestante_form.controls['numero_gestaciones'].errors?.error_ges">
+                        numero de gestaciones debe ser mayor igual numero de recien naaacidos a termino + numero de
+                        prematuros+abortos.
                       </div>
                     </div>
 
@@ -157,15 +165,17 @@
                   <div class="row form-group ">
 
                     <div class="col-md-5">
-                        <input name="tipo_riesgo" class="material-inputs" value="BRO" type="radio" id="radio_1" formControlName="tipo_riesgo" (change)="seleciono_tipo_riesgo('BRO')">
-                        <label for="radio_1">BRO</label>
+                      <input name="tipo_riesgo" class="material-inputs" value="BRO" type="radio" id="radio_1"
+                        formControlName="tipo_riesgo" (change)="seleciono_tipo_riesgo('BRO')">
+                      <label for="radio_1">BRO</label>
                     </div>
                     <div class="col-md-6">
-                        <input name="tipo_riesgo" class="material-inputs" value="ARO" type="radio" id="radio_2" formControlName="tipo_riesgo" (change)="seleciono_tipo_riesgo('ARO')">
-                        <label for="radio_2">ARO</label>
+                      <input name="tipo_riesgo" class="material-inputs" value="ARO" type="radio" id="radio_2"
+                        formControlName="tipo_riesgo" (change)="seleciono_tipo_riesgo('ARO')">
+                      <label for="radio_2">ARO</label>
                     </div>
 
-                </div>
+                  </div>
 
 
 
@@ -179,18 +189,20 @@
 
                     </div>
 
-                    <div class="col-sm-4"><button type="button"
-                        class="btn waves-effect waves-light btn-primary" (click)="AgregarRiesgo()">Agregar</button></div>
+                    <div class="col-sm-4"><button type="button" class="btn waves-effect waves-light btn-primary"
+                        (click)="AgregarRiesgo()">Agregar</button></div>
                   </div>
 
 
-               <div *ngFor="let riesgo of lista_riesgos" class="row espacio">
-                <div class="col-10">{{riesgo.NOMBRE}}</div>
-                <div class="col-2"> <button type="button" class="btn btn-danger" data-method="crop" title="Crop" (click)="eliminar_riesgo(riesgo)">
-                  <span class="docs-tooltip" data-toggle="tooltip" data-animation="false" title="" >
-            <span class="fa fa-trash"></span>
-                  </span>
-              </button></div>
+                  <div *ngFor="let riesgo of lista_riesgos" class="row espacio">
+                    <div class="col-10">{{riesgo.NOMBRE}}</div>
+                    <div class="col-2"> <button type="button" class="btn btn-danger" data-method="crop" title="Crop"
+                        (click)="eliminar_riesgo(riesgo)">
+                        <span class="docs-tooltip" data-toggle="tooltip" data-animation="false" title="">
+                          <span class="fa fa-trash"></span>
+                        </span>
+                      </button>
+                    </div>
 
                   </div>
                 </form>
@@ -223,7 +235,7 @@
         <div class="row">
 
           <div class="col-12">
-            <app-programacion-citas [atenciones_reg]="atenciones_reg" [atencion]="atencion" ></app-programacion-citas>
+            <app-programacion-citas [atenciones_reg]="atenciones_reg" [atencion]="atencion"></app-programacion-citas>
           </div>
         </div>
       </div>
@@ -233,5 +245,3 @@
   </div>
 
 </div>
-
-
