@@ -73,6 +73,7 @@ import { AgregarCitaPuerperioComponent } from './componentes/atencion/atencion-p
 import { TipoPartoPipe } from './pipes/tipo-parto.pipe';
 import { TipoDocumentoPipe } from './pipes/tipo-documento.pipe';
 import { TipoSeguroPipe } from './pipes/tipo-seguro.pipe';
+import { TipoMetodoPpffPipe } from './pipes/tipo-metodo-ppff.pipe';
 
 
 
@@ -146,7 +147,8 @@ import { TipoSeguroPipe } from './pipes/tipo-seguro.pipe';
     TipoPartoPipe,
     TipoDocumentoPipe,
     TipoSeguroPipe,
-    CumplePipe
+    CumplePipe,
+    TipoMetodoPpffPipe
   ],
   imports: [
     BrowserModule,
@@ -157,7 +159,7 @@ import { TipoSeguroPipe } from './pipes/tipo-seguro.pipe';
     BrowserAnimationsModule,
 
   ],
-  providers: [EstadoCivilPipe,TipoDocumentoPipe,EstadoCivilPipe,TipoSeguroPipe,CumplePipe],
+  providers: [EstadoCivilPipe,TipoDocumentoPipe,EstadoCivilPipe,TipoSeguroPipe,CumplePipe,TipoMetodoPpffPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

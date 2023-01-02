@@ -16,7 +16,7 @@ import { AgregarCitaGestanteComponent } from './agregar-cita-gestante/agregar-ci
   templateUrl: './atencion-gestante.component.html',
   styleUrls: ['./atencion-gestante.component.scss']
 })
-export class AtencionGestanteComponent implements OnInit ,OnChanges {
+export class AtencionGestanteComponent implements OnInit, OnChanges {
 
   constructor(private estados: EstadoServiceService, private segurs: TipoSeguroService, private fb: FormBuilder, private atencion_gestante: AtencionGestanteService,
     private atencionreg_rep: AtencionRegService, private riesgos_serv: RiesgosService) { }
@@ -42,7 +42,7 @@ export class AtencionGestanteComponent implements OnInit ,OnChanges {
   mostrar_estado_gestacional = false
 
   @ViewChild('agrega_cita')
-  agrega_cita!:AgregarCitaGestanteComponent
+  agrega_cita!: AgregarCitaGestanteComponent
 
   validar_consistencia() {
     return (formGroup: FormGroup) => {
@@ -51,12 +51,12 @@ export class AtencionGestanteComponent implements OnInit ,OnChanges {
       if (res) {
 
       } else {
-        formGroup.controls['numero_gestaciones'].setErrors({...  formGroup.controls['numero_gestaciones'].errors, error_ges: true })
+        formGroup.controls['numero_gestaciones'].setErrors({ ...formGroup.controls['numero_gestaciones'].errors, error_ges: true })
       }
 
     }
   }
-  ngOnChanges(){
+  ngOnChanges() {
     console.log("The book property changed")
   }
 
@@ -84,7 +84,7 @@ export class AtencionGestanteComponent implements OnInit ,OnChanges {
     })
     this.riesgos_gestacion_form = this.fb.group({
       riesgos: '',
-      tipo_riesgo: '',
+      tipo_riesgo: [, Validators.required],
       nuevo_riesgo: {}
 
     })
@@ -106,11 +106,21 @@ export class AtencionGestanteComponent implements OnInit ,OnChanges {
 
   }
   Guardar_Atencion() {
-    if(this.informacion_gestante_form.valid){
+    console.log(this.riesgos_gestacion_form.value)
+    if (this.informacion_gestante_form.valid && this.riesgos_gestacion_form.valid) {
+
+      if (this.riesgos_gestacion_form.value.tipo_riesgo == 'ARO' && this.lista_riesgos.length == 0) {
+        alert('SI EL TIPO DE RIESGO ES ARO DEBERIA AGREGAR POR LO MENOS UN RIESGO ASOCIADO')
+        return
+
+      }
+
 
       let data = {
         informacion_gestante_form: this.informacion_gestante_form.value,
+        riesgos: this.lista_riesgos
       }
+      console.log(data)
 
 
       this.atencion_gestante.nueva_atencion(this.estados.paciente.NRO_HCL, data).subscribe(respuesta => {
@@ -149,6 +159,7 @@ export class AtencionGestanteComponent implements OnInit ,OnChanges {
           icon: 'success',
           title: 'Se actualizo correctamente'
         })
+        this.estado='actualizar'
 
       }, error => {
 
@@ -162,7 +173,12 @@ export class AtencionGestanteComponent implements OnInit ,OnChanges {
       })
 
 
-    }else{
+    } else {
+      if (this.riesgos_gestacion_form.valid == false) {
+        alert('Es obligatorio seleccionar el tipo de riesgo')
+
+      }
+
       alert('corrija los errores aantes de enviar')
     }
 
@@ -177,69 +193,69 @@ export class AtencionGestanteComponent implements OnInit ,OnChanges {
 
 
 
-if(this.informacion_gestante_form.valid){
+    if (this.informacion_gestante_form.valid) {
 
-  let data = {
-    informacion_gestante_form: this.informacion_gestante_form.value,
+      let data = {
+        informacion_gestante_form: this.informacion_gestante_form.value,
 
-  }
-
-
-  this.atencion_gestante.actualizar_atencion(this.estados.paciente.NRO_HCL, data).subscribe(respuesta => {
-
-
-
-    this.edad_gestacional_actual = moment().diff(respuesta.FUR_ATENCION, 'weeks')
-    if (this.edad_gestacional_actual >= 42) {
-      this.edad_gestacional_actual = 0
-
-    }
-
-    this.fecha_probable_parto = respuesta.FECHA_POSIBLE_PARTO
-
-    if (moment(this.fecha_probable_parto) >= moment(this.hoy)) {
-
-
-      this.mostrar_estado_gestacional = true
-    }
-    else {
-      this.mostrar_estado_gestacional = false
-    }
-
-    this.id_atencion = respuesta.ID_ATENCION
-
-    this.atencionreg_rep.cargar_atencion_reg(this.id_atencion).subscribe(data => {
-
-      this.atenciones_reg = data
-
-    })
-
-
-    const Toast = Swal.mixin({
-      toast: true,
-      position: 'top-end',
-      showConfirmButton: false,
-      timer: 3000,
-      timerProgressBar: true,
-      didOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer)
-        toast.addEventListener('mouseleave', Swal.resumeTimer)
       }
-    })
-
-    Toast.fire({
-      icon: 'success',
-      title: 'Se actualizo correctamente'
-    })
-
-  }, error => {
-    alert(JSON.stringify(error))
-  })
 
 
-} else{
-  alert('corrija los errores antes')
-}
+      this.atencion_gestante.actualizar_atencion(this.estados.paciente.NRO_HCL, data).subscribe(respuesta => {
+
+
+
+        this.edad_gestacional_actual = moment().diff(respuesta.FUR_ATENCION, 'weeks')
+        if (this.edad_gestacional_actual >= 42) {
+          this.edad_gestacional_actual = 0
+
+        }
+
+        this.fecha_probable_parto = respuesta.FECHA_POSIBLE_PARTO
+
+        if (moment(this.fecha_probable_parto) >= moment(this.hoy)) {
+
+
+          this.mostrar_estado_gestacional = true
+        }
+        else {
+          this.mostrar_estado_gestacional = false
+        }
+
+        this.id_atencion = respuesta.ID_ATENCION
+
+        this.atencionreg_rep.cargar_atencion_reg(this.id_atencion).subscribe(data => {
+
+          this.atenciones_reg = data
+
+        })
+
+
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        })
+
+        Toast.fire({
+          icon: 'success',
+          title: 'Se actualizo correctamente'
+        })
+
+      }, error => {
+        alert(JSON.stringify(error))
+      })
+
+
+    } else {
+      alert('corrija los errores antes')
+    }
 
 
 
@@ -303,9 +319,6 @@ if(this.informacion_gestante_form.valid){
 
   AgregarRiesgo() {
 
-
-    this.lista_riesgos
-
     let index = this.lista_riesgos.findIndex(dat => {
       return dat.ID_RIESGO == this.riesgos_gestacion_form.value.nuevo_riesgo.ID_RIESGO
     })
@@ -319,8 +332,10 @@ if(this.informacion_gestante_form.valid){
     if (this.lista_riesgos.length > 0) {
       this.estados.alerta = true
     }
-
+    console.log(this.estado)
+    if(this.estado=='actualizar'){
     this.riesgos_serv.asignar_riesgos(this.id_atencion, this.lista_riesgos).subscribe(respuesta => console.log(respuesta))
+    }
   }
   seleciono_tipo_riesgo(tipo: string) {
     this.tipo_riesgo = tipo
@@ -338,6 +353,9 @@ if(this.informacion_gestante_form.valid){
     this.lista_riesgos = this.lista_riesgos.filter(dat => {
       return dat.ID_RIESGO != e.ID_RIESGO
     })
+    if(this.estado=='actualizar'){
+      this.riesgos_serv.asignar_riesgos(this.id_atencion,this.lista_riesgos).subscribe()
+    }
   }
   eliminar_todos_riesgos() {
     this.lista_riesgos = []

@@ -16,9 +16,9 @@ export class AtencionPuerperioService {
   generar_citas(ID_ATENCION_PARTO:number){
     return this.http.post(environment.url_api_node+'atencion-puerperio/crear_citas',{ID_ATENCION_PARTO})
   }
-  ATENDER(id_atencion:number){
+  ATENDER(id_atencion:number,metodos:any){
 
-    return this.http.get(environment.url_api_node+'atencion-puerperio/atender/'+id_atencion)
+    return this.http.post(environment.url_api_node+'atencion-puerperio/atender/'+id_atencion,metodos)
   }
   reprogramar_cita(data:any){
     return this.http.post(environment.url_api_node+'atencion-puerperio/reprogramar/'+data.id_atencion,data)

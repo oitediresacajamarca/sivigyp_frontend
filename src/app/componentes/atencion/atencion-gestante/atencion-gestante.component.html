@@ -191,20 +191,20 @@
 
                     <div class="col-sm-4"><button type="button" class="btn waves-effect waves-light btn-primary"
                         (click)="AgregarRiesgo()">Agregar</button></div>
-                  </div>
-
-
-                  <div *ngFor="let riesgo of lista_riesgos" class="row espacio">
-                    <div class="col-10">{{riesgo.NOMBRE}}</div>
-                    <div class="col-2"> <button type="button" class="btn btn-danger" data-method="crop" title="Crop"
-                        (click)="eliminar_riesgo(riesgo)">
-                        <span class="docs-tooltip" data-toggle="tooltip" data-animation="false" title="">
-                          <span class="fa fa-trash"></span>
-                        </span>
-                      </button>
                     </div>
 
-                  </div>
+
+                    <div *ngFor="let riesgo of lista_riesgos" class="row espacio">
+                      <div class="col-10">{{riesgo.NOMBRE}}</div>
+                      <div class="col-2"> <button type="button" class="btn btn-danger" data-method="crop" title="Crop"
+                          (click)="eliminar_riesgo(riesgo)">
+                          <span class="docs-tooltip" data-toggle="tooltip" data-animation="false" title="">
+                            <span class="fa fa-trash"></span>
+                          </span>
+                        </button>
+                      </div>
+
+                    </div>
                 </form>
 
               </div>

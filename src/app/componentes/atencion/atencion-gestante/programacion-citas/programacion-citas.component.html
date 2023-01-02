@@ -17,7 +17,7 @@
       </div> -->
 
       <div class="input-group-append sep">
-        <button type="button" class="btn waves-effect waves-light btn-primary" [routerLink]="['../registrar_parto',atencion.ID_ATENCION]"
+        <button type="button" *ngIf="this.atencion!=undefined" class="btn waves-effect waves-light btn-primary" [routerLink]="['../registrar_parto',atencion.ID_ATENCION]"
            [disabled]="this.atencion==undefined">Registrar Parto</button>
 
       </div>

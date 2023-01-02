@@ -59,6 +59,7 @@ export class NuevaGestanteComponent implements OnInit {
     this.mst_per.devolver_mst_paciente(this.datos_generales.value.nro_documento).subscribe(per => {
 
       // this.desabilitar()
+      console.log(per)
       if (per != undefined) {
         if (per.fecha_nacimiento != undefined) {
           //   this.datos_generales.controls['fecha_nacimiento'].()

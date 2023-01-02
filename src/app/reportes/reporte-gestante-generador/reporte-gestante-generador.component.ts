@@ -5,6 +5,7 @@ import * as fs from 'file-saver';
 import { SeguimientoSiviService } from 'src/app/servicios/reportes/seguimiento/seguimiento-sivi.service';
 import * as moment from 'moment';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { TipoMetodoPpffPipe } from 'src/app/pipes/tipo-metodo-ppff.pipe';
 
 @Component({
   selector: 'app-reporte-gestante-generador',
@@ -13,7 +14,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class ReporteGestanteGeneradorComponent implements OnInit {
 
-  constructor(private atencion_serv: AtencionRegService, private repseg: SeguimientoSiviService, private spinner: NgxSpinnerService) { }
+  constructor(private atencion_serv: AtencionRegService, private repseg: SeguimientoSiviService, private spinner: NgxSpinnerService,private tmppff:TipoMetodoPpffPipe) { }
   ambito: string = ''
   desde!: Date
   hasta!: Date
@@ -316,16 +317,30 @@ export class ReporteGestanteGeneradorComponent implements OnInit {
       cell.alignment = { horizontal: 'center' };
 
       cell = encabezado.getCell(81)
-      cell.value = 'PPFF 1'
+      cell.value = ' FECHA PPFF 1'
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
 
       cell = encabezado.getCell(82)
-      cell.value = 'PPFF2'
+      cell.value = 'METODO PPFF 1'
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
+
+
+      cell = encabezado.getCell(83)
+      cell.value = 'FECHA PPFF2'
+      cell.fill = f
+      cell.font = { name: 'Arial', size: 12 };
+      cell.alignment = { horizontal: 'center' };
+
+      cell = encabezado.getCell(84)
+      cell.value = 'METODO PPFF2'
+      cell.fill = f
+      cell.font = { name: 'Arial', size: 12 };
+      cell.alignment = { horizontal: 'center' };
+
 
 
 
@@ -359,7 +374,7 @@ export class ReporteGestanteGeneradorComponent implements OnInit {
 
       respuesta.forEach(registro => {
         let fila = sheet.addRow({})
-
+     
         let cell = fila.getCell(1)
         cell.value = registro.HistoriaClinica?.IPRESS?.MICRORED?.RED?.NOMBRE + ''
         cell = fila.getCell(2)
@@ -627,8 +642,12 @@ export class ReporteGestanteGeneradorComponent implements OnInit {
 
         if (registro.AtencionesPuerperios?.length > 0) {
           cell = fila.getCell(j)
-          if (registro.AtencionesPuerperios[0].ESTADO_PUERPERIO == 1) {
+          if (registro.AtencionesPuerperios[0].ESTADO_PUERPERIO == 2) {
             cell.value = 'A|' + moment(registro.AtencionesPuerperios[0].FECHA_ATENCION).format('DD/MM/yyyy')
+          }
+
+          if (registro.AtencionesPuerperios[0].ESTADO_PUERPERIO == 0) {
+            cell.value = 'P|' + moment(registro.AtencionesPuerperios[0].FECHA_ATENCION).format('DD/MM/yyyy')
           }
 
 
@@ -640,21 +659,38 @@ export class ReporteGestanteGeneradorComponent implements OnInit {
           if (registro.AtencionesPuerperios[1].ESTADO_PUERPERIO == 0) {
             cell.value = 'P|' + moment(registro.AtencionesPuerperios[1].FECHA_ATENCION).format('DD/MM/yyyy')
           }
+          if (registro.AtencionesPuerperios[1].ESTADO_PUERPERIO == 2) {
+            cell.value = 'A|' + moment(registro.AtencionesPuerperios[1].FECHA_ATENCION).format('DD/MM/yyyy')
+          }
 
         }
 
         j = j + 1
-        if (registro.AtencionesPPFF?.length > 1) {
+        if (registro.AtencionesPPPFF?.length > 0) {
           cell = fila.getCell(j)
-          cell.value=registro.AtencionesPPFF[0].TIPO_PPFF+''
+          cell.value=new Date(registro.AtencionesPPPFF[0].FECHA_ADMINISTRACION_PPFF )   
+
+        }
+        j = j + 1
+        if (registro.AtencionesPPPFF?.length > 0) {
+          cell = fila.getCell(j)
+          cell.value=this.tmppff.transform(  registro.AtencionesPPPFF[0].TIPO_PPFF)+''
 
       
 
         }
         j = j + 1
-        if (registro.AtencionesPPFF?.length > 2) {
+        if (registro.AtencionesPPPFF?.length > 1) {
           cell = fila.getCell(j)
-          cell.value=registro.AtencionesPPFF[1].TIPO_PPFF+''
+          cell.value=this.tmppff.transform( registro.AtencionesPPPFF[1].TIPO_PPFF)+''
+
+      
+
+        }
+        j = j + 1
+        if (registro.AtencionesPPPFF?.length > 1) {
+          cell = fila.getCell(j)
+          cell.value=new Date(registro.AtencionesPPPFF[1].FECHA_ADMINISTRACION_PPFF)
 
       
 

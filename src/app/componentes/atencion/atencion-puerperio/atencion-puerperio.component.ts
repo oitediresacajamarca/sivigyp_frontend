@@ -88,8 +88,8 @@ export class AtencionPuerperioComponent implements OnInit {
 
   ATENDER(id_atencion: number) {
 
-
-    this.atencion_serv.ATENDER(id_atencion).subscribe(respuesta => {
+console.log(this.atencion_pff.METODO)
+    this.atencion_serv.ATENDER(id_atencion,{ID_METODO:this.atencion_pff.METODO}).subscribe(respuesta => {
       this.cargarAtencionPuerperio()
     })
 
@@ -135,14 +135,14 @@ this.reprogramar.id_atencion_cita=id_atencion
 
   eliminar(ID_ATENCION_PUERPERIO:number){
     this.atencion_serv.eliminar(ID_ATENCION_PUERPERIO).subscribe(respuesta=>{
-      console.log(respuesta)
+
       this.cargarAtencionPuerperio()
     })
   }
 
   acepto_nueva_cita(e:any){
 
-console.log(e)
+
     this.atencion_serv.nueva_cita(e).subscribe(respuesta=>{
       this.cargarAtencionPuerperio()
 
