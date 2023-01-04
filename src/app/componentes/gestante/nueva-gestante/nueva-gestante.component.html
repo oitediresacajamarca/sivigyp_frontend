@@ -9,13 +9,13 @@
 
     <ul class="nav nav-tabs mb-3">
       <li class="nav-item">
-        <a href="#datos_generales" data-toggle="tab" aria-expanded="false" class="nav-link active">
+        <a href="#datos_generales" data-toggle="tab" aria-expanded="false" class="nav-link " [ngClass]="{'active': step==='datos_generales'}" >
           <i class="mdi mdi-home-variant d-lg-none d-block mr-1"></i>
           <span class="d-none d-lg-block">Datos Personales</span>
         </a>
       </li>
       <li class="nav-item">
-        <a href="#datos_complementarios" data-toggle="tab" aria-expanded="true" class="nav-link">
+        <a href="#datos_complementarios" data-toggle="tab" aria-expanded="true" class="nav-link" [ngClass]="{'active': step==='datos_complementarios'}" >
           <i class="mdi mdi-account-circle d-lg-none d-block mr-1"></i>
           <span class="d-none d-lg-block">Datos Complementarios</span>
         </a>
@@ -24,7 +24,7 @@
     </ul>
 
     <div class="tab-content">
-      <div class="tab-pane active" id="datos_generales">
+      <div class="tab-pane " [ngClass]="{'active': step==='datos_generales'}" id="datos_generales">
 
         <div class="card-body">
           <form [formGroup]="datos_generales">
@@ -138,7 +138,7 @@
 
 
 
-      <div class="tab-pane " id="datos_complementarios">
+      <div class="tab-pane" [ngClass]="{'active': step==='datos_complementarios'}" id="datos_complementarios">
 
         <div class="card-body">
           <form [formGroup]="datos_complemntarios">
@@ -212,8 +212,10 @@
         </div>
         <div class="ml-auto mt-3 mt-md-0">
           <div class="form-group mb-0 text-center">
-            <button type="submit" class="btn btn-info waves-effect waves-light btn-accion" (click)="Guardar()">Guardar</button>
-            <button type="submit" class="btn btn-dark waves-effect waves-light btn-accion">Cancelar</button>
+            <button type="submit" class="btn btn-info waves-effect waves-light btn-accion" *ngIf="step=='datos_generales'" (click)="Siguiente()">Siguiente</button>
+            <button type="submit" class="btn btn-info waves-effect waves-light btn-accion" *ngIf="step=='datos_complementarios'" (click)="Anterior()">Atras</button>
+            <button type="submit" class="btn btn-info waves-effect waves-light btn-accion" *ngIf="step=='datos_complementarios'" (click)="Guardar()">Guardar</button>
+
           </div>
 
         </div>

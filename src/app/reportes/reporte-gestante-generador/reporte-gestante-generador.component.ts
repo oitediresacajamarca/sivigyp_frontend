@@ -102,7 +102,7 @@ export class ReporteGestanteGeneradorComponent implements OnInit {
       cell.alignment = { horizontal: 'center' };
 
       cell = encabezado.getCell(11)
-      cell.value = 'SEGUNDO NOMBRE'
+      cell.value = ''
       cell.fill = f
       cell.font = { name: 'Arial', size: 12 };
       cell.alignment = { horizontal: 'center' };
@@ -682,7 +682,7 @@ export class ReporteGestanteGeneradorComponent implements OnInit {
         j = j + 1
         if (registro.AtencionesPPPFF?.length > 1) {
           cell = fila.getCell(j)
-          cell.value=this.tmppff.transform( registro.AtencionesPPPFF[1].TIPO_PPFF)+''
+          cell.value=new Date(registro.AtencionesPPPFF[1].FECHA_ADMINISTRACION_PPFF)
 
       
 
@@ -690,11 +690,12 @@ export class ReporteGestanteGeneradorComponent implements OnInit {
         j = j + 1
         if (registro.AtencionesPPPFF?.length > 1) {
           cell = fila.getCell(j)
-          cell.value=new Date(registro.AtencionesPPPFF[1].FECHA_ADMINISTRACION_PPFF)
+          cell.value=this.tmppff.transform( registro.AtencionesPPPFF[1].TIPO_PPFF)+''
 
       
 
         }
+       
 
 
 

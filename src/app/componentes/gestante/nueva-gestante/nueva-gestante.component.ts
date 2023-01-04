@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
 })
 export class NuevaGestanteComponent implements OnInit {
 
-  constructor(private mst_per: MstPacienteService, private fb: FormBuilder, private persona_hc: HistoriaClinicaService, 
+  constructor(private mst_per: MstPacienteService, private fb: FormBuilder, private persona_hc: HistoriaClinicaService,
     private estados_s: EstadoServiceService, private route: Router) { }
 
   nro_documento = ''
@@ -25,6 +25,7 @@ export class NuevaGestanteComponent implements OnInit {
   encontrado = true
   encontrdao_fec_nac = true
 
+  step = 'datos_generales'
 
   @ViewChild('selector_distrito')
   selector_distrito!: SelectorDistritoComponent
@@ -127,7 +128,7 @@ export class NuevaGestanteComponent implements OnInit {
         'numero_telefono': ['', Validators.required],
         'numero_telefono_adicional': '',
         'beneficiaria_juntos': ['', Validators.required],
-        COD_IPRESS: [this.estados_s.devolver_ambito_actual().cod_ambito,Validators.required]
+        COD_IPRESS: [this.estados_s.devolver_ambito_actual().cod_ambito, Validators.required]
       })
 
     this.datos_complemntarios = this.fb.group(
@@ -181,5 +182,22 @@ export class NuevaGestanteComponent implements OnInit {
     this.datos_generales.controls['apellido_paterno'].disable()
     this.datos_generales.controls['apellido_materno'].disable()
   }
+  Siguiente() {
+    console.log(this.datos_generales)
+    if (this.datos_generales.valid==true) {
+
+      this.step = 'datos_complementarios'
+    } else {
+      if(this.datos_generales.controls['COD_IPRESS'].valid==false){
+        alert('el paciente debe registrarse en un establecimiento de salud valido actualmente se encuentra como ambito'+this.estados_s.ambito.nombre_ambito)
+      }
+      alert('datos generales incompletos')
+    }
+  }
+  Anterior() {
+    this.step = 'datos_generales'
+  }
+
+
 
 }
